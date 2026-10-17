@@ -1,4 +1,14 @@
-# Echoes Below v2.5.0 — build 20261017.09
+# Echoes Below v2.5.1 — build 20261017.10
+
+## Rarity repair
+- One shared Basic / Strong / Godlike definition covers all 28 catalog items, world supplies, six abilities, six trail relics, twenty guardian relics and the Sword of Life keepsake. Labels and colors now agree in shops, equipped slots, the bag, ground pickups, skill selection and relic collection.
+- Basic gear only in chapters 1–3; Strong gear unlocks in chapter 4. Strong odds grow from 10% to 34%. Godlike gear remains restricted to chapter 16+, growing from 2.5% to 7.5% of equipment rolls. Equipment drop and independent 25% health-drop rolls remain separate. The guide shows current chapter odds.
+- Tonic is Basic (5 coins); Stonebrew and Clarity Draught are Strong (10 each); the automatic Angel Totem is Strong and remains exactly 55. Ability base prices: 4, 6, 12, 18, 24 and 60, with the final Last Light ability Godlike and available at chapter 18's shop. Other abilities use Basic or Strong.
+- Early guardian/trail relics are Strong. Chapter 16+ relics and both final treasures are Godlike. Rarity does not change the guardian's 20% relic roll, earned trail relics, guaranteed finale rewards or story keys.
+- Missing inventory rarity labels and a CSS rule overriding relic heading colors are fixed. Starter equipment and glowberry pouch are labeled Basic. No undefined rarity labels.
+- Out-of-depth uncollected gear/shop stock is adjusted to its chapter's maximum tier. Already-owned bag and equipped items stay intact; repeated loading is stable.
+- M > Rarity guide explains grades, price ranges, chapter requirements and reward sources. No new overlays in the play area.
+- Validation: 800,000 deterministic gear rolls, all six shops, price/discount limits, migration/owned gear preservation, full campaign regression, desktop and landscape-phone UI/purchases/save reload, and cached offline upgrade.
 
 ## New worlds and chapter rewards
 - Chapters 11–20 have 100 rebuilt floorplans: resonance chambers, railway switchyards, window streets, constellation galleries, council halls, winter shelters, memory vaults, suspension crossings, engine circuits and the rainbow homecoming. Distinct routes, collision walls, arena arrangements and floor motifs replace the shared late-room layout. The campaign remains 20 chapters of ten rooms, plus 18 optional maps.

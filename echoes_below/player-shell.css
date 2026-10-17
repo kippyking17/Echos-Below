@@ -71,7 +71,7 @@ input,select{background:#07151f;border:1px solid #46616d;color:#e4efec;border-ra
 .journal-memory strong{color:#e5d5aa;font-size:13px}.journal-memory p{font-size:13px;line-height:1.9;margin:10px 0 0}
 .relic-card{margin:12px 0;padding:17px 20px;border:1px solid #324c57;border-left:2px solid #48636d;background:#0a1a24;border-radius:2px}
 .relic-card.owned{border-left-color:var(--lantern);background:linear-gradient(110deg,#2b3025,#0a1a24 65%)}
-.relic-card h3{margin:0 0 6px;font:19px Georgia,serif;color:#e6d5ac!important}.relic-card p{font-size:12px;margin:6px 0 12px}.relic-card button{margin:4px 8px 0 0}.relic-card small{color:#88a8b2;font-size:10px;letter-spacing:1px}
+.relic-card h3{margin:0 0 6px;font:19px Georgia,serif;color:#e6d5ac}.relic-card p{font-size:12px;margin:6px 0 12px}.relic-card button{margin:4px 8px 0 0}.relic-card small{color:#88a8b2;font-size:10px;letter-spacing:1px}
 body:not(.admin-mode) .admin-account-help{display:none}body.admin-mode .player-account-help{display:none}
 body.admin-mode{background:radial-gradient(ellipse at top,#16303a,#071018 70%)}
 body.admin-mode section{background:#0c1e28;border-color:#35515f;border-radius:3px}

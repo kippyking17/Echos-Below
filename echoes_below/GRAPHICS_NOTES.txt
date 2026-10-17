@@ -3,3 +3,5 @@
 World dodge uses a compact rotating character and translucent pixel trail. Healing motes are floating pink pixel hearts. Fist artwork remains half size. Dodge adds the forty-third original synthesized sound category.
 
 Version 2.5: brighter full-wing Angel Graces, expanding angel revival, 100 rebuilt late-chapter rooms with ten district floor treatments and new collision geometry. Final guardian voice uses device speech synthesis with original Web Audio undertones. 45 original sound categories.
+
+v2.5.1: shared rarity colors across item surfaces, corrected relic heading style, pixel Rarity guide and explicit text labels for accessibility.

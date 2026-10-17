@@ -1,11 +1,17 @@
-ECHOES BELOW — v2.5.0 / build 20261017.09
+ECHOES BELOW — v2.5.1 / build 20261017.10
 
 PLAY: https://kippyking17.github.io/Echos-Below/
 
-100 rebuilt rooms in chapters 11–20, new district architecture, chapter-scaled boss coins, brighter Graces and winged Angel Graces, the 55-coin automatic revival Totem, one-time guardian stat gifts and unique relics. The Last Echo has its own low, gentle, unsettling voice; change its volume in M > Sound.
+RARITY UPDATE
+Basic (pale green), Strong (blue), Godlike (gold) now consistently label weapons, armor, supplies, potions, abilities and relics in the shop, inventory and pickups. M > Rarity guide explains grades and your current chapter's equipment odds.
 
-Godlike gear only newly appears from chapter 16 and costs 50–90 coins per piece. Weapon damage is reduced and gear rarities are scarcer. The final treasures are the Rainbow Relic of the Gods and Sword of Life keepsake; keep/export your finished save for a future adventure.
+Equipment progression: Basic in chapters 1–3, Strong from chapter 4, Godlike from chapter 16. Basic gear costs 3–6, Strong 10–18 and Godlike 50–90 coins per piece. Godlike odds are 2.5–7.5% of equipment rolls, after the separate rare gear-drop roll. Already-owned items are preserved; uncollected early stock/loot respects the new gates.
 
-Click/tap to walk; RMB to attack; E to interact/read/collect/confirm; Space to dodge small roaming enemies; I inventory; M menu. Boss fights use heart movement and have no roll. Phones have touch controls. Roaming foes have a 25% chance to drop 10 HP. The How to Play menu explains upgrades and controls.
+Glow Tonic is Basic (5); Stonebrew and Clarity Draught are Strong (10); Totem of the Angels is Strong and exactly 55. Abilities cost 4/6/12/18/24/60; Last Light is Godlike at the chapter 18 shop. Early relics are Strong; chapter 16+ relics and final treasures are Godlike. Guardian relics retain their 20% chance; story keys and earned trail/finale rewards remain guaranteed.
 
-Serve the entire game folder with a web server, or upload its contents as the site root. The Windows app opens the live game and receives later published versions. Existing accounts/saves are preserved; New Game resets journey progress. See BUILD_NOTES.md for details.
+Includes all v2.5 features: 100 rebuilt late-chapter rooms, scaling boss coins, angel revival, permanent victory gifts, unique relics and the Last Echo's voice. 20 chapters, 200 campaign rooms plus 18 optional maps.
+
+Click/tap to walk; RMB attack; E interact/read/collect/confirm; Space roll against roaming enemies; I inventory; M menu. Mobile has touch controls. Existing accounts and saves work; New Game resets journey progress.
+
+WINDOWS APP
+Extract this whole ZIP first. Open EchoesBelow-AutoUpdate.exe to play the latest published game. Internet is needed for first load and updates. The game folder is included for backup or upload: serve the whole folder with a web server, or upload its contents as the site root. See BUILD_NOTES.md for full details.
