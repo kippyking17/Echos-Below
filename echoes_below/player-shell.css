@@ -1,4 +1,5 @@
-/* The player surface fills the window. The original dashboard is an admin view. */
+/* Crystal glass, carved stone, and lantern light. Player chrome stays inside the game. */
+:root{--crystal:#79cbec;--ink:#071018;--surface:#0c1a23;--edge:#294450;--paper:#e6f0ed;--muted:#9fb8bc;--lantern:#efca88;--bg:#071018;--panel:#0c1a23;--text:#e6f0ed;--accent:#8ed6e8;--mint:#b5dfc4;color-scheme:dark}
 html{background:#000;min-height:100%}
 body:not(.admin-mode){margin:0;padding:0;width:100%;height:100dvh;overflow:hidden;background:#000}
 body:not(.admin-mode) .app{position:fixed;inset:0;width:100%;height:100%;margin:0}
@@ -6,35 +7,77 @@ body:not(.admin-mode) .app> :not(#game):not(dialog):not(#menuButton){display:non
 body:not(.admin-mode) #usernameBadge,body:not(.admin-mode) #versionBadge{display:none!important}
 body:not(.admin-mode) #game{width:100%;height:100%;max-width:none;max-height:none;border:0;outline:0;aspect-ratio:auto;object-fit:contain;background:#000}
 body:not(.admin-mode) #game:fullscreen{object-fit:contain;background:#000}
-#menuButton{position:fixed;right:18px;top:14px;z-index:20;padding:8px 13px;border:1px solid #b5c9d555;border-radius:4px;background:#090d14c4;color:#e4ebf2;font-size:12px;letter-spacing:1px;opacity:.65}
-#menuButton:hover,#menuButton:focus-visible{opacity:1;outline:1px solid #fff}
+button,input,select{font-family:Consolas,'Courier New',monospace}
+button{transition:background .15s,border-color .15s,box-shadow .15s;touch-action:manipulation}
+button:disabled{opacity:.42;cursor:not-allowed}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--lantern)!important;outline-offset:3px}
+#menuButton{position:fixed;right:18px;top:14px;z-index:20;padding:9px 14px;border:1px solid #66838c77;border-radius:2px;background:#07121be6;color:#bed2d5;font-size:11px;letter-spacing:2px;box-shadow:inset 2px 0 var(--crystal)}
+#menuButton:hover{background:#16303c;color:#fff;border-color:var(--crystal)}
 body.admin-mode #menuButton{position:absolute;top:50px;right:12px}
-#mainMenuDialog{width:min(810px,94vw);max-height:88dvh;padding:24px;background:#080d15f5;border:1px solid #8398a8;border-radius:5px;box-shadow:0 18px 100px #000a;color:#edf3f7;line-height:1.5}
-#mainMenuDialog::backdrop{background:#000b;backdrop-filter:blur(5px)}
-.menu-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
-.menu-heading h2{font-size:23px;color:#edf3f7;margin:0;letter-spacing:2px}
-.menu-heading p{font-size:12px;color:#8fabbc;margin:5px 0 0}
-#mainMenuDialog button{background:#111c27;border:1px solid #435d70;color:#f1f6fa;border-radius:3px;box-shadow:none}
-#mainMenuDialog button:hover,#mainMenuDialog button:focus-visible{background:#23394a;border-color:#accbdc;outline:1px solid #b1cddd}
-#mainMenuDialog .primary-menu-action{border-color:#8ecbb7;background:#153028}
-#menuChoices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-#menuChoices button{text-align:left;padding:15px 13px;min-height:68px;margin:0}
-#menuChoices button strong{display:block;font-size:14px;font-weight:400}
-#menuChoices button small{display:block;margin-top:7px;color:#9bb4c3;font-size:11px}
-#menuContent{min-height:48px}
-#menuContent .shell-panel{display:block!important;margin:0;padding:0;border:0;background:transparent}
-#menuContent h2{color:#edf3f7}
-#menuContent h3{color:#bdd4e0}
-#menuContent p{color:#bdd0dc}
-#menuContent .menu-detail{border-left:2px solid #82bca7;margin:16px 0;padding-left:14px}
-#menuContent .menu-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
-#menuContent .menu-actions button{margin:0}
-#menuFooter{font-size:11px;color:#7793a6;border-top:1px solid #263642;margin:20px 0 0;padding-top:12px}
-.chapter-menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
-.chapter-menu-grid p{padding:9px;margin:0;border:1px solid #263642;font-size:12px}
-.chapter-menu-grid p.current{border-color:#98c9b8;color:#d5f8e8!important}
-body:not(.admin-mode) dialog:not(#mainMenuDialog){background:#0d1520;border-radius:5px;border-color:#809aaa}
-body:not(.admin-mode) dialog button{background:#142431;border-color:#567185}
-@media(max-width:600px){#mainMenuDialog{padding:17px}#menuChoices{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}#menuChoices button{padding:11px;min-height:60px}.menu-heading h2{font-size:18px}.chapter-menu-grid{grid-template-columns:1fr}#menuButton{top:8px;right:8px}}
-
+dialog,#mainMenuDialog{width:min(860px,94vw);max-height:88dvh;padding:28px;background:linear-gradient(145deg,#12232dfc,#07121bfc 70%);border:1px solid #50717b;border-top:2px solid var(--crystal);border-radius:3px;box-shadow:0 28px 110px #000c,inset 0 0 60px #08131b;color:var(--paper);line-height:1.6;scrollbar-width:thin;scrollbar-color:#4b707d #0a1720}
+dialog::backdrop,#mainMenuDialog::backdrop{background:#01080dc9;backdrop-filter:blur(7px)}
+dialog h2,.menu-heading h2{font-family:Georgia,serif;font-weight:400;font-size:27px;color:#e8f1e9;margin:0 0 14px;letter-spacing:1px}
+dialog h3{color:var(--lantern)}
+dialog p{color:#b6cbd0;font-size:13px}
+dialog button,#mainMenuDialog button,body.admin-mode button{background:#112832;border:1px solid #3b5964;color:#e5eeee;border-radius:2px;box-shadow:inset 0 1px #ffffff05;padding:10px 14px;font-size:12px;min-height:40px}
+dialog button:hover,#mainMenuDialog button:hover,body.admin-mode button:hover{background:#203e49;border-color:#81b4be;color:#fff;outline:0}
+.menu-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px;padding-bottom:20px;border-bottom:1px solid #35515c;position:relative}
+.menu-heading>div{padding-left:44px}
+.menu-heading:before{content:'◆';position:absolute;left:0;top:3px;font-size:27px;color:var(--crystal);text-shadow:0 0 25px #80cde850}
+.menu-heading h2{margin:0;font-size:26px}
+.menu-heading p{font-size:11px;color:#97b7bd;margin:4px 0 0;letter-spacing:.3px}
+#menuBack{flex-shrink:0}
+#menuChoices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+#menuChoices:empty{display:none}
+#menuChoices button{position:relative;text-align:left;padding:15px 13px 14px 43px;min-height:77px;margin:0;background:linear-gradient(135deg,#162e39,#0d202a)}
+#menuChoices button>.menu-icon{position:absolute;left:15px;top:15px;color:var(--crystal);font-size:18px}
+#menuChoices button strong{display:block;font-size:13px;font-weight:400;color:#edf5ef;line-height:1.4}
+#menuChoices button small{display:block;margin-top:5px;color:#91afb7;font-size:10px;line-height:1.5}
+#menuChoices .primary-menu-action{border-color:#b0c591;background:linear-gradient(135deg,#30473d,#18312e)}
+#menuChoices .menu-icon:before{content:'◇'}
+#menuChoices .primary-menu-action>.menu-icon:before{content:'▶';color:#f0d69a}
+#menuChoices .menu-save>.menu-icon:before{content:'▣'}#menuChoices .menu-map>.menu-icon:before{content:'⌘'}#menuChoices .menu-journal>.menu-icon:before{content:'▤'}#menuChoices .menu-hints>.menu-icon:before{content:'?'}#menuChoices .menu-controls>.menu-icon:before{content:'⌨'}#menuChoices .menu-sound>.menu-icon:before{content:'♪'}#menuChoices .menu-account>.menu-icon:before{content:'♙'}#menuChoices .menu-progress>.menu-icon:before{content:'✧'}
+#menuContent:empty{display:none}
+#menuContent{margin-top:18px}
+#menuContent .shell-panel{display:block!important;margin:0;padding:0;border:0;background:transparent;box-shadow:none}
+#menuContent h2{color:#d7e7e6;font:15px Consolas,monospace;letter-spacing:1px}
+#menuContent h3{color:var(--lantern)}
+#menuContent p{color:#b0c7ce}
+#menuContent>.menu-detail{border-left:2px solid var(--crystal);margin:15px 0;padding:7px 14px;background:#82c0d208}
+#menuContent>button{margin:5px 7px 5px 0}
+#menuFooter{font-size:10px;color:#76969f;border-top:1px solid #29414c;margin:22px 0 0;padding-top:13px;letter-spacing:.3px}
+.chapter-menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.chapter-menu-grid p{position:relative;padding:12px 14px;margin:0;border:1px solid #263f4c;background:#0d202b;font-size:12px}
+.chapter-menu-grid p.current{border-color:var(--crystal);color:#e0f4e9!important;box-shadow:inset 3px 0 var(--crystal)}
+#keybindGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.bindrow{padding:8px 10px;background:#0a1b25;border:1px solid #29434e;min-width:0}
+.bindrow span{font-size:11px;color:#acc6ca}
+#keybindGrid button{min-width:88px;padding:7px;font-size:11px;min-height:34px;background:#1a313c;box-shadow:0 3px #050e15;margin:0}
+#slots>.inputs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:12px 0!important;padding:16px;border:1px solid #35505b;background:#0b1c26}
+#slots .small{grid-column:1/-1;min-width:0!important;color:#d4e3df;font-size:13px;margin-bottom:5px}
+#slots button{margin:0;padding:8px;font-size:11px}
+#slots button:last-child{color:#e4a9a5;border-color:#71545a}
+#authFields label{display:flex;flex-direction:column;align-items:stretch;gap:7px;color:#a4c0c7;font-size:12px;margin:12px 0;max-width:430px}
+input,select{background:#07151f;border:1px solid #46616d;color:#e4efec;border-radius:2px;min-height:43px;padding:10px}
+#accountStatus{display:block;color:var(--lantern);font-size:11px;margin-top:7px}
+.notice{background:#9dd6bd08;border-left:2px solid #a1cbb4;padding:10px 13px}
+#shopStock{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0}
+#shopStock section{display:flex;flex-direction:column;margin:0;padding:17px;border:1px solid #3d535b;background:linear-gradient(140deg,#18313a,#0c1d27);border-radius:2px}
+#shopStock h3{margin:0 0 6px;font-size:15px}#shopStock p{flex:1;margin:0 0 17px;font-size:12px}#shopStock button{margin:0;color:#f4d59f;border-color:#736648}
+#shopIntro{padding:12px 15px;border-left:2px solid var(--lantern);background:#e8c17a07}
+#skillChoices{display:grid;gap:8px;margin:20px 0}#skillChoices button{text-align:left;line-height:1.7;padding:14px}
+#puzzleClue{padding:18px;border-left:2px solid var(--crystal);background:#92c7e00a}#puzzleProgress{min-height:28px;color:var(--lantern)}#puzzleChoices{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}#puzzleChoices button{flex:1;margin:0;min-width:120px}
+.journal-memory{position:relative;background:#081923;border:1px solid #294550;border-left:2px solid var(--crystal);padding:18px;margin:10px 0 20px}
+.journal-memory strong{color:#e5d5aa;font-size:13px}.journal-memory p{font-size:13px;line-height:1.9;margin:10px 0 0}
+.relic-card{margin:12px 0;padding:17px 20px;border:1px solid #324c57;border-left:2px solid #48636d;background:#0a1a24;border-radius:2px}
+.relic-card.owned{border-left-color:var(--lantern);background:linear-gradient(110deg,#2b3025,#0a1a24 65%)}
+.relic-card h3{margin:0 0 6px;font:19px Georgia,serif;color:#e6d5ac!important}.relic-card p{font-size:12px;margin:6px 0 12px}.relic-card button{margin:4px 8px 0 0}.relic-card small{color:#88a8b2;font-size:10px;letter-spacing:1px}
 body:not(.admin-mode) .admin-account-help{display:none}body.admin-mode .player-account-help{display:none}
+body.admin-mode{background:radial-gradient(ellipse at top,#16303a,#071018 70%)}
+body.admin-mode section{background:#0c1e28;border-color:#35515f;border-radius:3px}
+body.admin-mode canvas{border:1px solid #557d8b}body.admin-mode h2,body.admin-mode .top{color:#c2d9dc}
+body.admin-mode #usernameBadge,body.admin-mode #versionBadge{background:#0b202a;border-color:#537885;color:#d3e9e5;border-radius:2px}
+@media(max-width:600px){dialog,#mainMenuDialog{padding:18px;max-height:90dvh}.menu-heading{padding-bottom:14px;margin-bottom:15px}.menu-heading h2{font-size:21px}.menu-heading>div{padding-left:29px}.menu-heading:before{font-size:20px;top:0}.menu-heading p{font-size:10px}#menuChoices{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}#menuChoices button{padding:12px 9px 12px 30px;min-height:76px}#menuChoices button>.menu-icon{left:9px;top:13px;font-size:14px}#menuChoices button strong{font-size:12px}#menuChoices button small{font-size:10px}.chapter-menu-grid,#shopStock,#keybindGrid{grid-template-columns:1fr}#menuButton{top:8px;right:8px}#menuFooter{line-height:1.9}#slots>.inputs{padding:12px}.relic-card{padding:14px}dialog h2{font-size:23px}}
+@media(prefers-reduced-motion:reduce){button{transition:none}dialog::backdrop{backdrop-filter:none}}
+
+dialog button:focus-visible,#mainMenuDialog button:focus-visible,body.admin-mode button:focus-visible{background:#203e49;border-color:#b9d4d8;color:#fff}

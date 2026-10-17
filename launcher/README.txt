@@ -1,4 +1,4 @@
-ECHOES BELOW — AUTO UPDATE 2.0
+ECHOES BELOW — AUTO UPDATE 2.1
 
 Keep EchoesBelow-AutoUpdate.exe anywhere convenient and open it.
 Click Play latest online game. No game folder or Git installation is needed for playing.
@@ -12,3 +12,4 @@ CREATOR TOOLS
 These are optional. Nothing is uploaded just by opening this app or playing. The upload folder starts empty and automatic publishing starts off. Choose your NEW game folder only when you intend to publish. Git for Windows and authorized GitHub sign-in are needed for publishing. The app and server both reject older game versions. There is no need to publish files in order to receive updates as a player.
 
 Normal login and saves stay on https://kippyking17.github.io/Echos-Below/ . The app uses that same website origin, not a separate local copy. Keep using the same browser/profile for your existing saves. AutoUpdateLauncher.cs includes the app source.
+

@@ -1,4 +1,4 @@
-# Echoes Below 1.4.1 — The borrowed light
+# Echoes Below 1.5.0 — The borrowed light
 
 Mara disappears while repairing the town’s sunlamp. Follow her lantern courier Wick through twenty districts, discover the cost of the light, and build a way home that does not require another sacrifice.
 
@@ -82,3 +82,13 @@ The launcher opens the game with desktop=1. The website checks for a new offline
 The deployment workflow now checks the game version against a fixed recovery floor and the latest twenty successful deployments, using numeric version comparisons. An old publisher may still commit old files, but those files cannot replace the live game. Valid future versions can deploy without changing the guard. Checks fail closed if release history cannot be verified.
 
 Validation: actual offline-worker updates from 1.4.1 to simulated 1.4.2 and 1.4.3 waited through combat, saved/resumed and preserved HP and coins. A simulated save failure prevented reload. Launcher tests verified no selected upload folder, automatic publishing off, blocked old/missing versions, accepted future versions, and the upload allowlist. Deployment tests rejected 1.0.1 and future downgrades. The 138-room exploration, combat, shops, legacy saves and ending checks still pass.
+
+## Interface refresh — 1.5.0
+
+The title screen now uses layered cave silhouettes, crystal facets, drifting motes and a clear start prompt. The player menu, saves, keybindings, account form, journal, puzzle controls, skill picker, shop and relic collection share dark stone panels, chapter-colored crystal accents, warm lantern highlights and visible keyboard focus. Relics have individual discovery/equipment cards; shops use two columns on desktop and one on narrow screens. Save labels fit without horizontal scrolling. Decorative menu icons are hidden from assistive technology. The menu focuses its primary action after opening.
+
+The game HUD uses compact location and health panels. Dialogue, hints, notifications, the map and battle controls use matching carved-panel borders. Notices no longer cover the enemy health bar. The battle arena and collision rules are unchanged. Click the title to begin or continue; click a battle action to use it, or use the existing keyboard controls. Clicking a dialogue advances it. Menus remain inside native fullscreen. The verified-admin dashboard receives the same palette without granting new privileges.
+
+Windows launcher 2.1 uses the matching dark stone, crystal and lantern palette. Its automatic game update and protected creator upload logic are unchanged. Existing launcher 2.0 users receive the game interface online; downloading 2.1 updates the Windows window itself.
+
+Validation: checked styled title, dialogue, battle, save, shop and relic screens in Edge. Verified mouse start/battle action, primary menu focus, arrows, key remapping, fullscreen, game pause under menus and no horizontal overflow in mobile shop/save/controls/account/relic screens. Existing gameplay, legacy saves, 18 optional maps, rewards, combat, credits and verified-admin isolation checks pass.
