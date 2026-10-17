@@ -1,4 +1,4 @@
-# Echoes Below 1.5.1 — The borrowed light
+# Echoes Below 1.6.0 — The borrowed light
 
 Mara disappears while repairing the town’s sunlamp. Follow her lantern courier Wick through twenty districts, discover the cost of the light, and build a way home that does not require another sacrifice.
 
@@ -98,3 +98,13 @@ Validation: checked styled title, dialogue, battle, save, shop and relic screens
 Every campaign room after the first has a visible return doorway in both views. Walk into its west threshold or press Enter/Z near it; M > Previous room offers the same action while exploring. Chapter 2 room 1 returns to chapter 1 room 6, and the same applies at every later chapter boundary. The first room of the whole story cannot go below chapter 1. Optional trails use the same return action for earlier maps and their story entrance. The camera direction stays consistent while walking across the boundary. Existing choices, cleared guardians, solved puzzles, inventory and journal discoveries stay intact. Revisiting a chapter no longer repeats its entrance gift or opening dialogue.
 
 Validation: walking tests crossed all 119 campaign connections backward, tested the start boundary, door interaction, 3D backward movement, save-state preservation, trail return and repeated chapter visits. Browser checks exercised the Previous room menu and actual 3D movement back and forth across a chapter boundary.
+
+## 2D cave artwork — 1.6.0
+
+The overhead view now uses locally drawn pixel artwork in overworld-art.js. Room floors have seeded stone textures, cracks and worn route stones. Raised cave walls frame the actual floor; obstacles use rock formations, bookshelves, crates, garden growth, machinery or ice/glass formations according to the district. Water areas have rippling pools and plank paths. Star districts have floor constellations, industrial districts have conduits and vents, winter has drifting particles, and the aurora vault has subtle animated ribbons. Ambient effects remain faint and do not hide the play area.
+
+The overhead player is a scarf-wearing traveler with a small lantern, movement animation and shadow. Story landmarks use lanterns, books or mechanisms; guardians, shops, optional portals, challenge nodes and relic chests have matching sprites. Checkpoint clusters retain chapter colors; the final chapter uses the complete rainbow palette. Labels appear within interaction range and are hidden during dialogue. Doors stay visible on both sides of eligible rooms. Battle hearts and combat remain unchanged.
+
+Static room artwork is cached in a bounded six-room cache, keeping per-frame rendering small. The new art file is included in the offline cache. All artwork comes from local drawing code; no external image or font service is required. Collision layouts, interactable coordinates, story progress, saves and 3D rendering are unchanged.
+
+Validation: all 120 campaign and 18 optional maps render through the actual game canvas in Edge without uncaught errors. Checked traveler movement, landmarks, menus, 3D switching and the mobile viewport. Existing puzzles, shops, equipment, six optional challenges/rewards, old-save migration, credits and all 119 campaign return links pass gameplay checks.

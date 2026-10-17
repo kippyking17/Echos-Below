@@ -2,7 +2,7 @@
 
 Play: https://kippyking17.github.io/Echos-Below/
 
-Version 1.5.1 expands the twenty-chapter journey with six optional regions and eighteen new maps, unique challenges and six equippable relics. Discover the side entrance in room 2 of chapters 1, 4, 7, 10, 13 and 16. Explore waterfalls, glowing gardens, foundry machinery, an observatory, lantern bridges and an aurora vault.
+Version 1.6.0 expands the twenty-chapter journey with six optional regions and eighteen new maps, unique challenges and six equippable relics. Discover the side entrance in room 2 of chapters 1, 4, 7, 10, 13 and 16. Explore waterfalls, glowing gardens, foundry machinery, an observatory, lantern bridges and an aurora vault.
 
 M opens the menu, H offers a hint, J opens the journal, and V switches between overhead and first-person views. Relics & discoveries lets you equip one relic or revisit a trail. Existing saves and cloud-login configuration are preserved.
 
@@ -12,3 +12,5 @@ The standalone Windows launcher is in launcher/EchoesBelow-AutoUpdate.exe. It op
 
 The 1.5 interface refresh adds crystal-themed menus, a cinematic cave title screen, compact HUD, matching dialogue and battle controls, readable shop/relic cards and mobile layouts. Launcher 2.1 uses the same palette.
 
+
+Version 1.6 adds a full 2D pixel-art pass: textured cave floors, themed raised scenery, a lantern-carrying traveler, matching world objects and subtle ambient animation. Switch between 2D and 3D with V.
