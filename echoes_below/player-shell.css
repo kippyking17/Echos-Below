@@ -177,3 +177,5 @@ body.touch-mode:not(.admin-mode) .app{padding-left:calc(var(--touch-rail) + env(
 
 .character-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.character-choices button{display:grid;gap:5px;margin:0!important;padding:5px!important}.character-choices canvas{display:block;width:100%;height:auto;aspect-ratio:4/3;border:0;image-rendering:pixelated}.character-choices .chosen-character{outline:2px solid #d8e8ab!important;background:#345349!important}#characterDialog{max-width:740px}#characterDialog>p{font-size:12px;line-height:1.4}@media(orientation:landscape) and (max-height:500px){#characterDialog{padding:10px;max-height:96dvh}#characterDialog h2{margin:0;font-size:20px}.character-choices{grid-template-columns:repeat(6,minmax(0,1fr))}.character-choices span{font-size:10px}.character-choices canvas{max-height:100px;object-fit:contain}#characterDialog>button{min-height:36px;padding:5px 12px}}
 #fallenTraveler{display:none!important}.touch-attack[hidden]{display:none!important}
+
+.touch-collect[hidden]{display:none!important}.touch-collect{color:#efd896!important;border-color:#c6b780 #675e42 #675e42 #c6b780!important}

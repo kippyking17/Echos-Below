@@ -21,7 +21,7 @@ function rows(s){
  ['OUR COMPANIONS',21,'#a9bad2'],['Mara — who refused another sacrifice',20],['Wick — who learned to answer the call',20],['You — who followed the lantern',20],['',18],['THE DISTRICTS THAT MADE THE DAWN',20,'#a9bad2']
  ];
  s.campaign.forEach((c,i)=>out.push([String(i+1).padStart(2,'0')+'  '+c.title,21,c.crystalColor]));
- out.push(['',18],['YOUR JOURNEY',23,'#fff0bc'],[s.game.mercy+' lives spared · '+s.game.fight+' victories by force',20],[count+' of 120 memories carried home',20],[(s.game.gear?.relics?.length||0)+' of 6 trail relics discovered',20],['',18],['BUILT WITH',21,'#a9bad2'],['Pixel art · Original chapter themes',23],['',18],['FOR EVERYONE WHO PLAYED',21,'#a9bad2'],['Thank you for listening.',27,'#fff0bc'],['Thank you for coming back.',27,'#fff0bc'],['',18],['“Let’s make tomorrow ourselves.”',24],['— Mara',20,'#b9e2e9']);return out;
+ out.push(['',18],['YOUR JOURNEY',23,'#fff0bc'],[s.game.mercy+' lives spared · '+s.game.fight+' victories by force',20],[count+' of '+s.campaign.reduce((sum,c)=>sum+c.rooms.length,0)+' memories carried home',20],[(s.game.gear?.relics?.length||0)+' of 6 trail relics discovered',20],['',18],['BUILT WITH',21,'#a9bad2'],['Pixel art · Original chapter themes',23],['',18],['FOR EVERYONE WHO PLAYED',21,'#a9bad2'],['Thank you for listening.',27,'#fff0bc'],['Thank you for coming back.',27,'#fff0bc'],['',18],['“Let’s make tomorrow ourselves.”',24],['— Mara',20,'#b9e2e9']);return out;
 }
 function duration(s){return 8000+(rows(s).length*42+680)/48*1000;}
 function draw(ctx,s){

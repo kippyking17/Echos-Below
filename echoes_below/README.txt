@@ -1,12 +1,9 @@
-ECHOES BELOW 2.1.0 — THE LANTERN ROAD
+ECHOES BELOW v2.2.0 — BUILD 20261017.05
 
-Play https://kippyking17.github.io/Echos-Below/
+20 chapters, 200 main rooms, 18 optional maps, 20 minibosses and 20 main bosses.
+Choose your character and click the title's ENTER button to begin. Every New Game starts fresh.
+Left click/tap to walk. Right click to swing. E collects nearby keys, coins, glowberries and equipment. I opens inventory. M opens the menu. Phone/tablet players use the landscape controls, Attack and Collect buttons. Full control settings and explanations are in the menu.
 
-Click the title's ENTER button, choose a traveler for a new journey, then begin.
-Left-click/tap moves; right-click attacks; I opens the ten-slot inventory. Mobile has Attack and touch heart controls. See How to Play for every control and grace gift.
+Room 5: regular Grace and miniboss. Room 10: stronger Angel Grace and chapter boss. Rest to heal, save, choose one permanent gift from each grace and set your death return point. Green floating grace art stays small; the final chapter has larger rainbow graces and the largest final angel. Shops are in room 6 every third chapter. Late guardians demand stronger gear and grace upgrades.
 
-The game is fully 2D. Green angel graces are six rooms apart, and the last is multicolored. Rest to save a respawn point and choose one permanent gift. New Game resets the journey.
-
-Basic/Strong/Godlike equipment costs 2/5/8 coins. Bosses grant five coins and a dropped passage key. Loose coins and berries are scarce. Brindle's conversations use the device's spoken voice.
-
-Keep the same site/browser profile for guest saves. Accounts and cloud save configuration are unchanged. See BUILD_NOTES.md for release details and LOGIN_SETUP.txt for existing account setup.
+Keep the whole folder together and serve it with a web server. Upload the contents of this folder as the website root. Direct file opening does not provide cloud login or service workers. Existing login, local and cloud saves use the same configuration; old six-room saves migrate when loaded. The Windows launcher opens the live website and receives later published game versions without reinstalling.

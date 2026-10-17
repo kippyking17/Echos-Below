@@ -2,8 +2,8 @@
 (()=>{
 const catalog={},weapon=['Lantern Hook','Glass Saber','Ember Staff','Moon Needle','Chorus Spear','Dawnkeeper'],armor=['Mossweave','Riverguard','Ashplate','Starglass','Regent','Aurora'];
 for(let tier=1;tier<=6;tier++){
- catalog['weapon-'+tier]={id:'weapon-'+tier,name:weapon[tier-1],slot:'weapon',tier,description:'FIGHT damage +'+tier*2,cost:4+tier*3};
- for(const slot of ['head','chest','legs']){const name=armor[tier-1]+' '+({head:'Hood',chest:'Coat',legs:'Greaves'}[slot]),defense=slot==='chest'?Math.ceil(tier/2):Math.floor((tier-1)/3);catalog[slot+'-'+tier]={id:slot+'-'+tier,name,slot,tier,defense,description:(defense?'Defense +'+defense+' · ':'')+(slot==='head'?'Maximum HP +'+tier:slot==='legs'?'Movement +'+(tier*1.5)+'%':'Protects your chest'),cost:slot==='chest'?5+tier*3:3+tier*2};}
+ catalog['weapon-'+tier]={id:'weapon-'+tier,name:weapon[tier-1],slot:'weapon',tier,power:globalThis.EchoesProgression.weaponPower[tier],description:'FIGHT damage +'+globalThis.EchoesProgression.weaponPower[tier],cost:4+tier*3};
+ for(const slot of ['head','chest','legs']){const name=armor[tier-1]+' '+({head:'Hood',chest:'Coat',legs:'Greaves'}[slot]),defense=(slot==='chest'?globalThis.EchoesProgression.chestDefense:globalThis.EchoesProgression.lightDefense)[tier];catalog[slot+'-'+tier]={id:slot+'-'+tier,name,slot,tier,defense,description:(defense?'Defense +'+defense+' · ':'')+(slot==='head'?'Maximum HP +'+tier:slot==='legs'?'Movement +'+(tier*1.5)+'%':'Protects your chest'),cost:slot==='chest'?5+tier*3:3+tier*2};}
 }
 for(const [id,name,description,cost] of [['tonic','Glow Tonic','Restore 20 HP plus grace healing.',5],['ward','Stonebrew','Prepare a shield that blocks one hit in the next fight.',7],['clarity','Clarity Draught','Add half an ACT of understanding in the next fight.',7]])catalog[id]={id,name,description,cost,consumable:true};
 function create(){return{bag:[],equipped:{weapon:null,head:null,chest:null,legs:null}};}

@@ -30,13 +30,14 @@ const minis=[
  {chapter:13,name:'Comet Watcher',title:'Someone Still Looking Up',kinds:['diagonal','stars'],look:'astral',acts:['Ask which missing traveler the watcher follows.','Promise to return the star chart to its window.'],hint:'Read the corner marks before the comets cross.'},
  {chapter:16,name:'Inkbound Keeper',title:'The Name That Would Not Fade',kinds:['pages','gates'],look:'scribe',acts:['Read the keeper’s faded name aloud.','Offer a blank page for the story that comes next.'],hint:'Ink leaves a clear margin. Wait for the marked wave, then cross.'}
 ];
+const previousMinis=[...minis];minis.length=0;for(let c=0;c<20;c++){const old=previousMinis.find(m=>m.chapter===c),b=blueprints[c];minis.push(old||{chapter:c,name:["Lantern Tax Sentinel","Briarbound Scout","Grafted Mirror","Stonefare Tollkeeper","Ashpage Curator","Brass Appraiser","Cinder Apprentice","Secondhand Duelist","Moonseed Guard","Pressure Diver","Hollow Resonator","Platform Porter","Candle Bailiff","Comet Watcher","Unsworn Knight","Frost Courier","Inkbound Keeper","Cable Duelist","Spare Heart","The Echo That Stayed"][c],title:globalThis.EchoesStory.room(c,4).name,kinds:b[1].slice(0,2),look:b[3],acts:['You listen to what the guardian has been left to protect.','You offer to carry its unfinished promise beyond this room.'],hint:b[2]});}
 const profiles=blueprints.map((b,index)=>({index,signature:b[0],kinds:b[1],hint:b[2],look:b[3]}));
-function miniboss(chapter,room){return room===2?minis.find(m=>m.chapter===chapter):null;}
+function miniboss(chapter,room){return room===4?minis.find(m=>m.chapter===chapter):null;}
 function profile(chapter,room){const mini=miniboss(chapter,room);return mini?{...mini,index:chapter,signature:mini.title,mini:true}:profiles[chapter];}
 function phase(b){return b.hp<=b.max*.5||b.peace>=2?2:1;}
 function create(b,chapter){const p=b.profile;return{clock:0,wave:0,next:100,pending:[],phase:phase(b),chapter,profile:p,mini:!!b.mini,move:p.kinds[(Math.max(0,b.turn-1)+(phase(b)-1))%p.kinds.length]};}
 function spawnWave(s,player){
- const wave=s.wave++,kind=s.move,phase=s.phase,speed=(s.mini?.115:.125)+Math.min(s.chapter,19)*.001+((phase-1)*.01),damage=(s.mini?2+Math.floor(s.chapter/4):3+Math.floor(s.chapter/3))+(phase===2?1:0),shots=[],add=(x,y,vx,vy)=>shots.push({x,y,vx,vy,damage,color:globalThis.EchoesStory.chapters[s.chapter].crystalPalette[(wave*5+shots.length*3)%globalThis.EchoesStory.chapters[s.chapter].crystalPalette.length],shape:kind});
+ const wave=s.wave++,kind=s.move,phase=s.phase,speed=(s.mini?.115:.125)+Math.min(s.chapter,19)*.001+((phase-1)*.01),damage=globalThis.EchoesProgression.stats(s.chapter,s.mini?'mini':'boss').damage+(phase===2?2:0),shots=[],add=(x,y,vx,vy)=>shots.push({x,y,vx,vy,damage,color:globalThis.EchoesStory.chapters[s.chapter].crystalPalette[(wave*5+shots.length*3)%globalThis.EchoesStory.chapters[s.chapter].crystalPalette.length],shape:kind});
  const gap=(wave+s.chapter+phase)%5;
  if(['rain','snow','embers','pages','gates','vines','stars'].includes(kind)){
   const up=kind==='embers'&&wave%2===1;for(let i=0;i<5;i++){if(i===gap)continue;const x=360+i*58;add(x,up?487:331,kind==='snow'?Math.sin(i+wave)*.018:kind==='pages'?(i%2?.018:-.018):0,up?-speed:speed*(kind==='snow'?.72:1));if(kind==='gates'&&phase===2)add(x+15,up?487:331,0,up?-speed:speed);}

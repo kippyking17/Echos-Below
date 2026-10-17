@@ -1,15 +1,9 @@
-# Echoes Below — 2.1.0: The Lantern Road
+# Echoes Below
 
-[Play the game](https://kippyking17.github.io/Echos-Below/)
+[Play the game](https://kippyking17.github.io/Echos-Below/) — v2.2.0, build 20261017.05.
 
-A fully 2D pixel RPG with twenty chapters, 120 main rooms and eighteen optional maps. Choose a traveler for each new journey. Left-click/tap moves, right-click attacks and I opens the inventory. Mobile has Attack and touch controls for the battle heart.
+A 2D pixel adventure about Mara, Wick and returning the city's stolen light. Twenty chapters now have ten rooms each, eighty additional story memories, a miniboss in room 5 and a main boss in room 10. E collects nearby items; left click/tap moves, right click attacks and I opens inventory. Phone/tablet controls include Collect and Attack.
 
-Floating green angel graces are six rooms apart. The final angel carries every color. Resting heals, saves a respawn point and offers one permanent gift; How to Play explains every upgrade, including Intelligence for quicker negotiation. No grace appears directly before a boss.
+Regular Graces share the miniboss room; Angel Graces share the main boss room and grant stronger gifts. Both heal, save, offer one permanent choice and anchor respawn. Small green angels grow into larger rainbow graces in the final chapter. Boss health, armor and damage rise with chapter depth, making equipment and permanent upgrades matter. Six shops, eighteen optional maps, twenty chapter music themes and peaceful routes remain.
 
-The ten-slot pack holds weapons, armor and potions, with separate weapon/head/chest/legs equipment. Brindle is animated and uses the device's spoken voice for conversations and purchase thanks. Equipment has Basic, Strong and Godlike rarities priced at 2/5/8 coins, with better rarity odds in later chapters.
-
-Chapter-themed goblins and bosses grow stronger deeper in the story. Fists and weapons have visible strikes and crystal effects; the dodge arena hides while striking. Bosses fall with smoke and leave a passage key plus five coins. Field finds are limited to two berries and two loose coins per eight main rooms. Puzzles have story clues without printed solution orders.
-
-Twenty original chapter music themes include combat arrangements. New Game resets all journey progress. Existing saves, account configuration and the verified KingKippy administrator gate remain supported. The retired 3D renderer and assets are removed.
-
-The stable Windows launcher is in launcher/EchoesBelow-AutoUpdate.exe and receives the current website build automatically. Runtime files are under echoes_below; GitHub Actions deploys them to Pages. See echoes_below/BUILD_NOTES.md for details and validation.
+The deployable game is in echoes_below/. Pushes to main publish it through GitHub Pages. Old six-room local/cloud saves migrate to the expanded campaign. Login configuration and verified admin access remain unchanged. See [build notes](echoes_below/BUILD_NOTES.md).
