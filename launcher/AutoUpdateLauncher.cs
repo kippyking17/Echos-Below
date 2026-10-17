@@ -12,7 +12,7 @@ using System.Net;
 using System.Net.Cache;
 
 class Publisher : Form {
- const string AppVersion="2.1.0";
+ const string AppVersion="2.1.1";
  static readonly Version MinimumGame=new Version(1,4,1);
  Label liveStatus=new Label(); Button checkUpdates=new Button();
  bool checking; DateTime nextCheck=DateTime.MinValue; Version latestGame;
@@ -22,7 +22,7 @@ class Publisher : Form {
  TextBox folder=new TextBox(), log=new TextBox(); Button publish=new Button(), choose=new Button();
  CheckBox auto=new CheckBox(); FileSystemWatcher watcher; System.Windows.Forms.Timer timer=new System.Windows.Forms.Timer();
  DateTime changed=DateTime.MaxValue; bool busy; string git;
- static readonly string[] Extensions={".html",".js",".css",".json",".png",".svg",".webmanifest",".txt",".md",".sql",".jpg",".jpeg",".webp",".ogg",".mp3",".wav",".woff",".woff2",".wasm"};
+ static readonly string[] Extensions={".html",".js",".css",".json",".png",".svg",".webmanifest",".txt",".md",".sql",".jpg",".jpeg",".webp",".ogg",".mp3",".wav",".woff",".woff2",".ttf",".wasm"};
  [STAThread] static int Main(string[] args){
   ServicePointManager.SecurityProtocol=SecurityProtocolType.Tls12;
   if(args.Length==2&&args[0]=="--render-preview"){Application.EnableVisualStyles();using(var app=new Publisher()){app.CreateControl();app.PerformLayout();using(var image=new Bitmap(app.Width,app.Height)){app.DrawToBitmap(image,new Rectangle(Point.Empty,app.Size));using(var graphics=Graphics.FromImage(image)){foreach(Control control in app.Controls){var handle=control.Handle;using(var tile=new Bitmap(control.Width,control.Height)){control.DrawToBitmap(tile,new Rectangle(Point.Empty,control.Size));graphics.DrawImageUnscaled(tile,control.Left+8,control.Top+31);}}}image.Save(args[1],System.Drawing.Imaging.ImageFormat.Png);}}return 0;}
@@ -32,6 +32,7 @@ class Publisher : Form {
     string root=Path.Combine(Path.GetTempPath(),"game");
     if(!Allowed(Path.Combine(root,"index.html"),root)||!Allowed(Path.Combine(root,"vendor","three.module.min.js"),root)||Allowed(Path.Combine(root,".env"),root)||Allowed(Path.Combine(root,".git","config.json"),root)||Allowed(Path.Combine(root,"node_modules","sample.js"),root)||Allowed(Path.Combine(root,"private.key"),root))throw new Exception("Upload filter failed");
     if(FindGit()==null)throw new Exception("Git not found");
+    if(!Allowed(Path.Combine(root,"fonts","PixelifySans.ttf"),root))throw new Exception("Bundled font upload failed");
     if(ParseVersion("const VERSION='1.0.1'").CompareTo(ParseVersion("const VERSION='1.2.0'"))>=0||ParseVersion("const VERSION='1.2.0'").CompareTo(ParseVersion("const VERSION='1.2.0'"))!=0)throw new Exception("Version guard failed");
     if(CanPublish(null,MinimumGame,MinimumGame)||CanPublish(MinimumGame,null,MinimumGame)||CanPublish(new Version(1,0,1),MinimumGame,MinimumGame)||CanPublish(new Version(1,4,1),new Version(1,5,0),MinimumGame)||!CanPublish(new Version(2,0,0),new Version(1,5,0),MinimumGame))throw new Exception("Fail-closed publishing tests failed");
     using(var app=new Publisher()){if(app.auto.Checked||app.folder.Text!="")throw new Exception("App must start with no selected upload folder and automatic publishing off.");}
@@ -42,7 +43,7 @@ class Publisher : Form {
   Application.EnableVisualStyles();Application.Run(new Publisher());return 0;
  }
  Publisher(){
-  Text="Echoes Below — Auto Update 2.1";ClientSize=new Size(720,550);MinimumSize=new Size(736,589);Font=new Font("Segoe UI",10);
+  Text="Echoes Below — Auto Update 2.1.1";ClientSize=new Size(720,550);MinimumSize=new Size(736,589);Font=new Font("Segoe UI",10);
   var title=new Label{Text="ECHOES BELOW",Location=new Point(20,17),AutoSize=true,Font=new Font("Segoe UI",18,FontStyle.Bold)};
   var play=new Button{Text="Play latest online game",Location=new Point(20,65),Size=new Size(220,36)};play.Click+=(s,e)=>CheckLive(true);
   var actions=new Button{Text="Deployment status",Location=new Point(255,65),Size=new Size(185,36)};actions.Click+=(s,e)=>Process.Start("https://github.com/kippyking17/Echos-Below/actions");

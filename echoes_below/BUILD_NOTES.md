@@ -1,4 +1,4 @@
-# Echoes Below 1.6.0 — The borrowed light
+# Echoes Below 1.6.1 — The borrowed light
 
 Mara disappears while repairing the town’s sunlamp. Follow her lantern courier Wick through twenty districts, discover the cost of the light, and build a way home that does not require another sacrifice.
 
@@ -108,3 +108,11 @@ The overhead player is a scarf-wearing traveler with a small lantern, movement a
 Static room artwork is cached in a bounded six-room cache, keeping per-frame rendering small. The new art file is included in the offline cache. All artwork comes from local drawing code; no external image or font service is required. Collision layouts, interactable coordinates, story progress, saves and 3D rendering are unchanged.
 
 Validation: all 120 campaign and 18 optional maps render through the actual game canvas in Edge without uncaught errors. Checked traveler movement, landmarks, menus, 3D switching and the mobile viewport. Existing puzzles, shops, equipment, six optional challenges/rewards, old-save migration, credits and all 119 campaign return links pass gameplay checks.
+
+## Pixel menus and fresh starts — 1.6.1
+
+The M menu, saves, account panel, controls, journal, shops, relics and puzzle/ability dialogs use locally bundled Pixelify Sans with chunky square frames, stepped 8×8 icons, raised pixel buttons, hard shadows and a dithered backdrop. Canvas dialogue, hints and notifications use stepped pixel borders too. Keyboard focus and mobile wrapping are retained. Pixelify Sans is distributed unchanged under the SIL Open Font License; see fonts/OFL.txt. The font and license are included in the offline cache. The Windows publisher upload allowlist now includes bundled TTF fonts.
+
+New Game opens a dedicated New Journey slot picker with only fresh-start actions. The header explicitly names chapter 1. Save & Load remains separate for continuing or copying current progress. Starting New resets chapter/room, checkpoint, equipment/relics, story flags, health, inventory, choices, ending, timers, camera heading and active combat. Other slots are retained, and replacing an occupied slot still needs confirmation.
+
+Validation: browser checks started fresh journeys in all three slots from late-game progress and combat, verified resets, preserved other slots, cancelled an overwrite without changing progress, reloaded the new journey and separately loaded the old journey. Checked actual font loading, desktop/mobile popup layouts, keybindings, native fullscreen and verified-admin isolation. Existing campaign and optional-trail gameplay checks pass.
