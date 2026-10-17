@@ -21,10 +21,10 @@ for(let i=0;i<54;i++){const x=520+(i*137)%425,y=(i*83-time*(5+i%4)+600)%600;c.gl
 poly([[0,520],[74,493],[148,512],[210,545],[340,565],[375,600],[0,600]],'#071521');poly([[862,489],[922,470],[960,483],[960,600],[832,600]],'#071521');
 glow(568,488,88,'#ffcc83',.18);box(560,473,14,21,'#775c3e');box(563,476,8,13,'#e7b86e');box(566,479,3,10,'#fff2b2');box(558,471,18,3,'#b59a69');box(563,463,8,7,'#2e464e');box(556,495,22,4,'#4f6063');
 // An offset shadow gives the title weight without abandoning the pixel lettering.
-const text=(word,x,y,size,color)=>{c.textAlign='left';c.font=size+"px 'Echoes Pixel',monospace";c.fillStyle='#020911';c.fillText(word,x+4,y+5);c.fillStyle=color;c.fillText(word,x,y);};
+const text=(word,x,y,size,color)=>{c.textAlign='left';c.font=size>=40?size+"px 'Echoes Pixel',monospace":Math.max(16,size)+"px monospace";c.fillStyle='#020911';c.fillText(word,x+2,y+2);c.fillStyle=color;c.fillText(word,x,y);};
 box(76,107,28,2,'#bfcfa2');text('THE LANTERN CHRONICLES',117,113,12,'#8caeb7');text('ECHOES',70,205,77,'#e8f2df');text('BELOW',70,288,91,'#bce2de');box(78,312,45,2,'#e9c788');text('THE LONG DESCENT',136,318,16,'#e9c788');
-text('Some lights are worth bringing home.',78,359,16,'#9dbec6');text('Find Mara. Carry the names. Choose your way.',78,384,12,'#6e96a8');
-text('20 CHAPTERS',78,515,11,'#9bbfc6');box(176,506,1,12,'#38545f');text('ONE WAY HOME',193,515,11,'#9bbfc6');
+text('Some lights are worth bringing home.',78,359,16,'#9dbec6');text('Find Mara. Choose your way.',78,384,14,'#bdd0d9');
+text('20 CHAPTERS',78,515,11,'#9bbfc6');box(195,503,1,16,'#38545f');text('ONE WAY HOME',212,515,16,'#9bbfc6');
 box(77,545,390,1,'#24434e');for(let i=0;i<20;i++)box(78+i*19,557,11,3,colors[i%6]);
 }
 globalThis.EchoesTitleScene={draw};

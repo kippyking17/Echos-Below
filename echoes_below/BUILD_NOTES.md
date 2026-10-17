@@ -1,3 +1,12 @@
+# Echoes Below v2.7.1 — build 20261017.15
+
+- Main game canvas follows displayed size, device pixel density and browser zoom instead of stretching a fixed 960x600 bitmap. Logical coordinates, click/tap movement and touch controls remain unchanged. Backing resolution is bounded to 3840x2400. Pixel artwork keeps nearest-neighbor sampling; text renders at the new resolution.
+- Clear monospace lettering for menu text, descriptions, labels and controls. Large title/headings retain the pixel typeface. Larger minimum text, brighter muted text, 24px paginated dialogue and readable HUD/battle labels. Long prompts fit their panels.
+- Landscape phone menu uses a horizontal traveler summary so larger labels have room. Dialogs scroll instead of shrinking text or covering controls with the footer.
+- Existing accounts, cloud configuration, save slots, equipment, stock and progress preserved.
+
+Validation: desktop/landscape-phone menu navigation, title entrance and admin access regression; 1x desktop, 2x Retina and 3x phone canvas density/resizing; story and final boss screenshots; no browser runtime errors. Installed v2.7.0 cache upgraded to matching v2.7.1 assets, kept an existing save and resumed offline.
+
 # Echoes Below v2.7.0 — build 20261017.14
 
 ## Title, menus and admin coins

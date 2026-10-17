@@ -215,3 +215,37 @@ body.touch-mode:not(.admin-mode) .app{padding-left:calc(var(--touch-rail) + env(
 @media(orientation:landscape) and (max-height:500px){body.touch-mode #mainMenuDialog{max-height:94dvh}#mainMenuDialog #menuChoices button{min-height:60px}#mainMenuDialog #menuChoices button small{display:none}#menuPortrait{width:80px;height:60px}#menuJourney h3{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#menuJourneyRoom{font-size:9px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:26px}#mainMenuDialog .menu-heading{padding-bottom:7px;margin-bottom:7px}#mainMenuDialog .menu-heading h2{line-height:1.2}#mainMenuDialog #menuFooter{margin-top:9px;padding:6px 0}}
 
 @media(orientation:landscape) and (max-height:500px){#mainMenuDialog #menuChoices button{min-height:54px}#menuJourney{padding:10px 8px}#menuJourney .journey-kicker{display:block;line-height:1.1}#menuPortrait{width:67px;height:50px}#menuJourney h3{line-height:1.2;margin:3px 0}#menuJourneyRoom{line-height:1.2;min-height:22px;margin:4px 0 8px}#menuJourneyStats{line-height:1.2;margin:6px 0 0}.journey-meter{height:3px}}
+
+/* Text clarity: native text rendering, readable letter shapes, solid contrast.
+   Pixel lettering is reserved for large headings; the artwork keeps its pixel grid. */
+#game{image-rendering:auto}
+body,dialog,dialog *,#mainMenuDialog *,#menuButton,#titleEnter,#touchControls,#touchControls *,#rotateDevice *{font-family:Consolas,'Courier New',monospace!important;letter-spacing:normal!important;text-shadow:none!important;-webkit-font-smoothing:auto}
+dialog h2,#mainMenuDialog .menu-heading h2{font-family:'Echoes Pixel',monospace!important;font-size:28px;line-height:1.3}
+dialog p,dialog .small,dialog label,dialog input,dialog select,dialog button,dialog small,dialog span,#menuContent{font-size:16px;line-height:1.5;color:#dfebee}
+#mainMenuDialog #menuChoices button strong{font-size:17px;line-height:1.35;font-weight:700;color:#f0f5ef}
+#mainMenuDialog #menuChoices button small{font-size:14px;line-height:1.45;color:#bed0d8}
+#menuJourney h3{font-size:20px;line-height:1.4}#menuJourneyRoom{font-size:14px;line-height:1.5;color:#c4d7df}#menuJourneyStats{font-size:16px;color:#f0dfa9}
+#menuFooter,#menuBuild,#menuKeys,.journey-kicker,#merchantVoiceStatus,#characterDialog>p{font-size:14px;color:#c0d2dc;line-height:1.5}
+#mainMenuDialog .menu-heading p{font-size:14px;color:#c2d7df}
+.grace-grid h3,.equipment-slots h3,.inventory-slots h3{font-size:18px;line-height:1.4}
+#graceIntro,#graceStats,.grace-grid p,.equipment-slots p,.inventory-slots p{font-size:16px;line-height:1.5;color:#dfebee}
+.empty-slot{color:#b0c7d3}.relic-card small,.bindrow span,#accountStatus{font-size:15px;color:#c9dce3}
+#shopStock p,.journal-memory p,.relic-card p{color:#d4e2e8}
+#titleEnter .title-enter-word{font-size:.85em}#titleEnter .title-enter-sub{font-size:1em}
+@media(orientation:landscape) and (max-height:500px){
+ #mainMenuDialog #menuChoices button{min-height:60px;padding-top:24px}
+ #mainMenuDialog #menuChoices button strong{font-size:14px;line-height:1.3}
+ #mainMenuDialog #menuTabs button{font-size:15px}
+ #menuJourney h3{font-size:15px;white-space:normal;line-height:1.25;margin:4px 0}
+ #menuJourneyRoom{font-size:12px;line-height:1.3;min-height:0;margin:4px 0;display:block;overflow:visible}
+ #menuJourneyStats{font-size:13px;margin-top:6px}.journey-kicker{font-size:11px}#menuPortrait{width:67px;height:50px;margin:0 auto}
+ #menuFooter,#menuBuild,#menuKeys{font-size:12px;line-height:1.4}#mainMenuDialog .menu-heading p{font-size:12px}
+ #graceIntro,#graceStats,.grace-grid h3{font-size:14px;line-height:1.4}.grace-grid button,.character-choices span{font-size:14px}
+}
+#mainMenuDialog #menuFooter{position:static}
+
+@media(orientation:landscape) and (max-height:500px){
+ #menuLayout{grid-template-columns:minmax(0,1fr);gap:8px}#menuJourney{display:grid;grid-template-columns:55px minmax(0,1fr) auto;gap:3px 10px;padding:6px 10px;text-align:left;align-items:center}
+ #menuJourney .journey-kicker,.journey-meter{display:none}#menuPortrait{grid-column:1;grid-row:1/3;width:53px;height:40px}#menuJourney h3{grid-column:2;grid-row:1;font-size:14px;margin:0}#menuJourneyRoom{grid-column:2;grid-row:2;margin:0;font-size:12px}#menuJourneyStats{grid-column:3;grid-row:1/3;margin:0;font-size:13px}
+ #mainMenuDialog #menuChoices{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}#mainMenuDialog #menuChoices button{min-height:44px;padding:8px 8px 8px 27px}#mainMenuDialog #menuChoices button>.menu-icon{top:10px;left:8px}#mainMenuDialog #menuFooter{margin-top:8px;padding:6px 0}
+}

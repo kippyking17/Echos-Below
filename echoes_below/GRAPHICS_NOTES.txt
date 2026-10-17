@@ -9,3 +9,5 @@ v2.5.1: shared rarity colors across item surfaces, corrected relic heading style
 v2.6: original procedural elemental blade surfaces, actual-pose crescent trails, shard/rune impacts, compact fists, six visible equipment sets and final guardian speaking animation. Full/Reduced preference; no gameplay RNG used by rendering.
 
 v2.7: original pixel gateway title, floating crystals/runes/lantern stairs; categorized journal menu with armored traveler and progress. Five rarity colors, Rare/Legends armor palettes and persistent memory chests.
+
+v2.7.1: display-aware high-density canvas; clear monospace UI/body text, larger dialogue, stronger text contrast and landscape traveler summary. Large pixel titles retained.

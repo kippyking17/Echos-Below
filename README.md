@@ -1,6 +1,6 @@
 # Echoes Below
 
-[Play Echoes Below](https://kippyking17.github.io/Echos-Below/) — v2.7.0, build 20261017.14.
+[Play Echoes Below](https://kippyking17.github.io/Echos-Below/) — v2.7.1, build 20261017.15.
 
 New crystal-gateway title and lantern journal menu. M groups everything under Journey, Character and Settings, with your armored traveler, chapter progress, health, coins and version/build. The on-screen ENTER button starts the title transition.
 
@@ -22,3 +22,7 @@ WINDOWS APP
 Extract this whole ZIP first. Open EchoesBelow-AutoUpdate.exe to play the latest published game. Internet is needed for first load and updates. The included game folder is deployable: serve the whole folder with a web server or upload its contents as the site root. See BUILD_NOTES.md for details.
 
 [Detailed release notes](echoes_below/BUILD_NOTES.md).
+
+## Text clarity update
+
+Display-aware high-resolution rendering, clearer lettering, larger dialogue and brighter labels. Landscape menus fit readable controls; saves and login are preserved.
