@@ -1,7 +1,7 @@
 /* Optional districts keep the twenty-chapter campaign and its saves intact. */
 (()=>{
 const relics=[
- {name:'Wayfarer’s Prism',description:'Earn one extra coin after every encounter.'},
+ {name:'Wayfarer’s Prism',description:'Defeated goblins are more likely to leave equipment.'},
  {name:'Mossheart Pendant',description:'Restore 2 HP after every encounter.'},
  {name:'Emberglass Sigil',description:'Add 2 damage to FIGHT.'},
  {name:'Tidal Lens',description:'Slow hostile projectiles by 10%.'},
@@ -69,5 +69,13 @@ definitions.forEach((region,index)=>{
   const base=globalThis.EchoesStory.chapters[region.chapter];return {id:'exp:'+region.id+':'+n,name:line[0],landmark:line[1],text:line[2],hint:line[3],point,checkpoint,coin:{x:650,y:430},nodes,route:[{x:100,y:353},{x:220,y:353},point,{x:730,y:353},{x:863,y:353}],obstacles,puzzle:false,encounter:false,boss:false,palette:region.colors,crystalColor:base.crystalColor,crystalPalette:base.crystalPalette,crystalName:base.crystalName,theme:region.theme,chapter:region.chapter,number:n,expedition:true,regionId:region.id};
  });
 });
+const trailClues={
+ reservoir:'The bells rest beneath a dark channel. Each has kept its silence for a different lost traveler.',
+ sanctuary:'A dormant knot sleeps beneath a dry basin. Beside it, a folded green shape has never seen daylight. Water alone cannot help something that has not yet stirred.',
+ foundry:'A swollen pipe shudders against a sealed chamber. Beyond it the metal still glows red; the cold furnace has been left waiting. The old workers never hurried past a warning.',
+ observatory:'A distant guide moves a nearer traveler across the sky. The water below seems to follow that traveler, although no cord connects them. The lenses preserve that invisible relationship.',
+ skywalk:'A wick burns down beside three dark lanterns. The old relay was made for people who kept moving, carrying a little light onward before their own flame rested.',
+ aurora:'The vault’s pictures show color draining out of the sky, a deep still darkness and a pale line returning at the horizon. A faded calendar promises that no darkness keeps the sky forever.'};
+for(const r of definitions){r.instruction='The passage waits for the three quiet objects in this room.';r.rooms[1].text=trailClues[r.id];r.rooms[1].hint='Look at the objects and the memory left beside them. Wick will not choose for you.';}
 globalThis.EchoesExpeditions={regions:definitions,relics,get:id=>definitions.find(r=>r.id===id),entrance:chapter=>definitions.find(r=>r.chapter===chapter)};
 })();

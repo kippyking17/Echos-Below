@@ -36,7 +36,7 @@ function profile(chapter,room){const mini=miniboss(chapter,room);return mini?{..
 function phase(b){return b.hp<=b.max*.5||b.peace>=2?2:1;}
 function create(b,chapter){const p=b.profile;return{clock:0,wave:0,next:100,pending:[],phase:phase(b),chapter,profile:p,mini:!!b.mini,move:p.kinds[(Math.max(0,b.turn-1)+(phase(b)-1))%p.kinds.length]};}
 function spawnWave(s,player){
- const wave=s.wave++,kind=s.move,phase=s.phase,speed=(s.mini?.115:.125)+Math.min(s.chapter,19)*.001+((phase-1)*.01),damage=s.mini?3:3+(s.chapter>=12?1:0),shots=[],add=(x,y,vx,vy)=>shots.push({x,y,vx,vy,damage,color:globalThis.EchoesStory.chapters[s.chapter].crystalPalette[(wave*5+shots.length*3)%globalThis.EchoesStory.chapters[s.chapter].crystalPalette.length],shape:kind});
+ const wave=s.wave++,kind=s.move,phase=s.phase,speed=(s.mini?.115:.125)+Math.min(s.chapter,19)*.001+((phase-1)*.01),damage=(s.mini?2+Math.floor(s.chapter/4):3+Math.floor(s.chapter/3))+(phase===2?1:0),shots=[],add=(x,y,vx,vy)=>shots.push({x,y,vx,vy,damage,color:globalThis.EchoesStory.chapters[s.chapter].crystalPalette[(wave*5+shots.length*3)%globalThis.EchoesStory.chapters[s.chapter].crystalPalette.length],shape:kind});
  const gap=(wave+s.chapter+phase)%5;
  if(['rain','snow','embers','pages','gates','vines','stars'].includes(kind)){
   const up=kind==='embers'&&wave%2===1;for(let i=0;i<5;i++){if(i===gap)continue;const x=360+i*58;add(x,up?487:331,kind==='snow'?Math.sin(i+wave)*.018:kind==='pages'?(i%2?.018:-.018):0,up?-speed:speed*(kind==='snow'?.72:1));if(kind==='gates'&&phase===2)add(x+15,up?487:331,0,up?-speed:speed);}

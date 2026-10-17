@@ -1,19 +1,15 @@
-# Echoes Below — 2.0.0: Gifts of Grace
+# Echoes Below — 2.1.0: The Lantern Road
 
-Play: https://kippyking17.github.io/Echos-Below/
+[Play the game](https://kippyking17.github.io/Echos-Below/)
 
-An original pixel RPG about Mara, Wick and the borrowed light: twenty chapters, 120 campaign rooms, six optional regions with eighteen more maps, twenty guardians and six minibosses. Every chapter has its own crystal color; the final crystal combines them all.
+A fully 2D pixel RPG with twenty chapters, 120 main rooms and eighteen optional maps. Choose a traveler for each new journey. Left-click/tap moves, right-click attacks and I opens the inventory. Mobile has Attack and touch controls for the battle heart.
 
-2D exploration uses click/tap-to-walk with routes around scenery and automatic interaction with marked objects. 3D uses desktop WASD or the mobile drag joystick. In mobile battles, move the heart with the joystick or hold and drag in its arena. Phone/tablet play uses landscape.
+Floating green angel graces are six rooms apart. The final angel carries every color. Resting heals, saves a respawn point and offers one permanent gift; How to Play explains every upgrade, including Intelligence for quicker negotiation. No grace appears directly before a boss.
 
-The visible ENTER button starts the title: a rising chime, button growth, fade to black, then fade into your journey. Keyboard confirmation and background clicks do not start it. The traveler has directional walking, idle motion and a flickering lantern. Twenty boss skins and six miniboss skins match their names in the world, battles and 3D.
+The ten-slot pack holds weapons, armor and potions, with separate weapon/head/chest/legs equipment. Brindle is animated and uses the device's spoken voice for conversations and purchase thanks. Equipment has Basic, Strong and Godlike rarities priced at 2/5/8 coins, with better rarity odds in later chapters.
 
-Graces are six rooms apart, in the first room of each chapter. None appear in boss rooms or the room immediately before a boss. Each heals, saves and offers one permanent gift for that chapter: Damage +2, Hearts +2 maximum HP, Skill +1 (chapters 1–10) or +2 (11–20), Defense +1, Glowberry Healing +2, or Movement +3% (maximum 30%). Repeat visits can heal/save but cannot grant another gift. Skill upgrades strengthen learned abilities.
+Chapter-themed goblins and bosses grow stronger deeper in the story. Fists and weapons have visible strikes and crystal effects; the dodge arena hides while striking. Bosses fall with smoke and leave a passage key plus five coins. Field finds are limited to two berries and two loose coins per eight main rooms. Puzzles have story clues without printed solution orders.
 
-Seven passages use named keys from the previous room. Clues point to reachable keys, locks stay open, and older saves that already passed a gate remain usable. Every story mechanism contains the labels used by its controls. Shortcut instructions are in How to Play and Controls, with gameplay prompts reserved for the story and nearby objects.
+Twenty original chapter music themes include combat arrangements. New Game resets all journey progress. Existing saves, account configuration and the verified KingKippy administrator gate remain supported. The retired 3D renderer and assets are removed.
 
-The player game fills the window. The original dashboard remains exclusive to the verified KingKippy administrator. Existing login configuration, save slots, cloud saves, equipment, optional discoveries and endings are preserved. New Game starts from chapter 1 with fresh gifts and equipment.
-
-The standalone Windows launcher is in launcher/EchoesBelow-AutoUpdate.exe. It opens the current live game and receives game updates automatically; no local game folder is needed to play. Creator publishing starts disabled. The release workflow blocks old-version downgrades.
-
-Runtime files are in echoes_below. GitHub Actions deploys that folder to Pages. See echoes_below/BUILD_NOTES.md for controls and validation details.
+The stable Windows launcher is in launcher/EchoesBelow-AutoUpdate.exe and receives the current website build automatically. Runtime files are under echoes_below; GitHub Actions deploys them to Pages. See echoes_below/BUILD_NOTES.md for details and validation.

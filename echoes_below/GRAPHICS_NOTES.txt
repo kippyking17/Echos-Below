@@ -1,5 +1,1 @@
-ECHOES BELOW v0.9.0 - CRYSTAL CAVERN ART INTEGRATION
-The requested crystal cavern artwork is included in crystal_cavern.png and drawn into the actual first-person game renderer (ceiling, floor, raycast wall texture) and title screen. 2D mode, existing battles, username login, admin authorization, and saves are retained.
-This is a textured 2.5D raycasting game, not a fully modeled 3D mesh environment. Visuals will not yet exactly match the cinematic concept art while moving. A future full 3D renderer would require 3D assets, lighting, and a different engine.
-Website deploy: upload this whole folder, including crystal_cavern.png and sw.js. Hard refresh. Build label v0.9.0.
-Cloud accounts require existing valid cloud-config.json; copy your previously configured public URL and publishable key into this build before deploying. NEVER use a secret key.
+2.1.0 uses only local procedural 2D pixel art. Avatar palettes, animated character/boss sprites, floating angel graces, weapon strikes, smoke, particles and Brindle are rendered by the local JavaScript modules. There is no first-person renderer. The pixel font and its license are included under fonts/.
