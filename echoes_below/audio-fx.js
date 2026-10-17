@@ -35,7 +35,7 @@ function play(name,options={}){
  const notes=plan(name,options);if(!notes.length)return false;history.push({name,weapon:options.weapon||0,time:now});if(history.length>64)history.shift();
  for(const n of notes){if(voices>=64)break;const at=ctx.currentTime+n.t,g=ctx.createGain(),source=n.type==='noise'?ctx.createBufferSource():ctx.createOscillator(),nodes=[g,source];
   if(n.type==='noise'){source.buffer=noise;const filter=ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=name==='footstep'?900:3200;source.connect(filter);filter.connect(g);nodes.push(filter);}else{source.type=n.type;source.frequency.setValueAtTime(Math.max(20,n.f),at);source.frequency.exponentialRampToValueAtTime(Math.max(20,n.to),at+n.d);source.connect(g);}
-  g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(n.v*(globalThis.EchoesMerchant?.speaking ? .55 : 1),at+.006);g.gain.exponentialRampToValueAtTime(.0001,at+n.d);g.connect(effects);voices++;source.onended=()=>{voices=Math.max(0,voices-1);for(const node of nodes)node.disconnect();};source.start(at);source.stop(at+n.d+.025);
+  g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(n.v*((globalThis.EchoesMerchant?.speaking||globalThis.EchoesLastVoice?.speaking) ? .55 : 1),at+.006);g.gain.exponentialRampToValueAtTime(.0001,at+n.d);g.connect(effects);voices++;source.onended=()=>{voices=Math.max(0,voices-1);for(const node of nodes)node.disconnect();};source.start(at);source.stop(at+n.d+.025);
  }return true;
 }
 globalThis.EchoesAudio={plan,configure,unlock,play,get settings(){return {...prefs}},get context(){return ctx},get musicBus(){return music},get status(){return {state:ctx?.state||'locked',voices,history:history.map(x=>({...x})),settings:{...prefs}}}};

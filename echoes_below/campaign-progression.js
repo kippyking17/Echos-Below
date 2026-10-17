@@ -6,7 +6,7 @@ function stats(chapter,kind='boss'){
  const c=Math.max(0,Math.min(19,Math.floor(chapter)||0)),boss=kind==='boss',mini=kind==='mini';
  return {hp:Math.round(boss?54+14*c+.8*c*c+(c*7+4)*8:mini?32+9*c+.4*c*c+c*7*6:18+3*c+.15*c*c),
   damage:boss?4+2*c+Math.floor(c*c/16)+c*5+3+Math.floor(c*2.2):mini?3+c+Math.floor(c*c/24)+c*5+Math.floor(c*1.4):2+Math.floor(c/3),
-  armor:Math.floor(c*(boss?.7:mini?.5:.25))};
+  actRequired:Number((boss?3+c*.4:mini?2+c*.25:2).toFixed(1)),armor:Math.floor(c*(boss?.7:mini?.5:.25))};
 }
 function legacyRoom(room){return Number.isInteger(room)&&room>=0&&room<6?legacyRooms[room]:room;}
 function mapRecord(value,kind){

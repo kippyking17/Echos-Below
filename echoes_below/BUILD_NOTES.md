@@ -1,4 +1,14 @@
-# Echoes Below v2.5.1 — build 20261017.10
+# Echoes Below v2.6.0 — build 20261017.11
+
+## Elemental effects, visible equipment and boss negotiation
+- Original canvas effects inspired by the user's visual references: continuous luminous blade edges, flame tongues, crystal fragments, violet sparks, green resonance and prismatic energy. Layered crescent trails follow the actual weapon motion; thrust weapons retain pointed trails. Contact and finishers add shards, sparks and rune rings. Small fists keep their compact silhouettes.
+- One physical weapon per world attack. The carried/waist weapon hides for the swing and dodge; the attack draws the held weapon once. Idle weapons use the same connected silhouette and elemental surface energy. Trails are light, not duplicate sword sprites.
+- Head, chest and leg armor now use six distinct set palettes and shapes. Equipped pieces appear independently in exploration, attack portraits and the death portrait. Unequipping restores the chosen character's clothing; characters and item stats are preserved.
+- Pickup, healing, Grace, portal and upgrade sparkle cues. Bounded procedural effects do not consume gameplay RNG or alter damage/reach/contact timing. M > Display offers a saved Full/Reduced weapon-effects option.
+- Boss HP and damage continue to grow strictly with chapter. Negotiation now also scales: main guardian understanding target is 3 + 0.4 per chapter after chapter 1; miniboss target is 2 + 0.25 per chapter, rounded to one decimal. Chapter 20 targets 10.6 / 6.8 understanding. Intelligence, Clarity and negotiation abilities use the same target; all 40 peaceful routes remain possible. Final boss requires 11 base ACTs or 6 at doubled understanding.
+- The Last Echo has ten original negotiation replies plus its own greeting, refusal, phase-change and farewell lines. It speaks with a low, slow synthesized voice using the same device speech service as Brindle; voice availability/timbre depend on device. Its mouth animates while speaking. Music and other effects quiet while either character speaks; shared saved voice volume/mute remains.
+- Updated outdated fixed-count boss hints. All runtime asset URLs and offline precache entries now use the release version, preventing mixed cached modules when updating.
+- Validation: all 40 scaled peaceful encounters, chapter-stat monotonicity, trained/base negotiation, rarity and reward regressions, six armor renderings, finite VFX with zero gameplay-RNG use, bounded effect lifetimes, desktop/landscape-phone single-weapon and voice tests, and installed v2.5.1 to v2.6 offline-save upgrade.
 
 ## Rarity repair
 - One shared Basic / Strong / Godlike definition covers all 28 catalog items, world supplies, six abilities, six trail relics, twenty guardian relics and the Sword of Life keepsake. Labels and colors now agree in shops, equipped slots, the bag, ground pickups, skill selection and relic collection.

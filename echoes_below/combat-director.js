@@ -34,7 +34,7 @@ const previousMinis=[...minis];minis.length=0;for(let c=0;c<20;c++){const old=pr
 const profiles=blueprints.map((b,index)=>({index,signature:b[0],kinds:b[1],hint:b[2],look:b[3]}));
 function miniboss(chapter,room){return room===4?minis.find(m=>m.chapter===chapter):null;}
 function profile(chapter,room){const mini=miniboss(chapter,room);return mini?{...mini,index:chapter,signature:mini.title,mini:true}:profiles[chapter];}
-function phase(b){return b.hp<=b.max*.5||b.peace>=2?2:1;}
+function phase(b){return b.hp<=b.max*.5||b.peace>=(b.actRequired||3)*.5?2:1;}
 function create(b,chapter){const p=b.profile;return{clock:0,wave:0,next:100,pending:[],phase:phase(b),chapter,profile:p,mini:!!b.mini,move:p.kinds[(Math.max(0,b.turn-1)+(phase(b)-1))%p.kinds.length]};}
 function spawnWave(s,player){
  const wave=s.wave++,kind=s.move,phase=s.phase,speed=(s.mini?.115:.125)+Math.min(s.chapter,19)*.001+((phase-1)*.01),damage=globalThis.EchoesProgression.stats(s.chapter,s.mini?'mini':'boss').damage+(phase===2?2:0),shots=[],add=(x,y,vx,vy)=>shots.push({x,y,vx,vy,damage,color:globalThis.EchoesStory.chapters[s.chapter].crystalPalette[(wave*5+shots.length*3)%globalThis.EchoesStory.chapters[s.chapter].crystalPalette.length],shape:kind});

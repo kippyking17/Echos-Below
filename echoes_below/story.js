@@ -10,7 +10,7 @@ chapter('The Forgotten Gate','gate','Follow Mara’s trail into the sealed city.
  'The Toll of Footsteps|Toll ledger|The guard’s ledger records footsteps instead of names. One pair entered yesterday; the return column is blank. Wick insists that blank is not the same as dead.|An encounter waits near the far doorway. ACT twice can make an ordinary foe ready for MERCY.',
  'Three Quiet Knocks|Speaking door|The door bears an old courtesy: knock, listen, then answer. Wick taps the wood. Something on the other side taps back a moment too late.|The three seals repeat the courtesy written on the door. Their order matters.',
  'Shelter Under Stone|Folded blanket|A blanket covers a chair sized for a child. Mara left a note: “If you came after me, rest here first. Brave is easier when you are not exhausted.”|Use the checkpoint before entering the next room. It restores all HP.',
- 'The Keeper’s Threshold|Broken key|The Gatekeeper closed this passage to keep the city’s stolen voices from escaping. He recognizes Mara’s ribbon. “She asked whether a locked door can also be a wound.”|The Gatekeeper needs three ACTs before MERCY. His falling stones leave gaps; move into them.'
+ 'The Keeper’s Threshold|Broken key|The Gatekeeper closed this passage to keep the city’s stolen voices from escaping. He recognizes Mara’s ribbon. “She asked whether a locked door can also be a wound.”|The Gatekeeper needs repeated ACTs before MERCY. His falling stones leave gaps; move into them.'
 ]);
 chapter('Mosslight Corridors','roots','Trace the living roots carrying Mara’s signal.',
  'Beyond the gate, roots glow with the rhythm of a heartbeat. Wick’s flame leans toward them. “That rhythm was not here yesterday.”',
@@ -30,7 +30,7 @@ chapter('The Glass Orchard','glass','Recover the first clear recording of Mara�
  'The Borrowed Harvest|Harvest basket|A basket contains memories of meals never eaten here. Its attendant calls them stolen; the labels call them donations. Neither label names the donors.|Reach the attendant at the far end. Two ACTs reveal why it guards the basket.',
  'The Season Engine|Season dial|Three pictures circle the dial: a seed under soil, a blossom opening, ripe fruit falling. The orchard has been forced to harvest before anything can grow.|Set the seasons in the order a real tree would live them.',
  'The Unpicked Apple|Warm glass apple|Mara left one fruit untouched. Its voice belongs to your mother, calling both of you in from the rain. You turn it over gently, afraid to break the sound.|Save here. The next room belongs to the person who keeps these memories alive.',
- 'Crown of Splinters|Queen’s empty crown|The Orchard Queen remembers every harvest except her own childhood. She fears returning the voices will leave her with nothing. Wick asks if keeping a gift can become a theft.|Her side-to-side attacks reward small movements. Three ACTs can give her a reason to let go.'
+ 'Crown of Splinters|Queen’s empty crown|The Orchard Queen remembers every harvest except her own childhood. She fears returning the voices will leave her with nothing. Wick asks if keeping a gift can become a theft.|Her side-to-side attacks reward small movements. Repeated ACTs can give her a reason to let go.'
 ]);
 chapter('The Silent River','river','Cross the river that carries names into the engine.',
  'The river flows without making a sound. Paper boats drift toward a distant machine, each bearing a name that vanishes when it gets wet.',
@@ -40,7 +40,7 @@ chapter('The Silent River','river','Cross the river that carries names into the 
  'The Drowned Tollhouse|Toll bell|A river guard rings a bell nobody can hear. It is waiting for permission to leave its post, but the official who signed its orders became water long ago.|ACT can interrupt the guard’s routine. Stay within the outlined box during its attack.',
  'Crossing by Memory|Ferry route board|The route board describes an ordinary crossing: leave the bank, board the boat, reach the far shore. Someone replaced the final stop with a furnace.|Restore the journey’s original destination, from departure to arrival.',
  'The Last Mooring|Mara’s wet glove|One of Mara’s gloves is caught on a post. Inside is a second message: “The voices are awake. Please do not let anyone call them fuel.”|The checkpoint is a safe place to recover before the ferryman’s crossing.',
- 'A Fare Unpaid|Return manifest|The Ferryman keeps return tickets for passengers whose names he has forgotten. He will not abandon them a second time, even to let you pass.|Read his motive in the journal. Three ACTs offer a way to keep his promise.'
+ 'A Fare Unpaid|Return manifest|The Ferryman keeps return tickets for passengers whose names he has forgotten. He will not abandon them a second time, even to let you pass.|Read his motive in the journal. Repeated ACTs offer a way to keep his promise.'
 ]);
 chapter('A Library of Ash','library','Find out who authorized the taking of voices.',
  'Ash falls upward through shelves with no books. A librarian has arranged the empty spaces alphabetically.',
@@ -50,7 +50,7 @@ chapter('A Library of Ash','library','Find out who authorized the taking of voic
  'The Shushing Hall|Librarian’s seal|A paper sentinel attacks any noise above a whisper. Its own pages are screaming. Wick lowers his voice and asks who gets to decide what counts as quiet.|Patient ACTs can calm the sentinel; the falling pages leave space near the edges.',
  'The Witness Desk|Testimony press|A notice tells witnesses to read the evidence, question its meaning, then record what is true. The Curator’s replacement asks them to sign without reading.|Use the original witness procedure. A signature belongs at the end, not the beginning.',
  'The Unburned Page|Mara’s sketch|Mara drew the engine with a second circuit: a path that returns light instead of consuming voices. One part is missing, labeled A WILLING CHORUS.|Heal at the crystal. The sketch changes your goal from finding Mara to helping her finish the circuit.',
- 'The Cinder Catalogue|Archivist’s spectacles|The Ash Archivist burned the books because she was ordered to erase the crime. She kept the index because she could not erase the people. Her hands still smell of smoke.|Three ACTs let her testify. FIGHT also opens the route, but her testimony will be lost.'
+ 'The Cinder Catalogue|Archivist’s spectacles|The Ash Archivist burned the books because she was ordered to erase the crime. She kept the index because she could not erase the people. Her hands still smell of smoke.|Repeated ACTs let her testify. FIGHT also opens the route, but her testimony will be lost.'
 ]);
 chapter('The Hollow Market','market','Buy back the map without selling a memory.',
  'Stalls offer bottled laughter, borrowed courage, and yesterday’s weather. Every price is something the buyer cannot afford to forget.',
@@ -60,7 +60,7 @@ chapter('The Hollow Market','market','Buy back the map without selling a memory.
  'A Shopkeeper’s Shadow|Unpaid receipt|The shopkeeper’s shadow works a second shift to pay a debt that grows whenever it rests. Its owner has forgotten that a shadow is part of a person.|This encounter is guarding a receipt, not a locked purchase. ACT twice is enough to seek peace.',
  'The Fair Exchange|Trading scales|The scales once required an offer, an agreement, and only then an exchange. The debt office removed the middle step. Its debts were never freely accepted.|Put consent back into the trade before anything changes hands.',
  'A Cup on Credit|Shared teacup|A tea seller remembers Mara refusing a free cup until the apprentice had one too. She gives you the missing map piece, already paid for by that kindness.|Rest here and save. The map points into the furnace tunnels after this chapter.',
- 'The Empty Countinghouse|Debt book|The Debt Collector is bound by every contract it enforces, including its own. It cannot leave until someone proves the first signature was forged.|Three ACTs challenge the contract. The collector’s attacks come from alternating sides.'
+ 'The Empty Countinghouse|Debt book|The Debt Collector is bound by every contract it enforces, including its own. It cannot leave until someone proves the first signature was forged.|Repeated ACTs challenge the contract. The collector’s attacks come from alternating sides.'
 ]);
 chapter('Ember Tunnels','ember','Restore safe power to Mara’s return circuit.',
  'Red light trembles behind the rock. The engine is burning faster to replace every voice that has fallen silent.',
@@ -70,7 +70,7 @@ chapter('Ember Tunnels','ember','Restore safe power to Mara’s return circuit.'
  'The Coal Listener|Listening tube|A coal tender hears names in the fuel and has begun refusing to shovel. The supervisor calls this a mechanical fault. Wick calls it listening.|Use ACT to acknowledge the voices. Small movements help avoid the tender’s falling embers.',
  'The Pressure Chapel|Cooling controls|The maintenance plate is clear: vent the trapped pressure, cool the chamber, then restart. Mara circled the first step hard enough to tear the metal.|Never restart a sealed hot chamber. The plate gives the full safe sequence.',
  'The Workers’ Bench|Lunch tin|A lunch tin holds six spoons and one note: “Share until the next shift arrives.” Mara added a seventh spoon, although she had nothing left to eat.|Use the checkpoint before meeting the Warden. ITEM can heal during combat as well.',
- 'The Furnace Mouth|Warden’s gauge|The Furnace Warden believes a shutdown will freeze the city. Nobody told it the engine is already failing. It has spent years protecting a number on a broken gauge.|Three ACTs offer a controlled shutdown instead of a catastrophe.'
+ 'The Furnace Mouth|Warden’s gauge|The Furnace Warden believes a shutdown will freeze the city. Nobody told it the engine is already failing. It has spent years protecting a number on a broken gauge.|Repeated ACTs offer a controlled shutdown instead of a catastrophe.'
 ]);
 chapter('Clockwork Chapel','clock','Recover the time the city was forced to repeat.',
  'Every clock is stopped at the minute the first voice disappeared. The bells keep trying to finish that minute.',
@@ -80,7 +80,7 @@ chapter('Clockwork Chapel','clock','Recover the time the city was forced to repe
  'The Second Hand|Clockmaker’s stool|A little clockmaker measures time in breaths because the clocks cannot be trusted. Its guardian tries to stop you breathing too quickly.|Use ACT to slow the encounter down. Wait for gaps rather than chasing the moving projectiles.',
  'The Unwound Choir|Bell mechanism|The repair diagram says wind the spring, set the hour, and release the bell. Holding the final lever forever is what trapped the chapel in this minute.|The last action must let something go. The mechanism needs all three steps.',
  'Tomorrow’s Alcove|Fresh calendar|Mara drew a new square beneath the last printed day. Inside it she wrote: “She can be remembered tomorrow too.”|Save at the crystal. The next room is the source of the stalled clocks.',
- 'The Last Chime|Saint’s bell rope|The Clock Saint has kept her daughter’s final minute alive for decades. The child’s echo asks for a new morning, but the Saint can only hear goodbye.|Three ACTs help her hear the request. Mercy lets the final bell ring.'
+ 'The Last Chime|Saint’s bell rope|The Clock Saint has kept her daughter’s final minute alive for decades. The child’s echo asks for a new morning, but the Saint can only hear goodbye.|Repeated ACTs help her hear the request. Mercy lets the final bell ring.'
 ]);
 chapter('The Starless Garden','garden','Grow a signal that does not need stolen sunlight.',
  'The garden has forgotten the shape of the sun. Its flowers open whenever someone tells the truth.',
@@ -90,7 +90,7 @@ chapter('The Starless Garden','garden','Grow a signal that does not need stolen 
  'The Thorn Apology|Snapped trellis|A thorn creature broke the trellis while trying to help a seed climb. It attacks because it expects punishment before anyone asks what happened.|Two ACTs let the creature explain. A peaceful victory still clears the exit.',
  'The Patient Bed|Seed basin|The seed basin asks for soil, then water, then light. The old engine tried to start with light alone and wondered why nothing took root.|Give the seed somewhere to live before asking it to grow.',
  'A Lamp of Leaves|Living lamp|The planted seed glows without speaking anyone’s name. Mara’s note beside it says, “A beginning. Small is allowed to be a beginning.”|The crystal restores HP. Your journal keeps the evidence for the new power source.',
- 'The Gardener’s Eclipse|Black gardening veil|The Night Gardener hides the garden because the Curator harvests anything that shines. It sees your lantern as a signal for the next raid.|Three ACTs show that you came to protect this light, not take it.'
+ 'The Gardener’s Eclipse|Black gardening veil|The Night Gardener hides the garden because the Curator harvests anything that shines. It sees your lantern as a signal for the next raid.|Repeated ACTs show that you came to protect this light, not take it.'
 ]);
 chapter('Beneath the Lake','lake','Reach Mara’s submerged workshop.',
  'A lake hangs above you like a second sky. Fish swim through the reflections of rooms you have not entered yet.',
@@ -100,7 +100,7 @@ chapter('Beneath the Lake','lake','Reach Mara’s submerged workshop.',
  'The Pressure Keeper|Dent in a diving bell|The diving bell is dented from the inside. A maintenance spirit was sealed in during a safety drill and has been announcing that the drill is over ever since.|The spirit needs two ACTs to understand that you heard it.',
  'The Dry Airlock|Airlock controls|The scratched instructions say seal the outer door, pump out the water, then open the inner door. Mara added: “One dry breath at a time.”|Keep the water outside until the chamber has been pumped clear.',
  'Mara’s Worktable|Half-built return coil|The workshop is empty but warm. Mara’s coil needs twenty districts willing to share power. Under the diagram is a list of names you have begun to recognize.|Rest before leaving. The workshop proves Mara was building a return path for everyone.',
- 'The Custodian’s Mirror|Reflection ledger|The Lake Custodian guards reflections left by people who never came back. It has kept Mara’s reflection safe, mistaking it for Mara herself.|Three ACTs separate the person from the recording. Her reflection points deeper.'
+ 'The Custodian’s Mirror|Reflection ledger|The Lake Custodian guards reflections left by people who never came back. It has kept Mara’s reflection safe, mistaking it for Mara herself.|Repeated ACTs separate the person from the recording. Her reflection points deeper.'
 ]);
 chapter('The Choir of Stone','choir','Teach the return coil to carry willing voices.',
  'Stone mouths line the walls. Each can sing one note, but the engine has forced them all to sing the same one.',
@@ -110,7 +110,7 @@ chapter('The Choir of Stone','choir','Teach the return coil to carry willing voi
  'The Cracked Solo|Broken tuning fork|A soloist cracked its own voice to stop repeating the engine’s command. Its body still vibrates with an order it no longer believes.|ACT twice can answer the soloist. Keep moving gently through the falling notes.',
  'A Breath Between Notes|Choir controls|The conductor’s first lesson survives: listen to each other, take a breath, then sing. The engine’s score removed every rest.|Music begins before the first note. Follow the surviving lesson.',
  'The Unforced Refrain|Mara’s score|Mara’s score has blank bars where singers can refuse. The coil works only when a voice can also choose silence.|This is the pre-boss checkpoint. The choice to stop is part of the new engine design.',
- 'The Conductor’s Rest|Lowered baton|The Basalt Conductor fears that different notes will break the city apart. It has never heard harmony, only perfect agreement.|Three ACTs invite a harmony. Mercy lets the singers choose their own volume.'
+ 'The Conductor’s Rest|Lowered baton|The Basalt Conductor fears that different notes will break the city apart. It has never heard harmony, only perfect agreement.|Repeated ACTs invite a harmony. Mercy lets the singers choose their own volume.'
 ]);
 chapter('Dreaming Station','station','Find the train Mara took to the engine’s center.',
  'The departure board lists destinations people dreamed of, then crossed out. A train waits for a ticket nobody remembers buying.',
@@ -120,7 +120,7 @@ chapter('Dreaming Station','station','Find the train Mara took to the engine’s
  'The Ticket Nobody Bought|Blank ticket punch|A ticket guard is searching for its own ticket. Without it, the station says it was never born. It turns its empty pockets out before raising its fists.|Two ACTs can give the guard a destination even without a ticket.',
  'The Departing Thought|Signal box|The signal box waits for a decision: choose a destination, board the train, then depart. Endless planning has kept the points between tracks.|You cannot depart before boarding. Start by choosing where to go.',
  'The Sleeping Car|Mara’s seat|Mara slept with her hand over the return coil. Someone tucked a coat around her. For once, the trail contains evidence that another person helped her.|Use the checkpoint. The Inspector guards the only train that actually leaves.',
- 'The Final Inspection|Inspector’s unused ticket|The Sleeper Inspector has checked everyone else’s ticket for years. Her own says ANYWHERE, and she is terrified to choose.|Three ACTs offer her a place in the journey instead of another duty.'
+ 'The Final Inspection|Inspector’s unused ticket|The Sleeper Inspector has checked everyone else’s ticket for years. Her own says ANYWHERE, and she is terrified to choose.|Repeated ACTs offer her a place in the journey instead of another duty.'
 ]);
 chapter('A Thousand Lanterns','lanterns','Turn isolated lights into a shared route.',
  'A thousand lanterns float over a city square. Each believes it is the last light left. Wick has never looked so small.',
@@ -130,7 +130,7 @@ chapter('A Thousand Lanterns','lanterns','Turn isolated lights into a shared rou
  'The Moth Procession|Torn procession flag|The moths carry a flag with no leader’s name. Their guard thinks your flame will lure them back to the collection towers.|ACT twice shows the moths that this procession can choose its own route.',
  'The Chain of Windows|Lantern relay|The relay begins with one light, shares it with the next window, then guides the people below. It fails when every lantern tries to light itself first.|Begin with a single flame, pass it on, then use it to lead.',
  'The Courier’s Name|Old delivery badge|Wick’s badge names him WICK-0041. Mara crossed out the number. He asks you to call him Wick again, just to hear how it sounds.|Save here. Wick’s fear matters to the Lamplighter in the next room.',
- 'The Ladder’s End|Abandoned ladder|The Lamplighter refuses to come down because every lantern once went dark when she rested. She cannot see the lights you have helped share behind her.|Three ACTs give her permission to rest. Your own flame is no longer the only one.'
+ 'The Ladder’s End|Abandoned ladder|The Lamplighter refuses to come down because every lantern once went dark when she rested. She cannot see the lights you have helped share behind her.|Repeated ACTs give her permission to rest. Your own flame is no longer the only one.'
 ]);
 chapter('The Lost Observatory','stars','Locate the return circuit’s missing connection.',
  'The observatory points inward instead of at the sky. Its telescope has been tracking the engine’s hunger like a moving star.',
@@ -140,7 +140,7 @@ chapter('The Lost Observatory','stars','Locate the return circuit’s missing co
  'The False North|Bent compass|The compass points toward whichever thing its holder fears most. A star sentinel has followed it in circles for a century.|ACT twice can help the sentinel put down the compass.',
  'The Patient Lens|Telescope controls|The lens instructions say align the mount, focus the glass, then observe. The Curator ordered conclusions first and measurements afterward.|Let the telescope see before asking it to confirm a belief.',
  'The Star Kept Back|Unmailed chart|An astronomer hid a chart proving the machine would fail. Mara found it and wrote: “Being wrong in time is better than being right too late.”|The checkpoint prepares you for the astronomer who hid the chart.',
- 'The Unseen Sky|Astronomer’s blindfold|The Blind Astronomer covered her eyes after the Curator punished her prediction. She still knows the safe route, but no longer trusts anyone to want it.|Three ACTs show her that you are asking for evidence, not reassurance.'
+ 'The Unseen Sky|Astronomer’s blindfold|The Blind Astronomer covered her eyes after the Curator punished her prediction. She still knows the safe route, but no longer trusts anyone to want it.|Repeated ACTs show her that you are asking for evidence, not reassurance.'
 ]);
 chapter('The Rusted Palace','palace','Obtain the central lock’s original authority.',
  'The palace is full of servants made from discarded armor. They polish a throne nobody has used since the Curator arrived.',
@@ -150,7 +150,7 @@ chapter('The Rusted Palace','palace','Obtain the central lock’s original autho
  'The Saluting Armor|Dented helmet|A suit of armor salutes until its joints grind. It has no person inside to give it a new order. Wick tries saying “at ease” like a question.|Two ACTs can release the old order. The armor’s threat ends when it is heard.',
  'The Public Hearing|Council seal|The charter requires a petition, a hearing, then a decision. The Curator stamped decisions onto blank petitions and called that efficiency.|A hearing must happen before a decision. Restore the charter’s sequence.',
  'The Spare Throne|Uncut key|The key blank is shaped for twenty hands to turn together. Mara left it uncut because the lock’s owner was meant to be the whole city.|Heal and save. The Regent’s authority is the last thing blocking the key.',
- 'The Regent’s Burden|Rusted crown|The Rust Regent was a caretaker who stayed after everyone else left. He confuses giving up control with abandoning the city. The crown has rusted to his brow.|Three ACTs distinguish shared responsibility from abandonment.'
+ 'The Regent’s Burden|Rusted crown|The Rust Regent was a caretaker who stayed after everyone else left. He confuses giving up control with abandoning the city. The crown has rusted to his brow.|Repeated ACTs distinguish shared responsibility from abandonment.'
 ]);
 chapter('Winter in the Deep','winter','Keep the return circuit alive through the cold.',
  'The furnaces are cooling. Frost covers the path you need to open. Helping the city has made its old system weaker before the new one is ready.',
@@ -160,7 +160,7 @@ chapter('Winter in the Deep','winter','Keep the return circuit alive through the
  'The Hoarded Hearth|Locked coal box|A frost guard has locked away the last coal to make it last forever. The room around it is freezing now. Its fear has mistaken saving for never using.|ACT twice can change how the guard understands saving something.',
  'The Thawing Room|Shelter controls|The rescue instructions say shelter the sleeper, warm them, then wake them. The frozen mechanism will open only for patient care.|Give warmth a safe place to work before asking someone to rise.',
  'The Seventh Bowl|Soup pot|Six bowls are set around a pot. Mara brought a seventh for someone she had not met. Wick warms the soup with a little of his own flame.|Use the checkpoint before the Sentinel. A full health bar makes the final approach easier.',
- 'The Sentinel’s Vigil|Frozen watchtower bell|The Winter Sentinel has been told that one warm district requires another to freeze. It cannot imagine a system without an abandoned edge.|Three ACTs show the supplies and the shared circuit. Mercy asks it to protect everyone.'
+ 'The Sentinel’s Vigil|Frozen watchtower bell|The Winter Sentinel has been told that one warm district requires another to freeze. It cannot imagine a system without an abandoned edge.|Repeated ACTs show the supplies and the shared circuit. Mercy asks it to protect everyone.'
 ]);
 chapter('The Broken Archive','archive','Recover Mara’s final plan from the erased records.',
  'Names float between torn shelves. Some belong to people you met. One belongs to the Curator before he changed it.',
@@ -170,7 +170,7 @@ chapter('The Broken Archive','archive','Recover Mara’s final plan from the era
  'The Ink That Fights Back|Spilled ink bowl|A memory guard formed from crossed-out apologies. It lashes out whenever a sentence reaches “I was wrong.” Wick waits for the sentence to finish.|Two ACTs can let the apology exist. Watch the spaces between the ink drops.',
  'The Reconstruction Table|Name press|The restoration guide says find the fragments, name the person, then remember their life. A label without a life is another kind of erasure.|First recover what is missing, then name it, then give the name meaning.',
  'What the Page Kept|Unburned corner|One corner of Mara’s letter survived: a drawing of twenty people holding a ring. Nobody stands in its center. The missing answer was never another sacrifice.|Rest at the checkpoint. The next guardian protects the Curator’s erased past.',
- 'The Hunger for Silence|Empty name frame|The Name-Eater is Orin’s discarded shame, given a body and a command to forget. It has eaten so many names that it cannot remember its own.|Three ACTs can return its name. Mercy preserves the truth you will need at the heart.'
+ 'The Hunger for Silence|Empty name frame|The Name-Eater is Orin’s discarded shame, given a body and a command to forget. It has eaten so many names that it cannot remember its own.|Repeated ACTs can return its name. Mercy preserves the truth you will need at the heart.'
 ]);
 chapter('The Last Crossing','bridge','Bring the districts’ promises to the heart.',
  'The last bridge spans the engine’s empty fuel well. Voices from the districts travel beside you, uncertain but no longer alone.',
@@ -180,7 +180,7 @@ chapter('The Last Crossing','bridge','Bring the districts’ promises to the hea
  'The Rearguard’s Fear|Cracked signal shield|The rearguard thinks letting anyone cross will leave the city undefended. It has never been asked whether it would like to come too.|Two ACTs offer the guard a place in the group rather than another lonely post.',
  'The Span Under Strain|Bridge winch|The builder’s instructions say anchor the line, test the weight, then cross. The engine shakes hard enough to make haste sound reasonable.|Secure the support and test it before trusting your weight to the span.',
  'The Far-Side Fire|Small shared campfire|For a moment you can hear all the districts at once: spoons, bells, leaves, a badly tuned hum. Wick says this is what a city sounds like when it is not fuel.|This checkpoint is the last shelter before the approach to the heart.',
- 'The Marshal’s Post|Marshal’s second badge|The Bridge Marshal carries a badge for a replacement who never arrived. He thinks leaving the post would make every year of waiting meaningless.|Three ACTs let him carry his duty forward instead of standing still forever.'
+ 'The Marshal’s Post|Marshal’s second badge|The Bridge Marshal carries a badge for a replacement who never arrived. He thinks leaving the post would make every year of waiting meaningless.|Repeated ACTs let him carry his duty forward instead of standing still forever.'
 ]);
 chapter('The Heart of Echoes','heart','Free Mara without choosing another person to burn.',
  'Mara stands inside a ring of light, keeping the failing engine steady with her voice. She sees you and mouths a word through the glass: NO.',
@@ -190,7 +190,7 @@ chapter('The Heart of Echoes','heart','Free Mara without choosing another person
  'The Engine’s Reflex|Cracked regulator|The regulator attacks anything that changes its rhythm. It has no idea the rhythm is killing the people it was built to protect.|ACT twice can teach the regulator a new rhythm. Its attacks still leave safe gaps.',
  'The Return Ring|Central controls|Mara’s final diagram is complete: disconnect the consuming loop, join the willing circuits, then return the light. No person belongs in the socket.|Follow the diagram. The middle step connects people who can choose to stop.',
  'A Voice Held Open|Speaking tube|Through the tube, Mara says, “I knew you would come. I was afraid you would think coming meant taking my place.” Wick answers, “We brought company.”|Save before meeting the Curator. The people you remembered will shape what follows.',
- 'The Curator’s Dawn|Original sun key|The Curator offers a bargain: your voice for Mara’s, and one more year of light. He calls it the only possible choice because he has refused every other one.|Three ACTs present another answer. FIGHT can break his control, but the shared circuit still matters.'
+ 'The Curator’s Dawn|Original sun key|The Curator offers a bargain: your voice for Mara’s, and one more year of light. He calls it the only possible choice because he has refused every other one.|Repeated ACTs present another answer. FIGHT can break his control, but the shared circuit still matters.'
 ]);
 chapter('The Door Above','dawn','Choose what your town will do with the truth.',
  'The engine is quiet enough to hear your own footsteps. Mara walks beside you. Above the last stair, your town is waiting for its light to return.',
@@ -200,7 +200,7 @@ chapter('The Door Above','dawn','Choose what your town will do with the truth.',
  'The Keeper of Comfort|Closed town notice|A town sentinel wants to hide the truth so nobody feels guilty about the years of light. It mistakes comfort for kindness.|Two ACTs can show that a town can hear the truth and still choose to help.',
  'The Welcome Bell|Town bell controls|The town’s oldest rule says open the doors, welcome the traveler, remember their name. The city below deserves the same welcome you expect for yourself.|The last sequence turns a rule for guests into a promise to neighbors.',
  'Before the Handle Turns|Mara’s repaired ribbon|Mara ties her ribbon around the handle. “We cannot undo it,” she says. “We can stop pretending it is still the only way.” Wick asks whether couriers get holidays.|Save here. The final encounter is with the echo of the journey itself.',
- 'The Door You Carry|Unlatched door|The Last Echo asks what you will tell the people above. It has your voice, Mara’s worry, and the silence of everyone who could not walk home.|Three ACTs remember both the rescued and the missing. The ending reflects your choices.'
+ 'The Door You Carry|Unlatched door|The Last Echo asks what you will tell the people above. It has your voice, Mara’s worry, and the silence of everyone who could not walk home.|Repeated ACTs remember both the rescued and the missing. The ending reflects your choices.'
 ]);
 const palettes=[
  ['#30344e','#182234','#68deee'],['#243e32','#142b25','#8cdd81'],['#393454','#25243d','#e6a0ef'],['#244554','#122f40','#70d9e7'],

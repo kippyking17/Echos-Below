@@ -84,6 +84,7 @@ function enemy(c,s){
  case 'echo':{
   const colors=globalThis.EchoesStory?.chapters[19].crystalPalette||[a];halo('#e7dfbd');robe('#9aafb7');arms('#bdcbd0');face('#e3e0cf');crown();for(let i=0;i<colors.length;i++){const angle=t*.15+i*Math.PI*2/colors.length,x=Math.cos(angle)*49,y=Math.sin(angle)*35-8;gem(Math.round(x),Math.round(y),colors[i],4);}r(-14,-1,28,26,'#4a6678');gem(0,10,'#fff3cb',10);r(-24,30,48,7,'#d6e7df');break;}
  }
+ if(s.chapter===19&&s.boss&&globalThis.EchoesLastVoice?.speaking){r(-4,-8,8,Math.floor(t*9)%2?5:2,dark);r(-2,-7,4,1,'#d4eaff');}
  // Awakened guardians carry a brighter core and a slow pulse, never a hit flash.
  if(phase===2){const pulse=Math.floor(t*3)%2;r(-3,3,6,6,pulse?a:light);}
  c.restore();

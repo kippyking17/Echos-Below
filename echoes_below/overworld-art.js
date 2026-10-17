@@ -80,7 +80,7 @@ function player(c,s,time){
  else{box(c,x-6+(side?sign*2:0),y-15,12-(side?3:0),8,colors.skin);box(c,x-7,y-16,14,3,'#2a4359');const blink=!moving&&time%5.2>4.97;
   if(side)box(c,x+sign*4,y-12,2,blink?1:3,'#182a37');else{box(c,x-4,y-12,2,blink?1:3,'#182a37');box(c,x+3,y-12,2,blink?1:3,'#182a37');}box(c,x-2,y-7,4,1,'#9c836d');}
  box(c,x-8,y-8,16,4,colors.scarf);const trail=side?-sign:-1;box(c,x+trail*8-(trail<0?5:0),y-6-swing/2,6,4,mix(colors.scarf,'#07131f',.2));box(c,x+trail*12-(trail<0?3:0),y-3-swing,4,4,mix(colors.scarf,'#07131f',.35));
- if(s.equipment?.head){box(c,x-8,y-20,16,2,'#b2bab0');box(c,x-8,y-19,2,7,'#8caaab');}if(s.equipment?.chest){box(c,x-5,y-3,10,5,'#a6b7ae');box(c,x-3,y-2,6,2,'#6a9293');}if(s.equipment?.legs){box(c,x-6,y+8+stride,5,2,'#aebcb5');box(c,x+1,y+8-stride,5,2,'#aebcb5');}if(s.gear?.weapon){const wx=x-(side?sign:1)*13,wy=y+swing;if(s.gear.weapon===3){box(c,wx,wy-12,2,25,'#b2a17c');gem(c,wx,wy-14,'#eab784',4);}else{box(c,wx,wy-13,2,19,'#c0d9ce');box(c,wx-3,wy+3,8,2,'#d5be8b');box(c,wx,wy+5,2,5,'#8b6958');}}
+ globalThis.EchoesAvatars.armor(c,x,y,s.equipment,time,1,f,stride);if(s.gear?.weapon&&!s.attacking&&!s.dodge){const wx=x-(side?sign:1)*13,wy=y+swing;globalThis.EchoesWeaponVFX.held(c,s.gear.weapon,wx,wy,time);}
  const lx=x+(side?sign:1)*13,ly=y+4+swing;glow(c,lx,ly,'#ffcf88',32+Math.sin(time*9)*2,.16);box(c,lx-3,ly-4,6,9,'#b29865');box(c,lx-2,ly-2,4,5,'#ffe0a1');box(c,lx-1+Math.round(Math.sin(time*10)),ly-3-Math.round(Math.sin(time*13)),2,5,'#fff1bc');box(c,lx-4,ly-5,8,2,'#52646b');box(c,lx-1,ly-8,2,4,'#ab9467');if(s.dodge)c.restore();
 }
 function draw(c,s){const m=s.meta,t=s.time,accent=m.crystalColor,group=groups[m.theme],near=p=>!s.hideLabels&&Math.hypot(s.x-p.x,s.y-p.y)<105;base(c,m);
