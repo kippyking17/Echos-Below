@@ -1,4 +1,4 @@
-# Echoes Below 1.6.2 — The borrowed light
+# Echoes Below 1.7.0 — The borrowed light
 
 Mara disappears while repairing the town’s sunlamp. Follow her lantern courier Wick through twenty districts, discover the cost of the light, and build a way home that does not require another sacrifice.
 
@@ -120,3 +120,13 @@ Validation: browser checks started fresh journeys in all three slots from late-g
 ## Menu build label — 1.6.2
 
 The M menu displays VERSION 1.6.2 · BUILD 20261016.01 at the bottom-left, separately from the keyboard legend. The pixel footer stays visible when long menu pages scroll, including narrow screens. Desktop/mobile layout checks verified the text, alignment, visibility and absence of horizontal overflow.
+
+## PvE and landscape touch controls — 1.7.0
+
+All twenty chapter guardians now have a named signature, themed pixel portrait, distinct ordered attack profile and second phase. Phase two begins at half health or after two ACTs. Twelve attack families include warning-marked rain, gates, root columns, drifting snow/pages, embers, fans, notes, alternating side sweeps, corner comets and converging edge shots. All new boss/miniboss projectiles originate at an arena edge and warn for at least 700 ms (800 ms for minis) before becoming harmful; no attack spawns on the player at the center. Menus and pause freeze the warning clock. Armor, invulnerability, abilities and relic effects use the same collision path as before.
+
+Six minibosses replace the ordinary encounter in room 3 of chapters 2, 5, 8, 11, 14 and 17: Briarbound Scout, Ashpage Curator, Secondhand Duelist, Hollow Resonator, Comet Watcher and Inkbound Keeper. Each has its own appearance, two ACT responses, themed patterns, 6-coin reward and one glowberry. Main bosses award 8 coins; ordinary foes award 4. Force and peaceful routes award the same rewards. Cleared rooms in old saves remain cleared, and rewards cannot be collected twice.
+
+M > Mobile / tablet enables touch play or returns to automatic device detection. Phones and tablets automatically get a landscape interface. Drag the left thumbstick to move or dodge; displacement controls speed, and releasing stops movement. Input supports diagonal movement and pointer capture. Interact, Hint and Pause sit on the right; 3D also offers camera-turn buttons. Touch rails keep thumbs outside the play area. Portrait mode presents a rotation prompt with menu access. Fullscreen requests a landscape lock where supported; browsers that refuse it require the player to rotate the device. Touch input releases when a menu, app blur or portrait mode interrupts play. Normal keyboard and mouse controls remain available.
+
+Validation: gameplay exercised all twenty bosses and all six minis using both force and peaceful endings, reward values, phase changes, clear flags, eight-plus opening patterns and all twelve attack families. Pattern tests verified warning delays, finite trajectories and edge-only spawns. Phone/tablet browser checks covered analog drag speed, release-to-stop, rotation guidance, menus, touch interaction, battlefield buttons and rendering warnings. Existing campaign, shops, equipment, saves, credits and return-path checks remain covered. Physical device/browser orientation policies vary; layout tests used browser device emulation.

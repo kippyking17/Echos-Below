@@ -132,3 +132,30 @@ dialog button:focus-visible,dialog input:focus-visible,dialog select:focus-visib
 /* Release identity stays on the left, apart from the keyboard legend. */
 #menuFooter{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 18px;text-align:left}#menuBuild{color:#dacb9d;font-size:13px;white-space:nowrap}#menuKeys{color:#8eaebd;font-size:12px}@media(max-width:600px){#menuFooter{flex-direction:column;align-items:flex-start;gap:6px}#menuBuild{font-size:12px}}
 #menuFooter{position:sticky;bottom:-25px;z-index:2;background:#0b1b27;padding-bottom:8px}@media(max-width:600px){#menuFooter{bottom:-17px}}
+/* Landscape touch edition keeps thumbs outside the map. */
+body.touch-mode{--touch-rail:clamp(104px,13vw,142px)}
+body.touch-mode:not(.admin-mode) .app{padding:0 var(--touch-rail)}
+#touchControls{position:fixed;inset:0;z-index:25;pointer-events:none;font-family:'Echoes Pixel',monospace}
+#touchControls[hidden],#rotateDevice[hidden],.touch-look[hidden]{display:none!important}
+#touchControls button{pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none;font:17px 'Echoes Pixel',monospace;background:#142e3f;border:2px solid;border-color:#86a8b6 #344e65 #344e65 #86a8b6;border-radius:0;box-shadow:3px 3px #020a13;color:#dfeddf;padding:0;min-width:44px;min-height:44px}
+#touchControls button:active{background:#365d6e;border-color:#e0d1a1;box-shadow:1px 1px #020a13}
+.touch-pad{position:absolute;left:8px;bottom:20px;width:calc(var(--touch-rail) - 14px);display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,36px);gap:1px}
+.touch-pad button{min-width:0!important;min-height:36px!important;font-size:18px!important}
+.touch-up{grid-column:2;grid-row:1}.touch-left{grid-column:1;grid-row:2}.touch-down{grid-column:2;grid-row:3}.touch-right{grid-column:3;grid-row:2}
+.touch-actions{position:absolute;right:9px;bottom:20px;width:calc(var(--touch-rail) - 18px);display:flex;flex-direction:column;gap:9px}
+.touch-actions .touch-confirm{min-height:58px!important;background:#31493a!important;border-color:#c2c998 #627454 #627454 #c2c998!important;color:#f1e6b8!important;font-size:16px!important}
+.touch-look{display:flex;gap:5px}.touch-look button{flex:1;min-width:0!important;font-size:22px!important}
+body.touch-mode #menuButton{z-index:55;right:9px;top:9px;padding:8px 10px;min-height:44px}
+#rotateDevice{position:fixed;inset:0;z-index:40;background:#06111cf5;display:grid;place-items:center;padding:25px;font-family:'Echoes Pixel',monospace;text-align:center}
+.rotate-card{max-width:420px;padding:24px;border:3px solid #87a8b4;box-shadow:5px 5px #02080f;background:#102735}
+.rotate-card>span{font-size:48px;color:#a8dfdf}.rotate-card h2{font:25px 'Echoes Pixel',monospace;color:#ecdfaf}.rotate-card p{font-size:18px;line-height:1.6;color:#b0ccd3}.rotate-card button{font:18px 'Echoes Pixel',monospace;border-radius:0;background:#263f48;border:2px solid #8cb8bd;min-height:44px}
+body.touch-mode #mainMenuDialog{max-height:88dvh}
+@media(orientation:landscape) and (max-height:440px){body.touch-mode{--touch-rail:112px}.touch-actions{bottom:12px;gap:6px}.touch-pad{bottom:13px}.touch-actions button{min-height:39px!important}.touch-actions .touch-confirm{min-height:50px!important}}
+.touch-pad{width:134px;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(3,44px)}.touch-pad button{min-height:44px!important}
+.touch-pad{display:block;width:134px;height:143px;touch-action:none;pointer-events:auto;user-select:none;-webkit-user-select:none}
+.touch-stick-ring{position:relative;width:112px;height:112px;margin:0 auto;background:#102b3bef;border:3px solid #708f9e;box-shadow:inset 0 0 0 7px #18394b,3px 3px #020b15;clip-path:polygon(16px 0,96px 0,96px 5px,107px 5px,107px 16px,112px 16px,112px 96px,107px 96px,107px 107px,96px 107px,96px 112px,16px 112px,16px 107px,5px 107px,5px 96px,0 96px,0 16px,5px 16px,5px 5px,16px 5px)}
+.touch-stick-ring:before{content:'+';position:absolute;inset:0;display:grid;place-items:center;color:#476d7c;font:70px 'Echoes Pixel',monospace;pointer-events:none}
+.touch-stick-knob{position:absolute;left:39px;top:39px;width:28px;height:28px;background:#8ebec7;border:3px solid;border-color:#d1e6dc #42657a #42657a #d1e6dc;box-shadow:3px 3px #020c16;pointer-events:none}
+.touch-stick-label{display:block;text-align:center;font:13px 'Echoes Pixel',monospace;color:#a1c0ca;margin-top:8px;pointer-events:none}
+body.touch-mode:not(.admin-mode) .app{padding-left:calc(var(--touch-rail) + env(safe-area-inset-left,0px));padding-right:calc(var(--touch-rail) + env(safe-area-inset-right,0px))}
+.touch-pad{left:calc(8px + env(safe-area-inset-left,0px))}.touch-actions{right:calc(9px + env(safe-area-inset-right,0px))}body.touch-mode #menuButton{right:calc(9px + env(safe-area-inset-right,0px));top:calc(9px + env(safe-area-inset-top,0px))}
