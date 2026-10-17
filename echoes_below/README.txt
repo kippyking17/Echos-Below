@@ -1,4 +1,4 @@
-ECHOES BELOW v2.3.0 — BUILD 20261017.06
+ECHOES BELOW v2.3.1 — BUILD 20261017.07
 
 20 chapters, 200 main rooms, 18 optional maps, 20 minibosses and 20 main bosses.
 Choose your character and click the title's ENTER button to begin. Every New Game starts fresh.

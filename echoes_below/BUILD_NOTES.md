@@ -1,6 +1,6 @@
-# Echoes Below 2.3.0 — Crystal & Steel
+# Echoes Below 2.3.1 — Crystal & Steel
 
-Build 20261017.06. Twenty chapters, ten rooms each: 200 distinct campaign rooms and the existing eighteen optional trail maps. Eighty new authored memories expand Mara’s investigation, the missing volunteers, Wick’s past with Neri, the emergency that became permanent, and the districts’ shared return circuit. Original memories and indirect mechanism clues remain; journal and credits now account for 200 campaign memories.
+Build 20261017.07. Twenty chapters, ten rooms each: 200 distinct campaign rooms and the existing eighteen optional trail maps. Eighty new authored memories expand Mara’s investigation, the missing volunteers, Wick’s past with Neri, the emergency that became permanent, and the districts’ shared return circuit. Original memories and indirect mechanism clues remain; journal and credits now account for 200 campaign memories.
 
 Every chapter has an ordinary encounter in room 3, a unique named miniboss in room 5 and its main guardian in room 10. All forty major encounters support combat and mercy, award five coins once, and leave a passage key. Physical defeats retain fall/smoke animations. All 199 backward links include chapter boundaries. Shops move to room 6 of every third chapter, after the midpoint guardian. Optional trail entrances remain in room 2.
 
@@ -23,3 +23,5 @@ Forty-two original synthesized sound categories cover weapon swings, impacts, ki
 Sound menu: independent music and effects mute, volume sliders and a preview. Preferences persist under echoesBelow_audio_v1. Muting music leaves effects available; muting effects also silences the title effect. A single Web Audio context uses independent gain buses through a compressor, with at most 64 effect voices. Sources and nodes disconnect on completion. The audio context starts from player input; browsers without audio support remain playable. Music and effects duck while Brindle is speaking; his device voice remains the only spoken character dialogue.
 
 Validation: all seven real world hits/kills and boss lethal strikes on desktop and landscape phone; distinct motion and synthesis plans for every weapon; bounded, finite plans across 42 categories; unchanged contact timing; independent mute/volume and persistence; silent muted title; voice cleanup; full 200-room campaign and all forty major encounters via both outcomes; graces, E/mobile pickups, old-save migration and eighteen optional maps. Cached v2.2 upgrades to matching v2.3 files, preserves the current save and reloads all game modules offline.
+
+2.3.1: Bare-hand artwork is half its previous width and height in both world and battle rendering. Combat reach, timing, damage and weapon sizes remain unchanged.

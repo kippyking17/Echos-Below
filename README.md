@@ -1,6 +1,6 @@
 # Echoes Below
 
-[Play the game](https://kippyking17.github.io/Echos-Below/) — v2.3.0, build 20261017.06.
+[Play the game](https://kippyking17.github.io/Echos-Below/) — v2.3.1, build 20261017.07.
 
 A 2D pixel adventure about Mara, Wick and returning the city's stolen light. Twenty chapters, 200 main rooms, eighteen optional maps, twenty minibosses and twenty main bosses. Click/tap to walk, right click to attack, E to collect, I for inventory and M for the menu. Mobile has Attack and Collect buttons.
 

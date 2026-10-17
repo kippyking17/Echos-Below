@@ -1,6 +1,6 @@
 /* Weapon-specific silhouettes and crystal impact effects, shared by world and boss strikes. */
 (()=>{const portraits=new Map();
-function weapon(c,tier,x,y,angle,scale,color){c.save();c.translate(x,y);c.rotate(angle);c.scale(scale,scale);const r=(x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(x,y,w,h);};c.shadowColor=color;c.shadowBlur=tier?14:0;
+function weapon(c,tier,x,y,angle,scale,color){c.save();c.translate(x,y);c.rotate(angle);if(!tier)scale*=.5;c.scale(scale,scale);const r=(x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(x,y,w,h);};c.shadowColor=color;c.shadowBlur=tier?14:0;
  if(!tier){r(-11,-8,21,17,'#253f4f');r(-10,-16,19,16,'#d7b88a');for(let i=0;i<4;i++)r(-10+i*5,-19,4,8,'#ead0a5');r(-9,-1,18,5,'#96785a');}
  else{r(-3,6,6,21,'#997759');r(-12,2,24,5,'#dfc68c');if(tier===1){r(-3,-29,6,31,'#bdd4cf');r(-3,-35,19,6,color);r(10,-35,6,15,'#eff9db');}else if(tier===3){r(-3,-46,6,53,'#aa8b64');r(-7,-40,14,19,color);r(-3,-48,6,29,'#fff0c0');r(-13,-34,26,5,color);}else if(tier===4){r(-2,-55,4,59,'#d5d0ec');r(-1,-55,2,38,color);r(-8,-17,16,3,color);}else if(tier===5){r(-3,-55,6,60,'#c4d8d4');r(-12,-49,5,22,color);r(7,-49,5,22,color);r(-12,-29,24,5,'#e7e9c2');}else{r(-6,-43,12,46,'#c6ded5');r(-3,-49,6,48,'#f3ffeb');r(-6,-39,3,35,color);if(tier===6){r(-13,-27,26,7,color);r(-9,-35,18,6,'#fff3c1');}}}
  c.restore();}
