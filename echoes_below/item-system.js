@@ -16,19 +16,26 @@ function equip(inv,index){const entry=inv.bag[index],data=catalog[entry?.id];if(
 function unequip(inv,slot){const id=inv.equipped[slot];if(!id||inv.bag.length>=9)return false;inv.bag.push({id,qty:1});inv.equipped[slot]=null;return true;}
 function remove(inv,index){const item=inv.bag[index];if(!item)return false;if(item.qty>1)item.qty--;else inv.bag.splice(index,1);return true;}
 function item(inv,slot){return catalog[inv.equipped[slot]]||null;}
-const rarities=[{name:'Basic',color:'#b6c8be',rank:0},{name:'Strong',color:'#7cbce8',rank:1},{name:'Godlike',color:'#efcf83',rank:2}];
-function decorate(data,rank){const r=rarities[Math.max(0,Math.min(2,rank))];Object.assign(data,{rarity:r.name,rarityColor:r.color,rarityRank:r.rank});return data;}
+const rarities=[{name:'Basic',color:'#b6c8be',rank:0},{name:'Rare',color:'#72caff',rank:1},{name:'Strong',color:'#bf9bff',rank:2},{name:'Legends',color:'#ffb166',rank:3},{name:'Godlike',color:'#efcf83',rank:4}];
+function decorate(data,rank){const r=rarities[Math.max(0,Math.min(4,rank))];Object.assign(data,{rarity:r.name,rarityColor:r.color,rarityRank:r.rank});return data;}
 function depth(chapter){return Math.max(0,Math.min(19,Math.floor(Number(chapter)||0)));}
-function maxTier(chapter){const c=depth(chapter);return c<3?2:c<15?4:6;}
-function available(id,chapter){const data=catalog[id];return !!data&&(!data.slot||data.tier<=maxTier(chapter));}
-function forChapter(id,chapter){const data=catalog[id];return data?.slot?data.slot+'-'+Math.min(data.tier,maxTier(chapter)):id;}
-for(const data of Object.values(catalog)){const rank=data.slot?Math.floor((data.tier-1)/2):data.id==='tonic'?0:1;decorate(data,rank);if(data.slot)data.cost=rank===0?(data.tier===1?3:6):rank===1?(data.tier===3?10:18):data.slot==='weapon'||data.slot==='chest'?(data.tier===5?65:90):(data.tier===5?50:70);}
+function maxTier(chapter){return depth(chapter)<15?4:6;}
+function available(id,chapter){const data=catalog[id];return !!data&&(!data.slot||data.rarityRank<4||depth(chapter)>=15);}
+function forChapter(id,chapter){const data=catalog[id];return data?.slot&&!available(id,chapter)?data.slot+'-4':id;}
+for(const data of Object.values(catalog)){const rank=data.slot?[0,0,0,2,2,4,4][data.tier]:data.id==='tonic'?0:data.id==='angel-totem'?3:1;decorate(data,rank);if(data.slot)data.cost=rank===0?(data.tier===1?3:6):rank===2?(data.tier===3?14:22):data.slot==='weapon'||data.slot==='chest'?(data.tier===5?65:90):(data.tier===5?50:70);}
+// Preserve original item IDs and their combat/animation tiers; new rarity families add to the pool.
+for(const [tag,rank,names,tiers,powers,costs]of [['rare',1,['Frostbrand','Stormglass Edge'],[2,2],[5,6],[8,11]],['legends',3,['Starfall Rapier','Verdant Oathblade'],[4,5],[13,15],[34,45]]])for(let i=0;i<2;i++){
+ const id='weapon-'+tag+'-'+(i+1);catalog[id]=decorate({id,name:names[i],slot:'weapon',tier:tiers[i],power:powers[i],cost:costs[i],description:'FIGHT damage +'+powers[i]},rank);
+ for(const slot of['head','chest','legs']){const armorName=(tag==='rare'?['Mistwarden','Thunderwoven']:['Starsealed','Verdant Oath'])[i],tier=tiers[i],defense=slot==='chest'?(rank===1?3+i:8+i):(rank===1?2+i:4+i),id=slot+'-'+tag+'-'+(i+1);catalog[id]=decorate({id,name:armorName+' '+({head:'Helm',chest:'Breastplate',legs:'Greaves'}[slot]),slot,tier,defense,cost:costs[i],description:'Defense +'+defense+(slot==='head'?' · Maximum HP +'+tier:slot==='legs'?' · Movement +'+(tier*1.5)+'%':' · Protects your chest')},rank);}
+}
+for(const data of Object.values(catalog))if(data.rarityRank===4&&data.slot&&data.slot!=='weapon'&&data.slot!=='chest'&&data.tier===5){data.defense=6;data.description=data.description.replace('Defense +5','Defense +6');}
 catalog.ward.cost=10;catalog.clarity.cost=10;
-const supplies={coin:decorate({name:'Coin',description:'Currency. Two loose coins per eight campaign rooms.'},0),berry:decorate({name:'Glowberry',description:'Healing supply. Two per eight campaign rooms.'},0),health:decorate({name:'Healing mote · 10 HP',description:'25% independent chance from roaming enemies.'},0),key:decorate({name:'Passage key',description:'Story item. Never requires a random drop.'},0),starter:decorate({name:'Traveler equipment',description:'Your starting clothes and bare hands.'},0),sword:decorate({name:'Sword of Life',description:'Guaranteed finale keepsake.'},2)};
-const abilityRarities=[0,0,1,1,1,2].map((rank,i)=>decorate({cost:[4,6,12,18,24,60][i]},rank));
-for(const r of globalThis.EchoesBossRewards?.relics||[])decorate(r,r.chapter>=15?2:1);
-for(const r of globalThis.EchoesExpeditions?.regions||[])decorate(r.relic,r.chapter>=15?2:1);
-function chances(chapter){const c=depth(chapter),godlike=c<15?0:.025+(c-15)*.0125,strong=c<3?0:Math.min(.34,.1+(c-3)*.015);return {basic:1-strong-godlike,strong,godlike};}
-function roll(chapter,slot,random=Math.random){if(!['weapon','head','chest','legs'].includes(slot))throw new Error('Unknown equipment slot');const odds=chances(chapter),sample=()=>Math.max(0,Math.min(.999999999,Number(random())||0)),r=sample(),rank=r<odds.godlike?2:r<odds.godlike+odds.strong?1:0,tier=rank*2+1+(sample()<.5?0:1);return slot+'-'+tier;}
-globalThis.EchoesItems={catalog,rarities,supplies,abilityRarities,decorate,maxTier,available,forChapter,chances,roll,create,normalise,canAdd,add,owns,equip,unequip,remove,item};
+const supplies={coin:decorate({name:'Coin'},0),berry:decorate({name:'Glowberry'},0),health:decorate({name:'Healing mote · 10 HP'},0),key:decorate({name:'Passage key'},0),starter:decorate({name:'Traveler equipment'},0),sword:decorate({name:'Sword of Life'},4)};
+const abilityRarities=[0,1,2,2,3,4].map((rank,i)=>decorate({cost:[4,6,12,18,24,60][i]},rank));
+for(const r of globalThis.EchoesBossRewards?.relics||[])decorate(r,r.chapter>=15?4:r.chapter>=9?3:2);
+for(const r of globalThis.EchoesExpeditions?.regions||[])decorate(r.relic,r.chapter>=15?4:r.chapter>=9?3:2);
+const baseShop={basic:.60,rare:.20,strong:.125,legends:.055,godlike:.02};
+function chances(chapter,source='shop'){const c=depth(chapter),steps=Math.max(0,(c-2)/3);let rare,strong,legends,godlike;if(source==='chest'){rare=c<15?.55:.45;strong=(c<15?.32:.33)*Math.pow(1.1,steps);legends=(c<15?.13:.18)*Math.pow(1.12,steps);godlike=c<15?0:.04*Math.pow(1.08,(c-15)/3);rare=1-strong-legends-godlike;return {basic:0,rare,strong,legends,godlike};}rare=.20*Math.pow(1.04,steps);strong=.125*Math.pow(1.1,steps);legends=.055*Math.pow(1.12,steps);godlike=c<15?0:.02*Math.pow(1.08,(c-15)/3);return {basic:1-rare-strong-legends-godlike,rare,strong,legends,godlike};}
+function roll(chapter,slot,random=Math.random,source='shop',exclude=[]){if(!['weapon','head','chest','legs'].includes(slot))throw new Error('Unknown equipment slot');const odds=chances(chapter,source),keys=['basic','rare','strong','legends','godlike'];let pools=rarities.map(r=>Object.values(catalog).filter(d=>d.slot===slot&&d.rarityRank===r.rank&&available(d.id,chapter)&&!exclude.includes(d.id))),sum=0,weights=keys.map((key,i)=>pools[i].length?odds[key]:0);for(const w of weights)sum+=w;if(!sum)return null;let value=Math.max(0,Math.min(.999999999,Number(random())||0))*sum,rank=weights.findIndex(w=>(value-=w)<0);if(rank<0)rank=weights.findLastIndex(w=>w>0);const pool=pools[rank];return pool[Math.min(pool.length-1,Math.floor(Math.max(0,Math.min(.999999999,Number(random())||0))*pool.length))].id;}
+globalThis.EchoesItems={catalog,baseShop,rarities,supplies,abilityRarities,decorate,maxTier,available,forChapter,chances,roll,create,normalise,canAdd,add,owns,equip,unequip,remove,item};
 })();
