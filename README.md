@@ -1,9 +1,11 @@
 # Echoes Below
 
-[Play the game](https://kippyking17.github.io/Echos-Below/) — v2.2.0, build 20261017.05.
+[Play the game](https://kippyking17.github.io/Echos-Below/) — v2.3.0, build 20261017.06.
 
-A 2D pixel adventure about Mara, Wick and returning the city's stolen light. Twenty chapters now have ten rooms each, eighty additional story memories, a miniboss in room 5 and a main boss in room 10. E collects nearby items; left click/tap moves, right click attacks and I opens inventory. Phone/tablet controls include Collect and Attack.
+A 2D pixel adventure about Mara, Wick and returning the city's stolen light. Twenty chapters, 200 main rooms, eighteen optional maps, twenty minibosses and twenty main bosses. Click/tap to walk, right click to attack, E to collect, I for inventory and M for the menu. Mobile has Attack and Collect buttons.
 
-Regular Graces share the miniboss room; Angel Graces share the main boss room and grant stronger gifts. Both heal, save, offer one permanent choice and anchor respawn. Small green angels grow into larger rainbow graces in the final chapter. Boss health, armor and damage rise with chapter depth, making equipment and permanent upgrades matter. Six shops, eighteen optional maps, twenty chapter music themes and peaceful routes remain.
+Crystal & Steel gives every weapon and bare hands distinct swing, contact and finishing animations: ember sweeps, crystal cross-cuts, fire spirals, moonlight lunges, echo rings and rainbow cleaves. Original effects cover combat, movement, menus, pickups, graces, puzzles, equipment and more. Music and effects have independent saved volume/mute controls under Sound.
 
-The deployable game is in echoes_below/. Pushes to main publish it through GitHub Pages. Old six-room local/cloud saves migrate to the expanded campaign. Login configuration and verified admin access remain unchanged. See [build notes](echoes_below/BUILD_NOTES.md).
+Regular Graces share room 5 with minibosses; stronger Angel Graces share room 10 with chapter bosses. The final chapter keeps larger rainbow versions. Gear and permanent upgrades matter against enemies that grow stronger by chapter. Shops, voiced Brindle, character choices, original chapter themes, peaceful routes, login/cloud saves and verified admin access remain. Old saves migrate when needed.
+
+The deployable game is in echoes_below/. Pushes to main publish through GitHub Pages. See [build notes](echoes_below/BUILD_NOTES.md).
