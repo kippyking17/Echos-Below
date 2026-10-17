@@ -1,4 +1,4 @@
-# Echoes Below 1.6.1 — The borrowed light
+# Echoes Below 1.6.2 — The borrowed light
 
 Mara disappears while repairing the town’s sunlamp. Follow her lantern courier Wick through twenty districts, discover the cost of the light, and build a way home that does not require another sacrifice.
 
@@ -116,3 +116,7 @@ The M menu, saves, account panel, controls, journal, shops, relics and puzzle/ab
 New Game opens a dedicated New Journey slot picker with only fresh-start actions. The header explicitly names chapter 1. Save & Load remains separate for continuing or copying current progress. Starting New resets chapter/room, checkpoint, equipment/relics, story flags, health, inventory, choices, ending, timers, camera heading and active combat. Other slots are retained, and replacing an occupied slot still needs confirmation.
 
 Validation: browser checks started fresh journeys in all three slots from late-game progress and combat, verified resets, preserved other slots, cancelled an overwrite without changing progress, reloaded the new journey and separately loaded the old journey. Checked actual font loading, desktop/mobile popup layouts, keybindings, native fullscreen and verified-admin isolation. Existing campaign and optional-trail gameplay checks pass.
+
+## Menu build label — 1.6.2
+
+The M menu displays VERSION 1.6.2 · BUILD 20261016.01 at the bottom-left, separately from the keyboard legend. The pixel footer stays visible when long menu pages scroll, including narrow screens. Desktop/mobile layout checks verified the text, alignment, visibility and absence of horizontal overflow.
