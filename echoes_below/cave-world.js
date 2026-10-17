@@ -1,4 +1,5 @@
 import * as THREE from './vendor/three.module.min.js';
+import {makeSurfaces,addScenery,updateScenery} from './world-scenery.js';
 let renderer,scene,camera,room,key='',moving=[],labels=[],activeCrystalPalette=[];
 const S=.025;
 const mat=(color,extra={})=>new THREE.MeshStandardMaterial({color,roughness:.8,...extra});
@@ -63,25 +64,28 @@ function rebuild(s){
  if(room){scene.remove(room);const geometries=new Set(),materials=new Set();room.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)materials.add(o.material);});geometries.forEach(g=>g.dispose());materials.forEach(m=>{m.map?.dispose();m.dispose();});}
  room=new THREE.Group();scene.add(room);moving=[];labels=[];
  const r=s.meta,[wallColor,floorColor,accent]=r.palette,wall=mat(wallColor),floor=mat(floorColor),trim=mat(accent,{emissive:accent,emissiveIntensity:.15});activeCrystalPalette=r.crystalPalette;
+ const surfaces=makeSurfaces(THREE,r);wall.map=surfaces.wall;floor.map=surfaces.floor;
  scene.background.set(floorColor);scene.fog=new THREE.FogExp2(floorColor,r.theme==='winter'?.055:.032);
  box(11.91,-.2,7.625,20.2,.3,9.5,floor);box(11.91,4.4,7.625,20.2,.3,9.5,mat(wallColor));
  for(const [x,z,w,d] of [[73,305,10,380],[880,305,10,380],[476,115,807,10],[476,495,807,10]])box(x*S,2,z*S,w*S,4,d*S,wall);
  for(const [i,o] of s.obstacles.entries()){box((o.x+o.w/2)*S,o.height/2,(o.y+o.h/2)*S,o.w*S,o.height,o.h*S,wall);if(i%3===0)motif(r.theme,(o.x+o.w/2)*S,(o.y+o.h/2)*S,Math.min(o.w,o.h)*S,accent,wallColor);}
  for(let i=0;i<8;i++){const x=(110+((i*103+s.room*37+s.chapter*17)%730))*S,z=(i%2?122:488)*S;motif(r.theme,x,z,.7+(i%3)*.13,accent,wallColor);}
+ addScenery({T:THREE,room,mesh,box,mat,moving,meta:r});
  for(let i=0;i<4;i++)crystal((130+i*210)*S,(i%2?123:487)*S,r.crystalColor,.8+(i%3)*.17,true);
  const points=r.route.map(p=>new THREE.Vector3(p.x*S,.015,p.y*S));room.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),new THREE.LineBasicMaterial({color:accent,transparent:true,opacity:.3})));
  const p=r.point;box(p.x*S,.38,p.y*S,.7,.76,.65,wall);
- const token=mesh(r.puzzle?new THREE.TorusGeometry(.3,.09,8,16):new THREE.OctahedronGeometry(.3),r.puzzle&&s.solved?mat('#9cffd9',{emissive:'#55bba2',emissiveIntensity:.5}):trim,p.x*S,1.1,p.y*S);moving.push({o:token,type:'spin'});label(r.landmark,p.x*S,1.75,p.y*S,accent);
+ if(!(r.expedition&&r.number===2)){const token=mesh(r.puzzle?new THREE.TorusGeometry(.3,.09,8,16):new THREE.OctahedronGeometry(.3),r.puzzle&&s.solved?mat('#9cffd9',{emissive:'#55bba2',emissiveIntensity:.5}):trim,p.x*S,1.1,p.y*S);moving.push({o:token,type:'spin'});label(r.landmark,p.x*S,1.75,p.y*S,accent);}
  if(s.crystal){const p=r.checkpoint;crystal(p.x*S,p.y*S,r.crystalColor,1.65,true);label('HEAL / SAVE',p.x*S,2.1,p.y*S,r.crystalColor);}
  if(s.coin){const p=r.coin,c=mesh(new THREE.OctahedronGeometry(.22),mat('#ffdc7e',{emissive:'#b68b32',emissiveIntensity:.5,metalness:.65}),p.x*S,.7,p.y*S);moving.push({o:c,type:'spin'});label('RARE COIN',p.x*S,1.3,p.y*S,'#ffe398');}
  if(s.shop){const p=r.shop;box(p.x*S,.55,p.y*S,1.2,1.1,.55,wall);box(p.x*S,1.8,p.y*S,1.6,.12,.9,trim);label('WICK’S TRADING POST',p.x*S,2.15,p.y*S,'#ffe398');}
  if(s.enemy){const x=730*S,z=355*S,height=s.boss?2:1.25;mesh(new THREE.ConeGeometry(s.boss?.65:.35,height,6),mat(accent,{emissive:accent,emissiveIntensity:.2}),x,height/2,z);label(s.enemyName||'GUARDIAN',x,height+.45,z,accent);}
- const locked=s.enemy||(r.puzzle&&!s.solved),door=mat(locked?'#aa5873':'#60ceb0',{emissive:locked?'#50273e':'#30765f',emissiveIntensity:.4});box(866*S,1.1,353*S,.12,2.2,1.8,door);label(locked?'A PROMISE WAITS':'NEXT ROOM →',866*S,2.7,353*S);
+ for(const e of s.extras||[]){const x=e.x*S,z=e.y*S,color=e.color||accent,m=mat(color,{emissive:color,emissiveIntensity:e.done?.2:.7});if(e.kind==='portal'){mesh(new THREE.TorusGeometry(.55,.09,8,30),m,x,1.05,z);box(x,0.08,z,1.3,.12,.7,wall);const glow=new THREE.PointLight(color,1.2,3,2);glow.position.set(x,1,z);room.add(glow);}else if(e.kind==='reward'){const chest=box(x,.7,z,.65,.45,.48,mat('#b49b62',{metalness:.45,roughness:.3}));mesh(new THREE.OctahedronGeometry(.2),m,x,1.16,z);moving.push({o:chest,type:'float',y:.7});}else{box(x,.35,z,.36,.7,.36,wall);const bell=mesh(new THREE.TorusGeometry(.21,.07,7,20),m,x,1,z);moving.push({o:bell,type:'spin'});}label(e.label,x,e.kind==='portal'?1.9:1.6,z,color);}
+ const locked=s.enemy||(r.expedition&&r.number===1&&!s.trailDone)||(r.puzzle&&!s.solved),door=mat(locked?'#aa5873':'#60ceb0',{emissive:locked?'#50273e':'#30765f',emissiveIntensity:.4});box(866*S,1.1,353*S,.12,2.2,1.8,door);label(locked?'A PROMISE WAITS':'NEXT ROOM →',866*S,2.7,353*S);
  if(s.chapter||s.room)label('← PREVIOUS',88*S,2,353*S,'#a2c6d0');
 }
 window.EchoesCave={render(s){try{
  if(!renderer){renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setSize(960,600);renderer.setPixelRatio(1);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;scene=new THREE.Scene();scene.background=new THREE.Color('#101a2c');scene.add(new THREE.HemisphereLight('#d7e8ff','#333044',2.3));camera=new THREE.PerspectiveCamera(64,1.6,.03,50);renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();window.EchoesCave.failed=true;});}
- const next=JSON.stringify([s.chapter,s.room,s.coin,s.enemy,s.solved,s.read,s.shop]);if(next!==key){rebuild(s);key=next;}
+ const next=JSON.stringify([s.meta.id,s.chapter,s.room,s.coin,s.enemy,s.solved,s.read,s.shop,s.extras,s.trailDone]);if(next!==key){rebuild(s);key=next;}
  camera.position.set(s.x*S,1.25,s.y*S);camera.lookAt(camera.position.x+Math.cos(s.heading),1.25,camera.position.z+Math.sin(s.heading));const t=performance.now()/1000;
- labels.forEach(o=>{const d=camera.position.distanceTo(o.position);o.visible=d>2.4&&d<17;});moving.forEach(({o,type,y,palette},i)=>{if(type==='spin')o.rotation.y=t*.7;else if(type==='float')o.position.y=y+Math.sin(t+i)*.08;else if(type==='pulse')o.scale.setScalar(1+Math.sin(t*2)*.06);else if(type==='spectrum')o.material.color.set(palette[Math.floor(t*2)%palette.length]);});renderer.render(scene,camera);return renderer.domElement;
+ updateScenery(moving,t);labels.forEach(o=>{const d=camera.position.distanceTo(o.position);o.visible=d>2.4&&d<17;});moving.forEach(({o,type,y,palette},i)=>{if(type==='spin')o.rotation.y=t*.7;else if(type==='float')o.position.y=y+Math.sin(t+i)*.08;else if(type==='pulse')o.scale.setScalar(1+Math.sin(t*2)*.06);else if(type==='spectrum')o.material.color.set(palette[Math.floor(t*2)%palette.length]);});renderer.render(scene,camera);return renderer.domElement;
  }catch(e){console.error('Cave renderer unavailable',e);window.EchoesCave.failed=true;return null;}}};
