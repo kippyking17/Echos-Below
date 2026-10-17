@@ -1,1 +1,5 @@
-2.3.1 uses local procedural pixel art, original chapter music and original Web Audio sound effects. Seven weapon/fist motion styles include pixel trails, crystal impact bursts, enemy falls, smoke and weapon finishers. No remote visual or audio assets are required. Graces, chapter scenery and character/boss designs remain. Pixel font/license are under fonts/.
+2.4.0 uses local procedural pixel art, original chapter music and original Web Audio sound effects. Seven weapon/fist motion styles include pixel trails, crystal impact bursts, enemy falls, smoke and weapon finishers. No remote visual or audio assets are required. Graces, chapter scenery and character/boss designs remain. Pixel font/license are under fonts/.
+
+World dodge uses a compact rotating character and translucent pixel trail. Healing motes are floating pink pixel hearts. Fist artwork remains half size. Dodge adds the forty-third original synthesized sound category.
+
+Version 2.5: brighter full-wing Angel Graces, expanding angel revival, 100 rebuilt late-chapter rooms with ten district floor treatments and new collision geometry. Final guardian voice uses device speech synthesis with original Web Audio undertones. 45 original sound categories.

@@ -1,0 +1,22 @@
+/* Permanent guardian gifts and one-time relic rolls, separate from the ten-slot pack. */
+(()=>{
+const rows=[
+ ['Gatekeeper’s Oath',{defense:2,hearts:4}],['Nurse’s Living Seed',{healing:4,hearts:2}],['Crown of Unbroken Glass',{damage:3,skill:1}],['Ferryman’s Return Ticket',{hearts:6,agility:1}],
+ ['Ashen Witness Seal',{skill:3,defense:1}],['The Unpaid Promise',{damage:2,defense:2}],['Heart of the Furnace',{damage:4,healing:2}],['The Unspent Hour',{skill:2,agility:2}],
+ ['Moonseed Reliquary',{healing:5,hearts:3}],['Custodian’s Pearl',{defense:3,hearts:4}],['The Answering Note',{skill:3,healing:3}],['Ticket to Morning',{agility:3,hearts:5}],
+ ['Shared Window Lantern',{damage:3,healing:4}],['Unpainted Star',{skill:4,damage:2}],['The Open Charter',{defense:4,hearts:6}],['The Patient Hearth',{healing:6,defense:2}],
+ ['A Name Chosen Again',{skill:4,hearts:7}],['Bridge of Promises',{damage:5,defense:3}],['The Empty Socket',{damage:6,hearts:8}],['Rainbow Relic of the Gods',{max:true}]
+];
+const relics=rows.map(([name,bonuses],chapter)=>({id:'guardian-'+chapter,chapter,name,bonuses,description:bonuses.max?'All permanent attributes reach their caps: 999 HP, attack, defense and healing; 30 Intelligence and maximum movement.':Object.entries(bonuses).map(([k,v])=>({hearts:'Maximum HP',skill:'Intelligence',agility:'Movement'}[k]||k[0].toUpperCase()+k.slice(1))+' +'+v+(k==='agility'?'%':'')).join(' · ')}));
+const ids=new Set(relics.map(r=>r.id));
+function gain(kind,id,c){const extra=kind==='mini'?2:1;return (id==='skill'?(c>=10?2:1):id==='agility'?3:['damage','hearts','healing'].includes(id)?2:1)+extra;}
+function maxed(g){return Array.isArray(g?.bossRelics)&&g.bossRelics.includes('guardian-19');}
+function bonus(g,id){if(maxed(g))return ({hearts:975,damage:999,defense:999,healing:999,skill:30,agility:30})[id]||0;let total=0;for(const [key,kind]of Object.entries(g?.victoryGifts||{}))total+=gain(kind,id,Number(key.split(':')[0]));for(const r of relics)if(g?.bossRelics?.includes(r.id))total+=r.bonuses[id]||0;return total;}
+function normalise(g){g.bossRelics=[...new Set(Array.isArray(g.bossRelics)?g.bossRelics.filter(id=>ids.has(id)):[])];const previous={};for(let c=0;c<20;c++)for(const r of[4,9]){const key=c+':'+r,kind=r===4?'mini':'boss';if(g.flags?.[key]&&g.victoryGifts?.[key]===kind)previous[key]=kind;}const before=g.rewardStatsVersion===1?bonus({...g,victoryGifts:previous},'hearts'):0,earned={};for(let c=0;c<20;c++)for(const room of[4,9]){const key=c+':'+room;if(['fight','mercy'].includes(g.flags?.[key]))earned[key]=room===4?'mini':'boss';}g.victoryGifts=earned;g.bossRelics=[...new Set(Array.isArray(g.bossRelics)?g.bossRelics.filter(id=>ids.has(id)):[])];const loot={};for(let c=0;c<20;c++)if(g.flags?.[c+':9'])loot[c]=g.bossLoot?.[c]===relics[c].id?relics[c].id:g.bossLoot?.[c]==='coins'?'coins':'legacy';g.bossLoot=loot;g.legacyRewards={swordOfLife:!!g.legacyRewards?.swordOfLife};if(g.flags?.['19:9']){if(!maxed(g))g.bossRelics.push('guardian-19');g.legacyRewards.swordOfLife=true;}g.rewardStatsVersion=1;const extra=Math.max(0,bonus(g,'hearts')-before);g.maxHp=maxed(g)?999:Math.min(999,g.maxHp+extra);g.hp=Math.min(g.maxHp,g.hp+extra);if(maxed(g)){g.level=999;g.gear.abilities=[0,1,2,3,4,5];}return g;}
+function coinReward(c,kind='boss'){return kind==='mini'?3+2*c:5+3*c;}
+function award(g,c,room,random=Math.random){const key=c+':'+room,kind=room===4?'mini':'boss';if(g.victoryGifts[key])return {coins:0,lines:[]};g.victoryGifts[key]=kind;g.rewardStatsVersion=1;const lines=['Guardian gift · Damage +'+gain(kind,'damage',c)+' · Hearts +'+gain(kind,'hearts',c)+' · Intelligence +'+gain(kind,'skill',c)+' · Defense +'+gain(kind,'defense',c)+' · Healing +'+gain(kind,'healing',c)+' · Movement +'+gain(kind,'agility',c)+'%'];let coins=coinReward(c,kind);
+ if(room===9){if(c===19){if(!maxed(g))g.bossRelics.push('guardian-19');g.bossLoot[c]=relics[c].id;g.legacyRewards.swordOfLife=true;if(g.gear)g.gear.abilities=[0,1,2,3,4,5];coins=0;lines.push('RAINBOW RELIC OF THE GODS · Your permanent attributes reach their maximum.','SWORD OF LIFE · A keepsake for the next adventure. It stays in this save and its exported backup.');}else if(random()<.2){g.bossRelics.push(relics[c].id);g.bossLoot[c]=relics[c].id;coins=0;lines.push('RELIC FOUND · '+relics[c].name,relics[c].description);}else g.bossLoot[c]='coins';}
+ return {coins,lines};
+}
+globalThis.EchoesBossRewards={relics,gain,coinReward,maxed,bonus,normalise,award};
+})();

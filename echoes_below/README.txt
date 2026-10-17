@@ -1,11 +1,11 @@
-ECHOES BELOW v2.3.1 — BUILD 20261017.07
+ECHOES BELOW — v2.5.0 / build 20261017.09
 
-20 chapters, 200 main rooms, 18 optional maps, 20 minibosses and 20 main bosses.
-Choose your character and click the title's ENTER button to begin. Every New Game starts fresh.
-Left click/tap to walk. Right click to swing. E collects nearby keys, coins, glowberries and equipment. I opens inventory. M opens the menu. Phone/tablet players use the landscape controls, Attack and Collect buttons. Full control settings and explanations are in the menu.
+PLAY: https://kippyking17.github.io/Echos-Below/
 
-Room 5: regular Grace and miniboss. Room 10: stronger Angel Grace and chapter boss. Rest to heal, save, choose one permanent gift from each grace and set your death return point. Green floating grace art stays small; the final chapter has larger rainbow graces and the largest final angel. Shops are in room 6 every third chapter. Late guardians demand stronger gear and grace upgrades.
+100 rebuilt rooms in chapters 11–20, new district architecture, chapter-scaled boss coins, brighter Graces and winged Angel Graces, the 55-coin automatic revival Totem, one-time guardian stat gifts and unique relics. The Last Echo has its own low, gentle, unsettling voice; change its volume in M > Sound.
 
-Keep the whole folder together and serve it with a web server. Upload the contents of this folder as the website root. Direct file opening does not provide cloud login or service workers. Existing login, local and cloud saves use the same configuration; old six-room saves migrate when loaded. The Windows launcher opens the live website and receives later published game versions without reinstalling.
+Godlike gear only newly appears from chapter 16 and costs 50–90 coins per piece. Weapon damage is reduced and gear rarities are scarcer. The final treasures are the Rainbow Relic of the Gods and Sword of Life keepsake; keep/export your finished save for a future adventure.
 
-CRYSTAL & STEEL: Every weapon and bare hands has its own swing, hit and finishing effects in the world and boss battles. Sound effects cover the adventure. Open M > Sound for separate music/effects volume, mute and preview; these settings stay saved.
+Click/tap to walk; RMB to attack; E to interact/read/collect/confirm; Space to dodge small roaming enemies; I inventory; M menu. Boss fights use heart movement and have no roll. Phones have touch controls. Roaming foes have a 25% chance to drop 10 HP. The How to Play menu explains upgrades and controls.
+
+Serve the entire game folder with a web server, or upload its contents as the site root. The Windows app opens the live game and receives later published versions. Existing accounts/saves are preserved; New Game resets journey progress. See BUILD_NOTES.md for details.

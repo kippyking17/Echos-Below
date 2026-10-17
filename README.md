@@ -1,11 +1,13 @@
 # Echoes Below
 
-[Play the game](https://kippyking17.github.io/Echos-Below/) — v2.3.1, build 20261017.07.
+[Play Echoes Below](https://kippyking17.github.io/Echos-Below/) — v2.5.0, build 20261017.09.
 
-A 2D pixel adventure about Mara, Wick and returning the city's stolen light. Twenty chapters, 200 main rooms, eighteen optional maps, twenty minibosses and twenty main bosses. Click/tap to walk, right click to attack, E to collect, I for inventory and M for the menu. Mobile has Attack and Collect buttons.
+100 rebuilt rooms in chapters 11–20, new district architecture, chapter-scaled boss coins, brighter Graces and winged Angel Graces, the 55-coin automatic revival Totem, one-time guardian stat gifts and unique relics. The Last Echo has its own low, gentle, unsettling voice; change its volume in M > Sound.
 
-Crystal & Steel gives every weapon and bare hands distinct swing, contact and finishing animations: ember sweeps, crystal cross-cuts, fire spirals, moonlight lunges, echo rings and rainbow cleaves. Original effects cover combat, movement, menus, pickups, graces, puzzles, equipment and more. Music and effects have independent saved volume/mute controls under Sound.
+Godlike gear only newly appears from chapter 16 and costs 50–90 coins per piece. Weapon damage is reduced and gear rarities are scarcer. The final treasures are the Rainbow Relic of the Gods and Sword of Life keepsake; keep/export your finished save for a future adventure.
 
-Regular Graces share room 5 with minibosses; stronger Angel Graces share room 10 with chapter bosses. The final chapter keeps larger rainbow versions. Gear and permanent upgrades matter against enemies that grow stronger by chapter. Shops, voiced Brindle, character choices, original chapter themes, peaceful routes, login/cloud saves and verified admin access remain. Old saves migrate when needed.
+Click/tap to walk; RMB to attack; E to interact/read/collect/confirm; Space to dodge small roaming enemies; I inventory; M menu. Boss fights use heart movement and have no roll. Phones have touch controls. Roaming foes have a 25% chance to drop 10 HP. The How to Play menu explains upgrades and controls.
 
-The deployable game is in echoes_below/. Pushes to main publish through GitHub Pages. See [build notes](echoes_below/BUILD_NOTES.md).
+Serve the entire game folder with a web server, or upload its contents as the site root. The Windows app opens the live game and receives later published versions. Existing accounts/saves are preserved; New Game resets journey progress. See BUILD_NOTES.md for details.
+
+Deployment source: echoes_below/. [Detailed release notes](echoes_below/BUILD_NOTES.md).

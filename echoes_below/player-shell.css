@@ -181,3 +181,5 @@ body.touch-mode:not(.admin-mode) .app{padding-left:calc(var(--touch-rail) + env(
 .touch-collect[hidden]{display:none!important}.touch-collect{color:#efd896!important;border-color:#c6b780 #675e42 #675e42 #c6b780!important}
 
 .audio-slider{display:grid;grid-template-columns:150px minmax(80px,1fr) 48px;align-items:center;gap:12px;margin:18px 0;color:#cfddcd;font:16px "Echoes Pixel",monospace}.audio-slider input{width:100%;accent-color:#9bd8b1;cursor:pointer}.audio-slider output{text-align:right;color:#e7d499}@media(max-width:600px){.audio-slider{grid-template-columns:110px minmax(60px,1fr) 40px;font-size:14px;gap:8px}}
+
+.touch-dodge[hidden]{display:none!important}.touch-dodge{color:#b9e6e0!important}.touch-dodge:disabled{opacity:.45}
