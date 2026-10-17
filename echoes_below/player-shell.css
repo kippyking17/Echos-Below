@@ -159,3 +159,16 @@ body.touch-mode #mainMenuDialog{max-height:88dvh}
 .touch-stick-label{display:block;text-align:center;font:13px 'Echoes Pixel',monospace;color:#a1c0ca;margin-top:8px;pointer-events:none}
 body.touch-mode:not(.admin-mode) .app{padding-left:calc(var(--touch-rail) + env(safe-area-inset-left,0px));padding-right:calc(var(--touch-rail) + env(safe-area-inset-right,0px))}
 .touch-pad{left:calc(8px + env(safe-area-inset-left,0px))}.touch-actions{right:calc(9px + env(safe-area-inset-right,0px))}body.touch-mode #menuButton{right:calc(9px + env(safe-area-inset-right,0px));top:calc(9px + env(safe-area-inset-top,0px))}
+
+/* The title's physical ENTER button follows the canvas letterbox on every screen. */
+#titleEnter[hidden]{display:none!important}
+#titleEnter{position:fixed;z-index:24;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:3px;padding:calc(8px * var(--enter-scale,1)) calc(19px * var(--enter-scale,1));border:0;border-left:calc(3px * var(--enter-scale,1)) solid #e4d097;border-right:calc(3px * var(--enter-scale,1)) solid #7b9b9d;border-radius:0;background:#15313c;box-shadow:inset 0 calc(2px * var(--enter-scale,1)) #9db6ac,inset 0 calc(-3px * var(--enter-scale,1)) #375c6a;color:#e4eedb;font-family:'Echoes Pixel',monospace;cursor:pointer;transform-origin:50% 50%;transition:background .15s;image-rendering:pixelated;touch-action:manipulation}
+#titleEnter:hover{background:#244955;outline:2px solid #dac68f;outline-offset:3px}
+#titleEnter:disabled{cursor:default;outline:none}
+.title-enter-word{font-size:.76em;color:#f1d99d;letter-spacing:.15em}.title-enter-sub{font-size:1em;width:100%;display:flex;justify-content:space-between;gap:2em}
+
+.grace-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.grace-grid section{margin:0;padding:14px;border:2px solid #426579;background:#0c1d29}.grace-grid button{width:100%;margin:0!important}.grace-grid h3{margin-top:0}#graceStats{padding:10px;border-left:3px solid #e3c78b;color:#b9dbcf}@media(max-width:600px){.grace-grid{grid-template-columns:1fr}}
+
+.grace-grid>section:only-child{grid-column:1/-1}
+#graceDialog{padding:20px}#graceDialog h2{margin:0 0 8px;font-size:24px}#graceIntro{margin:6px 0;line-height:1.4;font-size:12px}#graceStats{margin:8px 0;padding:8px;font-size:12px;line-height:1.4}.grace-grid{gap:8px}.grace-grid section{padding:12px;border-radius:0}.grace-grid h3{margin:0 0 4px;font-size:14px}.grace-grid p{margin:4px 0 8px;font-size:12px;line-height:1.4}.grace-grid button{min-height:40px;padding:8px}#closeGrace{margin:10px 0 0}
+@media(orientation:landscape) and (max-height:500px){#graceDialog{padding:10px;max-height:96dvh}#graceDialog h2{font-size:19px;margin-bottom:4px}#graceIntro{font-size:11px;margin:4px 0;line-height:1.25}#graceStats{font-size:10px;margin:5px 0;padding:5px;line-height:1.2}.grace-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.grace-grid section{padding:4px}.grace-grid h3{font-size:11px;line-height:1.1;margin-bottom:2px}.grace-grid p{display:none}.grace-grid button{min-height:40px;padding:5px;font-size:12px}#closeGrace{min-height:32px;padding:5px 12px;margin-top:5px}}

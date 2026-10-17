@@ -1,25 +1,19 @@
-# Echoes Below
+# Echoes Below — 2.0.0: Gifts of Grace
 
 Play: https://kippyking17.github.io/Echos-Below/
 
-Version 1.8.0 expands the twenty-chapter journey with six optional regions and eighteen new maps, unique challenges and six equippable relics. Discover the side entrance in room 2 of chapters 1, 4, 7, 10, 13 and 16. Explore waterfalls, glowing gardens, foundry machinery, an observatory, lantern bridges and an aurora vault.
+An original pixel RPG about Mara, Wick and the borrowed light: twenty chapters, 120 campaign rooms, six optional regions with eighteen more maps, twenty guardians and six minibosses. Every chapter has its own crystal color; the final crystal combines them all.
 
-M opens the menu, H offers a hint, J opens the journal, and V switches between overhead and first-person views. Relics & discoveries lets you equip one relic or revisit a trail. Existing saves and cloud-login configuration are preserved.
+2D exploration uses click/tap-to-walk with routes around scenery and automatic interaction with marked objects. 3D uses desktop WASD or the mobile drag joystick. In mobile battles, move the heart with the joystick or hold and drag in its arena. Phone/tablet play uses landscape.
 
-The normal player game fills the window. The original dashboard is reserved for the verified KingKippy administrator. Runtime files are in echoes_below; GitHub Actions deploys that folder to Pages. See echoes_below/BUILD_NOTES.md for release details.
+The visible ENTER button starts the title: a rising chime, button growth, fade to black, then fade into your journey. Keyboard confirmation and background clicks do not start it. The traveler has directional walking, idle motion and a flickering lantern. Twenty boss skins and six miniboss skins match their names in the world, battles and 3D.
 
-The standalone Windows launcher is in launcher/EchoesBelow-AutoUpdate.exe. It opens the current live game and enables automatic game updates; no game folder is needed to play. Creator uploads start disabled. Old-version deployments are blocked by the release-validation step.
+Graces are six rooms apart, in the first room of each chapter. None appear in boss rooms or the room immediately before a boss. Each heals, saves and offers one permanent gift for that chapter: Damage +2, Hearts +2 maximum HP, Skill +1 (chapters 1–10) or +2 (11–20), Defense +1, Glowberry Healing +2, or Movement +3% (maximum 30%). Repeat visits can heal/save but cannot grant another gift. Skill upgrades strengthen learned abilities.
 
-The 1.5 interface refresh adds crystal-themed menus, a cinematic cave title screen, compact HUD, matching dialogue and battle controls, readable shop/relic cards and mobile layouts. Launcher 2.1 uses the same palette.
+Seven passages use named keys from the previous room. Clues point to reachable keys, locks stay open, and older saves that already passed a gate remain usable. Every story mechanism contains the labels used by its controls. Shortcut instructions are in How to Play and Controls, with gameplay prompts reserved for the story and nearby objects.
 
+The player game fills the window. The original dashboard remains exclusive to the verified KingKippy administrator. Existing login configuration, save slots, cloud saves, equipment, optional discoveries and endings are preserved. New Game starts from chapter 1 with fresh gifts and equipment.
 
-Version 1.6 adds a full 2D pixel-art pass: textured cave floors, themed raised scenery, a lantern-carrying traveler, matching world objects and subtle ambient animation. Switch between 2D and 3D with V.
+The standalone Windows launcher is in launcher/EchoesBelow-AutoUpdate.exe. It opens the current live game and receives game updates automatically; no local game folder is needed to play. Creator publishing starts disabled. The release workflow blocks old-version downgrades.
 
-
-Version 1.6.1 adds pixel-font menus and popups with square frames and eight-by-eight icons. New Game has a separate fresh-start slot picker; it always begins at chapter 1, room 1. Save & Load continues existing progress.
-
-Version 1.7 adds phase-based guardian fights, six named minibosses and warning-marked projectile waves. Minibosses appear in room 3 of chapters 2, 5, 8, 11, 14 and 17. ACT/MERCY and FIGHT both remain valid. Victories save the encounter result.
-
-Phone/tablet play: open the same site sideways. In 2D, tap the floor to walk or tap a marked object to use it. In 3D and battle dodging, drag the left joystick; release to stop. Interact, Hint and Pause are on the right. M > Mobile / tablet offers touch settings and landscape fullscreen. Portrait mode shows a rotation prompt.
-
-Version 1.8: 2D exploration uses click/tap-to-walk on PC, phone and tablet, with routes around obstacles and a pixel destination marker. WASD moves in 3D; battle dodging retains direct controls.
+Runtime files are in echoes_below. GitHub Actions deploys that folder to Pages. See echoes_below/BUILD_NOTES.md for controls and validation details.

@@ -28,9 +28,9 @@ function draw(ctx,s){
  backdrop(ctx,s);const t=s.time;
  if(t<8000){const fade=Math.min(1,t/1200,(8000-t)/1200);ctx.save();ctx.globalAlpha=fade;text(ctx,'ECHOES BELOW',480,228,56,'#fff0d5');text(ctx,'THE BORROWED LIGHT',480,276,27,'#c8d7ef');text(ctx,'Twenty colors. One shared dawn.',480,340,20,'#d3edee');text(ctx,'A game by KingKippy',480,384,18,'#fff0bc');ctx.restore();}
  else{const offset=(t-8000)/1000*48;ctx.save();ctx.beginPath();ctx.rect(28,64,904,464);ctx.clip();rows(s).forEach(([label,size,color],i)=>{const y=H+70+i*42-offset;if(y>50&&y<550){ctx.globalAlpha=Math.min(1,(y-50)/45,(550-y)/45);text(ctx,label,480,y,size,color||'#e9edfa');}});ctx.restore();ctx.globalAlpha=1;}
- text(ctx,'ENTER — FINISH CREDITS     P — PAUSE',480,576,14,'#a5b7cf');
+ text(ctx,'THANK YOU FOR WALKING WITH US',480,576,14,'#a5b7cf');
 }
 function summary(ctx,s){backdrop(ctx,s,true);text(ctx,'THE DOOR IS OPEN',480,119,42,'#fff1ca');text(ctx,'Every color belongs in the light.',480,160,21,'#d3e5ff');text(ctx,'Mara is home. Wick has a holiday.',480,210,20,'#d7eaf1');
- text(ctx,s.game.mercy+' SPARED    '+s.game.fight+' DEFEATED',480,424,20,'#e7efff');text(ctx,'Your completed journey is saved.',480,461,17,'#b4d6d1');text(ctx,'ENTER — MAIN MENU     R — REPLAY CREDITS',480,535,18,'#ffdf9a');}
+ text(ctx,s.game.mercy+' SPARED    '+s.game.fight+' DEFEATED',480,424,20,'#e7efff');text(ctx,'Your completed journey is saved.',480,461,17,'#b4d6d1');text(ctx,'Return to the title',480,535,18,'#ffdf9a');}
 globalThis.EchoesCredits={draw,summary,duration,prism};
 })();

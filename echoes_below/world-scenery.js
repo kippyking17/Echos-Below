@@ -44,7 +44,7 @@ export function addScenery({T,room,mesh,box,mat,moving,meta:r}){
   mesh(new T.IcosahedronGeometry(.4,1),mat('#ffe7ac',{emissive:'#d9b878',emissiveIntensity:.7}),12,3.9,7.6);
  }
  if(['lanterns','skywalk','market'].includes(theme)){
-  for(let i=0;i<12;i++){const x=3.5+i*1.55,z=7.4+Math.sin(i*.8)*3,y=2.4+(i%3)*.32;box(x,y+.6,z,.015,1.1,.015,steel);const lantern=mesh(new T.OctahedronGeometry(.16+(i%2)*.04),mat(i%3?'#ffe2a6':'#ffd0a6',{emissive:'#ffd092',emissiveIntensity:.8}),x,y,z);moving.push({o:lantern,type:'float',y});}
+  for(let i=0;i<12;i++){const x=3.5+i*1.55,z=7.4+Math.sin(i*.8)*3,y=2.4+(i%3)*.32;box(x,y+.6,z,.015,1.1,.015,steel);const lantern=mesh(new T.OctahedronGeometry(.16+(i%2)*.04),mat(i%3?'#ffe2a6':'#ffd0a6',{emissive:'#ffd092',emissiveIntensity:.8}),x,y,z);moving.push({o:lantern,type:'float',y,flicker:true});}
   if(theme==='skywalk'){for(let i=0;i<6;i++){const arc=mesh(new T.TorusGeometry(3.4,.045,5,36,Math.PI),soft,4+i*3.1,2.7,7.8);arc.rotation.y=Math.PI/2;}for(let i=0;i<30;i++){const star=mesh(new T.SphereGeometry(.018,4,3),soft,2+random()*20,5+random()*2,3+random()*9);moving.push({o:star,type:'float',y:star.position.y});}}
  }
  if(['winter','aurora'].includes(theme)){
