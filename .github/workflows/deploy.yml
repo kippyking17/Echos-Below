@@ -1,4 +1,3 @@
-
 name: Deploy Echoes Below
 
 on:
@@ -8,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -24,6 +24,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Prevent old publishers from downgrading the game
+        run: node .github/scripts/validate-release.cjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
