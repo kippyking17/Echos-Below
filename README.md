@@ -2,7 +2,7 @@
 
 Play: https://kippyking17.github.io/Echos-Below/
 
-Version 1.7.0 expands the twenty-chapter journey with six optional regions and eighteen new maps, unique challenges and six equippable relics. Discover the side entrance in room 2 of chapters 1, 4, 7, 10, 13 and 16. Explore waterfalls, glowing gardens, foundry machinery, an observatory, lantern bridges and an aurora vault.
+Version 1.8.0 expands the twenty-chapter journey with six optional regions and eighteen new maps, unique challenges and six equippable relics. Discover the side entrance in room 2 of chapters 1, 4, 7, 10, 13 and 16. Explore waterfalls, glowing gardens, foundry machinery, an observatory, lantern bridges and an aurora vault.
 
 M opens the menu, H offers a hint, J opens the journal, and V switches between overhead and first-person views. Relics & discoveries lets you equip one relic or revisit a trail. Existing saves and cloud-login configuration are preserved.
 
@@ -20,4 +20,6 @@ Version 1.6.1 adds pixel-font menus and popups with square frames and eight-by-e
 
 Version 1.7 adds phase-based guardian fights, six named minibosses and warning-marked projectile waves. Minibosses appear in room 3 of chapters 2, 5, 8, 11, 14 and 17. ACT/MERCY and FIGHT both remain valid. Victories save the encounter result.
 
-Phone/tablet play: open the same site sideways. Drag the left joystick to move and dodge; release to stop. Interact, Hint and Pause are on the right. M > Mobile / tablet offers touch settings and landscape fullscreen. Portrait mode shows a rotation prompt.
+Phone/tablet play: open the same site sideways. In 2D, tap the floor to walk or tap a marked object to use it. In 3D and battle dodging, drag the left joystick; release to stop. Interact, Hint and Pause are on the right. M > Mobile / tablet offers touch settings and landscape fullscreen. Portrait mode shows a rotation prompt.
+
+Version 1.8: 2D exploration uses click/tap-to-walk on PC, phone and tablet, with routes around obstacles and a pixel destination marker. WASD moves in 3D; battle dodging retains direct controls.

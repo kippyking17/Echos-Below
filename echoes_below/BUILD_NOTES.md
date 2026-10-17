@@ -1,4 +1,4 @@
-# Echoes Below 1.7.0 — The borrowed light
+# Echoes Below 1.8.0 — The borrowed light
 
 Mara disappears while repairing the town’s sunlamp. Follow her lantern courier Wick through twenty districts, discover the cost of the light, and build a way home that does not require another sacrifice.
 
@@ -12,7 +12,7 @@ Abilities: Mend heals 10 HP; Lantern Ward blocks a hit; Kindred Voice adds one A
 
 Existing format-4 saves gain empty equipment defaults. Read memories, solved mechanisms, purchased equipment and currency are included in new checkpoint snapshots. Old saves retain their chapter, choices, coins and inventory; a player embedded in the new layout moves to the room entrance. Existing Supabase configuration and authentication logic are preserved. No database migration is required.
 
-Controls: WASD/arrows move, Enter/Z interact, V switches views, Shift sprints, H hints, J journal, C save, P pause. In 3D, W/S walks, A/D strafes and left/right arrows or the mouse turn horizontally. Clicking the view requests mouse capture; Escape releases it.
+Controls: click/tap walks in 2D; WASD/arrows move in 3D and battle dodging, Enter/Z interact, V switches views, Shift sprints, H hints, J journal, C save, P pause. In 3D, W/S walks, A/D strafes and left/right arrows or the mouse turn horizontally. Clicking the view requests mouse capture; Escape releases it.
 
 Publish using the Windows app: select the folder containing this index.html and choose Publish update, or replace the contents of the game folder beside the app before enabling automatic publishing. The app places files in echoes_below, which the existing GitHub Pages workflow deploys. Keep the newer game files selected so a later publish does not restore an old bundle. The public game address is https://kippyking17.github.io/Echos-Below/ .
 
@@ -130,3 +130,12 @@ Six minibosses replace the ordinary encounter in room 3 of chapters 2, 5, 8, 11,
 M > Mobile / tablet enables touch play or returns to automatic device detection. Phones and tablets automatically get a landscape interface. Drag the left thumbstick to move or dodge; displacement controls speed, and releasing stops movement. Input supports diagonal movement and pointer capture. Interact, Hint and Pause sit on the right; 3D also offers camera-turn buttons. Touch rails keep thumbs outside the play area. Portrait mode presents a rotation prompt with menu access. Fullscreen requests a landscape lock where supported; browsers that refuse it require the player to rotate the device. Touch input releases when a menu, app blur or portrait mode interrupts play. Normal keyboard and mouse controls remain available.
 
 Validation: gameplay exercised all twenty bosses and all six minis using both force and peaceful endings, reward values, phase changes, clear flags, eight-plus opening patterns and all twelve attack families. Pattern tests verified warning delays, finite trajectories and edge-only spawns. Phone/tablet browser checks covered analog drag speed, release-to-stop, rotation guidance, menus, touch interaction, battlefield buttons and rendering warnings. Existing campaign, shops, equipment, saves, credits and return-path checks remain covered. Physical device/browser orientation policies vary; layout tests used browser device emulation.
+
+
+## 1.8.0 — Walk toward the light
+
+On every platform, 2D exploration uses click/tap-to-walk. Paths use the traveler’s collision radius and route around scenery. A small pixel marker shows the destination. Clicking a marked object walks to it and interacts; clicking a doorway travels forward or back. A new click replaces the destination. Menus, dialogue, pauses, room/view changes, loading and loss of window focus cancel the route. Movement keys do not steer 2D exploration.
+
+3D retains desktop WASD and mobile analog drag movement. Battle dodging retains direct keyboard/joystick control. The mobile joystick is hidden in 2D exploration. Existing save formats, accounts, authentication and cloud settings are unchanged. Build 20261017.01.
+
+Validation: collision-safe paths and return paths to 1,002 targets across all 138 maps; desktop and phone browser checks for actual click/tap arrival, blocked 2D keyboard movement, new destinations, automatic object interaction, chapter backtracking, menu cancellation, 3D keyboard/joystick and battle control. Existing story, puzzle, shop, gear, optional trail, boss, save and credits checks pass.
