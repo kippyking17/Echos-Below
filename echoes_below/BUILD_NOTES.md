@@ -1,4 +1,4 @@
-# Echoes Below 1.5.0 — The borrowed light
+# Echoes Below 1.5.1 — The borrowed light
 
 Mara disappears while repairing the town’s sunlamp. Follow her lantern courier Wick through twenty districts, discover the cost of the light, and build a way home that does not require another sacrifice.
 
@@ -92,3 +92,9 @@ The game HUD uses compact location and health panels. Dialogue, hints, notificat
 Windows launcher 2.1 uses the matching dark stone, crystal and lantern palette. Its automatic game update and protected creator upload logic are unchanged. Existing launcher 2.0 users receive the game interface online; downloading 2.1 updates the Windows window itself.
 
 Validation: checked styled title, dialogue, battle, save, shop and relic screens in Edge. Verified mouse start/battle action, primary menu focus, arrows, key remapping, fullscreen, game pause under menus and no horizontal overflow in mobile shop/save/controls/account/relic screens. Existing gameplay, legacy saves, 18 optional maps, rewards, combat, credits and verified-admin isolation checks pass.
+
+## Return paths — 1.5.1
+
+Every campaign room after the first has a visible return doorway in both views. Walk into its west threshold or press Enter/Z near it; M > Previous room offers the same action while exploring. Chapter 2 room 1 returns to chapter 1 room 6, and the same applies at every later chapter boundary. The first room of the whole story cannot go below chapter 1. Optional trails use the same return action for earlier maps and their story entrance. The camera direction stays consistent while walking across the boundary. Existing choices, cleared guardians, solved puzzles, inventory and journal discoveries stay intact. Revisiting a chapter no longer repeats its entrance gift or opening dialogue.
+
+Validation: walking tests crossed all 119 campaign connections backward, tested the start boundary, door interaction, 3D backward movement, save-state preservation, trail return and repeated chapter visits. Browser checks exercised the Previous room menu and actual 3D movement back and forth across a chapter boundary.

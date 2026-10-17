@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071018"><link rel="icon" href="./icon.svg"><link rel="manifest" href="./manifest.webmanifest">
-<title>Echoes Below — v1.5.0</title>
+<title>Echoes Below — v1.5.1</title>
 <style>
 :root{color-scheme:dark;--bg:#0b0b16;--panel:#1a182b;--edge:#655c85;--text:#f5f0ff;--accent:#d8bcff;--mint:#a4f7d2}*{box-sizing:border-box}
 body{background:radial-gradient(ellipse at top,#26213b,#0b0b16 70%);font-family:Consolas,'Courier New',monospace;color:var(--text);margin:0;min-height:100vh;padding:12px 12px 35px}
@@ -14,7 +14,7 @@ dialog{width:min(720px,94vw);max-height:85vh;overflow:auto;background:#171d30;co
 <link rel="stylesheet" href="./player-shell.css">
 </head>
 <body>
-<div id="usernameBadge">GUEST · not logged in</div><div id="versionBadge">ECHOES BELOW · v1.5.0</div>
+<div id="usernameBadge">GUEST · not logged in</div><div id="versionBadge">ECHOES BELOW · v1.5.1</div>
 <div class="app">
   <div class="top"><b>✦ ECHOES BELOW: THE LONG DESCENT</b><div><span id="connectivity">Checking...</span> · <span id="toast" role="status"></span></div></div>
   <canvas id="game" width="960" height="600" tabindex="0" aria-label="Echoes Below keyboard RPG"></canvas>
@@ -46,7 +46,7 @@ dialog{width:min(720px,94vw);max-height:85vh;overflow:auto;background:#171d30;co
     <div class="inputs"><label>Chapter <select id="adminChapter"></select></label><label>Room <select id="adminRoom"></select></label><button id="teleportBtn">Teleport</button></div>
     <p class="small">Only the verified KingKippy account can use these controls. There is no guest or local bypass. Test changes affect your own progress only.</p>
   </section>
-  <div class="footer">© Echoes Below — Original fantasy RPG prototype · Build v1.5.0 · Online-ready / Offline-playable</div>
+  <div class="footer">© Echoes Below — Original fantasy RPG prototype · Build v1.5.1 · Online-ready / Offline-playable</div>
 </div>
 <script src="./story.js"></script>
 <script src="./expeditions.js"></script>
@@ -54,7 +54,7 @@ dialog{width:min(720px,94vw);max-height:85vh;overflow:auto;background:#171d30;co
 <script type="module" src="./cave-world.js"></script>
 <script>
 (()=>{'use strict';
-const VERSION='1.5.0',LEGACY='echoesBelowLongDescent_v2',SAVE_PREFIX='echoesBelowV4_slot_',BIND_KEY='echoesBelowV4_controls',SET_KEY='echoesBelowV4_lastSlot';
+const VERSION='1.5.1',LEGACY='echoesBelowLongDescent_v2',SAVE_PREFIX='echoesBelowV4_slot_',BIND_KEY='echoesBelowV4_controls',SET_KEY='echoesBelowV4_lastSlot';
 const memoryStorage=new Map();
 const storage=(()=>{try{const t=window.localStorage;t.getItem('__echo_test__');return t}catch{return{getItem:k=>memoryStorage.has(k)?memoryStorage.get(k):null,setItem:(k,v)=>memoryStorage.set(k,String(v)),removeItem:k=>memoryStorage.delete(k)}}})();
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;
@@ -103,6 +103,7 @@ function renderMainMenu(page='home'){
   menuAction('Account & cloud','Sign in or continue as a guest',()=>renderMainMenu('account'));
   menuAction('Relics & discoveries','Optional trails and equipment bonuses',()=>renderMainMenu('relics'));
   if(game?.expedition)menuAction('Return to story','Keep discoveries and leave this trail',()=>{closeMainMenu();returnFromExpedition();});
+  if(screen==='world'&&canGoBack())menuAction('Previous room',backExitLabel()+' · keep your discoveries',()=>{closeMainMenu();moveBack();});
   menuAction('Progress','Objective, equipment and choices',()=>renderMainMenu('progress'));
   menuAction('How to play','Movement, encounters and checkpoints',()=>renderMainMenu('help'));
   if(game?.ended)menuAction('Replay credits','The colors you carried home',()=>{closeMainMenu();beginCredits();});
@@ -223,8 +224,11 @@ function openJournal(){if(!game||modalOpen())return;const host=by('journalConten
 function closeModal(id){by(id).close();held.clear();pressed.clear();focusGame();}
 function openPuzzle(){screen='world';if(puzzleSolved())return;const ch=chapterData(),r=roomData();puzzleStep=0;by('puzzleTitle').textContent=r.landmark;by('puzzleClue').textContent=r.text;by('puzzleProgress').textContent='Choose the three steps in order. A mistake resets the sequence without costing HP.';const host=by('puzzleChoices');host.replaceChildren();const order=[2,0,1];for(const i of order){const b=document.createElement('button');b.textContent=ch.order[i];b.onclick=()=>{if(i!==puzzleStep){puzzleStep=0;by('puzzleProgress').textContent='The mechanism settles back. Read the clue and begin again; no progress or health was lost.';return;}puzzleStep++;by('puzzleProgress').textContent=ch.order.slice(0,puzzleStep).join(' → ')+(puzzleStep<3?' → …':'');if(puzzleStep===3){game.read['puzzle:'+roomKey()]=true;closeModal('puzzleDialog');updateStoryUI();say(['The mechanism answers. '+ch.order.join(' → ')+'.','A light runs along the floor to the east exit. Wick marks the repaired circuit in your journal.']);}};host.append(b);}held.clear();pressed.clear();document.exitPointerLock?.();by('puzzleDialog').showModal();}
 function enterRoomNarrative(chapterStart=false){game.read['seen:'+roomKey()]=true;ensurePosition();updateStoryUI();if(chapterStart)say(['CHAPTER '+(game.chapter+1)+' · '+chapterTitle(),chapterData().intro]);else announce(roomData().name+' — '+objective());}
+function canGoBack(){return !!game&&(!!game.expedition||game.chapter>0||game.room>0);}
+function backExitLabel(){if(!canGoBack())return '';if(game.expedition)return game.expedition.room===0?'RETURN TO STORY':'PREVIOUS MAP';return game.room===0?'CHAPTER '+game.chapter:'PREVIOUS ROOM';}
+function moveBack(){if(!canGoBack())return false;if(game.expedition){if(game.expedition.room===0){returnFromExpedition();return true;}game.expedition.room--;}else if(game.room>0)game.room--;else{game.chapter--;game.room=5;}game.x=820;game.y=353;screen='world';enterRoomNarrative();return true;}
 function tryLeave(){if(game?.expedition){advanceExpedition();return;}if(roomData().puzzle&&!puzzleSolved()){game.x=Math.min(game.x,835);say(['The east exit is waiting for '+roomData().landmark.toLowerCase()+'.','Read its clue nearby. H gives a nudge, directions, then the exact sequence.']);return;}if(isEncounter()&&!isCleared()){enterBattle();return;}moveRoom();}
-function proximity(){if(!game)return '';const targets=[...optionalTargets().map(t=>({p:t,name:t.label})),...(hasShop()?[{p:roomData().shop,name:'Wick’s trading post'}]:[]),{p:loreSpot(),name:roomData().landmark},...(hasCrystal()?[{p:crystalSpot(),name:'Checkpoint · heal and save'}]:[]),...(hasCoin()?[{p:coinSpot(),name:'Rare coin'}]:[])];targets.sort((a,b)=>Math.hypot(game.x-a.p.x,game.y-a.p.y)-Math.hypot(game.x-b.p.x,game.y-b.p.y));return Math.hypot(game.x-targets[0].p.x,game.y-targets[0].p.y)<80?keyName(bindings.confirm)+' / ENTER · '+targets[0].name:canLeave()?'EAST EXIT → · H HINT · J JOURNAL':'H HINT · J JOURNAL';}
+function proximity(){if(!game)return '';if(canGoBack()&&game.x<140&&Math.abs(game.y-353)<65)return keyName(bindings.confirm)+' / ENTER · ← '+backExitLabel();const targets=[...optionalTargets().map(t=>({p:t,name:t.label})),...(hasShop()?[{p:roomData().shop,name:'Wick’s trading post'}]:[]),{p:loreSpot(),name:roomData().landmark},...(hasCrystal()?[{p:crystalSpot(),name:'Checkpoint · heal and save'}]:[]),...(hasCoin()?[{p:coinSpot(),name:'Rare coin'}]:[])];targets.sort((a,b)=>Math.hypot(game.x-a.p.x,game.y-a.p.y)-Math.hypot(game.x-b.p.x,game.y-b.p.y));return Math.hypot(game.x-targets[0].p.x,game.y-targets[0].p.y)<80?keyName(bindings.confirm)+' / ENTER · '+targets[0].name:canLeave()?'EAST EXIT → · H HINT · J JOURNAL':'H HINT · J JOURNAL';}
 
 function caveMap(x,y){return x<73||x>880||y<115||y>495||roomObstacles().some(o=>x>o.x&&x<o.x+o.w&&y>o.y&&y<o.y+o.h)}
 function hasCrystal(){if(game?.expedition)return game.expedition.room!==1;return game && (game.room===0 || game.room===4 || coinRooms.has(globalRoom()))}
@@ -236,7 +240,7 @@ function hasCoin(){return game&&!game.expedition&&coinRooms.has(globalRoom())&&!
 
 function canWalk(x,y){return !caveMap(x-11,y-11)&&!caveMap(x+11,y-11)&&!caveMap(x-11,y+11)&&!caveMap(x+11,y+11)}
 function render3D(){
- const meta=roomData(),state={x:game.x,y:game.y,heading,chapter:game.chapter,room:game.room,obstacles:roomObstacles(),crystal:hasCrystal(),lore:true,coin:hasCoin(),enemy:isEncounter()&&!isCleared(),boss:isBoss(),meta,extras:optionalTargets(),trailDone:trailComplete(),shop:hasShop(),enemyName:isBoss()?chapterData().boss:enemyNames[game.chapter],solved:puzzleSolved(),read:!!game.read['story:'+roomKey()]};
+ const meta=roomData(),state={x:game.x,y:game.y,heading,chapter:game.chapter,room:game.room,obstacles:roomObstacles(),crystal:hasCrystal(),lore:true,coin:hasCoin(),enemy:isEncounter()&&!isCleared(),boss:isBoss(),meta,backLabel:backExitLabel(),extras:optionalTargets(),trailDone:trailComplete(),shop:hasShop(),enemyName:isBoss()?chapterData().boss:enemyNames[game.chapter],solved:puzzleSolved(),read:!!game.read['story:'+roomKey()]};
  const image=window.EchoesCave&&!window.EchoesCave.failed?window.EchoesCave.render(state):null;
  if(image){ctx.drawImage(image,0,0,W,H);drawRoomHud();return;}renderFallback();drawRoomHud();
 }
@@ -318,7 +322,7 @@ function continueGame(){if(game){screen=game.ended?'ending':'world';endingTime=0
 function refreshSlots(){let parent=by('slots');parent.innerHTML='';for(let s=1;s<=3;s++){let row=document.createElement('div');row.className='inputs';row.style.margin='6px 0';let label=document.createElement('span');label.className='small';label.style.minWidth='0';let raw=storage.getItem(slotKey(s));let existing=null;try{if(raw)existing=normalise(JSON.parse(raw)).data}catch{}label.textContent=existing?'Slot '+s+': Chapter '+(existing.chapter+1)+' / Room '+(existing.room+1)+' · HP '+existing.hp+'/'+existing.maxHp:'Slot '+s+': empty';row.append(label);
 for(const [name,fn] of [['New',()=>startNew(s)],['Load',()=>{load(s);by('savePanel').classList.add('hidden');focusGame()}],['Save here',()=>{if(game){slot=s;save()}else announce('Start a game first')}],['Delete',()=>{if(existing&&confirm('Delete Slot '+s+' permanently?')){storage.removeItem(slotKey(s));refreshSlots()}}]]){let b=document.createElement('button');b.textContent=name;b.disabled=(!existing&&name==='Load')||(!existing&&name==='Delete');b.onclick=fn;row.append(b)}parent.append(row)}}
 function updateStats(){updateStoryUI();if(!game){by('stats').textContent='No game loaded';by('progress').textContent='';return}let mins=Math.floor(game.seconds/60),h=Math.floor(mins/60),m=mins%60;by('stats').textContent='Slot '+slot+' · Chapter '+(game.chapter+1)+'/20 · Room '+(game.room+1)+'/6 · HP '+game.hp+'/'+game.maxHp+' · LV '+game.level+' · Glowberries '+game.items+' · '+h+'h '+String(m).padStart(2,'0')+'m played';by('progress').textContent='Choices: '+game.mercy+' spared / '+game.fight+' defeated · '+Object.keys(game.flags).length+' encounters completed · Weapon: '+(weaponNames[game.gear.weapon-1]||'Travel stick')+' · Armor: '+(armorNames[game.gear.armor-1]||'Traveler’s clothes')+' · Abilities: '+(game.gear.abilities.map(id=>abilities[id].name).join(', ')||'none yet')}
-function saveExport(){if(!game){announce('Start a game before exporting');return}let obj={...clone(game),build:VERSION,exportedAt:new Date().toISOString()};let url=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));let a=document.createElement('a');a.href=url;a.download=`echoes-below-slot-${slot}-v1.5.0.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);announce('Save exported')}
+function saveExport(){if(!game){announce('Start a game before exporting');return}let obj={...clone(game),build:VERSION,exportedAt:new Date().toISOString()};let url=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));let a=document.createElement('a');a.href=url;a.download=`echoes-below-slot-${slot}-v1.5.1.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);announce('Save exported')}
 async function saveImport(e){let f=e.target.files?.[0];if(!f)return;try{let {data}=normalise(JSON.parse(await f.text()));if(game&&!confirm('Replace your current Slot '+slot+' with imported data?'))return;game=data;ensurePosition();screen='world';paused=false;save();announce('Import successful — Slot '+slot)}catch(err){announce('Import failed: '+err.message)}finally{e.target.value=''}}
 function chapterTitle(){return expeditionRegion()?.title||chapterNames[game?.chapter||0]}
 const roomKey=()=>game.expedition?'exp:'+game.expedition.id+':'+game.expedition.room:game.chapter+':'+game.room;const isEncounter=()=>game&&!game.expedition&&(game.room===2||game.room===5);const isCleared=()=>!!game.flags[roomKey()];const isBoss=()=>!game.expedition&&game.room===5;
@@ -335,12 +339,12 @@ game.checkpoint={chapter:game.chapter,room:game.room,x:game.x,y:game.y,hp:game.h
 save(true);announce(preBoss?'Pre-boss checkpoint saved!':'Coin room checkpoint saved!');
 }
 function moveRoom(){if(!game)return;if(game.expedition){advanceExpedition();return;}game.room++;game.x=110;game.y=353;heading=0;
- if(game.room>5){game.room=0;game.chapter++;game.items+=2;game.hp=game.maxHp;
+ if(game.room>5){game.room=0;game.chapter++;const firstVisit=!game.read['seen:'+game.chapter+':0'];if(firstVisit){game.items+=2;game.hp=game.maxHp;}
   if(game.chapter>=20){game.chapter=19;game.room=5;game.ended=true;game.ending=game.fight===0?'You open the door with Mara and Wick. Every guardian has a voice in the new city. The light is smaller now, but nobody has to vanish to keep it burning.':game.mercy>=game.fight?'Mara comes home. The town hears the rescued voices and the names of those who fell. You cannot repair every loss, but the new light leaves nobody inside the machine.':'You bring Mara home through the silence left by your battles. The consuming engine is broken. Rebuilding trust will take longer than rebuilding its wires. Wick keeps the names you could not bring back.';screen='ending';endingTime=0;updateStoryUI();save(true);return;}
-  autoCheckpointAtMilestone();enterRoomNarrative(true);return;
+  autoCheckpointAtMilestone();enterRoomNarrative(firstVisit);return;
  }autoCheckpointAtMilestone();enterRoomNarrative();
 }
-function tryInteract(){if(!game)return;const {x,y}=game,p=loreSpot(),cp=crystalSpot(),coin=coinSpot();
+function tryInteract(){if(!game)return;const {x,y}=game,p=loreSpot(),cp=crystalSpot(),coin=coinSpot();if(canGoBack()&&x<140&&Math.abs(y-353)<65){moveBack();return;}
  const choices=[...optionalTargets().map(t=>({distance:Math.hypot(x-t.x,y-t.y),kind:t.kind,target:t})),...(hasShop()?[{distance:Math.hypot(x-roomData().shop.x,y-roomData().shop.y),kind:'shop'}]:[]),{distance:Math.hypot(x-p.x,y-p.y),kind:'story'},...(hasCrystal()?[{distance:Math.hypot(x-cp.x,y-cp.y),kind:'save'}]:[]),...(hasCoin()?[{distance:Math.hypot(x-coin.x,y-coin.y),kind:'coin'}]:[])].sort((a,b)=>a.distance-b.distance);
  if(choices[0].distance<80){const choice=choices[0].kind;if(choice==='portal'){enterExpedition(trailEntrance().id);return;}if(choice==='node'){touchTrailNode(choices[0].target.id);return;}if(choice==='reward'){claimTrailReward();return;}
   if(choice==='shop'){openShop();return;}
@@ -387,7 +391,7 @@ dy=Number(held.has(bindings.down)||held.has('KeyS')||held.has('ArrowDown'))-Numb
 let diagonal=Math.hypot(dx,dy)||1;dx/=diagonal;dy/=diagonal;
 let vx=(Math.cos(heading)*(-dy)+Math.cos(heading+Math.PI/2)*dx)*speed,vy=(Math.sin(heading)*(-dy)+Math.sin(heading+Math.PI/2)*dx)*speed;
 if(canWalk(game.x+vx,game.y))game.x+=vx;if(canWalk(game.x,game.y+vy))game.y+=vy;
-}else{let nx=Math.max(75,Math.min(867,game.x+dx/len*speed)),ny=Math.max(125,Math.min(493,game.y+dy/len*speed));if(canWalk(nx,game.y))game.x=nx;if(canWalk(game.x,ny))game.y=ny}if(game.x>850&&Math.abs(game.y-353)<76){tryLeave()}if(screen==='world'&&game.x<94&&Math.abs(game.y-353)<75&&!(game.chapter===0&&game.room===0)){if(game.expedition){if(game.expedition.room>0){game.expedition.room--;game.x=820;game.y=353;enterRoomNarrative();}else returnFromExpedition();}else{game.room--;if(game.room<0){game.chapter--;game.room=5}game.x=820;game.y=353;enterRoomNarrative();}}}
+}else{let nx=Math.max(75,Math.min(867,game.x+dx/len*speed)),ny=Math.max(125,Math.min(493,game.y+dy/len*speed));if(canWalk(nx,game.y))game.x=nx;if(canWalk(game.x,ny))game.y=ny}if(game.x>850&&Math.abs(game.y-353)<76){tryLeave()}if(screen==='world'&&game.x<100&&Math.abs(game.y-353)<75)moveBack();}
 if(screen==='dodge'){
  battleTime+=dt;invTime=Math.max(0,invTime-dt);
  let dx=Number(keyDown('right'))-Number(keyDown('left')),dy=Number(keyDown('down'))-Number(keyDown('up'));
@@ -440,7 +444,7 @@ function world(){const rd=roomData(),colors=rd.palette;
  if(hasShop()){const p=roomData().shop;rect(p.x-29,p.y-19,58,38,'#78603f');txt('SHOP',p.x,p.y+5,'#ffe6a1',17,'center');txt('Wick’s trading post',p.x,p.y+38,'#ffe6a1',12,'center');}
  if(hasCoin()){const p=coinSpot();txt('◆',p.x,p.y+8,'#ffe28c',26,'center');}
  rect(852,304,27,95,canLeave()?'#4bbaa1':'#98516b');txt(canLeave()?'→':'◇',866,360,'#fff',24,'center');
- if(game.chapter||game.room){rect(76,320,8,65,'#7c9ca6');txt('←',95,311,'#b9d2da',16,'center');}
+ if(canGoBack()){rect(76,304,24,95,'#588e9c');txt('←',88,360,'#e5f6ed',24,'center');txt(backExitLabel(),106,298,'#a7cdd2',11);}
  if(isEncounter()&&!isCleared()){txt(isBoss()?'♜':'!',730,363,colors[2],43,'center');txt(isBoss()?chapterData().boss:enemyNames[game.chapter],730,396,'#f0c4d8',13,'center');}
  for(const t of optionalTargets()){ctx.strokeStyle=t.color;ctx.lineWidth=2;ctx.beginPath();ctx.arc(t.x,t.y,t.kind==='portal'?22:15,0,Math.PI*2);ctx.stroke();txt(t.kind==='portal'?'↗':t.kind==='reward'?'◆':t.done?'✓':'✦',t.x,t.y+7,t.color,22,'center');txt(t.label,t.x,Math.min(517,t.y+35),t.color,12,'center');}
  heart(game.x,game.y,7);drawRoomHud();
@@ -525,7 +529,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')&&!maybeLoc
 // Authentication shares this private scope with the player/admin view gate.
 const info=s=>by('cloudMessage').textContent=s;
 let client=null,user=null,authorized=false;
-async function init(){let config;try{const r=await fetch('./cloud-config.json?version=1.5.0',{cache:'no-store'});if(r.ok)config=await r.json();else throw Error('cloud-config.json not found ('+r.status+')')}catch(e){info('Login setup error: '+e.message+'. Upload cloud-config.json with the website.');return}
+async function init(){let config;try{const r=await fetch('./cloud-config.json?version=1.5.1',{cache:'no-store'});if(r.ok)config=await r.json();else throw Error('cloud-config.json not found ('+r.status+')')}catch(e){info('Login setup error: '+e.message+'. Upload cloud-config.json with the website.');return}
 if(!config?.supabaseUrl||!config?.supabaseAnonKey){info('LOGIN NOT CONNECTED: add your Supabase Project URL and publishable/anon key to cloud-config.json, then redeploy the website. Guest saves still work.');return}
 try{const sdk=await import('https://esm.sh/@supabase/supabase-js@2');client=sdk.createClient(config.supabaseUrl,config.supabaseAnonKey);const {data:{session}}=await client.auth.getSession();await updateUser(session?.user||null);client.auth.onAuthStateChange((_evt,session)=>{setTimeout(()=>updateUser(session?.user||null),0)});info(user?'Signed in. Your cloud saves are ready.':'Sign in to keep cloud saves across devices, or keep playing as a guest.')}catch(e){info('Login connection failed: '+(e?.message||String(e))+'. Check Supabase URL, publishable key and internet access.')}
 }
