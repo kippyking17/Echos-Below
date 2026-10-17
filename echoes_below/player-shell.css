@@ -1,0 +1,40 @@
+/* The player surface fills the window. The original dashboard is an admin view. */
+html{background:#000;min-height:100%}
+body:not(.admin-mode){margin:0;padding:0;width:100%;height:100dvh;overflow:hidden;background:#000}
+body:not(.admin-mode) .app{position:fixed;inset:0;width:100%;height:100%;margin:0}
+body:not(.admin-mode) .app> :not(#game):not(dialog):not(#menuButton){display:none!important}
+body:not(.admin-mode) #usernameBadge,body:not(.admin-mode) #versionBadge{display:none!important}
+body:not(.admin-mode) #game{width:100%;height:100%;max-width:none;max-height:none;border:0;outline:0;aspect-ratio:auto;object-fit:contain;background:#000}
+body:not(.admin-mode) #game:fullscreen{object-fit:contain;background:#000}
+#menuButton{position:fixed;right:18px;top:14px;z-index:20;padding:8px 13px;border:1px solid #b5c9d555;border-radius:4px;background:#090d14c4;color:#e4ebf2;font-size:12px;letter-spacing:1px;opacity:.65}
+#menuButton:hover,#menuButton:focus-visible{opacity:1;outline:1px solid #fff}
+body.admin-mode #menuButton{position:absolute;top:50px;right:12px}
+#mainMenuDialog{width:min(810px,94vw);max-height:88dvh;padding:24px;background:#080d15f5;border:1px solid #8398a8;border-radius:5px;box-shadow:0 18px 100px #000a;color:#edf3f7;line-height:1.5}
+#mainMenuDialog::backdrop{background:#000b;backdrop-filter:blur(5px)}
+.menu-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+.menu-heading h2{font-size:23px;color:#edf3f7;margin:0;letter-spacing:2px}
+.menu-heading p{font-size:12px;color:#8fabbc;margin:5px 0 0}
+#mainMenuDialog button{background:#111c27;border:1px solid #435d70;color:#f1f6fa;border-radius:3px;box-shadow:none}
+#mainMenuDialog button:hover,#mainMenuDialog button:focus-visible{background:#23394a;border-color:#accbdc;outline:1px solid #b1cddd}
+#mainMenuDialog .primary-menu-action{border-color:#8ecbb7;background:#153028}
+#menuChoices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#menuChoices button{text-align:left;padding:15px 13px;min-height:68px;margin:0}
+#menuChoices button strong{display:block;font-size:14px;font-weight:400}
+#menuChoices button small{display:block;margin-top:7px;color:#9bb4c3;font-size:11px}
+#menuContent{min-height:48px}
+#menuContent .shell-panel{display:block!important;margin:0;padding:0;border:0;background:transparent}
+#menuContent h2{color:#edf3f7}
+#menuContent h3{color:#bdd4e0}
+#menuContent p{color:#bdd0dc}
+#menuContent .menu-detail{border-left:2px solid #82bca7;margin:16px 0;padding-left:14px}
+#menuContent .menu-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+#menuContent .menu-actions button{margin:0}
+#menuFooter{font-size:11px;color:#7793a6;border-top:1px solid #263642;margin:20px 0 0;padding-top:12px}
+.chapter-menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.chapter-menu-grid p{padding:9px;margin:0;border:1px solid #263642;font-size:12px}
+.chapter-menu-grid p.current{border-color:#98c9b8;color:#d5f8e8!important}
+body:not(.admin-mode) dialog:not(#mainMenuDialog){background:#0d1520;border-radius:5px;border-color:#809aaa}
+body:not(.admin-mode) dialog button{background:#142431;border-color:#567185}
+@media(max-width:600px){#mainMenuDialog{padding:17px}#menuChoices{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}#menuChoices button{padding:11px;min-height:60px}.menu-heading h2{font-size:18px}.chapter-menu-grid{grid-template-columns:1fr}#menuButton{top:8px;right:8px}}
+
+body:not(.admin-mode) .admin-account-help{display:none}body.admin-mode .player-account-help{display:none}

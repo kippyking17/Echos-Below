@@ -3,24 +3,33 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0c0b1a"><link rel="manifest" href="./manifest.webmanifest">
-<title>Echoes Below — v1.0.1</title>
+<title>Echoes Below — v1.3.0</title>
 <style>
 :root{color-scheme:dark;--bg:#0b0b16;--panel:#1a182b;--edge:#655c85;--text:#f5f0ff;--accent:#d8bcff;--mint:#a4f7d2}*{box-sizing:border-box}
 body{background:radial-gradient(ellipse at top,#26213b,#0b0b16 70%);font-family:Consolas,'Courier New',monospace;color:var(--text);margin:0;min-height:100vh;padding:12px 12px 35px}
-#usernameBadge{position:fixed;top:8px;right:9px;z-index:201;background:#19182de9;color:#bfffe5;border:1px solid #629b89;border-radius:7px;padding:7px 12px;font-weight:bold;font-size:14px}#versionBadge{position:fixed;top:8px;left:9px;z-index:200;background:#201a36ee;color:#dbbaff;border:1px solid #aa88d6;border-radius:7px;padding:7px 11px;font-weight:900;font-size:15px;box-shadow:0 0 12px #0a071b}
+#usernameBadge{position:absolute;top:8px;right:9px;z-index:201;background:#19182de9;color:#bfffe5;border:1px solid #629b89;border-radius:7px;padding:7px 12px;font-weight:bold;font-size:14px}#versionBadge{position:absolute;top:8px;left:9px;z-index:200;background:#201a36ee;color:#dbbaff;border:1px solid #aa88d6;border-radius:7px;padding:7px 11px;font-weight:900;font-size:15px;box-shadow:0 0 12px #0a071b}
 .app{width:min(1030px,100%);margin:25px auto 0}.top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center;padding:8px 0;color:#cec2e4}.top b{letter-spacing:2px;font-size:17px}.subdued{color:#b4adca}#toast{color:#b1f6d2;min-height:21px;font-size:13px;text-align:right}canvas{display:block;width:100%;height:auto;aspect-ratio:16/10;background:#090810;border:3px solid #9f86c5;image-rendering:pixelated;touch-action:none}button{font:inherit;background:#312849;border:1px solid #8e7db7;padding:9px 13px;border-radius:5px;color:#fff;cursor:pointer}button:hover,button:focus-visible{background:#554470;outline:2px solid #dcc2ff}button:disabled{cursor:not-allowed;opacity:.45}.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:12px}.bar .left,.bar .right{display:flex;flex-wrap:wrap;gap:7px}.small{font-size:13px;line-height:1.6;color:#bdb4d1}section{background:#171426;border:1px solid var(--edge);padding:13px;border-radius:8px;margin:12px 0}h2{font-size:17px;color:#e0c7ff;margin:0 0 12px}h3{font-size:15px;margin:10px 0;color:#e0c7ff}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{display:inline-flex;gap:6px;align-items:center;margin:5px 5px 5px 0}input,select{font:inherit;color:white;background:#252139;border:1px solid #78698e;padding:8px;border-radius:4px;max-width:100%}#keybindGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:6px}#keybindGrid button{margin-left:auto;font-size:12px;min-width:95px}.bindrow{display:flex;align-items:center;border-bottom:1px solid #423950;padding:4px;gap:5px}.bindrow span{flex:1;font-size:13px}.hidden{display:none!important}.notice{border-left:3px solid #a2dbbc;padding-left:9px;color:#b5eacb}#adminPanel{border-color:#c59e66}#adminPanel h2{color:#ffdba3}.inputs{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.controls{margin:5px 0 0}.hint{color:#b7aacb}#accountStatus{font-size:13px;color:#d1b5f1}.footer{margin:20px 0;text-align:center;color:#958aa8;font-size:12px}@media(max-width:720px){.two{grid-template-columns:1fr}body{padding:8px 5px}.app{margin-top:33px}.top b{font-size:14px}.bar{justify-content:center}}
+dialog{width:min(720px,94vw);max-height:85vh;overflow:auto;background:#171d30;color:#f1edff;border:1px solid #82bfc7;border-radius:12px;padding:24px;line-height:1.65}dialog::backdrop{background:#030611c9}dialog h2{font-size:22px}dialog button{margin:5px}.quest{border-color:#406b78;background:#111d2c}.quest h2{margin-bottom:5px}.quest p{margin:5px 0}.quest .hint{color:#bce6d9}.journal-memory{border-left:2px solid #76a4b8;padding:8px 14px;margin:12px 0}.journal-memory h3{margin:0}.story-actions{display:flex;flex-wrap:wrap;gap:6px}.quest-location{color:#93b6d0;font-size:13px}#hintText{min-height:1.6em}
 </style>
+<link rel="stylesheet" href="./player-shell.css">
 </head>
 <body>
-<div id="usernameBadge">GUEST · not logged in</div><div id="versionBadge">ECHOES BELOW · v1.0.1</div>
+<div id="usernameBadge">GUEST · not logged in</div><div id="versionBadge">ECHOES BELOW · v1.3.0</div>
 <div class="app">
   <div class="top"><b>✦ ECHOES BELOW: THE LONG DESCENT</b><div><span id="connectivity">Checking...</span> · <span id="toast" role="status"></span></div></div>
   <canvas id="game" width="960" height="600" tabindex="0" aria-label="Echoes Below keyboard RPG"></canvas>
+  <button id="menuButton" type="button" aria-label="Open main menu">M · MENU</button>
+  <dialog id="mainMenuDialog" aria-labelledby="menuTitle"><header class="menu-heading"><div><h2 id="menuTitle">MAIN MENU</h2><p id="menuSubtitle">ECHOES BELOW</p></div><button id="menuBack" type="button">Close</button></header><div id="menuChoices"></div><div id="menuContent"></div><p id="menuFooter"></p></dialog>
   <div class="bar">
-    <div class="left"><button id="newBtn">New game</button><button id="continueBtn">Continue</button><button id="pauseBtn">Pause</button><button id="mapBtn">Map</button><button id="settingsBtn">Keybind settings</button><button id="viewBtn">Switch to 3D</button><button id="fullscreenBtn">Fullscreen</button><button id="musicBtn">Music: On</button></div>
+    <div class="left"><button id="newBtn">New game</button><button id="continueBtn">Continue</button><button id="creditsBtn" class="hidden">Replay credits</button><button id="pauseBtn">Pause</button><button id="mapBtn">Map</button><button id="settingsBtn">Keybind settings</button><button id="viewBtn">Switch to 3D</button><button id="fullscreenBtn">Fullscreen</button><button id="musicBtn">Music: On</button></div>
     <div class="right"><button id="saveBtn">Manual save</button><button id="loadBtn">Load save</button><button id="exportBtn">Export</button><button id="importBtn">Import</button><input id="importFile" type="file" accept=".json,application/json" hidden></div>
   </div>
-  <p class="small controls">Default controls: V = 2D/3D · Shift = sprint · 3D: mouse or ← → = look, A/D = strafe · WASD / arrows = move · Z / Enter / Space = confirm · X / Escape = back · C = manual save · P = pause · M = map · K = settings · F2 = admin panel (KingKippy only). Keys can be changed below.</p>
+  <p class="small controls">Default controls: H = hint · J = journal · V = 2D/3D · Shift = sprint · 3D: mouse or ← → = look, A/D = strafe · WASD / arrows = move · Z / Enter / Space = confirm · X / Escape = back · C = manual save · P = pause · M = main menu · G = map · K = settings · F2 = admin panel (KingKippy only). Keys can be changed below.</p>
+  <section class="quest" aria-label="Story and guidance"><div class="quest-location" id="roomLocation">A lantern has come home without its owner.</div><h2 id="questTitle">Find Mara. Return the stolen light.</h2><p id="questObjective">Start a new game, or continue your existing save.</p><p id="hintText" class="hint" role="status">Ask for a hint whenever you need one.</p><div class="story-actions"><button id="hintBtn">Hint (H)</button><button id="journalBtn">Journal (J)</button></div></section>
+  <dialog id="shopDialog" aria-labelledby="shopTitle"><h2 id="shopTitle">Wick’s trading post</h2><p id="shopIntro"></p><div id="shopStock"></div><button id="closeShop">Back to the journey</button></dialog>
+  <dialog id="skillDialog" aria-labelledby="skillTitle"><h2 id="skillTitle">Lantern abilities</h2><p>Use one ability per encounter. Abilities are ready again in the next battle.</p><div id="skillChoices"></div><button id="closeSkill">Back to battle</button></dialog>
+  <dialog id="journalDialog" aria-labelledby="journalTitle"><h2 id="journalTitle">The lantern journal</h2><div id="journalContent"></div><button id="closeJournal">Back to the journey</button></dialog>
+  <dialog id="puzzleDialog" aria-labelledby="puzzleTitle"><h2 id="puzzleTitle"></h2><p id="puzzleClue"></p><p id="puzzleProgress" role="status"></p><div id="puzzleChoices"></div><button id="closePuzzle">Leave for now</button></dialog>
   <section id="savePanel" class="hidden"><h2>LOCAL SAVE SLOTS</h2><div id="slots"></div><div class="small">Saved games stay in this browser. Export a backup before clearing browser data. Cloud saves are optional and separate.</div></section>
   <section id="settingsPanel" class="hidden"><h2>KEYBIND SETTINGS</h2><p class="small">Click a key, then press the replacement key. Escape cancels remapping. All controls use the physical keyboard, and arrow keys work by default.</p><div id="keybindGrid"></div><p><button id="resetBinds">Reset default keybinds</button><button id="closeSettings">Close settings</button></p></section>
   <div class="two">
@@ -28,7 +37,7 @@ body{background:radial-gradient(ellipse at top,#26213b,#0b0b16 70%);font-family:
       <p id="cloudMessage" class="small notice">Guest mode is ready. Optional online account setup is not configured yet.</p>
       <div id="authFields"><label>Username <input id="username" type="text" autocomplete="username" maxlength="20" placeholder="3–20 letters/numbers/_"></label><label>Password <input id="password" type="password" autocomplete="current-password" placeholder="6+ characters"></label><div><button id="signupBtn">Create account</button> <button id="loginBtn">Log in</button></div></div>
       <div id="authActions" class="hidden"><button id="logoutBtn">Log out</button><button id="cloudSaveBtn">Upload cloud save</button><button id="cloudLoadBtn">Download cloud save</button></div>
-      <p class="small">Username accounts require the site owner to configure Supabase and disable email confirmation. Username-only accounts cannot recover passwords by email. No account is needed to play or save locally, even offline.</p>
+      <p class="player-account-help small">Sign in to use cloud saves across devices. Guest saves stay in this browser.</p><p class="admin-account-help small">Username accounts require the site owner to configure Supabase and disable email confirmation. Username-only accounts cannot recover passwords by email. No account is needed to play or save locally, even offline.</p>
     </section>
     <section><h2>GAME STATUS</h2><div id="stats" class="small">Start a game to see your progress.</div><div id="progress" class="small"></div><p class="small">Explore, encounter enemies, use ACT or MERCY, and return to the crystal checkpoints. This is a growing prototype, not yet a complete 20-hour campaign.</p></section>
   </div>
@@ -37,62 +46,164 @@ body{background:radial-gradient(ellipse at top,#26213b,#0b0b16 70%);font-family:
     <div class="inputs"><label>Chapter <select id="adminChapter"></select></label><label>Room <select id="adminRoom"></select></label><button id="teleportBtn">Teleport</button></div>
     <p class="small">Only the verified KingKippy account can use these controls. There is no guest or local bypass. Test changes affect your own progress only.</p>
   </section>
-  <div class="footer">© Echoes Below — Original fantasy RPG prototype · Build v1.0.1 · Online-ready / Offline-playable</div>
+  <div class="footer">© Echoes Below — Original fantasy RPG prototype · Build v1.3.0 · Online-ready / Offline-playable</div>
 </div>
-<script type="module" src="./cave3d.js"></script>
+<script src="./story.js"></script>
+<script src="./credits.js"></script>
+<script type="module" src="./cave-world.js"></script>
 <script>
 (()=>{'use strict';
-const VERSION='1.0.1',LEGACY='echoesBelowLongDescent_v2',SAVE_PREFIX='echoesBelowV4_slot_',BIND_KEY='echoesBelowV4_controls',SET_KEY='echoesBelowV4_lastSlot';
+const VERSION='1.3.0',LEGACY='echoesBelowLongDescent_v2',SAVE_PREFIX='echoesBelowV4_slot_',BIND_KEY='echoesBelowV4_controls',SET_KEY='echoesBelowV4_lastSlot';
 const memoryStorage=new Map();
 const storage=(()=>{try{const t=window.localStorage;t.getItem('__echo_test__');return t}catch{return{getItem:k=>memoryStorage.has(k)?memoryStorage.get(k):null,setItem:(k,v)=>memoryStorage.set(k,String(v)),removeItem:k=>memoryStorage.delete(k)}}})();
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;
 const by=id=>document.getElementById(id);const W=960,H=600;
-const chapterNames=['The Forgotten Gate','Mosslight Corridors','The Glass Orchard','The Silent River','A Library of Ash','The Hollow Market','Ember Tunnels','Clockwork Chapel','The Starless Garden','Beneath the Lake','The Choir of Stone','Dreaming Station','A Thousand Lanterns','The Lost Observatory','The Rusted Palace','Winter in the Deep','The Broken Archive','The Last Crossing','The Heart of Echoes','The Door Above'];
-const enemyNames=['Whisper','Mothling','Pebblekin','Lantern Shade','Hollow Knight','Paper Wisp','Driftling','Mirror Sprite'];
-const bossNames=['The Gatekeeper','The Orchard Queen','The Ferryman','The Archivist','The Clock Saint'];
-const defaults={up:'KeyW',down:'KeyS',left:'KeyA',right:'KeyD',confirm:'KeyZ',back:'KeyX',save:'KeyC',pause:'KeyP',map:'KeyM',settings:'KeyK',view:'KeyV',sprint:'ShiftLeft'};
+const campaign=window.EchoesStory.chapters;
+const chapterNames=campaign.map(c=>c.title);
+const enemyNames=['Toll Warden','Thorn Sprout','Harvest Attendant','River Guard','Paper Sentinel','Shopkeeper’s Shadow','Coal Tender','Minute Keeper','Thorn Mender','Pressure Spirit','Cracked Soloist','Ticket Guard','Moth Guide','Star Sentinel','Saluting Armor','Hearth Guard','Ink Witness','Bridge Rearguard','Heart Regulator','Town Sentinel'];
+const bossNames=campaign.map(c=>c.boss);
+const defaults={up:'KeyW',down:'KeyS',left:'KeyA',right:'KeyD',confirm:'KeyZ',back:'KeyX',save:'KeyC',pause:'KeyP',map:'KeyG',menu:'KeyM',settings:'KeyK',view:'KeyV',sprint:'ShiftLeft',hint:'KeyH',journal:'KeyJ'};
 let bindings={...defaults};try{let b=JSON.parse(storage.getItem(BIND_KEY)||'null');if(b&&typeof b==='object')for(let a in defaults)if(typeof b[a]==='string'&&b[a].length<50)bindings[a]=b[a]}catch{}
+if(bindings.map===bindings.menu)bindings.map='KeyG';
 let slot=1,game=null,screen='title',previousScreen='world',dialog=[],afterDialog=null,menu=0,battle=null,bullets=[],battleTime=0,invTime=0,elapsed=0,paused=false,hotMessage='',hotTimer=0,remap=null;
 let held=new Set(),pressed=new Set(),pendingKey=null,developerAuthorized=false,onlineAdmin=false;
+let endingTime=0,creditsTime=0;
 let view3D=false,heading=0,musicEnabled=true,audioCtx=null,musicClock=0,musicStep=0;
-const melodies={roam:[0,3,7,10,7,3,2,5,7,12,10,5,0,3,7,5],boss:[0,0,7,6,0,10,7,6,3,3,10,7,5,3,2,0]};
+const melodies={credits:[0,7,12,10,7,5,3,7,12,15,14,10,7,5,3,0],roam:[0,3,7,10,7,3,2,5,7,12,10,5,0,3,7,5],boss:[0,0,7,6,0,10,7,6,3,3,10,7,5,3,2,0]};
 function tone(freq,duration,volume=.045){if(!audioCtx||!musicEnabled)return;let now=audioCtx.currentTime,o=audioCtx.createOscillator(),gain=audioCtx.createGain();o.type='triangle';o.frequency.value=freq;gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(volume,now+.018);gain.gain.exponentialRampToValueAtTime(.0001,now+duration);o.connect(gain);gain.connect(audioCtx.destination);o.start(now);o.stop(now+duration+.02)}
 function enableAudio(){if(!musicEnabled)return;try{audioCtx??=new (window.AudioContext||window.webkitAudioContext)();audioCtx.resume()}catch{}}
-function musicTick(dt){if(!musicEnabled||!audioCtx||audioCtx.state!=='running')return;musicClock-=dt;if(musicClock>0)return;let fighting=['battle','dodge'].includes(screen),notes=fighting?melodies.boss:melodies.roam,beat=fighting?190:340,n=notes[musicStep++%notes.length];tone(164.81*Math.pow(2,n/12),beat/1000*.85,fighting?.055:.035);if(musicStep%4===0)tone(82.41*Math.pow(2,(fighting?0:5)/12),beat/1000*2,.022);musicClock=beat}
-function roomStyle(){const id=(game?.chapter||0)*6+(game?.room||0);return id%8}
-function roomObstacles(){let k=roomStyle(),a=[];const add=(x,y,w,h)=>a.push({x,y,w,h});
-if(k===0){add(322,130,55,110);add(575,400,65,85)}
-if(k===1){add(250,188,95,45);add(520,300,55,90);add(700,160,90,48)}
-if(k===2){add(320,420,85,60);add(430,148,70,90);add(615,420,60,65)}
-if(k===3){add(288,147,60,150);add(590,150,65,130);add(430,405,100,62)}
-if(k===4){add(310,220,72,56);add(480,325,85,65);add(700,410,80,45)}
-if(k===5){add(260,395,95,70);add(455,135,78,73);add(680,195,70,100)}
-if(k===6){add(260,150,80,60);add(360,410,100,55);add(630,335,60,75)}
-if(k===7){add(325,215,75,100);add(575,160,80,72);add(600,400,90,65)}
-return a}
+function musicTick(dt){if(!musicEnabled||!audioCtx||audioCtx.state!=='running')return;musicClock-=dt;if(musicClock>0)return;let fighting=['battle','dodge'].includes(screen),closing=['ending','credits','creditsEnd'].includes(screen),notes=fighting?melodies.boss:closing?melodies.credits:melodies.roam,beat=fighting?190:closing?440:340,n=notes[musicStep++%notes.length];tone(164.81*Math.pow(2,n/12),beat/1000*.85,fighting?.055:.035);if(musicStep%4===0)tone(82.41*Math.pow(2,(fighting?0:5)/12),beat/1000*2,.022);musicClock=beat}
+// Player menus live in the same private scope as gameplay and verified auth.
+let shellPage='home',movedPanels=[],hintTimer=0,hintOverlay='',immersiveWanted=true;
+try{immersiveWanted=storage.getItem('echoesBelow_fullscreen')!=='off'}catch{}
+function releaseControls(){held.clear();pressed.clear();if(document.pointerLockElement===canvas)document.exitPointerLock?.();}
+function requestImmersive(){if(!immersiveWanted||document.fullscreenElement||!document.documentElement?.requestFullscreen)return;try{Promise.resolve(document.documentElement.requestFullscreen()).catch(()=>{})}catch{}}
+function restoreMenuPanels(){for(const item of movedPanels){if(item.next&&item.next.parentNode===item.parent)item.parent.insertBefore(item.panel,item.next);else item.parent.append(item.panel);item.panel.classList.remove('shell-panel');item.panel.classList.toggle('hidden',item.hidden);}movedPanels=[];}
+function moveMenuPanel(id){const panel=by(id);movedPanels.push({panel,parent:panel.parentNode,next:panel.nextSibling,hidden:panel.classList.contains('hidden')});panel.classList.remove('hidden');panel.classList.add('shell-panel');by('menuContent').append(panel);}
+function closeMainMenu(){if(by('mainMenuDialog').open)by('mainMenuDialog').close();restoreMenuPanels();remap=null;releaseControls();focusGame();}
+function menuAction(label,detail,fn,primary=false){const button=document.createElement('button'),title=document.createElement('strong'),sub=document.createElement('small');title.textContent=label;sub.textContent=detail;button.append(title,sub);if(primary)button.classList.add('primary-menu-action');button.onclick=fn;by('menuChoices').append(button);return button;}
+function detailText(text,className=''){const p=document.createElement('p');p.textContent=text;if(className)p.className=className;by('menuContent').append(p);return p;}
+function actionButton(label,fn){const b=document.createElement('button');b.textContent=label;b.onclick=fn;by('menuContent').append(b);return b;}
+function renderMainMenu(page='home'){
+ restoreMenuPanels();shellPage=page;by('menuChoices').replaceChildren();by('menuContent').replaceChildren();by('menuBack').textContent=page==='home'?'Close':'Back';
+ const headings={home:'MAIN MENU',saves:'SAVE & LOAD',map:'DESCENT MAP',controls:'CONTROLS & KEYBINDS',display:'DISPLAY',sound:'SOUND',account:'ACCOUNT & CLOUD SAVES',progress:'YOUR JOURNEY',help:'HOW TO PLAY'};
+ by('menuTitle').textContent=headings[page]||'MAIN MENU';by('menuSubtitle').textContent=game?'Chapter '+(game.chapter+1)+' · '+roomData().name:'ECHOES BELOW · THE BORROWED LIGHT';
+ by('menuFooter').textContent=keyName(bindings.menu)+' / ESC · close menu    TAB / ARROWS · choose    ENTER · select    v'+VERSION;
+ if(page==='home'){
+  menuAction(game?'Resume':'Start game','Return to the lantern',()=>{closeMainMenu();requestImmersive();enableAudio();paused=false;if(!game)continueGame();},true);
+  menuAction('New game','Choose an empty slot or replace a save',()=>{renderMainMenu('saves');});
+  menuAction('Save & load',keyName(bindings.save)+' · slots, backups and imports',()=>renderMainMenu('saves'));
+  menuAction('Map',keyName(bindings.map)+' · the twenty districts',()=>renderMainMenu('map'));
+  menuAction('Journal',keyName(bindings.journal)+' · memories you found',()=>{if(!game){renderMainMenu('progress');detailText('Your journal starts when you read a marked object.');return;}closeMainMenu();openJournal();});
+  menuAction('Hints',keyName(bindings.hint)+' · a nudge, directions, then a solution',()=>{closeMainMenu();showHint();});
+  menuAction('Controls & keybinds',keyName(bindings.settings)+' · every action can be viewed here',()=>renderMainMenu('controls'));
+  menuAction('Display',keyName(bindings.view)+' · 2D / 3D and fullscreen',()=>renderMainMenu('display'));
+  menuAction('Sound','Music preference',()=>renderMainMenu('sound'));
+  menuAction('Account & cloud','Sign in or continue as a guest',()=>renderMainMenu('account'));
+  menuAction('Progress','Objective, equipment and choices',()=>renderMainMenu('progress'));
+  menuAction('How to play','Movement, encounters and checkpoints',()=>renderMainMenu('help'));
+  if(game?.ended)menuAction('Replay credits','The colors you carried home',()=>{closeMainMenu();beginCredits();});
+  if(onlineAdmin)menuAction(developerAuthorized?'Player view':'Admin dashboard','Verified KingKippy tools',()=>{closeMainMenu();setAdmin(!developerAuthorized,'KingKippy — verified administrator');});
+ }else if(page==='saves'){
+  detailText('Use a different empty slot if you want to keep your current journey.');refreshSlots();moveMenuPanel('savePanel');
+  actionButton('Save current slot',()=>{if(game)save();else detailText('Start a game first.');});actionButton('Export backup',saveExport);actionButton('Import backup',()=>by('importFile').click());
+ }else if(page==='controls'){renderBinds();moveMenuPanel('settingsPanel');
+ }else if(page==='account'){moveMenuPanel('accountPanel');
+ }else if(page==='display'){
+  detailText('The game always fills the window. Browser fullscreen also hides the browser tabs and address bar.');
+  actionButton('Camera: '+(view3D?'3D':'2D')+' — switch',()=>{switchView();renderMainMenu('display');});
+  actionButton(document.fullscreenElement?'Exit browser fullscreen':'Enter browser fullscreen',async()=>{if(document.fullscreenElement){immersiveWanted=false;try{await document.exitFullscreen()}catch{}}else{immersiveWanted=true;requestImmersive();}try{storage.setItem('echoesBelow_fullscreen',immersiveWanted?'on':'off')}catch{}setTimeout(()=>{if(by('mainMenuDialog').open)renderMainMenu('display');},100);});
+  actionButton('Fullscreen on play: '+(immersiveWanted?'On':'Off'),()=>{immersiveWanted=!immersiveWanted;try{storage.setItem('echoesBelow_fullscreen',immersiveWanted?'on':'off')}catch{}renderMainMenu('display');});
+ }else if(page==='sound'){detailText('Music: '+(musicEnabled?'On':'Off'));actionButton(musicEnabled?'Turn music off':'Turn music on',()=>{by('musicBtn').click();renderMainMenu('sound');});
+ }else if(page==='map'){
+  const grid=document.createElement('div');grid.className='chapter-menu-grid';for(let i=0;i<campaign.length;i++){const p=document.createElement('p');p.textContent=String(i+1).padStart(2,'0')+' · '+campaign[i].title;if(game?.chapter===i)p.className='current';grid.append(p);}by('menuContent').append(grid);
+ }else if(page==='progress'){
+  if(!game)detailText('Start or continue a game to see your journey.');else{updateStats();detailText(chapterData().goal,'menu-detail');detailText(objective());detailText(by('stats').textContent);detailText(by('progress').textContent);}
+ }else if(page==='help'){
+  detailText('WASD / arrows move. Enter or Z interacts with the nearby marked object. Shift sprints.');detailText('In 3D, W/S walks, A/D strafes and the mouse or left/right arrows turns. V switches views.');detailText('ACT helps you understand a foe. MERCY ends a peaceful encounter once it is ready. ITEM heals. SKILL uses a learned ability.');detailText('Checkpoint crystals heal and save. Shops appear every three chapters. H gives progressively clearer hints, and J keeps your discovered memories.');detailText('M opens this menu at any time. All shortcuts are listed and can be changed under Controls & keybinds.');
+ }
+ const first=by('menuChoices').querySelector('button')||by('menuContent').querySelector('button')||by('menuBack');first.focus();
+}
+function openMainMenu(page='home'){
+ if(modalOpen()&&!by('mainMenuDialog').open)return;releaseControls();renderMainMenu(page);if(!by('mainMenuDialog').open)by('mainMenuDialog').showModal();
+}
+function initializePlayerShell(){
+ by('menuButton').onclick=()=>openMainMenu();by('menuBack').onclick=()=>{if(shellPage==='home')closeMainMenu();else renderMainMenu('home');};
+ by('mainMenuDialog').addEventListener('close',()=>{restoreMenuPanels();remap=null;releaseControls();focusGame();});
+ by('mainMenuDialog').addEventListener('keydown',e=>{
+  if(remap)return;if(['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName))return;
+  if(e.code===bindings.menu||e.code==='Escape'){e.preventDefault();e.stopImmediatePropagation();closeMainMenu();return;}
+  if(e.code.startsWith('Arrow')){const buttons=Array.from(by('mainMenuDialog').querySelectorAll('button:not(:disabled)'));const index=buttons.indexOf(document.activeElement);const direction=['ArrowDown','ArrowRight'].includes(e.code)?1:-1;e.preventDefault();e.stopPropagation();buttons[(index+direction+buttons.length)%buttons.length]?.focus();}
+ });
+ document.addEventListener('fullscreenchange',()=>{if(by('mainMenuDialog').open&&shellPage==='display')renderMainMenu('display');});
+ for(const id of ['journalDialog','puzzleDialog','shopDialog','skillDialog'])by(id).addEventListener('keydown',e=>{if(e.code===bindings.menu&&!remap&&!['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName)){e.preventDefault();e.stopImmediatePropagation();closeModal(id);openMainMenu();}});
+}
+function drawHintBox(){
+ if(hintTimer<=0||!hintOverlay||screen==='dialog'||modalOpen())return;
+ const combat=['battle','dodge'].includes(screen),x=65,y=combat?98:410,w=830,h=132;rect(x,y,w,h,'#080e18ef');ctx.strokeStyle='#b3c8d8';ctx.lineWidth=1.5;ctx.strokeRect(x,y,w,h);txt('WICK · HINT '+Math.max(1,hintLevel)+'/3',x+20,y+24,'#9ccebd',14);wrappedText(hintOverlay,x+20,y+51,w-40,17,'#edf3fa',22);
+}
+
+function roomData(){return campaign[game?.chapter||0].rooms[game?.room||0]}
+function chapterData(){return campaign[game?.chapter||0]}
+function roomStyle(){return game?.room||0}
+function roomObstacles(){return roomData().obstacles}
+const weaponNames=['Lantern Hook','Glass Saber','Ember Staff','Moon Needle','Chorus Spear','Dawnkeeper'];
+const armorNames=['Mossweave Coat','Riverguard Vest','Ashplate','Starglass Mantle','Regent’s Mail','Aurora Cloak'];
+const abilities=[
+ {name:'Mend',cost:6,description:'Restore 10 HP, then face the next attack.'},
+ {name:'Lantern Ward',cost:9,description:'Block the next hit in this encounter.'},
+ {name:'Kindred Voice',cost:12,description:'Gain one ACT of understanding, then face the next attack.'},
+ {name:'Stillness',cost:15,description:'Slow projectiles by 40% for the next attack.'},
+ {name:'Echo Step',cost:18,description:'Avoid damage for the first 2.5 seconds of the next attack.'},
+ {name:'Last Light',cost:21,description:'If you fall this encounter, revive once with 8 HP.'}
+];
+function hasShop(){return game&&(game.chapter+1)%3===0&&game.room===4}
+function armorReduction(){return Math.ceil(game.gear.armor/2)}
+function weaponBonus(){return game.gear.weapon*2}
+function openShop(){if(!hasShop()||modalOpen())return;held.clear();pressed.clear();document.exitPointerLock?.();renderShop();by('shopDialog').showModal();}
+function renderShop(){const tier=Math.floor((game.chapter+1)/3),host=by('shopStock');host.replaceChildren();by('shopTitle').textContent='Wick’s trading post · Chapter '+(game.chapter+1);by('shopIntro').textContent='“Useful things. Fair prices. No memories accepted.” Coins: '+game.gold+'. Weapon: '+(weaponNames[game.gear.weapon-1]||'Travel stick')+'. Armor: '+(armorNames[game.gear.armor-1]||'Traveler’s clothes')+'.';
+ const item=(title,description,cost,owned,buy)=>{const row=document.createElement('section'),name=document.createElement('h3'),detail=document.createElement('p'),button=document.createElement('button');name.textContent=title;detail.textContent=description;button.textContent=owned?'Owned / equipped':'Buy · '+cost+' coins';button.disabled=owned||game.gold<cost;button.onclick=()=>{if(game.gold<cost||owned)return;game.gold-=cost;buy();setCheckpoint(false);renderShop();updateStoryUI();};row.append(name,detail,button);host.append(row);};
+ item(weaponNames[tier-1],'Weapon upgrade: +'+(tier*2)+' FIGHT damage. Automatically equipped.',4+tier*3,game.gear.weapon>=tier,()=>game.gear.weapon=tier);
+ item(armorNames[tier-1],'Armor upgrade: reduce each hit by '+Math.ceil(tier/2)+', minimum 1 damage. Automatically equipped.',5+tier*3,game.gear.armor>=tier,()=>game.gear.armor=tier);
+ for(let i=0;i<tier;i++){const ability=abilities[i];item(ability.name,ability.description,ability.cost,game.gear.abilities.includes(i),()=>game.gear.abilities.push(i));}
+ item('Two glowberries','Each glowberry restores 12 HP during battle.',3,game.items>9997,()=>game.items+=2);
+}
+function openSkills(){if(!battle||screen!=='battle'||modalOpen())return;const host=by('skillChoices');host.replaceChildren();if(!game.gear.abilities.length){const p=document.createElement('p');p.textContent='Learn abilities at the trading posts in chapters 3, 6, 9, 12, 15 and 18.';host.append(p);}for(const id of game.gear.abilities){const b=document.createElement('button');b.textContent=abilities[id].name+' — '+abilities[id].description;b.disabled=!!battle.usedSkill;b.onclick=()=>{if(battle.usedSkill)return;battle.usedSkill=true;closeModal('skillDialog');if(id===0)game.hp=Math.min(game.maxHp,game.hp+10);if(id===1)battle.ward=true;if(id===2)battle.peace=Math.min(battle.boss?3:2,battle.peace+1);if(id===3)battle.slowNext=true;if(id===4)battle.stepNext=true;if(id===5)battle.revive=true;dodgeStart();announce(abilities[id].name+' used');};host.append(b);}if(battle.usedSkill){const p=document.createElement('p');p.textContent='Your ability has been used for this encounter.';host.append(p);}held.clear();pressed.clear();by('skillDialog').showModal();}
+function crystalSpot(){return roomData().checkpoint}
+function coinSpot(){return roomData().coin}
+function loreSpot(){return roomData().point}
+function puzzleSolved(){return !!game?.read['puzzle:'+roomKey()]}
+function canLeave(){return (!roomData().puzzle||puzzleSolved())&&(!isEncounter()||isCleared())}
+function ensurePosition(){if(game&&!canWalk(game.x,game.y)){game.x=110;game.y=353;}}
+function modalOpen(){return by('mainMenuDialog').open||by('journalDialog').open||by('puzzleDialog').open||by('shopDialog').open||by('skillDialog').open}
+let hintLevel=0,lastStoryRoom='',puzzleStep=0;
+function objective(){if(roomData().puzzle&&!puzzleSolved())return 'Restore '+roomData().landmark.toLowerCase()+' to open the east exit.';if(!game.read['story:'+roomKey()])return 'Find and read '+roomData().landmark.toLowerCase()+'.';if(isEncounter()&&!isCleared())return 'Face '+(isBoss()?chapterData().boss:enemyNames[game.chapter])+'. ACT and MERCY offer a peaceful route.';return 'Follow the green exit to the east when you are ready.'}
+function beginCredits(){if(!game?.ended)return;creditsTime=0;screen='credits';paused=false;held.clear();pressed.clear();document.exitPointerLock?.();}
+function creditState(){return{time:creditsTime,game,campaign,version:VERSION}}
+function updateStoryUI(){by('creditsBtn').classList.toggle('hidden',!game?.ended);if(!game)return;const key=roomKey();if(lastStoryRoom!==key){lastStoryRoom=key;hintLevel=0;by('hintText').textContent='H for a nudge. Ask again for directions, then an exact solution.';}by('roomLocation').textContent='CHAPTER '+(game.chapter+1)+' / 20 · ROOM '+(game.room+1)+' / 6 · '+roomData().name+' · '+chapterData().crystalName+' crystal';by('questTitle').textContent=chapterData().goal;by('questObjective').textContent=objective();by('hintBtn').textContent='Hint ('+keyName(bindings.hint)+')';by('journalBtn').textContent='Journal ('+keyName(bindings.journal)+')';}
+function showHint(){if(!game){by('hintText').textContent='Start a game, then use Enter to continue the opening conversation.';hintOverlay=by('hintText').textContent;hintTimer=12000;return;}updateStoryUI();hintLevel=Math.min(3,hintLevel+1);const p=loreSpot();let answer=roomData().hint+(hasShop()?' Wick’s shop is southeast of the checkpoint. Buy gear before the boss.':'');if(hintLevel===2){const east=p.x>game.x?'east / right':'west / left',north=p.y<game.y?'north / up':'south / down';answer='Find '+roomData().landmark+' to the '+east+' and '+north+'. Get close, then press '+keyName(bindings.confirm)+' or Enter. In 3D, V switches to the overhead map view.';}if(hintLevel===3){answer=roomData().puzzle&&!puzzleSolved()?'Exact order: '+chapterData().order.join(' → ')+'. Read the landmark to open its controls.':isEncounter()&&!isCleared()?'Choose ACT '+(isBoss()?3:2)+' times, dodge each attack, then choose MERCY. ITEM heals 12 HP. FIGHT is also possible.':'Read the landmark if you want its story, then walk to the green exit on the right. '+(hasCrystal()?'The glowing crystal restores HP and saves.':'C saves your current progress.');}by('hintText').textContent='Hint '+hintLevel+'/3: '+answer;hintOverlay=answer;hintTimer=14000;}
+function openJournal(){if(!game||modalOpen())return;const host=by('journalContent');host.replaceChildren();const intro=document.createElement('p');intro.textContent=chapterData().goal+' '+(game.mercy||0)+' peaceful encounters · '+(game.fight||0)+' victories by force.';host.append(intro);for(const ch of campaign){const known=ch.rooms.filter(r=>game.read['story:'+r.id]);if(!known.length)continue;const title=document.createElement('h3');title.textContent=ch.title;host.append(title);for(const r of known){const entry=document.createElement('div');entry.className='journal-memory';const name=document.createElement('strong');name.textContent=r.name+' — '+r.landmark;const text=document.createElement('p');text.textContent=r.text;entry.append(name,text);host.append(entry);}}if(!host.querySelector('.journal-memory')){const p=document.createElement('p');p.textContent='Read the marked objects in each room to collect memories here. Your current goal stays beneath the game.';host.append(p);}held.clear();pressed.clear();document.exitPointerLock?.();by('journalDialog').showModal();}
+function closeModal(id){by(id).close();held.clear();pressed.clear();focusGame();}
+function openPuzzle(){screen='world';if(puzzleSolved())return;const ch=chapterData(),r=roomData();puzzleStep=0;by('puzzleTitle').textContent=r.landmark;by('puzzleClue').textContent=r.text;by('puzzleProgress').textContent='Choose the three steps in order. A mistake resets the sequence without costing HP.';const host=by('puzzleChoices');host.replaceChildren();const order=[2,0,1];for(const i of order){const b=document.createElement('button');b.textContent=ch.order[i];b.onclick=()=>{if(i!==puzzleStep){puzzleStep=0;by('puzzleProgress').textContent='The mechanism settles back. Read the clue and begin again; no progress or health was lost.';return;}puzzleStep++;by('puzzleProgress').textContent=ch.order.slice(0,puzzleStep).join(' → ')+(puzzleStep<3?' → …':'');if(puzzleStep===3){game.read['puzzle:'+roomKey()]=true;closeModal('puzzleDialog');updateStoryUI();say(['The mechanism answers. '+ch.order.join(' → ')+'.','A light runs along the floor to the east exit. Wick marks the repaired circuit in your journal.']);}};host.append(b);}held.clear();pressed.clear();document.exitPointerLock?.();by('puzzleDialog').showModal();}
+function enterRoomNarrative(chapterStart=false){game.read['seen:'+roomKey()]=true;ensurePosition();updateStoryUI();if(chapterStart)say(['CHAPTER '+(game.chapter+1)+' · '+chapterTitle(),chapterData().intro]);else announce(roomData().name+' — '+objective());}
+function tryLeave(){if(roomData().puzzle&&!puzzleSolved()){game.x=Math.min(game.x,835);say(['The east exit is waiting for '+roomData().landmark.toLowerCase()+'.','Read its clue nearby. H gives a nudge, directions, then the exact sequence.']);return;}if(isEncounter()&&!isCleared()){enterBattle();return;}moveRoom();}
+function proximity(){if(!game)return '';const targets=[...(hasShop()?[{p:roomData().shop,name:'Wick’s trading post'}]:[]),{p:loreSpot(),name:roomData().landmark},...(hasCrystal()?[{p:crystalSpot(),name:'Checkpoint · heal and save'}]:[]),...(hasCoin()?[{p:coinSpot(),name:'Rare coin'}]:[])];targets.sort((a,b)=>Math.hypot(game.x-a.p.x,game.y-a.p.y)-Math.hypot(game.x-b.p.x,game.y-b.p.y));return Math.hypot(game.x-targets[0].p.x,game.y-targets[0].p.y)<80?keyName(bindings.confirm)+' / ENTER · '+targets[0].name:canLeave()?'EAST EXIT → · H HINT · J JOURNAL':'H HINT · J JOURNAL';}
+
 function caveMap(x,y){return x<73||x>880||y<115||y>495||roomObstacles().some(o=>x>o.x&&x<o.x+o.w&&y>o.y&&y<o.y+o.h)}
 function hasCrystal(){return game && (game.room===0 || game.room===4 || coinRooms.has(globalRoom()))}
-function hasLore(){return game && (game.room===1||game.room===3||game.room===4)}
+function hasLore(){return !!game}
 function globalRoom(){return game.chapter*6+game.room}
 // Exactly one rare coin cache about every 4-11 rooms, deterministically for all players.
 const coinRooms=(()=>{let rooms=[],r=3;while(r<120){rooms.push(r);r+=4+((r*7+3)%8)}return new Set(rooms)})();
 function hasCoin(){return game&&coinRooms.has(globalRoom())&&!game.read['coin:'+roomKey()]}
-const inscriptions=[
-'In Mosslight, the roots remember every footstep.',
-'The glass orchard once held a thousand artificial stars.',
-'Beneath the river, an abandoned bell still rings.',
-'A librarian bound her final song into these walls.',
-'Nothing grows here without first learning patience.',
-'Every door opens for a different kind of courage.',
-'Be careful which echoes you decide to follow.',
-'Even silence is a story someone once lived.'
-];
-function loreSpot(){return {x:470,y:258}}
 
 function canWalk(x,y){return !caveMap(x-11,y-11)&&!caveMap(x+11,y-11)&&!caveMap(x-11,y+11)&&!caveMap(x+11,y+11)}
 function render3D(){
- if(window.EchoesCave && !window.EchoesCave.failed){const image=window.EchoesCave.render({x:game.x,y:game.y,heading,chapter:game.chapter,room:game.room,obstacles:roomObstacles(),crystal:hasCrystal(),lore:hasLore(),coin:hasCoin(),enemy:isEncounter()&&!isCleared(),boss:isBoss()});if(image){ctx.drawImage(image,0,0,W,H);rect(16,32,700,52,"#0b0c20d9");txt(chapterTitle()+" · ROOM "+(globalRoom()+1),29,54,"#e8d3ff",20);txt("HP "+game.hp+"/"+game.maxHp+" · COINS "+game.gold,29,76,"#bcefeb",16);txt("W/S WALK · A/D STRAFE · ← → LOOK · SHIFT SPRINT · Z INTERACT · V 2D",480,580,"#e2d3f5",14,"center");return;}}
-
+ const meta=roomData(),state={x:game.x,y:game.y,heading,chapter:game.chapter,room:game.room,obstacles:roomObstacles(),crystal:hasCrystal(),lore:true,coin:hasCoin(),enemy:isEncounter()&&!isCleared(),boss:isBoss(),meta,shop:hasShop(),enemyName:isBoss()?chapterData().boss:enemyNames[game.chapter],solved:puzzleSolved(),read:!!game.read['story:'+roomKey()]};
+ const image=window.EchoesCave&&!window.EchoesCave.failed?window.EchoesCave.render(state):null;
+ if(image){ctx.drawImage(image,0,0,W,H);drawRoomHud();return;}renderFallback();drawRoomHud();
+}
+function renderFallback(){
  const w=W,h=H,mid=H*.50,fov=Math.PI/2.85,step=2,viewDist=1000;
  const palette=[212,181,268,198,254,187,283,239],baseHue=palette[roomStyle()];
  const ceiling=ctx.createLinearGradient(0,0,0,mid);ceiling.addColorStop(0,'#070916');ceiling.addColorStop(1,`hsl(${baseHue} 35% 14%)`);rect(0,0,w,mid,ceiling);
@@ -113,9 +224,9 @@ function render3D(){
   if(height<600&&corrected>65){rect(x,top-3,step+1,Math.min(7,height*.07),`hsla(${baseHue},18%,7%,.9)`)}
  }
  // Draw actual interactables with depth testing rather than fake on-screen decorations.
- const entities=[...(hasCrystal()?[{x:184,y:300,label:'CHECKPOINT',color:'#7bdef4',size:42}]:[]),
- ...(hasLore()?[{x:470,y:258,label:'INSCRIPTION',color:'#e8b2ff',size:29}]:[]),
- ...(hasCoin()?[{x:590,y:235,label:'RARE COIN',color:'#ffdf78',size:18}]:[]),
+ const entities=[...(hasCrystal()?[{x:crystalSpot().x,y:crystalSpot().y,label:'CHECKPOINT',color:chapterData().crystalColor,size:42}]:[]),
+ ...(hasLore()?[{x:loreSpot().x,y:loreSpot().y,label:roomData().landmark.toUpperCase(),color:'#e8b2ff',size:29}]:[]),
+ ...(hasCoin()?[{x:coinSpot().x,y:coinSpot().y,label:'RARE COIN',color:'#ffdf78',size:18}]:[]),
  ...(isEncounter()&&!isCleared()?[{x:730,y:355,label:isBoss()?'BOSS':'ENEMY',color:'#e999ad',size:55}]:[]),
  {x:866,y:353,label:'NEXT ROOM',color:'#69c3a8',size:54}];
  for(let ent of entities){let dx=ent.x-game.x,dy=ent.y-game.y,dist=Math.hypot(dx,dy),angle=Math.atan2(dy,dx)-heading;
@@ -123,7 +234,7 @@ function render3D(){
   let px=480+Math.tan(angle)/Math.tan(fov/2)*480,col=Math.max(0,Math.min(depth.length-1,Math.floor(px/step)));
   if(dist>depth[col]+18)continue;
   const size=Math.min(220,ent.size*250/Math.max(40,dist)),y=mid+size*.2;
-  ctx.fillStyle=ent.color;ctx.globalAlpha=Math.max(.38,1-dist/800);ctx.beginPath();ctx.moveTo(px,y-size);ctx.lineTo(px+size*.48,y);ctx.lineTo(px,y+size*.36);ctx.lineTo(px-size*.48,y);ctx.closePath();ctx.fill();ctx.globalAlpha=1;
+  ctx.fillStyle=ent.color;if(ent.label==='CHECKPOINT'&&chapterData().crystalPalette.length>1){const rainbow=ctx.createLinearGradient(px-size*.5,y-size,px+size*.5,y);chapterData().crystalPalette.forEach((c,i)=>rainbow.addColorStop(i/(chapterData().crystalPalette.length-1),c));ctx.fillStyle=rainbow;}ctx.globalAlpha=Math.max(.38,1-dist/800);ctx.beginPath();ctx.moveTo(px,y-size);ctx.lineTo(px+size*.48,y);ctx.lineTo(px,y+size*.36);ctx.lineTo(px-size*.48,y);ctx.closePath();ctx.fill();ctx.globalAlpha=1;
   txt(ent.label,px,y-size-12,'#e9ddf5',Math.max(12,Math.min(19,size*.27)),'center');
  }
  ctx.strokeStyle='#eadfff';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(471,300);ctx.lineTo(489,300);ctx.moveTo(480,291);ctx.lineTo(480,309);ctx.stroke();
@@ -137,7 +248,8 @@ function keyPressed(action){return Array.from(pressed).some(k=>active(action,k))
 function keyDown(action){return Array.from(held).some(k=>active(action,k))}
 function keyName(code){return ({ArrowUp:'↑',ArrowDown:'↓',ArrowLeft:'←',ArrowRight:'→',Space:'SPACE',Enter:'ENTER',Escape:'ESC'}[code]||code.replace(/^Key/,'').replace(/^Digit/,'')).toUpperCase()}
 function focusGame(){canvas.focus({preventScroll:true})}
-addEventListener('keydown',e=>{if(remap){if(e.code==='Escape'){remap=null;renderBinds();announce('Remapping canceled')}else if(!['ShiftLeft','ShiftRight','ControlLeft','ControlRight','AltLeft','AltRight','MetaLeft','MetaRight'].includes(e.code)){e.preventDefault();if(Object.keys(bindings).some(k=>k!==remap&&bindings[k]===e.code)){announce('Already assigned; choose another key');return}bindings[remap]=e.code;remap=null;try{storage.setItem(BIND_KEY,JSON.stringify(bindings))}catch{}renderBinds();announce('Keybind updated')}return}
+addEventListener('keydown',e=>{if(remap){if(e.code==='Escape'){e.preventDefault();remap=null;renderBinds();announce('Remapping canceled')}else if(!['ShiftLeft','ShiftRight','ControlLeft','ControlRight','AltLeft','AltRight','MetaLeft','MetaRight'].includes(e.code)){e.preventDefault();if(Object.keys(bindings).some(k=>k!==remap&&bindings[k]===e.code)){announce('Already assigned; choose another key');return}bindings[remap]=e.code;remap=null;try{storage.setItem(BIND_KEY,JSON.stringify(bindings))}catch{}renderBinds();announce('Keybind updated')}return}
+  if(modalOpen())return;
   if(['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName))return;
   if(e.code.startsWith('Arrow')||e.code==='Space'||Object.keys(bindings).some(k=>active(k,e.code)))e.preventDefault();
   if(!e.repeat)pressed.add(e.code);held.add(e.code);
@@ -145,7 +257,7 @@ addEventListener('keydown',e=>{if(remap){if(e.code==='Escape'){remap=null;render
 addEventListener('keyup',e=>{held.delete(e.code)});
 addEventListener('blur',()=>{held.clear();pressed.clear()});
 function announce(s){hotMessage=s;hotTimer=260;by('toast').textContent=s;setTimeout(()=>{if(by('toast').textContent===s)by('toast').textContent=''},5000)}
-function makeGame(){return{format:4,created:Date.now(),updated:Date.now(),chapter:0,room:0,x:105,y:350,hp:24,maxHp:24,level:1,items:5,gold:0,mercy:0,fight:0,flags:{},read:{},seconds:0,checkpoint:null,invincible:false,ended:false,ending:''}}
+function makeGame(){return{format:4,created:Date.now(),updated:Date.now(),chapter:0,room:0,x:105,y:350,hp:24,maxHp:24,level:1,items:5,gold:0,gear:{weapon:0,armor:0,abilities:[]},mercy:0,fight:0,flags:{},read:{},seconds:0,checkpoint:null,invincible:false,ended:false,ending:''}}
 function clone(x){return JSON.parse(JSON.stringify(x))}
 function normalise(obj){if(!obj||typeof obj!=='object')throw Error('Invalid save data');let n=makeGame();let converted=false;
 if(obj.version===2&&obj.player){const p=obj.player;Object.assign(n,{chapter:obj.chapter,room:obj.room,x:p.x,y:p.y,hp:p.hp,maxHp:p.max,level:p.level,items:obj.inventory,mercy:obj.choices?.mercy||0,fight:obj.choices?.fight||0,flags:obj.flags||{}});converted=true; if(obj.checkpoint){let cp=obj.checkpoint;n.checkpoint={chapter:cp.chapter,room:cp.room,x:cp.x,y:cp.y,hp:cp.hp,items:cp.inventory,flags:clone(cp.flags||{}),mercy:cp.choices?.mercy||0,fight:cp.choices?.fight||0}}}
@@ -153,24 +265,25 @@ else if(obj.format===4){for(const k of Object.keys(n))if(Object.hasOwn(obj,k))n[
 else throw Error('Unknown save format');
 const valid=(v,min,max)=>Number.isFinite(v)&&v>=min&&v<=max;
 if(!Number.isInteger(n.chapter)||!valid(n.chapter,0,19)||!Number.isInteger(n.room)||!valid(n.room,0,5)||!valid(n.hp,0,999)||!valid(n.maxHp,1,999)||!valid(n.x,0,960)||!valid(n.y,0,600)||!Number.isInteger(n.items)||!valid(n.items,0,9999))throw Error('Save values are invalid');
+n.gold=Math.max(0,Math.min(999999,Math.floor(Number(n.gold)||0)));const gear=n.gear&&typeof n.gear==='object'?n.gear:{};n.gear={weapon:Math.max(0,Math.min(6,Math.floor(Number(gear.weapon)||0))),armor:Math.max(0,Math.min(6,Math.floor(Number(gear.armor)||0))),abilities:[...new Set(Array.isArray(gear.abilities)?gear.abilities.filter(v=>Number.isInteger(v)&&v>=0&&v<6):[])]};
 n.level=Math.max(1,Math.min(999,Number(n.level)||1));n.mercy=Math.max(0,Number(n.mercy)||0);n.fight=Math.max(0,Number(n.fight)||0);n.seconds=Math.max(0,Number(n.seconds)||0);n.flags=n.flags&&typeof n.flags==='object'&&!Array.isArray(n.flags)?n.flags:{};n.read=n.read&&typeof n.read==='object'&&!Array.isArray(n.read)?n.read:{};
 if(n.checkpoint){let cp=n.checkpoint;if(!Number.isInteger(cp.chapter)||!valid(cp.chapter,0,19)||!Number.isInteger(cp.room)||!valid(cp.room,0,5))n.checkpoint=null}
 return{data:n,converted};}
 function slotKey(s=slot){return SAVE_PREFIX+s}
 function save(silent=false){if(!game)return false;game.updated=Date.now();try{storage.setItem(slotKey(),JSON.stringify(game));storage.setItem(SET_KEY,String(slot));if(!silent)announce('Saved to local Slot '+slot);refreshSlots();updateStats();return true}catch(e){announce('Local save blocked; export a backup');return false}}
-function setCheckpoint(heal=true){if(!game)return; if(heal)game.hp=game.maxHp;game.checkpoint={chapter:game.chapter,room:game.room,x:game.x,y:game.y,hp:game.hp,items:game.items,flags:clone(game.flags),mercy:game.mercy,fight:game.fight};save(false)}
-function load(s=slot){try{let raw=storage.getItem(slotKey(s));if(!raw){announce('No save in Slot '+s);return false}let {data}=normalise(JSON.parse(raw));game=data;slot=s;storage.setItem(SET_KEY,String(slot));screen='world';paused=false;battle=null;dialog=[];refreshSlots();updateStats();announce('Loaded Slot '+s);return true}catch(e){announce('Could not load save: '+e.message);return false}}
+function setCheckpoint(heal=true){if(!game)return; if(heal)game.hp=game.maxHp;game.checkpoint={chapter:game.chapter,room:game.room,x:game.x,y:game.y,hp:game.hp,items:game.items,flags:clone(game.flags),mercy:game.mercy,fight:game.fight,read:clone(game.read),gold:game.gold,gear:clone(game.gear)};save(false)}
+function load(s=slot){try{let raw=storage.getItem(slotKey(s));if(!raw){announce('No save in Slot '+s);return false}let {data}=normalise(JSON.parse(raw));game=data;ensurePosition();slot=s;requestImmersive();if(by('mainMenuDialog').open)closeMainMenu();storage.setItem(SET_KEY,String(slot));screen=game.ended?'ending':'world';endingTime=0;paused=false;battle=null;dialog=[];refreshSlots();updateStats();announce('Loaded Slot '+s);return true}catch(e){announce('Could not load save: '+e.message);return false}}
 function migrate(){try{if(storage.getItem(slotKey(1)))return;let raw=storage.getItem(LEGACY);if(!raw)return;let {data}=normalise(JSON.parse(raw));storage.setItem(slotKey(1),JSON.stringify(data));announce('Previous v0.2/v0.3 save copied to Slot 1')}catch(e){console.warn('Legacy save migration skipped',e)}}
-function startNew(s=slot){if(storage.getItem(slotKey(s))&&!confirm('Overwrite Slot '+s+' with a new game?'))return;slot=s;game=makeGame();screen='world';paused=false;menu=0;setCheckpoint(false);say(['You wake beneath a sky made of stone.','Twenty chapters lie between you and the surface.','Follow the lanterns. Remember your choices.'],()=>screen='world');focusGame()}
-function continueGame(){if(game){screen='world';paused=false;announce('Continuing Slot '+slot);return}let desired=Number(storage.getItem(SET_KEY))||1;if(load(desired))return;for(let s=1;s<=3;s++)if(load(s))return;startNew(1)}
+function startNew(s=slot){if(storage.getItem(slotKey(s))&&!confirm('Overwrite Slot '+s+' with a new game?'))return;slot=s;requestImmersive();game=makeGame();if(by('mainMenuDialog').open)closeMainMenu();screen='world';paused=false;menu=0;setCheckpoint(false);game.read['seen:0:0']=true;updateStoryUI();say([campaign[0].intro,'You followed the knocking into the old well. Now the rope is gone, and the lantern is your only light.','Find the marked objects and press Enter to listen. H gives hints; J opens your journal. Your first goal: find Mara.'],()=>screen='world');focusGame()}
+function continueGame(){if(game){screen=game.ended?'ending':'world';endingTime=0;paused=false;announce('Continuing Slot '+slot);return}let desired=Number(storage.getItem(SET_KEY))||1;if(load(desired))return;for(let s=1;s<=3;s++)if(load(s))return;startNew(1)}
 function refreshSlots(){let parent=by('slots');parent.innerHTML='';for(let s=1;s<=3;s++){let row=document.createElement('div');row.className='inputs';row.style.margin='6px 0';let label=document.createElement('span');label.className='small';label.style.minWidth='300px';let raw=storage.getItem(slotKey(s));let existing=null;try{if(raw)existing=normalise(JSON.parse(raw)).data}catch{}label.textContent=existing?'Slot '+s+': Chapter '+(existing.chapter+1)+' / Room '+(existing.room+1)+' · HP '+existing.hp+'/'+existing.maxHp:'Slot '+s+': empty';row.append(label);
 for(const [name,fn] of [['New',()=>startNew(s)],['Load',()=>{load(s);by('savePanel').classList.add('hidden');focusGame()}],['Save here',()=>{if(game){slot=s;save()}else announce('Start a game first')}],['Delete',()=>{if(existing&&confirm('Delete Slot '+s+' permanently?')){storage.removeItem(slotKey(s));refreshSlots()}}]]){let b=document.createElement('button');b.textContent=name;b.disabled=(!existing&&name==='Load')||(!existing&&name==='Delete');b.onclick=fn;row.append(b)}parent.append(row)}}
-function updateStats(){if(!game){by('stats').textContent='No game loaded';by('progress').textContent='';return}let mins=Math.floor(game.seconds/60),h=Math.floor(mins/60),m=mins%60;by('stats').textContent='Slot '+slot+' · Chapter '+(game.chapter+1)+'/20 · Room '+(game.room+1)+'/6 · HP '+game.hp+'/'+game.maxHp+' · LV '+game.level+' · Glowberries '+game.items+' · '+h+'h '+String(m).padStart(2,'0')+'m played';by('progress').textContent='Choices: '+game.mercy+' spared / '+game.fight+' defeated · '+Object.keys(game.flags).length+' encounters completed'}
-function saveExport(){if(!game){announce('Start a game before exporting');return}let obj={...clone(game),build:VERSION,exportedAt:new Date().toISOString()};let url=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));let a=document.createElement('a');a.href=url;a.download=`echoes-below-slot-${slot}-v1.0.1.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);announce('Save exported')}
-async function saveImport(e){let f=e.target.files?.[0];if(!f)return;try{let {data}=normalise(JSON.parse(await f.text()));if(game&&!confirm('Replace your current Slot '+slot+' with imported data?'))return;game=data;screen='world';paused=false;save();announce('Import successful — Slot '+slot)}catch(err){announce('Import failed: '+err.message)}finally{e.target.value=''}}
+function updateStats(){updateStoryUI();if(!game){by('stats').textContent='No game loaded';by('progress').textContent='';return}let mins=Math.floor(game.seconds/60),h=Math.floor(mins/60),m=mins%60;by('stats').textContent='Slot '+slot+' · Chapter '+(game.chapter+1)+'/20 · Room '+(game.room+1)+'/6 · HP '+game.hp+'/'+game.maxHp+' · LV '+game.level+' · Glowberries '+game.items+' · '+h+'h '+String(m).padStart(2,'0')+'m played';by('progress').textContent='Choices: '+game.mercy+' spared / '+game.fight+' defeated · '+Object.keys(game.flags).length+' encounters completed · Weapon: '+(weaponNames[game.gear.weapon-1]||'Travel stick')+' · Armor: '+(armorNames[game.gear.armor-1]||'Traveler’s clothes')+' · Abilities: '+(game.gear.abilities.map(id=>abilities[id].name).join(', ')||'none yet')}
+function saveExport(){if(!game){announce('Start a game before exporting');return}let obj={...clone(game),build:VERSION,exportedAt:new Date().toISOString()};let url=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));let a=document.createElement('a');a.href=url;a.download=`echoes-below-slot-${slot}-v1.3.0.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);announce('Save exported')}
+async function saveImport(e){let f=e.target.files?.[0];if(!f)return;try{let {data}=normalise(JSON.parse(await f.text()));if(game&&!confirm('Replace your current Slot '+slot+' with imported data?'))return;game=data;ensurePosition();screen='world';paused=false;save();announce('Import successful — Slot '+slot)}catch(err){announce('Import failed: '+err.message)}finally{e.target.value=''}}
 function chapterTitle(){return chapterNames[game?.chapter||0]}
 const roomKey=()=>game.chapter+':'+game.room;const isEncounter=()=>game&&(game.room===2||game.room===5);const isCleared=()=>!!game.flags[roomKey()];const isBoss=()=>game.room===5;
-function say(lines,cb){dialog=lines.slice();afterDialog=cb||(()=>screen='world');screen='dialog'}
+function say(lines,cb){dialog=lines.flatMap(line=>{const rows=wrappedLines(line,752,20),pages=[];for(let i=0;i<rows.length;i+=4)pages.push(rows.slice(i,i+4).join('\n'));return pages});afterDialog=cb||(()=>screen='world');screen='dialog';held.clear();pressed.clear();}
 function autoCheckpointAtMilestone(){
 if(!game)return;
 const coinRoom=coinRooms.has(globalRoom());
@@ -178,52 +291,54 @@ const preBoss=game.room===4;
 if(!coinRoom&&!preBoss)return;
 // Save entry progress only in a rare coin room or directly before a boss.
 // No auto saving in ordinary rooms or after each encounter.
-game.checkpoint={chapter:game.chapter,room:game.room,x:game.x,y:game.y,hp:game.hp,items:game.items,flags:clone(game.flags),mercy:game.mercy,fight:game.fight};
+game.checkpoint={chapter:game.chapter,room:game.room,x:game.x,y:game.y,hp:game.hp,items:game.items,flags:clone(game.flags),mercy:game.mercy,fight:game.fight,read:clone(game.read),gold:game.gold,gear:clone(game.gear)};
 save(true);announce(preBoss?'Pre-boss checkpoint saved!':'Coin room checkpoint saved!');
 }
-function moveRoom(){if(!game)return;game.room++;game.x=110;game.y=353;
-if(game.room>5){game.room=0;game.chapter++;game.items+=2;game.hp=game.maxHp;
-if(game.chapter>=20){game.chapter=19;game.room=5;game.ended=true;game.ending=game.mercy>=game.fight?'You carried their stories into the light.':'You carved a path through the dark.';screen='ending';return}
-autoCheckpointAtMilestone();say(['CHAPTER '+(game.chapter+1)+': '+chapterTitle(),'Your journey continues. Seek the crystal to save your progress.'],()=>screen='world');return}
-autoCheckpointAtMilestone();if(isEncounter()&&!isCleared())enterBattle()}
-function tryInteract(){if(!game)return;let {x,y}=game;
-if(hasCrystal()&&Math.hypot(x-184,y-300)<75){setCheckpoint(true);say(['The violet crystal hums softly.','HP restored. Checkpoint recorded.']);return}
-if(hasLore()&&Math.hypot(x-470,y-258)<75){let k=roomKey();if(!game.read[k]){game.read[k]=true;game.items++;say(['The inscription reads:',inscriptions[(game.chapter+game.room)%inscriptions.length],'You discovered a glowberry.'])}else say(['The inscription has nothing more to tell you.']);return}
-if(hasCoin()&&Math.hypot(x-590,y-235)<75){game.read['coin:'+roomKey()]=true;game.gold++;autoCheckpointAtMilestone();say(['A tiny gold glimmer catches the light.','You found a RARE COIN! ('+game.gold+' total)','Treasure appears only once every 4–11 rooms.']);return}
-if(Math.hypot(x-730,y-355)<80&&isEncounter()&&!isCleared()){enterBattle();return}
-if(x>830){if(isEncounter()&&!isCleared())enterBattle();else moveRoom();return}
-say(['Only the soft footsteps answer.'])}
-const bossLines=[
- ['The Gatekeeper whispers: Every threshold demands a promise.','The Gatekeeper: You cannot outrun what follows.','The Gatekeeper: Tell me what you hope to protect.'],
- ['The Orchard Queen: My roots drink forgotten names.','The Orchard Queen: Not all that blossoms should survive.','The Orchard Queen: You have no idea what grows below.'],
- ['The Ferryman: A toll is owed on every crossing.','The Ferryman: Listen to the river beneath your feet.','The Ferryman: Even ghosts must learn to swim.'],
- ['The Archivist: The margin of your story is burning.','The Archivist: I have catalogued a thousand endings.','The Archivist: Your silence tells me more than your words.'],
- ['The Clock Saint: The next second is already mine.','The Clock Saint: Time does not forgive a hesitation.','The Clock Saint: You have not yet heard the last bell.']
-];
-function bossRemark(){let lines=bossLines[game.chapter%bossLines.length],stage=battle?battle.turn||0:0;return lines[stage%lines.length]}
+function moveRoom(){if(!game)return;game.room++;game.x=110;game.y=353;heading=0;
+ if(game.room>5){game.room=0;game.chapter++;game.items+=2;game.hp=game.maxHp;
+  if(game.chapter>=20){game.chapter=19;game.room=5;game.ended=true;game.ending=game.fight===0?'You open the door with Mara and Wick. Every guardian has a voice in the new city. The light is smaller now, but nobody has to vanish to keep it burning.':game.mercy>=game.fight?'Mara comes home. The town hears the rescued voices and the names of those who fell. You cannot repair every loss, but the new light leaves nobody inside the machine.':'You bring Mara home through the silence left by your battles. The consuming engine is broken. Rebuilding trust will take longer than rebuilding its wires. Wick keeps the names you could not bring back.';screen='ending';endingTime=0;updateStoryUI();save(true);return;}
+  autoCheckpointAtMilestone();enterRoomNarrative(true);return;
+ }autoCheckpointAtMilestone();enterRoomNarrative();
+}
+function tryInteract(){if(!game)return;const {x,y}=game,p=loreSpot(),cp=crystalSpot(),coin=coinSpot();
+ const choices=[...(hasShop()?[{distance:Math.hypot(x-roomData().shop.x,y-roomData().shop.y),kind:'shop'}]:[]),{distance:Math.hypot(x-p.x,y-p.y),kind:'story'},...(hasCrystal()?[{distance:Math.hypot(x-cp.x,y-cp.y),kind:'save'}]:[]),...(hasCoin()?[{distance:Math.hypot(x-coin.x,y-coin.y),kind:'coin'}]:[])].sort((a,b)=>a.distance-b.distance);
+ if(choices[0].distance<80){const choice=choices[0].kind;
+  if(choice==='shop'){openShop();return;}
+  if(choice==='save'){setCheckpoint(true);say([game.chapter===19?'The last crystal holds every color you found below. Each district has a place in its light.':'The '+chapterData().crystalName.toLowerCase()+' crystal holds this chapter’s light.','HP restored. This place and your story progress are saved.']);return;}
+  if(choice==='coin'){game.read['coin:'+roomKey()]=true;game.gold++;autoCheckpointAtMilestone();say(['You find a coin tucked beside '+roomData().landmark.toLowerCase()+'.','Rare coins: '+game.gold+'. No story door requires payment.']);return;}
+  const first=!game.read['story:'+roomKey()];if(first&&!game.read[roomKey()])game.items++;game.read[roomKey()]=true;game.read['story:'+roomKey()]=true;updateStoryUI();
+  const lines=[roomData().landmark.toUpperCase(),roomData().text];if(first)lines.push('Memory added to the journal. Check your supplies and continue when ready.');
+  say(lines,()=>{screen='world';if(roomData().puzzle&&!puzzleSolved())openPuzzle();});return;
+ }
+ if(Math.hypot(x-730,y-355)<80&&isEncounter()&&!isCleared()){enterBattle();return;}
+ if(x>830&&Math.abs(y-353)<76){tryLeave();return;}
+ say(['Look for '+roomData().landmark.toLowerCase()+'. Move close and press Enter.','H offers a hint. Ask again for directions or the exact solution.']);
+}
+
+function bossRemark(){return [roomData().text,'“You have heard my reason. What will you do with it?”','Wick: “Listening does not mean agreeing. It means there can be another answer.”'][(battle?.turn||0)%3]}
 function battleSpeech(){if(!battle)return '';if(!battle.boss){let ordinary=['The creature braces itself.','Its shadow twists away from you.','It watches your hands, uncertain.','A faint glow moves behind its eyes.'];return ordinary[(battle.turn+game.room)%ordinary.length]}
-return bossRemark()}
-function enterBattle(){if(!game||isCleared())return;let name=isBoss()?bossNames[game.chapter%bossNames.length]:enemyNames[(game.chapter+game.room)%enemyNames.length];battle={name,hp:isBoss()?38+game.chapter*3:18+game.chapter,max:isBoss()?38+game.chapter*3:18+game.chapter,peace:0,boss:isBoss(),turn:0,attackClock:0,pattern:0};screen='battle';menu=0;paused=false;say(['* '+name+' blocks the path.',battle.boss?bossRemark():'* It looks lost more than hostile.'],()=>screen='battle')}
-function resolveBattle(kind){game.flags[roomKey()]=kind;if(kind==='mercy')game.mercy++;else game.fight++;let solved=Object.keys(game.flags).length;game.level=1+Math.floor(solved/6);game.maxHp=24+Math.floor((game.level-1)/2)*2;screen='world';battle=null;game.x=775;game.y=350;say(kind==='mercy'?['* You chose to listen.','* Something peaceful stays behind.']:['* The corridor falls silent.','* Your footsteps sound different now.'],()=>screen='world')}
-function dodgeStart(){screen='dodge';battleTime=0;bullets=[];invTime=0;battle.attackClock=0;battle.pattern=(battle.turn+game.chapter)%4;battle.turn++;game.x=480;game.y=410}
-function battleAction(){if(!battle)return;
-if(menu===0){let dmg=9+game.level*2;battle.hp=Math.max(0,battle.hp-dmg);say(['* You dealt '+dmg+' damage.'],()=>battle.hp<=0?resolveBattle('fight'):dodgeStart())}
-else if(menu===1){battle.peace++;const lines=battle.boss?['* You ask what it fears losing.','* You lower your weapon and wait.','* You promise its story will be remembered.','* For a moment, the cavern seems peaceful.']:['* You ask what it remembers.','* You tell it that it is not alone.','* You listen until it calms down.'];say([lines[Math.min(battle.peace-1,lines.length-1)],battle.peace>=(battle.boss?3:2)?'* It is ready to leave.':battleSpeech()],()=>dodgeStart())}
+return chapterData().acts[Math.min(battle.peace,2)]+' · ACT '+battle.peace+'/3'}
+function enterBattle(){if(!game||isCleared())return;let name=isBoss()?bossNames[game.chapter]:enemyNames[game.chapter];battle={name,hp:isBoss()?38+game.chapter*3:18+game.chapter,max:isBoss()?38+game.chapter*3:18+game.chapter,peace:0,boss:isBoss(),turn:0,attackClock:0,pattern:0};screen='battle';menu=0;paused=false;say(['* '+name+' blocks the path.',battle.boss?bossRemark():'* It looks lost more than hostile.'],()=>screen='battle')}
+function resolveBattle(kind){if(game.flags[roomKey()])return;game.gold+=isBoss()?8:4;game.flags[roomKey()]=kind;if(kind==='mercy')game.mercy++;else game.fight++;let solved=Object.keys(game.flags).length;game.level=1+Math.floor(solved/6);game.maxHp=24+Math.floor((game.level-1)/2)*2;screen='world';battle=null;game.x=775;game.y=350;updateStoryUI();say(kind==='mercy'?['The guardian steps aside. '+(isBoss()?chapterData().boss+' agrees to lend a voice to the return circuit.':'The way forward is open without another name lost.'),'Wick: “We can carry this promise with us.” '+(isBoss()?8:4)+' coins earned.']:['The guardian falls. The passage opens, but the room has lost a voice.','Wick records the name. The return circuit will need the living to remember it. '+(isBoss()?8:4)+' coins earned.'],()=>screen='world')}
+function dodgeStart(){screen='dodge';battleTime=0;bullets=[];invTime=battle.stepNext?2500:0;battle.stepNext=false;battle.slow=!!battle.slowNext;battle.slowNext=false;battle.attackClock=0;battle.pattern=(battle.turn+game.chapter)%4;battle.turn++;game.x=480;game.y=410}
+function battleAction(){if(!battle)return;if(menu===4){openSkills();return;}
+if(menu===0){let dmg=9+game.level*2+weaponBonus();battle.hp=Math.max(0,battle.hp-dmg);say(['* You dealt '+dmg+' damage.'],()=>battle.hp<=0?resolveBattle('fight'):dodgeStart())}
+else if(menu===1){battle.peace++;const lines=battle.boss?chapterData().acts:['You ask why '+enemyNames[game.chapter]+' guards this place.','You listen, then offer to leave the path open for both of you.','The guardian lowers its guard.'];say([lines[Math.min(battle.peace-1,lines.length-1)],battle.peace>=(battle.boss?3:2)?'* It is ready to leave.':battleSpeech()],()=>dodgeStart())}
 else if(menu===2){if(game.items){game.items--;game.hp=Math.min(game.maxHp,game.hp+12);say(['* You ate a glowberry.','* You recovered up to 12 HP.'],dodgeStart)}else say(['* Your bag is empty.'],()=>screen='battle')}
 else if(battle.peace>=(battle.boss?3:2))resolveBattle('mercy');else say(['* It will not leave yet.',battle.boss?'* Understand the boss by using ACT three times.':'* Try ACT twice, then MERCY.'],dodgeStart)}
-function returnCheckpoint(){let cp=game.checkpoint;if(cp){Object.assign(game,{chapter:cp.chapter,room:cp.room,x:cp.x,y:cp.y,hp:Math.max(1,cp.hp),items:cp.items,flags:clone(cp.flags),mercy:cp.mercy,fight:cp.fight})}else{game.hp=game.maxHp;game.x=110;game.y=353}game.ended=false;game.invincible=false;battle=null;paused=false;screen='world'}
-function switchView(){if(screen!=='world'||paused){announce('Finish the scene before changing views');return}view3D=!view3D;if(!view3D&&document.pointerLockElement===canvas)document.exitPointerLock();by('viewBtn').textContent=view3D?'Switch to 2D':'Switch to 3D';announce(view3D?'First-person cave view':'Overhead view')}
-function handleInput(){if(keyPressed('view'))switchView();if(keyPressed('settings')){toggleSettings();return}
+function returnCheckpoint(){let cp=game.checkpoint;if(cp){Object.assign(game,{chapter:cp.chapter,room:cp.room,x:cp.x,y:cp.y,hp:Math.max(1,cp.hp),items:cp.items,flags:clone(cp.flags),mercy:cp.mercy,fight:cp.fight,...(cp.read?{read:clone(cp.read),gold:cp.gold??game.gold,gear:cp.gear?clone(cp.gear):game.gear}:{})})}else{game.hp=game.maxHp;game.x=110;game.y=353}game.ended=false;game.invincible=false;battle=null;paused=false;screen='world';ensurePosition();updateStoryUI()}
+function switchView(){view3D=!view3D;if(!view3D&&document.pointerLockElement===canvas)document.exitPointerLock();by('viewBtn').textContent=view3D?'Switch to 2D':'Switch to 3D';announce(view3D?'First-person cave view':'Overhead view')}
+function handleInput(){if(keyPressed('menu')||(pressed.has('Escape')&&screen!=='title')){openMainMenu();return;}if(keyPressed('hint'))showHint();if(keyPressed('journal')){openJournal();return;}if(keyPressed('view'))switchView();if(keyPressed('settings')){toggleSettings();return}
 if(keyPressed('pause')){if(screen==='title')return;paused=!paused;announce(paused?'Paused':'Resumed');return}
 if(paused){if(keyPressed('back'))paused=false;return}
-if(screen==='title'){if(keyPressed('confirm')){enableAudio();continueGame()}return}
-if(screen==='world'){if(keyPressed('confirm'))tryInteract();if(keyPressed('save')){save();announce('Manual save in Slot '+slot)}if(keyPressed('map')){previousScreen='world';screen='map'}if(keyPressed('back')){screen='title';announce('Unsaved progress will be lost. Use C or a save crystal.')}return}
+if(screen==='title'){if(keyPressed('confirm')){enableAudio();requestImmersive();continueGame()}return}
+if(screen==='world'){if(keyPressed('confirm'))tryInteract();if(keyPressed('save')){save();announce('Manual save in Slot '+slot)}if(keyPressed('map')){previousScreen='world';screen='map'}if(keyPressed('back'))openMainMenu();return}
 if(screen==='dialog'){if(keyPressed('confirm')){dialog.shift();if(!dialog.length){let fn=afterDialog;afterDialog=null;if(fn)fn()}}return}
-if(screen==='battle'){if(keyPressed('left'))menu=(menu+3)%4;if(keyPressed('right'))menu=(menu+1)%4;if(keyPressed('confirm'))battleAction();return}
+if(screen==='battle'){if(keyPressed('left'))menu=(menu+4)%5;if(keyPressed('right'))menu=(menu+1)%5;if(keyPressed('confirm'))battleAction();return}
 if(screen==='dead'){if(keyPressed('confirm'))returnCheckpoint();return}
 if(screen==='map'){if(keyPressed('back')||keyPressed('map')||keyPressed('confirm'))screen=previousScreen;return}
-if(screen==='ending'&&keyPressed('confirm')){screen='title';return}}
-function update(dt){musicTick(dt);if(keyPressed('settings')&&remap)pressed.clear();handleInput();if(game&&screen!=='title'&&!paused){game.seconds+=dt/1000;elapsed+=dt;if(elapsed>=1000){elapsed=0;updateStats()}}
+if(screen==='ending'&&keyPressed('confirm')){beginCredits();return;}if(screen==='credits'&&keyPressed('confirm')&&creditsTime>1000){screen='creditsEnd';return;}if(screen==='creditsEnd'){if(keyPressed('confirm')){screen='title';return;}if(pressed.has('KeyR')){beginCredits();return;}}}
+function update(dt){if(modalOpen()){held.clear();pressed.clear();return;}if(!paused&&screen==='ending'){endingTime+=dt;if(endingTime>12000)beginCredits();}if(!paused&&screen==='credits'){creditsTime+=dt;if(creditsTime>=window.EchoesCredits.duration(creditState()))screen='creditsEnd';}musicTick(dt);if(keyPressed('settings')&&remap)pressed.clear();handleInput();if(modalOpen()){pressed.clear();return;}if(hintTimer>0&&!paused)hintTimer=Math.max(0,hintTimer-dt);if(game&&screen!=='title'&&!paused){game.seconds+=dt/1000;elapsed+=dt;if(elapsed>=1000){elapsed=0;updateStats()}}
 if(!game||paused){pressed.clear();return}
 if(screen==='world'){let dx=Number(keyDown('right'))-Number(keyDown('left')),dy=Number(keyDown('down'))-Number(keyDown('up'));let len=Math.hypot(dx,dy)||1, speed=(keyDown('sprint')?5.2:2.9)*dt/16;
 if(view3D){let turn=(Number(held.has('ArrowRight'))-Number(held.has('ArrowLeft')))*.042*dt/16;heading+=turn;
@@ -232,7 +347,7 @@ dy=Number(held.has(bindings.down)||held.has('KeyS')||held.has('ArrowDown'))-Numb
 let diagonal=Math.hypot(dx,dy)||1;dx/=diagonal;dy/=diagonal;
 let vx=(Math.cos(heading)*(-dy)+Math.cos(heading+Math.PI/2)*dx)*speed,vy=(Math.sin(heading)*(-dy)+Math.sin(heading+Math.PI/2)*dx)*speed;
 if(canWalk(game.x+vx,game.y))game.x+=vx;if(canWalk(game.x,game.y+vy))game.y+=vy;
-}else{let nx=Math.max(75,Math.min(867,game.x+dx/len*speed)),ny=Math.max(125,Math.min(493,game.y+dy/len*speed));if(canWalk(nx,game.y))game.x=nx;if(canWalk(game.x,ny))game.y=ny}if(game.x>850&&Math.abs(game.y-353)<76&&!(!isEncounter()||isCleared())){game.x=850;enterBattle()}else if(game.x>859&&Math.abs(game.y-353)<76&&(!isEncounter()||isCleared()))moveRoom();if(game.x<78&&Math.abs(game.y-353)<75&&!(game.chapter===0&&game.room===0)){game.room--;if(game.room<0){game.chapter--;game.room=5}game.x=820}}
+}else{let nx=Math.max(75,Math.min(867,game.x+dx/len*speed)),ny=Math.max(125,Math.min(493,game.y+dy/len*speed));if(canWalk(nx,game.y))game.x=nx;if(canWalk(game.x,ny))game.y=ny}if(game.x>850&&Math.abs(game.y-353)<76){tryLeave()}if(screen==='world'&&game.x<94&&Math.abs(game.y-353)<75&&!(game.chapter===0&&game.room===0)){game.room--;if(game.room<0){game.chapter--;game.room=5}game.x=820;game.y=353;enterRoomNarrative();}}
 if(screen==='dodge'){
  battleTime+=dt;invTime=Math.max(0,invTime-dt);
  let dx=Number(keyDown('right'))-Number(keyDown('left')),dy=Number(keyDown('down'))-Number(keyDown('up'));
@@ -247,56 +362,66 @@ if(screen==='dodge'){
   else if(p===2){let x=340+Math.random()*280;bullets.push({x,y:333,vx:(game.x-x)*.00025,vy:speed*.9,damage:4});bullets.push({x:625-x+340,y:333,vx:0,vy:speed*.75,damage:3})}
   else {for(let i=0;i<3;i++){let angle=(i/3)*Math.PI*2+t;bullets.push({x:480,y:412,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,damage:3})}}
  }
- for(let b of bullets){b.x+=b.vx*dt;b.y+=b.vy*dt;
-  if(invTime<=0&&!game.invincible&&Math.hypot(b.x-game.x,b.y-game.y)<13){game.hp=Math.max(0,game.hp-b.damage);invTime=950}}
+ for(let b of bullets){const pace=battle.slow?.6:1;b.x+=b.vx*dt*pace;b.y+=b.vy*dt*pace;
+  if(invTime<=0&&!game.invincible&&Math.hypot(b.x-game.x,b.y-game.y)<13){if(battle.ward){battle.ward=false;announce('Lantern Ward blocked the hit');}else game.hp=Math.max(0,game.hp-Math.max(1,b.damage-armorReduction()));invTime=950}}
  bullets=bullets.filter(b=>b.x>332&&b.x<628&&b.y>324&&b.y<497);
- if(game.hp<=0){screen='dead'}else if(battleTime>(battle.boss?6800:4600)){screen='battle';announce(battle.boss?bossRemark():'You survived the attack!')}
+ if(game.hp<=0&&battle.revive){game.hp=Math.min(game.maxHp,8);battle.revive=false;invTime=1800;announce('Last Light brought you back');}if(game.hp<=0){screen='dead'}else if(battleTime>(battle.boss?6800:4600)){screen='battle';announce(battle.boss?bossRemark():'You survived the attack!')}
 }
 if(hotTimer>0)hotTimer--;pressed.clear()}
 function rect(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(x,y,w,h)}function txt(t,x,y,color='#f2eafa',size=21,align='left'){ctx.fillStyle=color;ctx.font=`${size}px monospace`;ctx.textAlign=align;ctx.fillText(t,x,y)}function lineBox(x,y,w,h){ctx.strokeStyle='#e6d8ff';ctx.lineWidth=3;ctx.strokeRect(x,y,w,h)}function heart(x,y,r=7){rect(x-r,y-r,r,r,'#ff4d74');rect(x,y-r,r,r,'#ff4d74');rect(x-r*1.5,y,r*3,r,'#ff4d74');rect(x-r,y+r,r*2,r,'#ff4d74');rect(x-r/2,y+r*2,r,r,'#ff4d74')}
-function world(){let type=roomStyle(),h=(game.chapter*29+type*32)%360;
-rect(0,0,W,H,'#090713');rect(45,93,870,432,`hsl(${h} 27% 14%)`);
-let floor=['stone bridge','crystal passage','broken columns','moss grotto','old library','dark river','fungal den','ancient shrine'][type];
-for(let x=55;x<907;x+=32)for(let y=103;y<514;y+=32){let a=(x*13+y*17+type*137+game.chapter*41)%16;rect(x+2,y+2,29,29,`hsl(${h} ${16+type*2}% ${11+a/2}%)`)}
-if(type===1||type===7){for(let i=0;i<12;i++){let x=98+(i*89)%730,y=145+(i*77)%310;rect(x,y,14,32,i%2?'#26b9cb':'#bd70db');rect(x+4,y-10,6,12,'#c0e9fe')}}
-if(type===3||type===6){for(let i=0;i<22;i++){let x=97+(i*103)%735,y=130+(i*53)%330;rect(x,y,8,11,type===6?'#a589c2':'#639e78')}}
-if(type===5){for(let i=0;i<5;i++)rect(90,155+i*54,770,19,'#203f57')}
-for(let [i,o] of roomObstacles().entries()){rect(o.x+4,o.y+7,o.w,o.h,'#0b0b19');rect(o.x,o.y,o.w,o.h,`hsl(${(h+50)%360} 23% ${22+i*3}%)`);rect(o.x+5,o.y+6,o.w-10,9,'#ffffff24')}
-if(hasCrystal()){rect(150,265,68,80,'#456477');rect(165,252,39,14,'#9be5e8');txt('✦',184,315,'#d5ffff',42,'center');txt('✦ SAVE',185,376,'#acf2da',16,'center')}
-if(hasLore()){rect(437,225,66,66,type===4?'#716247':'#6b5584');txt(type===4?'▣':'?',470,270,'#ffdb83',31,'center');txt(type===4?'Tome':'Read',470,303,'#e1c4ff',15,'center')}if(hasCoin()){rect(577,221,27,27,'#967344');txt('◆',590,244,'#ffe477',23,'center')}
-rect(852,290,35,122,isEncounter()&&!isCleared()?'#af697a':'#63a08d');txt('→',870,359,'white',26,'center');
-if(isEncounter()&&!isCleared()){rect(708,320,52,69,'#8f729e');txt('!',734,311,'#ffc0bb',30,'center')}
-heart(game.x,game.y,7);txt('CH '+(game.chapter+1)+'/20 · '+chapterTitle(),45,58,'#e5ccff',22);txt('ROOM '+(game.room+1)+'/6  · '+floor.toUpperCase(),914,58,'#c2b5d3',15,'right');txt('HP '+game.hp+'/'+game.maxHp+'  LV '+game.level+'  COINS '+game.gold+'  BERRIES '+game.items,52,567,'#f4dfff',21);
-if(isEncounter())txt(isCleared()?'Encounter complete':'Enemy ahead!',665,568,isCleared()?'#a4e7b6':'#f4b2c1',18)}
-function battleDraw(){rect(0,0,W,H,'#0a0814');txt(battle?.name?.toUpperCase()||'ECHO',480,52,'#ecd7ff',28,'center');rect(357,70,246,13,'#522c49');rect(357,70,246*(battle?.hp||0)/(battle?.max||1),13,'#a5dcaf');rect(432,135,96,112,battle?.boss?'#ab789e':'#7c719f');rect(452,115,53,30,'#c8b6d7');rect(453,172,12,11,'#1c182c');rect(496,172,12,11,'#1c182c');txt(battle?.peace>=(battle?.boss?3:2)?'* The enemy is ready for MERCY.':battleSpeech(),480,292,'#e6def2',battle?.boss?16:19,'center');lineBox(329,321,302,172);
-if(screen==='dodge'){if(!invTime||Math.floor(invTime/120)%2)heart(game.x,game.y,5);for(let b of bullets)rect(b.x-7,b.y-7,14,14,battle?.boss?'#ff8fbe':'#fcdaff')}else txt('* What will you do?',480,417,'#fff',22,'center');['FIGHT','ACT','ITEM','MERCY'].forEach((a,i)=>{ctx.strokeStyle=screen==='battle'&&i===menu?'#ffde8d':'#927a62';ctx.lineWidth=3;ctx.strokeRect(56+i*229,520,207,42);txt(a,158+i*229,548,screen==='battle'&&i===menu?'#ffe1a1':'#d7b796',24,'center')});txt('HP '+game.hp+'/'+game.maxHp+'   ITEMS '+game.items,55,502,'#f1ddff',20)}
-function draw(){rect(0,0,W,H,'#080712');if(screen==='title'){txt('ECHOES BELOW',480,176,'#eed7ff',62,'center');txt('THE LONG DESCENT',480,230,'#b7a1d3',28,'center');heart(480,317,11);txt('ENTER  —  CONTINUE / START',480,411,'white',23,'center');txt('NEW GAME / LOAD / SETTINGS BELOW',480,452,'#a99cc5',18,'center');txt('20 CHAPTERS · 120 ROOMS · CHOICES & CHECKPOINTS',480,520,'#8c85aa',17,'center')}
-else if(['world','dialog','map'].includes(screen)){if(view3D)render3D();else world();if(screen==='dialog'){rect(70,394,820,166,'#090714');lineBox(70,394,820,166);txt(dialog[0]||'',98,468,'#fff',21);txt('CONFIRM ▶',780,536,'#b6aacc',18,'right')}if(screen==='map'){rect(109,100,743,415,'#111020');lineBox(109,100,743,415);txt('THE DESCENT MAP',480,157,'#e3d7ff',31,'center');for(let i=0;i<20;i++){let x=166+(i%5)*136,y=196+Math.floor(i/5)*70;rect(x,y,110,47,i===game.chapter?'#8a74b4':i<game.chapter?'#4d897a':'#302a46');txt(String(i+1).padStart(2,'0'),x+55,y+30,'#fff',23,'center')}txt('BACK / MAP — CLOSE',480,485,'#c3bbd5',19,'center')}}
+function wrappedLines(text,width,size){ctx.font=size+'px monospace';const result=[];for(const paragraph of String(text).split('\n')){let line='';for(const word of paragraph.split(' ')){const next=line?line+' '+word:word;if(ctx.measureText(next).width>width&&line){result.push(line);line=word;}else line=next;}result.push(line);}return result;}
+function wrappedText(text,x,y,width,size=20,color='#f3ebff',spacing=26){const rows=wrappedLines(text,width,size);for(let i=0;i<rows.length;i++)txt(rows[i],x,y+i*spacing,color,size);return rows.length;}
+function drawRoomHud(){rect(12,29,936,65,'#080e1ee8');txt('CH '+(game.chapter+1)+' · '+chapterTitle(),25,52,'#dccafb',18);txt(roomData().name,25,78,'#bcefeb',22);txt('HP '+game.hp+'/'+game.maxHp+' · '+game.gold+' COINS',932,53,'#f3dcae',16,'right');rect(12,550,936,42,'#080e1ee8');txt(proximity(),480,576,'#d4f8ee',16,'center');}
+function drawCrystal2D(x,y,color){ctx.save();const spectrum=chapterData().crystalPalette;if(spectrum.length>1){const gradient=ctx.createLinearGradient(x-35,y-40,x+35,y+20);spectrum.forEach((c,i)=>gradient.addColorStop(i/(spectrum.length-1),c));color=gradient;}ctx.shadowBlur=18;ctx.shadowColor=chapterData().crystalColor;for(let i=0;i<3;i++){const ox=(i-1)*15,top=y-(i===1?32:17),base=y+13;ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(x+ox,top);ctx.lineTo(x+ox+10,y);ctx.lineTo(x+ox+6,base);ctx.lineTo(x+ox-7,base);ctx.lineTo(x+ox-10,y);ctx.closePath();ctx.fill();ctx.shadowBlur=0;ctx.fillStyle='#ffffff70';ctx.beginPath();ctx.moveTo(x+ox,top);ctx.lineTo(x+ox,y+12);ctx.lineTo(x+ox-7,base);ctx.lineTo(x+ox-10,y);ctx.closePath();ctx.fill();}if(spectrum.length>1){const t=performance.now()/1000;for(let j=0;j<spectrum.length;j++){ctx.fillStyle=spectrum[j];const a=t*.3+j*Math.PI*2/spectrum.length;ctx.fillRect(x+Math.cos(a)*39-1,y+Math.sin(a)*27-1,3,3);}}ctx.restore();}
+function world(){const rd=roomData(),colors=chapterData().colors;
+ rect(0,0,W,H,'#080d18');rect(65,105,825,400,colors[0]);rect(75,117,803,377,colors[1]);
+ ctx.strokeStyle=colors[2]+'20';ctx.lineWidth=2;for(let i=0;i<12;i++){ctx.beginPath();ctx.moveTo(90+i*68,120);ctx.lineTo(95+i*68+(game.room-2)*6,490);ctx.stroke();}
+ ctx.strokeStyle=colors[2]+'28';ctx.lineWidth=12;ctx.beginPath();rd.route.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.stroke();
+ for(const o of roomObstacles()){rect(o.x+4,o.y+6,o.w,o.h,'#070b13');rect(o.x,o.y,o.w,o.h,colors[0]);ctx.strokeStyle=colors[2]+'88';ctx.lineWidth=1;ctx.strokeRect(o.x+3,o.y+3,o.w-6,o.h-6);const glyph={gate:'∩',roots:'Y',glass:'◇',river:'≈',library:'▤',market:'⌂',ember:'♨',clock:'◷',garden:'✿',lake:'○',choir:'♪',station:'═',lanterns:'✦',stars:'*',palace:'♜',winter:'❄',archive:'▧',bridge:'╬',heart:'♥',dawn:'☼'}[rd.theme];txt(glyph,o.x+o.w/2,o.y+o.h*.7,colors[2],Math.min(22,o.w*.6),'center');}
+ const p=loreSpot();rect(p.x-20,p.y-20,40,40,colors[0]);ctx.strokeStyle=colors[2];ctx.strokeRect(p.x-22,p.y-22,44,44);txt(rd.puzzle?(puzzleSolved()?'✓':'≡'):'?',p.x,p.y+8,colors[2],27,'center');txt(rd.landmark,p.x,Math.min(514,p.y+42),colors[2],13,'center');
+ if(hasCrystal()){const p=crystalSpot();drawCrystal2D(p.x,p.y,chapterData().crystalColor);txt('SAVE',p.x,p.y+32,'#b9f4ee',12,'center');}
+ if(hasShop()){const p=roomData().shop;rect(p.x-29,p.y-19,58,38,'#78603f');txt('SHOP',p.x,p.y+5,'#ffe6a1',17,'center');txt('Wick’s trading post',p.x,p.y+38,'#ffe6a1',12,'center');}
+ if(hasCoin()){const p=coinSpot();txt('◆',p.x,p.y+8,'#ffe28c',26,'center');}
+ rect(852,304,27,95,canLeave()?'#4bbaa1':'#98516b');txt(canLeave()?'→':'◇',866,360,'#fff',24,'center');
+ if(game.chapter||game.room){rect(76,320,8,65,'#7c9ca6');txt('←',95,311,'#b9d2da',16,'center');}
+ if(isEncounter()&&!isCleared()){txt(isBoss()?'♜':'!',730,363,colors[2],43,'center');txt(isBoss()?chapterData().boss:enemyNames[game.chapter],730,396,'#f0c4d8',13,'center');}
+ heart(game.x,game.y,7);drawRoomHud();
+}
+
+function battleDraw(){rect(0,0,W,H,'#0a0814');txt(battle?.name?.toUpperCase()||'ECHO',480,52,'#ecd7ff',28,'center');rect(357,70,246,13,'#522c49');rect(357,70,246*(battle?.hp||0)/(battle?.max||1),13,'#a5dcaf');rect(432,135,96,112,battle?.boss?'#ab789e':'#7c719f');rect(452,115,53,30,'#c8b6d7');rect(453,172,12,11,'#1c182c');rect(496,172,12,11,'#1c182c');wrappedText(battle?.peace>=(battle?.boss?3:2)?'The enemy is ready for MERCY.':battleSpeech(),80,265,800,14,'#e6def2',16);lineBox(329,321,302,172);
+if(screen==='dodge'){if(!invTime||Math.floor(invTime/120)%2)heart(game.x,game.y,5);for(let b of bullets)rect(b.x-7,b.y-7,14,14,battle?.boss?'#ff8fbe':'#fcdaff')}else txt('* What will you do?',480,417,'#fff',22,'center');['FIGHT','ACT','ITEM','MERCY','SKILL'].forEach((a,i)=>{ctx.strokeStyle=screen==='battle'&&i===menu?'#ffde8d':'#927a62';ctx.lineWidth=3;ctx.strokeRect(40+i*178,520,168,42);txt(a,124+i*178,548,screen==='battle'&&i===menu?'#ffe1a1':'#d7b796',24,'center')});txt('HP '+game.hp+'/'+game.maxHp+'   ITEMS '+game.items,55,502,'#f1ddff',20)}
+function draw(){rect(0,0,W,H,'#080712');if(screen==='title'){txt('ECHOES BELOW',480,176,'#eed7ff',62,'center');txt('THE LONG DESCENT',480,230,'#b7a1d3',28,'center');heart(480,317,11);txt('ENTER  —  CONTINUE / START',480,411,'white',23,'center');txt('M — MAIN MENU / OPTIONS',480,452,'#a99cc5',18,'center');txt('FIND MARA · RETURN THE STOLEN LIGHT',480,520,'#8c85aa',17,'center')}
+else if(['world','dialog','map'].includes(screen)){if(view3D)render3D();else world();if(screen==='dialog'){rect(70,394,820,166,'#090714');lineBox(70,394,820,166);wrappedText(dialog[0]||'',98,430,752,20,'#fff',25);txt('CONFIRM ▶',780,536,'#b6aacc',18,'right')}if(screen==='map'){rect(109,100,743,415,'#111020');lineBox(109,100,743,415);txt('THE DESCENT MAP',480,157,'#e3d7ff',31,'center');for(let i=0;i<20;i++){let x=166+(i%5)*136,y=196+Math.floor(i/5)*70;rect(x,y,110,47,i===game.chapter?'#8a74b4':i<game.chapter?'#4d897a':'#302a46');txt(String(i+1).padStart(2,'0'),x+55,y+30,'#fff',23,'center')}txt('BACK / MAP — CLOSE',480,485,'#c3bbd5',19,'center')}}
 else if(['battle','dodge'].includes(screen))battleDraw();else if(screen==='dead'){txt('YOUR ECHO FADES',480,228,'#ff8796',47,'center');txt('ENTER — RETURN TO LAST CHECKPOINT',480,331,'white',22,'center');txt('Your choices since the checkpoint may be lost.',480,394,'#a79eb7',18,'center')}
-else if(screen==='ending'){txt('THE DOOR OPENS',480,223,'#e9ceff',55,'center');txt(game.ending,480,300,'#f8ebff',23,'center');txt('ENTER — RETURN TO MAIN MENU',480,407,'#aaa0c6',22,'center')}
-if(paused&&screen!=='title'){rect(0,0,W,H,'#0a0717e3');txt('PAUSED',480,273,'#fff',56,'center');txt('P — RESUME · K — KEYBINDS',480,351,'#ccc',22,'center')}
-if(hotTimer>0)txt(hotMessage,480,92,'#c5ffda',17,'center');rect(4,4,146,24,'#211831');txt('BUILD v'+VERSION,10,22,'#e7c8ff',17)}
+else if(screen==='ending'){txt('THE DOOR OPENS',480,223,'#e9ceff',55,'center');wrappedText(game.ending,130,285,700,20,'#f8ebff',28);txt('ENTER — WATCH CREDITS',480,500,'#aaa0c6',22,'center')}
+if(screen==='credits')window.EchoesCredits.draw(ctx,creditState());else if(screen==='creditsEnd')window.EchoesCredits.summary(ctx,creditState());
+if(paused&&screen!=='title'){rect(0,0,W,H,'#0a0717e3');txt('PAUSED',480,273,'#fff',56,'center');txt('P — RESUME · M — MAIN MENU',480,351,'#ccc',22,'center')}
+drawHintBox();if(hotTimer>0&&!['credits','creditsEnd'].includes(screen))txt(hotMessage,480,92,'#c5ffda',17,'center');if(developerAuthorized){rect(4,4,146,24,'#211831');txt('BUILD v'+VERSION,10,22,'#e7c8ff',17)}}
 let last=performance.now();function frame(t){let dt=Math.min(50,t-last);last=t;update(dt);draw();requestAnimationFrame(frame)}
-function renderBinds(){const p=by('keybindGrid');p.replaceChildren();for(let [action,code] of Object.entries(bindings)){let row=document.createElement('div');row.className='bindrow';let span=document.createElement('span');span.textContent=action.toUpperCase();let b=document.createElement('button');b.textContent=remap===action?'PRESS A KEY...':keyName(code);b.onclick=()=>{remap=action;renderBinds();announce('Press a new key for '+action+' (Esc cancels)')};row.append(span,b);p.append(row)}}
-function toggleSettings(show){let panel=by('settingsPanel');panel.classList.toggle('hidden',typeof show==='boolean'?!show:!panel.classList.contains('hidden'));remap=null;renderBinds();if(!panel.classList.contains('hidden'))panel.scrollIntoView({block:'nearest',behavior:'smooth'});else focusGame()}
+function renderBinds(){const p=by('keybindGrid');p.replaceChildren();for(let [action,code] of Object.entries(bindings)){let row=document.createElement('div');row.className='bindrow';let span=document.createElement('span');span.textContent=action.toUpperCase();let b=document.createElement('button');b.textContent=remap===action?'PRESS A KEY...':keyName(code);b.onclick=()=>{remap=action;renderBinds();announce('Press a new key for '+action+' (Esc cancels)')};row.append(span,b);p.append(row)}by('menuButton').textContent=keyName(bindings.menu)+' · MENU';}
+function toggleSettings(show){if(!developerAuthorized||by('mainMenuDialog').open){if(show===false){remap=null;renderMainMenu('home');}else openMainMenu('controls');return;}let panel=by('settingsPanel');panel.classList.toggle('hidden',typeof show==='boolean'?!show:!panel.classList.contains('hidden'));remap=null;renderBinds();if(!panel.classList.contains('hidden'))panel.scrollIntoView({block:'nearest',behavior:'smooth'});else focusGame()}
 function maybeLocalAdmin(){return location.protocol==='file:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'}
-function setAdmin(value,description){developerAuthorized=value;by('adminPanel').classList.toggle('hidden',!value);by('adminStatus').textContent=description||'Developer tools ready';if(value)by('adminPanel').scrollIntoView({block:'nearest'});}
+function setAdmin(value,description){value=Boolean(value&&onlineAdmin);developerAuthorized=value;document.body?.classList.toggle('admin-mode',value);by('adminPanel').classList.toggle('hidden',!value);by('adminStatus').textContent=description||'Developer tools ready';if(value)by('adminPanel').scrollIntoView({block:'nearest'});}
+function applyOnlineAuthorization(flag){onlineAdmin=Boolean(flag);setAdmin(onlineAdmin,onlineAdmin?'KingKippy — verified administrator':'Admin access locked');}
 function openLocalAdmin(){if(!onlineAdmin){announce('Only the verified KingKippy account can open Admin Test Lab');return}setAdmin(!developerAuthorized,'Verified KingKippy administrator');announce(developerAuthorized?'KingKippy tools open':'Admin tools closed')}
 function runAdmin(action){if(!developerAuthorized||!game){announce(!game?'Start a game to test':'Admin access is locked');return}switch(action){case'heal':game.hp=game.maxHp;break;case'items':game.items+=10;break;case'next':if(game.chapter===19&&game.room===5){announce('Final room reached');return}screen='world';battle=null;moveRoom();break;case'boss':game.room=5;game.x=660;game.y=355;screen='world';battle=null;break;case'clear':game.flags[roomKey()]='mercy';screen='world';battle=null;break;case'checkpoint':setCheckpoint();break;case'invincible':game.invincible=!game.invincible;break}announce('Developer action: '+action+' (not saved until manual save)')}
-function putCloudSave(value){let {data}=normalise(value);game=data;screen='world';paused=false;battle=null;save();return true}
-by('newBtn').onclick=()=>{enableAudio();startNew();focusGame()};by('continueBtn').onclick=()=>{enableAudio();continueGame();focusGame()};by('pauseBtn').onclick=()=>{if(screen==='title')continueGame();else paused=!paused;focusGame()};by('viewBtn').onclick=()=>{switchView();focusGame()};
-by('fullscreenBtn').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await canvas.requestFullscreen()}catch(e){announce('Fullscreen not available here')}focusGame()};
+function putCloudSave(value){let {data}=normalise(value);game=data;ensurePosition();screen='world';paused=false;battle=null;save();return true}
+by('closeShop').onclick=()=>closeModal('shopDialog');by('closeSkill').onclick=()=>closeModal('skillDialog');
+by('hintBtn').onclick=()=>{showHint();focusGame()};by('journalBtn').onclick=openJournal;by('closeJournal').onclick=()=>closeModal('journalDialog');by('closePuzzle').onclick=()=>closeModal('puzzleDialog');for(const id of ['journalDialog','puzzleDialog','shopDialog','skillDialog'])by(id).addEventListener('close',()=>{held.clear();pressed.clear();focusGame()});
+by('creditsBtn').onclick=()=>{beginCredits();focusGame()};
+by('newBtn').onclick=()=>{requestImmersive();enableAudio();startNew();focusGame()};by('continueBtn').onclick=()=>{requestImmersive();enableAudio();continueGame();focusGame()};by('pauseBtn').onclick=()=>{if(screen==='title')continueGame();else paused=!paused;focusGame()};by('viewBtn').onclick=()=>{switchView();focusGame()};
+by('fullscreenBtn').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen()}catch(e){announce('Fullscreen not available here')}focusGame()};
 by('musicBtn').onclick=()=>{musicEnabled=!musicEnabled;by('musicBtn').textContent='Music: '+(musicEnabled?'On':'Off');if(musicEnabled)enableAudio();focusGame()};
 canvas.addEventListener('click',()=>{enableAudio();if(view3D&&document.pointerLockElement!==canvas)Promise.resolve(canvas.requestPointerLock?.()).catch(()=>announce('Use arrow keys to look around'))});
 document.addEventListener('mousemove',e=>{if(view3D&&document.pointerLockElement===canvas)heading+=e.movementX*.003});
-by('mapBtn').onclick=()=>{if(game){screen=screen==='map'?'world':'map';paused=false;focusGame()}else announce('Start a game first')};by('saveBtn').onclick=()=>{if(game){save();focusGame()}else announce('Start a game first')};by('loadBtn').onclick=()=>{by('savePanel').classList.toggle('hidden');refreshSlots()};by('settingsBtn').onclick=()=>toggleSettings();by('closeSettings').onclick=()=>toggleSettings(false);by('resetBinds').onclick=()=>{bindings={...defaults};try{storage.setItem(BIND_KEY,JSON.stringify(bindings))}catch{}renderBinds();announce('Default keybinds restored')};by('exportBtn').onclick=saveExport;by('importBtn').onclick=()=>by('importFile').click();by('importFile').onchange=saveImport;
+by('mapBtn').onclick=()=>{if(game){screen=screen==='map'?'world':'map';paused=false;focusGame()}else announce('Start a game first')};by('saveBtn').onclick=()=>{if(game){save();focusGame()}else announce('Start a game first')};by('loadBtn').onclick=()=>{if(!developerAuthorized){openMainMenu('saves');return;}by('savePanel').classList.toggle('hidden');refreshSlots()};by('settingsBtn').onclick=()=>toggleSettings();by('closeSettings').onclick=()=>toggleSettings(false);by('resetBinds').onclick=()=>{bindings={...defaults};try{storage.setItem(BIND_KEY,JSON.stringify(bindings))}catch{}renderBinds();announce('Default keybinds restored')};by('exportBtn').onclick=saveExport;by('importBtn').onclick=()=>by('importFile').click();by('importFile').onchange=saveImport;
 for(let b of document.querySelectorAll('[data-admin]'))b.onclick=()=>runAdmin(b.dataset.admin);
 for(let i=0;i<20;i++){let o=new Option('Chapter '+(i+1)+' — '+chapterNames[i],i);by('adminChapter').add(o)}for(let i=0;i<6;i++)by('adminRoom').add(new Option('Room '+(i+1),i));
 by('teleportBtn').onclick=()=>{if(!developerAuthorized||!game)return;game.chapter=Number(by('adminChapter').value);game.room=Number(by('adminRoom').value);game.x=110;game.y=350;screen='world';paused=false;battle=null;announce('Teleported to chapter '+(game.chapter+1)+', room '+(game.room+1))};
 addEventListener('keydown',e=>{if(e.code==='F2'&&!e.repeat&&!['INPUT','SELECT'].includes(document.activeElement?.tagName)){e.preventDefault();openLocalAdmin()} });
-window.EchoesBridge={getSave:()=>game?clone(game):null,putSave:putCloudSave,authorizeOnlineAdmin:flag=>{onlineAdmin=Boolean(flag);setAdmin(onlineAdmin,onlineAdmin?'KingKippy — verified administrator':'Admin access locked')},getStatus:()=>({version:VERSION,screen,slot,view3D,renderer:window.EchoesCave&&!window.EchoesCave.failed?"Three.js":"fallback",chapter:game?.chapter,room:game?.room,hp:game?.hp,paused,admin:developerAuthorized,keys:clone(bindings)}),admin:runAdmin};
+window.EchoesBridge={getSave:()=>game?clone(game):null,putSave:putCloudSave,getStatus:()=>({version:VERSION,screen,slot,playerView:!developerAuthorized,mainMenuOpen:by('mainMenuDialog').open,menuPage:shellPage,hintOpen:hintTimer>0,creditsTime,crystalName:game?chapterData().crystalName:null,crystalPalette:game?[...chapterData().crystalPalette]:[],view3D,renderer:window.EchoesCave&&!window.EchoesCave.failed?"Three.js":"fallback",roomName:game?roomData().name:null,objective:game?objective():null,puzzleSolved:game?puzzleSolved():false,shopAvailable:!!hasShop(),combat:battle?{name:battle.name,peace:battle.peace,usedSkill:!!battle.usedSkill,ward:!!battle.ward,slow:!!battle.slow,revive:!!battle.revive,invTime}:null,chapter:game?.chapter,room:game?.room,hp:game?.hp,paused,admin:developerAuthorized,keys:clone(bindings)}),admin:runAdmin};
 const notifyOnline=()=>{by('connectivity').textContent=navigator.onLine?'Network online':'Offline play active'};notifyOnline();addEventListener('online',notifyOnline);addEventListener('offline',notifyOnline);
-try{slot=Number(storage.getItem(SET_KEY))||1;if(slot<1||slot>3)slot=1}catch{}migrate();refreshSlots();updateStats();renderBinds();requestAnimationFrame(frame);focusGame();
+try{slot=Number(storage.getItem(SET_KEY))||1;if(slot<1||slot>3)slot=1}catch{}migrate();refreshSlots();updateStats();renderBinds();if(document.body)initializePlayerShell();requestAnimationFrame(frame);focusGame();
 if('serviceWorker' in navigator&&location.protocol.startsWith('http')&&!maybeLocalAdmin()){
  const hadController=!!navigator.serviceWorker.controller;
  let updateShown=false;
@@ -309,17 +434,15 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')&&!maybeLoc
   setInterval(check,60000);document.addEventListener('visibilitychange',check);check();
  }).catch(()=>{});
 }
-})();
-</script>
-<script type="module">
-const by=id=>document.getElementById(id),info=s=>by('cloudMessage').textContent=s;
+// Authentication shares this private scope with the player/admin view gate.
+const info=s=>by('cloudMessage').textContent=s;
 let client=null,user=null,authorized=false;
-async function init(){let config;try{const r=await fetch('./cloud-config.json?version=1.0.1',{cache:'no-store'});if(r.ok)config=await r.json();else throw Error('cloud-config.json not found ('+r.status+')')}catch(e){info('Login setup error: '+e.message+'. Upload cloud-config.json with the website.');return}
+async function init(){let config;try{const r=await fetch('./cloud-config.json?version=1.3.0',{cache:'no-store'});if(r.ok)config=await r.json();else throw Error('cloud-config.json not found ('+r.status+')')}catch(e){info('Login setup error: '+e.message+'. Upload cloud-config.json with the website.');return}
 if(!config?.supabaseUrl||!config?.supabaseAnonKey){info('LOGIN NOT CONNECTED: add your Supabase Project URL and publishable/anon key to cloud-config.json, then redeploy the website. Guest saves still work.');return}
-try{const sdk=await import('https://esm.sh/@supabase/supabase-js@2');client=sdk.createClient(config.supabaseUrl,config.supabaseAnonKey);const {data:{session}}=await client.auth.getSession();await updateUser(session?.user||null);client.auth.onAuthStateChange((_evt,session)=>{setTimeout(()=>updateUser(session?.user||null),0)});info('Cloud account service connected. Log in to access your saved account.')}catch(e){info('Login connection failed: '+(e?.message||String(e))+'. Check Supabase URL, publishable key and internet access.')}
+try{const sdk=await import('https://esm.sh/@supabase/supabase-js@2');client=sdk.createClient(config.supabaseUrl,config.supabaseAnonKey);const {data:{session}}=await client.auth.getSession();await updateUser(session?.user||null);client.auth.onAuthStateChange((_evt,session)=>{setTimeout(()=>updateUser(session?.user||null),0)});info(user?'Signed in. Your cloud saves are ready.':'Sign in to keep cloud saves across devices, or keep playing as a guest.')}catch(e){info('Login connection failed: '+(e?.message||String(e))+'. Check Supabase URL, publishable key and internet access.')}
 }
-async function updateUser(u){user=u;authorized=false;by('accountStatus').textContent=user?'— '+(user.user_metadata?.username||user.email?.split('@')[0]||'Player'):'— Guest';by('usernameBadge').textContent=user?'SIGNED IN · '+(user.user_metadata?.username||user.email?.split('@')[0]||'Player'):'GUEST · not logged in';by('authFields').classList.toggle('hidden',!!user);by('authActions').classList.toggle('hidden',!user);window.EchoesBridge?.authorizeOnlineAdmin(false);
-if(!client||!user)return;try{let {data,error}=await client.from('game_admins').select('user_id').eq('user_id',user.id).maybeSingle();authorized=!!data&&!error&&user.email?.toLowerCase()==='kingkippy@example.com';window.EchoesBridge?.authorizeOnlineAdmin(authorized)}catch{}}
+async function updateUser(u){user=u;authorized=false;by('accountStatus').textContent=user?'— '+(user.user_metadata?.username||user.email?.split('@')[0]||'Player'):'— Guest';by('usernameBadge').textContent=user?'SIGNED IN · '+(user.user_metadata?.username||user.email?.split('@')[0]||'Player'):'GUEST · not logged in';by('authFields').classList.toggle('hidden',!!user);by('authActions').classList.toggle('hidden',!user);applyOnlineAuthorization(false);
+if(!client||!user)return;try{const checkedUser=user;let {data,error}=await client.from('game_admins').select('user_id').eq('user_id',user.id).maybeSingle();if(user?.id!==checkedUser.id)return;authorized=!!data&&!error&&user.email?.toLowerCase()==='kingkippy@example.com';applyOnlineAuthorization(authorized)}catch{}}
 const username=()=>by('username').value.trim().toLowerCase();
 const validName=n=>/^[a-z0-9_]{3,20}$/.test(n);
 const alias=n=>n+'@example.com';
@@ -335,6 +458,7 @@ by('logoutBtn').onclick=async()=>{if(!client)return;await client.auth.signOut();
 by('cloudSaveBtn').onclick=async()=>{if(!client||!user)return;let data=window.EchoesBridge?.getSave();if(!data){info('Start a game before uploading a cloud save.');return}let {error}=await client.from('game_saves').upsert({user_id:user.id,slot:'main',save_data:data,updated_at:new Date().toISOString()},{onConflict:'user_id,slot'});info(error?error.message:'Cloud save uploaded. You can load it on another signed-in device.')};
 by('cloudLoadBtn').onclick=async()=>{if(!client||!user)return;let {data,error}=await client.from('game_saves').select('save_data').eq('user_id',user.id).eq('slot','main').maybeSingle();if(error){info(error.message);return}if(!data){info('No cloud save found for this account.');return}if(!confirm('Replace your current local slot with the cloud save?'))return;try{window.EchoesBridge.putSave(data.save_data);info('Cloud save downloaded and stored locally.')}catch(e){info('Cloud save rejected: '+e.message)}};
 init();
+})();
 </script>
 </body>
 </html>

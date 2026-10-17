@@ -5,7 +5,7 @@ function chapter(title,theme,goal,intro,boss,acts,order,rooms){chapters.push({ti
 chapter('The Forgotten Gate','gate','Follow Mara’s trail into the sealed city.',
  'Your sister Mara vanished while repairing the town’s last sunlamp. Her lantern has returned without her. Something inside it is knocking.',
  'The Gatekeeper','Show Mara’s ribbon|Ask who closed the gate|Promise to bring the missing home','Knock|Listen|Answer',[
- 'The Fallen Bell|Mara’s lantern|A small flame unfolds into a face. “Wick,” it says. “Courier, mostly. Your sister went below. She told me to find someone who would follow.”|The cyan crystal beside the entrance heals you. Walk close and press your interact key.',
+ 'The Fallen Bell|Mara’s lantern|A small flame unfolds into a face. “Wick,” it says. “Courier, mostly. Your sister went below. She told me to find someone who would follow.”|The blue crystal beside the entrance heals you. Walk close and press your interact key.',
  'Ribbon on the Rail|Blue ribbon|Mara tied her work ribbon to a broken handrail. Beneath it she scratched: THE LIGHT IS BORROWED. You remember her saying that every machine leaves a bill.|The ribbon rests beside the inner bend. Read it before following the lit exit.',
  'The Toll of Footsteps|Toll ledger|The guard’s ledger records footsteps instead of names. One pair entered yesterday; the return column is blank. Wick insists that blank is not the same as dead.|An encounter waits near the far doorway. ACT twice can make an ordinary foe ready for MERCY.',
  'Three Quiet Knocks|Speaking door|The door bears an old courtesy: knock, listen, then answer. Wick taps the wood. Something on the other side taps back a moment too late.|The three seals repeat the courtesy written on the door. Their order matters.',
