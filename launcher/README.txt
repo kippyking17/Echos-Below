@@ -1,15 +1,16 @@
-ECHOES BELOW — AUTO UPDATE 2.1
+ECHOS BELOW — v3.0.0 / build 20261017.16
 
-Keep EchoesBelow-AutoUpdate.exe anywhere convenient and open it.
-Click Play latest online game. No game folder or Git installation is needed for playing.
-Internet access and a browser are needed. Microsoft Edge opens an app-style game window when available.
+PLAY: https://kippyking17.github.io/Echos-Below/
 
-The app checks the live game version at startup, every minute, and before playing. Future game versions use the same EXE. The game saves and reloads updates at a safe moment, then resumes your journey. Battles, conversations, pauses and open menus wait until you return to play. If saving fails, it keeps your current game open.
+30 chapters. Chapters 1–29: seven rooms, miniboss in room 5, main boss/Angel Grace/marketplace in room 7. Chapter 30: three rooms, with the original rainbow finale moved here. Ten new dark districts, story, bosses, elites and music. 206 main rooms + 18 optional maps + a hidden post-credits room.
 
-Close all OLD Echoes Below publisher apps and use this new EXE. Old apps can still upload old files; the website now blocks those old versions from being deployed.
+Six travelers now have distinct specialties. Bosses have two increasingly angry/faster/harder phases; the Last Echo has three, a unique rainbow ascension and final spoken line. New attack animations cover guardians and roaming enemies. Four closing story pages and animated credits reflect your choices. Stay ten seconds after the credits finish for the traveler's hidden note.
 
-CREATOR TOOLS
-These are optional. Nothing is uploaded just by opening this app or playing. The upload folder starts empty and automatic publishing starts off. Choose your NEW game folder only when you intend to publish. Git for Windows and authorized GitHub sign-in are needed for publishing. The app and server both reject older game versions. There is no need to publish files in order to receive updates as a player.
+Higher rarities are scarcer in markets, chests and enemy drops. Godlike Totems cost 55 coins in chapter 16+ markets. Brindle does not read rarity names in his purchase thanks. Voice delivery prefers natural device voices, but quality depends on the voices installed/available on your device.
 
-Normal login and saves stay on https://kippyking17.github.io/Echos-Below/ . The app uses that same website origin, not a separate local copy. Keep using the same browser/profile for your existing saves. AutoUpdateLauncher.cs includes the app source.
+WINDOWS APP
+Extract this whole ZIP, then open EchosBelow-AutoUpdate.exe. It checks and opens the latest published game. Future game updates use the same app. Internet and a browser are required for first load and updates. Existing browser/profile saves remain on the same website. Creator tools are optional: no upload occurs until you choose it; automatic publishing starts off. Authorized GitHub sign-in and Git for Windows are required for publishing.
 
+The included game folder is deployable: serve it with a web server, or upload its contents as your site root. Login/cloud configuration remains included. AutoUpdateLauncher.cs is the Windows app source.
+
+Click/tap to walk; RMB attack; E interact/read/collect/confirm; Space dodge roaming enemies; I inventory; M menu. Landscape touch controls for phones/tablets. New Game resets everything. Existing saves migrate to the new room numbering without deleting owned gear, coins or earned rewards. See game/BUILD_NOTES.md for full details.

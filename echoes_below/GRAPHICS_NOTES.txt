@@ -11,3 +11,5 @@ v2.6: original procedural elemental blade surfaces, actual-pose crescent trails,
 v2.7: original pixel gateway title, floating crystals/runes/lantern stairs; categorized journal menu with armored traveler and progress. Five rarity colors, Rare/Legends armor palettes and persistent memory chests.
 
 v2.7.1: display-aware high-density canvas; clear monospace UI/body text, larger dialogue, stronger text contrast and landscape traveler summary. Large pixel titles retained.
+
+v3.0: ten new district floor styles and guardian/elite silhouettes; clock-driven enemy windup/strike/recovery; health-phase expressions; all-color final ascension; lantern dawn epilogue and credits. Echos Below branding and six traveler traits.

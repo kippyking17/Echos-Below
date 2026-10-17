@@ -12,7 +12,7 @@ using System.Net;
 using System.Net.Cache;
 
 class Publisher : Form {
- const string AppVersion="2.1.1";
+ const string AppVersion="3.0.0";
  static readonly Version MinimumGame=new Version(1,4,1);
  Label liveStatus=new Label(); Button checkUpdates=new Button();
  bool checking; DateTime nextCheck=DateTime.MinValue; Version latestGame;
@@ -43,8 +43,8 @@ class Publisher : Form {
   Application.EnableVisualStyles();Application.Run(new Publisher());return 0;
  }
  Publisher(){
-  Text="Echoes Below — Auto Update 2.1.1";ClientSize=new Size(720,550);MinimumSize=new Size(736,589);Font=new Font("Segoe UI",10);
-  var title=new Label{Text="ECHOES BELOW",Location=new Point(20,17),AutoSize=true,Font=new Font("Segoe UI",18,FontStyle.Bold)};
+  Text="Echos Below — Auto Update 3.0.0";ClientSize=new Size(720,550);MinimumSize=new Size(736,589);Font=new Font("Segoe UI",10);
+  var title=new Label{Text="ECHOS BELOW",Location=new Point(20,17),AutoSize=true,Font=new Font("Segoe UI",18,FontStyle.Bold)};
   var play=new Button{Text="Play latest online game",Location=new Point(20,65),Size=new Size(220,36)};play.Click+=(s,e)=>CheckLive(true);
   var actions=new Button{Text="Deployment status",Location=new Point(255,65),Size=new Size(185,36)};actions.Click+=(s,e)=>Process.Start("https://github.com/kippyking17/Echos-Below/actions");
   var label=new Label{Text="CREATOR TOOLS — choose new game files only when publishing",Location=new Point(20,196),AutoSize=true};
@@ -149,7 +149,7 @@ class Publisher : Form {
    }
    Run(checkout,"add -- echoes_below");if(String.IsNullOrWhiteSpace(Run(checkout,"diff --cached --name-only"))){e.Result="No new changes to publish.";return;}
    Write("Uploading "+count+" game files. Complete GitHub sign-in if a browser window opens.");
-   Run(checkout,"-c user.name=EchoesBelowPublisher -c user.email=echoes-below-publisher@users.noreply.github.com commit -m \"Publish Echoes Below game update\"");
+   Run(checkout,"-c user.name=EchoesBelowPublisher -c user.email=echoes-below-publisher@users.noreply.github.com commit -m \"Publish Echos Below game update\"");
    Run(checkout,"push origin main");e.Result="Uploaded successfully. GitHub Actions will now deploy the website. Use Deployment status to check when it is live.";
   };
   worker.RunWorkerCompleted+=(s,e)=>{busy=false;publish.Enabled=true;choose.Enabled=true;auto.Enabled=true;if(e.Error!=null){auto.Checked=false;Write("Upload failed: "+e.Error.Message+"\r\nAutomatic publishing paused. Your selected files are unchanged.");}else Write((string)e.Result);worker.Dispose();};worker.RunWorkerAsync();

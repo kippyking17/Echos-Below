@@ -1,4 +1,44 @@
-# Echoes Below v2.7.1 — build 20261017.15
+# Echos Below v3.0.0 — build 20261017.16
+
+## Thirty chapters, a shorter road through each district
+- Chapters 1–29 have seven rooms each. Room 5 holds the miniboss and regular Grace; room 7 holds the main boss, Angel Grace and Brindle's marketplace. Final chapter 30 has exactly three rooms: entrance, miniboss/Grace, Last Echo/Angel Grace. 206 campaign rooms, 18 optional trail maps, plus one hidden post-credits room.
+- The original chapter 20 finale is now chapter 30. Its rainbow Graces, Last Echo identity and voice, final rewards and homecoming ideas remain. Only chapter 30 uses a multicolor crystal palette; every earlier district has one color.
+- Ten new districts after Mara's rescue: The Unlit Ward, The Salt Cathedral, The Hollow Theatre, The Bonewater Locks, The Blackroot Reliquary, The Sleepless Foundry, The House of Lost Hours, The Cinder Parliament, The Sea Beneath the Hearth, The Road of Unsaid Names. Each has original story memories, puzzle clues, routed rooms, architecture, boss/miniboss identity, relic and music. Memories from removed chambers are combined into retained rooms instead of discarded.
+- Darker story follows the people erased by the engine, the difference between care and control, loss, accountability and choosing to keep living. Mara and Wick accompany the new journey; the existing rescue still matters.
+
+## Living combat
+- Thirty main bosses and thirty minibosses; all have named identities and growing health, attack, armor and understanding requirements. Ten new full guardian silhouettes, ten new elite looks and ten new roaming enemy identities.
+- Bosses/minibosses have two health phases; Last Echo has three (two-thirds and one-third HP). Later phases visibly redden the eyes, increase projectile damage (120%, then 145% for finale phase 3), speed (1.4 per phase), and attack cadence. Edge warnings remain at least 700ms/800ms before damaging shots. Phase changes have distinct final-boss lines.
+- Guardians visibly wind up, swing/cast and recover in step with attack waves. Ordinary encounters animate too. Roaming enemies commit to a direction, wind up for 400ms, strike, and recover; moving/dodging out of range avoids the hit. Player weapons, visible armor and existing VFX remain.
+- Last Echo's lethal defeat rises into the air and bursts into all 29 district colors, followed by settling shards, a passage key and the unique line: “Go on, little light. Live what I could only remember.” It does not reuse the standard falling corpse animation. Peaceful victories keep their own farewell.
+
+## Travelers and treasure
+- Wanderer: +4 HP, +1 defense. Mossrunner: +12% movement. Embercoat: +3 damage. Duskcloak: +3 Intelligence. Seaglass: +3 defense, +2 HP. Dawnkeeper: +6 berry/potion healing, +4 HP. Descriptions appear in character creation, How to Play and inventory. Bonuses persist without stacking on reload; New Game resets the entire journey before applying the chosen traveler.
+- Base gear weights: Basic 75%, Rare 16%, Strong 7%, Legends 1.7%, Godlike 0.3%. Higher grades grow slowly with depth; Godlike equipment stays chapter 16+ and 50–90 coins. Exact current rates remain in the Rarity guide.
+- Chest base: Rare 80%, Strong 17%, Legends 3%, Godlike 0%; Godlike starts at 1% in chapter 16. No Basic chests. One chest per ninth campaign room (22 fresh-run chests); old pending chests remain reachable with their locked items after migration.
+- Ordinary gear drops reduced to 3.5% plus 0.07 percentage points per chapter, with a small trail relic bonus. Independent 25% healing-mote rule and scarce coins/berries preserved. Guardian relics now 12%; otherwise chapter-scaled coins. Guaranteed finale relic/Sword and earned trail rewards unchanged.
+- Totem of the Angels is Godlike, remains 55 coins and appears in chapter 16+ markets. Existing owned Totems remain usable. Spoken purchase thank-you mentions the item without reading its rarity; written item cards retain it.
+
+## Homecoming
+- Four player-paced epilogue pages respond to peaceful/violent choices and discovered memories. Animated credits carry the 30 districts, companions, journey totals and a new closing message. A quieter final dawn waits after the scroll.
+- Stay ten seconds on the final credits screen to enter The Room Left for You. Its folded note is written by the traveler about getting lost, harmful people, difficult choices and finding a way home. It is saved, has no enemies/market, and does not add an ordinary fourth campaign room.
+
+## Name, voices, admin and compatibility
+- Visible game name is Echos Below in title, menus, install manifest, credits, launcher and download. Legacy storage keys and hosting path remain compatible.
+- Brindle uses warm, healthy older delivery with near-normal pitch/rate; the Last Echo uses restrained darker pacing. Natural/neural/premium English voices are preferred when supplied by the device. Removed extreme pitch shifting and the synthetic onset effect. These are device speech voices, not recorded actors, so fidelity varies by browser/device.
+- Verified KingKippy admin panel: Next market and Choose market teleport to any of the 29 marketplaces, save position and clear active movement/battle UI without granting loot or clearing guardians. No final-chapter market. Room selector shows three rooms for chapter 30. Existing account/server-role authorization and Add Coins remain unchanged.
+- Saves migrate from 20 chapters/10 rooms: old finale records/rewards move to chapter 30, old room 10 becomes room 7, chapter 20/finished players can begin the new arc at chapter 20. Existing coins, items, seeds, discovered records and earned finale rewards remain. Prior earned max-stat rewards stay maxed, so completed old journeys can be very strong in the new districts. Fresh New Game gives the intended full progression. Current save schema is campaignChapters 30 / campaignRooms 7, format 4; migration is idempotent.
+
+## Validation
+- All 30 chapters, 206 rooms and 60 guardian encounters boot; one mini/boss per chapter, only final rainbow; all identities/music/relics present. Monotonic chapter stats, phase damage/speed/cadence, normalized rarity/gate/price checks and six distinct reset/load character bonuses.
+- 224 campaign/trail maps, 1828 object/exit/return routes use safe collision paths. Hidden room is an open walkable room, bringing total maps to 225.
+- Early/new/final bosses and minis can be spared, with correct permanent gifts. All 60 guardian animations and 6600ms finale use finite coordinates. Natural voice selection and restrained pitch/rate checked.
+- Real desktop/landscape-phone title and menus; character specialties, market purchase and Godlike Totem, spoken thank-you without rarity, three actual final fight phases, unique death/farewell, epilogue, credits, ten-second hidden-room threshold, note interaction and reload.
+- Actual admin authorization fixture tests next/select markets, final three-room selector, existing coin guards/save/cap; guests denied. No production account mutations.
+- Installed v2.7.1 cache upgrades to v3.0.0, preserves old completion, maps boss to room 7 and resumes all 206 rooms offline. Old pending/opened chest migration verified.
+- Windows launcher rebuilt with Echos branding/icon; upload allowlist, version guard, empty upload folder and automatic publishing off pass its built-in self-test. Live publishing still requires the owner's GitHub credentials.
+
+# Echos Below v2.7.1 — build 20261017.15
 
 - Main game canvas follows displayed size, device pixel density and browser zoom instead of stretching a fixed 960x600 bitmap. Logical coordinates, click/tap movement and touch controls remain unchanged. Backing resolution is bounded to 3840x2400. Pixel artwork keeps nearest-neighbor sampling; text renders at the new resolution.
 - Clear monospace lettering for menu text, descriptions, labels and controls. Large title/headings retain the pixel typeface. Larger minimum text, brighter muted text, 24px paginated dialogue and readable HUD/battle labels. Long prompts fit their panels.
@@ -7,7 +47,7 @@
 
 Validation: desktop/landscape-phone menu navigation, title entrance and admin access regression; 1x desktop, 2x Retina and 3x phone canvas density/resizing; story and final boss screenshots; no browser runtime errors. Installed v2.7.0 cache upgraded to matching v2.7.1 assets, kept an existing save and resumed offline.
 
-# Echoes Below v2.7.0 — build 20261017.14
+# Echos Below v2.7.0 — build 20261017.14
 
 ## Title, menus and admin coins
 - New original pixel crystal gateway title: stepped stone vault, floating colored shards, animated motes, lantern stairs and large pixel lettering. The physical ENTER button still grows, plays its sound and fades into the game; action keybinds do not start it.

@@ -1,28 +1,18 @@
-# Echoes Below
+# Echos Below
 
-[Play Echoes Below](https://kippyking17.github.io/Echos-Below/) — v2.7.1, build 20261017.15.
+[Play Echos Below](https://kippyking17.github.io/Echos-Below/) — v3.0.0, build 20261017.16.
 
-New crystal-gateway title and lantern journal menu. M groups everything under Journey, Character and Settings, with your armored traveler, chapter progress, health, coins and version/build. The on-screen ENTER button starts the title transition.
+30 chapters. Chapters 1–29: seven rooms, miniboss in room 5, main boss/Angel Grace/marketplace in room 7. Chapter 30: three rooms, with the original rainbow finale moved here. Ten new dark districts, story, bosses, elites and music. 206 main rooms + 18 optional maps + a hidden post-credits room.
 
-FIVE RARITIES
-Base shop equipment weights: Basic 60%, Rare 20%, Strong 12.5%, Legends 5.5%, Godlike 2%. Better grades grow more likely by chapter; Strong is 12.5% in chapter 3 and 13.75% in chapter 6. Godlike gear remains locked until chapter 16; its early weight goes to Basic. M > Character > Rarity guide shows exact current shop/chest odds.
+Six travelers now have distinct specialties. Bosses have two increasingly angry/faster/harder phases; the Last Echo has three, a unique rainbow ascension and final spoken line. New attack animations cover guardians and roaming enemies. Four closing story pages and animated credits reflect your choices. Stay ten seconds after the credits finish for the traveler's hidden note.
 
-40 equipment pieces in the pool. Each new journey gets fresh saved stock: two equipment offers per shop (one weapon, one armor), plus staple supplies/learned abilities. Reloading does not reroll. The same device avoids its previous journey's exact shop pairs; different players may occasionally share an offer because the pool is finite.
-
-One memory chest every nine campaign rooms (22 total). No Basic loot. E or mobile Collect opens it. Full packs leave the same saved reward waiting. Opened chests do not refill on backtracking/reload; New Game resets them.
-
-KingKippy's verified admin panel now has an amount field and Add Coins. It saves the current slot immediately; guests remain locked out.
-
-Includes elemental swords, visible equipped armor, scaling bosses/negotiation, the Last Echo's voice, angel Graces/revival, relics and all 20 chapters. Existing owned gear, accounts and saves are preserved. Godlike gear costs 50–90 per piece; Totem of the Angels stays 55. Nothing exceeds 100 coins.
-
-CONTROLS
-Click/tap walk; RMB attack; E interact/read/collect/confirm; Space dodge roaming enemies; I inventory; M menu. Phones have landscape touch controls. New Game resets the whole journey.
+Higher rarities are scarcer in markets, chests and enemy drops. Godlike Totems cost 55 coins in chapter 16+ markets. Brindle does not read rarity names in his purchase thanks. Voice delivery prefers natural device voices, but quality depends on the voices installed/available on your device.
 
 WINDOWS APP
-Extract this whole ZIP first. Open EchoesBelow-AutoUpdate.exe to play the latest published game. Internet is needed for first load and updates. The included game folder is deployable: serve the whole folder with a web server or upload its contents as the site root. See BUILD_NOTES.md for details.
+Extract this whole ZIP, then open EchosBelow-AutoUpdate.exe. It checks and opens the latest published game. Future game updates use the same app. Internet and a browser are required for first load and updates. Existing browser/profile saves remain on the same website. Creator tools are optional: no upload occurs until you choose it; automatic publishing starts off. Authorized GitHub sign-in and Git for Windows are required for publishing.
+
+The included game folder is deployable: serve it with a web server, or upload its contents as your site root. Login/cloud configuration remains included. AutoUpdateLauncher.cs is the Windows app source.
+
+Click/tap to walk; RMB attack; E interact/read/collect/confirm; Space dodge roaming enemies; I inventory; M menu. Landscape touch controls for phones/tablets. New Game resets everything. Existing saves migrate to the new room numbering without deleting owned gear, coins or earned rewards. See game/BUILD_NOTES.md for full details.
 
 [Detailed release notes](echoes_below/BUILD_NOTES.md).
-
-## Text clarity update
-
-Display-aware high-resolution rendering, clearer lettering, larger dialogue and brighter labels. Landscape menus fit readable controls; saves and login are preserved.

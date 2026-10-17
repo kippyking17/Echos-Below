@@ -1,4 +1,4 @@
-name: Deploy Echoes Below
+name: Deploy Echos Below
 
 on:
   push:

@@ -1,4 +1,4 @@
-/* Optional districts keep the twenty-chapter campaign and its saves intact. */
+/* Optional districts keep the thirty-chapter campaign and its saves intact. */
 (()=>{
 const relics=[
  {name:'Wayfarer’s Prism',description:'Defeated goblins are more likely to leave equipment.'},

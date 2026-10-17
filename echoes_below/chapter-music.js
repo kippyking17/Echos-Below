@@ -1,4 +1,4 @@
-/* Twenty original looping themes; no streamed audio or third-party songs. */
+/* Thirty original looping themes; no streamed audio or third-party songs. */
 (()=>{
 const themes=[
  ['A Bell Beneath the Well',76,0,'triangle',[0,7,3,10,7,5,3,2,0,3,7,12,10,7,3,0],[0,5,3,7]],
@@ -22,7 +22,8 @@ const themes=[
  ['The Heart Chooses Silence',90,-5,'triangle',[0,7,0,3,10,7,5,3,2,9,5,2,8,5,3,-2],[0,3,5,7]],
  ['Every Color Comes Home',100,5,'triangle',[0,4,7,12,11,9,7,4,5,9,12,16,14,12,7,4],[0,5,3,7]]
 ].map(([name,bpm,key,type,notes,chords],index)=>({name,bpm,key,type,notes,chords,index}));
-function step(chapter,index,combat=false){const t=themes[Math.max(0,Math.min(19,chapter))],beat=60000/t.bpm/(combat?2:1.5),note=t.notes[index%16],chord=t.chords[Math.floor(index/8)%4],base=130.81*2**(t.key/12),event=(n,d,v,type=t.type,pan=0)=>({frequency:base*2**(n/12),duration:d,volume:v,type,pan}),events=[];
+themes.splice(19,0,...[["The Ward Remembers",67,-7,"sine",[0,3,7,2,0,-2,3,5,7,3,2,0,5,3,-2,0],[0,8,5,3]],["Salt on the Tongue",71,-2,"triangle",[7,8,3,0,2,7,5,3,10,7,3,2,0,5,3,-2],[0,5,8,7]],["The Part You Choose",91,1,"triangle",[0,3,6,7,10,6,3,2,0,7,10,14,12,7,3,0],[0,3,6,5]],["Letters Beneath the Lock",63,-6,"sine",[0,7,10,7,2,5,8,5,3,7,12,10,8,5,2,0],[0,5,3,8]],["Roots Need Weather",79,-1,"sine",[0,2,3,7,8,7,3,2,5,7,10,8,7,5,3,0],[0,8,3,5]],["The Last Unworked Hour",113,-4,"triangle",[0,0,3,7,2,2,5,8,3,7,10,7,5,3,2,0],[0,3,8,5]],["Tomorrow Was Never Stolen",73,3,"triangle",[12,0,10,2,7,3,5,0,8,2,7,5,10,7,3,0],[0,5,8,3]],["A Vote With a Voice",99,-3,"triangle",[0,7,3,10,2,8,5,12,3,10,7,14,5,12,8,3],[0,8,5,7]],["A Hundred Smaller Suns",77,2,"sine",[0,4,7,9,7,4,2,0,5,9,12,14,12,9,7,4],[0,5,3,7]],["The Space Beside You",69,5,"sine",[0,7,3,10,5,12,7,14,10,7,5,3,2,5,7,0],[0,3,5,7]]].map(([name,bpm,key,type,notes,chords])=>({name,bpm,key,type,notes,chords})));themes.forEach((t,i)=>t.index=i);
+function step(chapter,index,combat=false){const t=themes[Math.max(0,Math.min(29,chapter))],beat=60000/t.bpm/(combat?2:1.5),note=t.notes[index%16],chord=t.chords[Math.floor(index/8)%4],base=130.81*2**(t.key/12),event=(n,d,v,type=t.type,pan=0)=>({frequency:base*2**(n/12),duration:d,volume:v,type,pan}),events=[];
  // Each district has its own melody, register, pace and accompaniment rhythm.
  if(index%8!==7||chapter%3===0)events.push(event(note+12,beat/1000*.8,combat?.035:t.type==='square'?.014:.027,t.type,chapter%2?.14:-.14));
  if(index%4===0)events.push(event(chord,beat/1000*2.6,.017,'sine'));

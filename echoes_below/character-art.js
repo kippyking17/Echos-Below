@@ -12,9 +12,10 @@ const skins=[
  ['eater','The Name-Eater','#58516f','#b8a7d9'],['marshal','The Bridge Marshal','#667b83','#d2b98c'],
  ['curator','The Curator','#795b6e','#f9b28f'],['echo','The Last Echo','#91a8b8','#fff1c0']
 ].map(([id,name,body,trim],index)=>({id,name,body,trim,index}));
+skins.splice(19,0,...[["matron","The Vigil Matron","#8b6970","#e0c6ac"],["confessor","The Salt Confessor","#b5aa91","#eee4c9"],["director","The Mourning Director","#7d3e59","#dbb2a1"],["diver","The Ossuary Diver","#417a83","#c2d0ad"],["widow","The Rootbound Widow","#50643a","#b6bf7d"],["giant","The Unfinished Giant","#7c4c3a","#ffc17b"],["father","The Hourless Father","#6b648e","#c0b5e2"],["king","The Unanimous King","#8a4b60","#e4b9bd"],["sun","The Drowned Sun","#3a7c92","#d3e5cf"],["keeper","The Keeper of Almost","#797665","#eee2b1"]].map(([id,name,body,trim])=>({id,name,body,trim})));skins.forEach((s,i)=>s.index=i);
 function enemy(c,s){
  const skin=skins[s.chapter]||skins[0],t=s.time||0,mini=!!s.mini,phase=s.phase||1,bob=Math.round(Math.sin(t*(mini?2.2:1.5))*2),b=skin.body,g=skin.trim,a=s.color||g,dark='#101c2c',ink='#07121e',light='#edf2d9';
- c.save();c.translate(Math.round(s.x),Math.round(s.y));c.scale(s.scale||1,s.scale||1);
+ const motion=globalThis.EchosEnemyMotion?.pose(s.attackAge,s.attackDuration||1050)||{active:false,lean:0,lift:0};c.save();c.translate(Math.round(s.x)+motion.lean,Math.round(s.y)+motion.lift);c.scale(s.scale||1,s.scale||1);
  function r(x,y,w,h,col=b){c.fillStyle=col;c.fillRect(Math.round(x),Math.round(y+bob),w,h);}
  function line(points,col,width=2){c.strokeStyle=col;c.lineWidth=width;c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y+bob):c.moveTo(x,y+bob));c.stroke();}
  function gem(x,y,col=a,size=7){r(x-2,y-size,4,size*2,col);r(x-5,y-size/2,10,size,col);r(x-1,y-size+2,2,size-2,'#ffffff99');}
@@ -29,10 +30,21 @@ function enemy(c,s){
  function halo(col=g){for(let i=0;i<14;i++){const angle=i*Math.PI/7; r(Math.cos(angle)*31-2,Math.sin(angle)*27-26,4,4,col);}}
  // The shadow remains planted while the body breathes or floats.
  c.fillStyle='#02081488';c.fillRect(-26,45,52,5);c.fillRect(-18,42,36,10);
- if(!s.boss&&!mini){boots();robe();arms();face(b);gem(0,-36,a,8);r(-9,-17,5,3,light);r(5,-17,5,3,light);c.restore();return;}
+ if(!s.boss&&!mini){boots();robe();arms();face(b);gem(0,-36,a,8);r(-9,-17,5,3,light);r(5,-17,5,3,light);if(motion.active)globalThis.EchosEnemyMotion.draw(c,{x:0,y:0,age:s.attackAge,duration:s.attackDuration||1050,kind:s.chapter%3,color:a});c.restore();return;}
  if(mini){
   boots();robe();arms();face();
   switch(s.chapter){
+   case 19:r(-22,-35,44,12,'#d4c5ac');r(-3,-40,6,20,a);r(-22,2,44,20,g);break;
+   case 20:r(-25,-42,50,35,b);r(-17,-35,34,20,dark);for(let i=0;i<5;i++)r(-15+i*7,-30,3,12,a);r(-31,20,62,6,g);break;
+   case 21:r(-25,-35,50,9,b);r(-13,-57,26,25,b);r(-12,-26,24,22,'#d3c1b4');r(-13,-20,26,4,dark);book(-30,10);break;
+   case 22:r(-32,-39,64,35,g);r(-25,-34,50,24,dark);for(let i=0;i<4;i++)r(-21+i*13,-30,6,17,a);staff(41);break;
+   case 23:for(let i=0;i<5;i++)leaf(-27+i*12,-40+i%2*5,a);r(-22,-31,4,56,g);r(18,-31,4,56,g);gem(0,12,a,12);break;
+   case 24:r(-31,-36,62,16,b);r(-24,-19,48,14,dark);r(-15,-15,30,4,a);r(33,-25,4,60,g);r(23,-29,25,16,b);break;
+   case 25:halo(a);r(-13,-34,26,30,g);r(-10,-29,20,19,dark);line([[0,-27],[0,-19],[7,-15]],a,2);staff(39);break;
+   case 26:crown();r(-32,-7,64,9,g);r(22,2,24,30,b);r(27,5,14,3,g);staff(-37);break;
+   case 27:r(-22,-40,44,34,g);r(-16,-35,32,25,dark);gem(0,-22,a,14);r(-32,15,64,8,b);break;
+   case 28:r(-24,-44,48,13,b);r(-16,-55,32,13,b);r(-12,-20,24,5,dark);book(0,10);r(-34,-16,4,52,g);break;
+   case 29:halo(a);gem(0,-35,a,12);for(let i=0;i<6;i++)gem(-25+i*10,23,a,4);break;
    case 1:r(-21,-35,42,8,'#42634c');leaf(-25,-38,'#92b77b');r(-10,-27,21,6,'#759263');r(22,-29,4,64,'#ad8d61');leaf(23,-19);r(-17,5,33,7,'#be8c6a');break;
    case 4:book(-5,7);r(-26,-38,52,9,'#8e7560');r(-17,-49,34,13,b);r(31,-20,4,41,g);for(let i=0;i<3;i++)r(35+i*4,-26-i*3,4,16,a);break;
    case 7:r(-18,-34,36,9,g);r(-8,-46,16,12,b);r(33,-34,3,68,g);r(23,16,23,4,a);r(-11,-25,23,17,dark);line([[0,-22],[0,-15],[8,-11]],g,3);break;
@@ -40,9 +52,19 @@ function enemy(c,s){
    case 13:halo(a);r(-23,-38,46,9,b);r(-15,-50,30,15,b);r(25,-32,10,22,g);r(29,-35,19,10,a);r(-14,4,28,23,dark);gem(0,15,a,7);break;
    case 16:book(0,8,'#b7aa8b');r(-21,-39,42,10,b);r(-11,-47,22,10,b);r(-13,-22,26,7,ink);r(33,-36,3,68,g);r(29,-41,10,12,a);break;
   }
-  r(-3,2,6,6,a);c.restore();return;
+  r(-3,2,6,6,a);if(phase>=2){r(-10,-18,7,3,'#f58b7c');r(4,-18,7,3,'#f58b7c');}if(motion.active)globalThis.EchosEnemyMotion.draw(c,{x:0,y:0,age:s.attackAge,duration:s.attackDuration||1050,kind:s.chapter%3,color:a});c.restore();return;
  }
  switch(skin.id){
+ case 'matron': boots();robe('#766069');arms();face('#c5b6a0');r(-24,-39,48,12,'#e5d7bb');r(-3,-42,6,16,a);r(-18,8,36,20,'#c9bfa7');staff(39);r(28,-44,28,14,b);gem(42,-37,a,6);break;
+ case 'confessor':halo(a);robe('#b3a38a');arms('#d4c4a7');r(-22,-44,44,40,'#e6dfc1');r(-16,-35,32,24,dark);r(-11,-28,22,3,a);for(let i=0;i<5;i++)r(-17+i*8,-3,3,37,'#e7dbb6');staff(41);gem(43,-50,a,15);break;
+ case 'director':boots();robe('#5d2944');arms();face('#d2b3ac');r(-27,-37,54,8,b);r(-17,-59,34,24,b);r(-17,-43,34,4,g);r(-3,-5,6,17,'#f2d9ba');r(-11,-1,22,4,g);book(-34,10);r(33,-42,3,58,'#eee4cd');break;
+ case 'diver':boots();robe('#325f66');arms('#678c87');r(-29,-43,58,45,g);r(-24,-38,48,35,b);r(-18,-33,36,24,dark);r(-13,-28,26,12,a);for(let i=0;i<5;i++)r(-18+i*8,0,3,32,'#d0cbb2');staff(43);r(35,-54,20,8,g);r(37,-58,4,43,g);break;
+ case 'widow':robe('#3a4d33');arms();face('#b0b59b');r(-24,-44,48,14,b);for(let i=0;i<6;i++)leaf(-32+i*11,-35-i%2*9,a);r(-28,-26,5,55,g);r(24,-26,5,55,g);gem(0,12,a,13);staff(42,'#7a7155');leaf(36,-52);break;
+ case 'giant':boots();r(-39,-10,78,55,b);r(-45,-15,20,46,g);r(25,-15,20,46,g);r(-25,-45,50,35,'#443b37');r(-18,-37,36,18,dark);r(-13,-32,26,4,a);for(let i=0;i<3;i++){r(-27+i*24,2,8,34,'#e6ae6955');}gem(0,10,a,19);r(-20,35,14,20,g);r(6,35,14,20,g);break;
+ case 'father':boots();robe('#544e73');arms();face('#b4abbb');r(-15,-42,30,13,'#d0c5d0');r(-26,-6,52,8,'#8d86a2');for(let i=0;i<10;i++){const an=i*Math.PI/5;gem(Math.cos(an)*44,Math.sin(an)*30-4,a,3);}book(-34,13,'#b7a783');staff(40);r(27,-47,28,25,g);r(32,-43,18,17,dark);line([[41,-42],[41,-35],[48,-32]],a,2);break;
+ case 'king':boots();robe('#713a52');arms('#a06774');face('#d0b0ac');crown();r(-42,-12,25,14,g);r(17,-12,25,14,g);for(let i=0;i<4;i++){r(-27+i*16,20,7,22,a);}book(-40,12);r(28,-30,5,58,g);r(33,-28,26,22,b);r(36,-24,20,3,g);break;
+ case 'sun':halo(a);robe('#356c7c');arms('#78a9ad');r(-25,-45,50,42,g);r(-20,-40,40,32,'#d3e4d1');r(-13,-28,7,4,dark);r(6,-28,7,4,dark);for(let i=0;i<12;i++){const an=i*Math.PI/6;r(Math.cos(an)*42-2,Math.sin(an)*39-22,4,10,a);}gem(0,9,a,16);r(-29,28,58,8,'#bed3c7');break;
+ case 'keeper':robe('#5c5b50');arms();face('#bdb89c');r(-26,-43,52,15,b);r(-16,-55,32,15,b);r(-7,-65,14,12,g);book(0,15,'#d2c7a3');r(-19,-13,38,4,dark);for(let i=0;i<4;i++){r(-43+i*25,-52+(i%2)*9,12,16,'#b5ad8c');r(-41+i*25,-49+(i%2)*9,8,2,a);}break;
  case 'gatekeeper':
   boots();robe('#4f697e');arms();face('#8099a6');r(-27,-31,54,9,b);r(-19,-44,38,15,b);r(-2,-36,4,31,g);r(-9,-18,18,4,ink);r(-43,-43,5,87,g);r(-49,-44,18,8,g);r(-47,-43,4,11,ink);r(25,-6,24,34,dark);r(28,-3,18,27,b);gem(37,8,a,8);break;
  case 'nurse':
@@ -82,11 +104,12 @@ function enemy(c,s){
  case 'curator':
   boots();robe('#654657');arms();face('#baa6ad');r(-21,-39,42,10,b);r(-10,-53,20,15,g);r(-17,-17,34,4,ink);r(-15,-3,30,27,dark);gem(0,10,'#ffb38e',12);for(let i=0;i<4;i++){const ang=t*.45+i*Math.PI/2,x=Math.round(Math.cos(ang)*46),y=Math.round(Math.sin(ang)*21-18);r(x-6,y-8,12,16,g);gem(x,y,a,4);}break;
  case 'echo':{
-  const colors=globalThis.EchoesStory?.chapters[19].crystalPalette||[a];halo('#e7dfbd');robe('#9aafb7');arms('#bdcbd0');face('#e3e0cf');crown();for(let i=0;i<colors.length;i++){const angle=t*.15+i*Math.PI*2/colors.length,x=Math.cos(angle)*49,y=Math.sin(angle)*35-8;gem(Math.round(x),Math.round(y),colors[i],4);}r(-14,-1,28,26,'#4a6678');gem(0,10,'#fff3cb',10);r(-24,30,48,7,'#d6e7df');break;}
+  const colors=globalThis.EchoesStory?.chapters[29].crystalPalette||[a];halo('#e7dfbd');robe('#9aafb7');arms('#bdcbd0');face('#e3e0cf');crown();for(let i=0;i<colors.length;i++){const angle=t*.15+i*Math.PI*2/colors.length,x=Math.cos(angle)*49,y=Math.sin(angle)*35-8;gem(Math.round(x),Math.round(y),colors[i],4);}r(-14,-1,28,26,'#4a6678');gem(0,10,'#fff3cb',10);r(-24,30,48,7,'#d6e7df');break;}
  }
- if(s.chapter===19&&s.boss&&globalThis.EchoesLastVoice?.speaking){r(-4,-8,8,Math.floor(t*9)%2?5:2,dark);r(-2,-7,4,1,'#d4eaff');}
+ if(s.chapter===29&&s.boss&&globalThis.EchoesLastVoice?.speaking){r(-4,-8,8,Math.floor(t*9)%2?5:2,dark);r(-2,-7,4,1,'#d4eaff');}
  // Awakened guardians carry a brighter core and a slow pulse, never a hit flash.
- if(phase===2){const pulse=Math.floor(t*3)%2;r(-3,3,6,6,pulse?a:light);}
+ if(phase>=2){const pulse=Math.floor(t*(phase===3?7:4))%2;r(-10,-18,7,3,'#f58b7c');r(4,-18,7,3,'#f58b7c');r(-3,3,6,6,pulse?a:light);}
+ if(motion.active)globalThis.EchosEnemyMotion.draw(c,{x:0,y:0,age:s.attackAge,duration:s.attackDuration||1050,kind:s.chapter%3,color:a});
  c.restore();
 }
 globalThis.EchoesCharacters={skins,enemy};
