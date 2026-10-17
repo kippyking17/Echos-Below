@@ -227,7 +227,8 @@ function layout(ch,room){
  obstacles.push({x:80+(id%9)*.1,y:116,w:35+(id%17),h:13+Math.floor(id/17),height:1.1});
  return {point:landmark,checkpoint,coin,shop,route,obstacles};
 }
-const crystalColors=['#62e5ff','#91ef73','#ec9dff','#4cbac9','#ffba70','#ff81ac','#ff7248','#f0cd4f','#a99aff','#72baff','#cbd4f8','#61ddc5','#ffc35c','#8679ff','#d39a58','#b0f5ff','#d579ed','#61e6a9','#ff5791','#fff0b8'];
-chapters.forEach((ch,c)=>{ch.colors=palettes[c];ch.crystalColor=crystalColors[c];ch.rooms.forEach((room,r)=>{Object.assign(room,layout(c,r));room.id=c+':'+r;room.puzzle=r===3;room.encounter=r===2||r===5;room.boss=r===5;room.palette=palettes[c];room.crystalColor=crystalColors[c];room.theme=ch.theme;room.chapter=c;room.number=r;});});
+const crystalColors=['#438bff','#ff9b42','#c583ff','#37c8c0','#f3d34f','#ff8db8','#ef5350','#b2e85e','#b1a0ed','#70c9ff','#d0d9ee','#7be2bb','#efb55c','#7872ee','#cd9468','#b0f5ff','#df89dc','#45d697','#ff698b','#ffffff'];
+const crystalNames=['Blue','Orange','Violet','Teal','Gold','Pink','Ruby','Lime','Lavender','Sky blue','Silver','Mint','Amber','Indigo','Copper','Ice blue','Orchid','Emerald','Rose','Every color'];
+chapters.forEach((ch,c)=>{ch.colors=palettes[c];ch.crystalColor=crystalColors[c];ch.crystalName=crystalNames[c];ch.crystalPalette=c===19?crystalColors.slice(0,19):[crystalColors[c]];ch.rooms.forEach((room,r)=>{Object.assign(room,layout(c,r));room.id=c+':'+r;room.puzzle=r===3;room.encounter=r===2||r===5;room.boss=r===5;room.palette=palettes[c];room.crystalColor=crystalColors[c];room.crystalPalette=ch.crystalPalette;room.crystalName=crystalNames[c];room.theme=ch.theme;room.chapter=c;room.number=r;});});
 globalThis.EchoesStory={chapters,room:(c,r)=>chapters[c].rooms[r]};
 })();
