@@ -1,3 +1,11 @@
+# Echos Below v3.3.0 — build 20261017.24
+
+Replaced the separate arcade multiplayer with the original solo engine plus friends. Host current-save invitations, original player/armor rendering, menus, inventory, Brindle markets, Grace, movement, combat and dodge box remain in use. Party presence shows names/levels/HP. Shared replay-safe boss FIGHT, ACT and peaceful-skill progress, puzzles/keys and roaming enemies. Guest solo saves are parked/protected, with separate per-room party checkpoint.
+
+Chat DOM remains mounted while polling; natural typing/Enter works in lobby and in-game, failed sends retain drafts. Existing private codes, login, readiness, four-player cap and server moderation remain. New authenticated party RPC and two private RLS tables installed live; verified authenticated true, anonymous false, six protected tables total.
+
+Passed local actual PostgreSQL migration/action/moderation tests and four-browser original-game tests, including phone, real shop/inventory, shared original FIGHT/ACT/dodge, typed chat, failed-send retry, and guest save restoration. Campaign/balance regressions preserve all 60 encounters and original final boss stats. Live four signed-in game accounts not tested.
+
 # Echos Below v3.2.1 — build 20261017.22
 
 Chapter-only credits section sped up: three ten-chapter cards now take 1.5 seconds each (4.5 seconds total, previously 10.5). Every chapter still appears. Creator, companion and final-message timings are unchanged; full credits are 21.1 seconds. Secret note-room delay remains ten seconds after credits end.

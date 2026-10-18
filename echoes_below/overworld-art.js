@@ -104,5 +104,6 @@ function draw(c,s){const m=s.meta,t=s.time,accent=m.crystalColor,group=groups[m.
  }
  door(866);if(s.backLabel)door(88,true);if(!s.hidePlayer)player(c,s,t);
 }
-globalThis.EchoesOverworld={drawGrace:checkpoint,draw,clear:()=>cache.clear()};
+const companionStates=new Map();function companion(c,s,time){const original={...previous},saved=companionStates.get(s.id)||{x:s.x,y:s.y,room:s.meta.id,facing:'down',moved:-1};Object.assign(previous,saved);player(c,s,time);companionStates.set(s.id,{...previous});Object.assign(previous,original);}
+globalThis.EchoesOverworld={companion,drawGrace:checkpoint,draw,clear:()=>cache.clear()};
 })();
