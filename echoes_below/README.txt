@@ -1,8 +1,8 @@
-ECHOS BELOW — v3.1.0 / build 20261017.18
+ECHOS BELOW — v3.1.1 / build 20261017.19
 
 PLAY: https://kippyking17.github.io/Echos-Below/
 
-Market stability and combat polish update. Markets now appear in room 3 every three chapters (3, 6, 9, 12, 15, 18, 21, 24, 27); none in the finale. Fixed the late-market ability overflow and reduced backdrop/save work. Repeated market purchases and visits verified on desktop and phone.
+Devil gear persistence fix: verified admins keep gear when closing the dashboard and refreshing their login. Market stability and combat polish update. Markets now appear in room 3 every three chapters (3, 6, 9, 12, 15, 18, 21, 24, 27); none in the finale. Fixed the late-market ability overflow and reduced backdrop/save work. Repeated market purchases and visits verified on desktop and phone.
 
 No repeated spoken lines within a journey; distinctive fist/weapon swings and finishers; no duplicate idle fists while punching; visible ACT progress and gain. Verified admins have an Equip Devil gear button for the highest armor/weapon grade, excluded from normal loot and markets. After ten seconds on the credits' last screen, zoom through the rainbow doorway and fade into the note room.
 

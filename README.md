@@ -1,6 +1,6 @@
 # Echos Below
 
-[Play Echos Below](https://kippyking17.github.io/Echos-Below/) — v3.1.0.
+[Play Echos Below](https://kippyking17.github.io/Echos-Below/) — v3.1.1.
 
 Market stability and combat polish update. Markets now appear in room 3 every three chapters (3, 6, 9, 12, 15, 18, 21, 24, 27); none in the finale. Fixed the late-market ability overflow and reduced backdrop/save work. Repeated market purchases and visits verified on desktop and phone.
 

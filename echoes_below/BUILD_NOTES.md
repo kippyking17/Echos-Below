@@ -1,3 +1,7 @@
+# Echos Below v3.1.1 — build 20261017.19
+
+Fixed Devil gear disappearing when switching to player view or refreshing the same verified account session. Equipment access now follows verified authorization independently of dashboard visibility. Same-account refresh preserves authorization while its role is checked and retains player view. Logout, changed accounts, denied roles and failed role checks revoke access; stale checks cannot restore it. Tested grant, player view beyond two seconds, delayed refresh, save/reload, and logout in a real browser with a local authentication fixture. Guest grants remain denied.
+
 # Echos Below v3.1.0 — build 20261017.18
 
 - Markets are in room 3 of chapters 3, 6, 9, 12, 15, 18, 21, 24 and 27. No final-chapter market. Admin Next market/Choose market follow the same nine locations, with collision-safe arrival beside the stall. Existing offers and owned gear are retained.
