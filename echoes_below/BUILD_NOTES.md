@@ -1,3 +1,7 @@
+# Echos Below v3.4.2 — build 20261018.28
+
+Chapter 30 passage and boss-drop keys now use the final chapter rainbow palette across bow, shaft and teeth, plus soft glow/sparks and a Rainbow label. Earlier chapters retain gold keys. Pickup and door logic unchanged.
+
 # Echos Below v3.4.1 — build 20261018.27
 
 Reference-inspired elemental crescents, flame/ice particles, energy helix thrusts and paired high-tier arcs connected to the named-weapon renderer actually used in world and boss attacks. Does not create another weapon mesh, projectile or damage source. Bounded geometry, reduced-effect variants, same attack timing/range.
