@@ -1,3 +1,9 @@
+# Echos Below v3.2.1 — build 20261017.22
+
+Chapter-only credits section sped up: three ten-chapter cards now take 1.5 seconds each (4.5 seconds total, previously 10.5). Every chapter still appears. Creator, companion and final-message timings are unchanged; full credits are 21.1 seconds. Secret note-room delay remains ten seconds after credits end.
+
+Multiplayer backend activated successfully in the existing live Supabase project after owner sign-in. Live SQL checks confirm the function is installed, authenticated execution is allowed, anonymous execution is denied and all four co-op tables have RLS enabled. Public API also rejects guest RPC calls and cannot list private rooms. Earlier four-client local PostgreSQL/browser tests passed; live four-player gameplay with separate signed-in game accounts has not been performed. No auth accounts, admin flags or solo saves changed.
+
 # Echos Below v3.2.0 — build 20261017.21
 
 Private co-op mode: login required, unlisted ten-character room codes, up to four travelers. Ready lobby, private chat, shared rooms/guardian HP/ACT/phases, individual HP and server-limited movement/attacks. Existing chapter artwork and boss skins; click/tap paths, interpolated movement, touch action buttons, names/levels/HP and landscape layout. Co-op starts a separate chapter-1 journey; solo saves remain untouched. Party-size HP scaling (+55% per extra starting traveler), character specialties, permanent guardian rewards, 1.4-second attack warnings, dodge, short-range revives, wipe/retry, reconnect and automatic leader transfer. Server-only database tables have no client access; one authenticated RPC validates identity/membership/actions. Normal users cannot read room lists or other rooms.

@@ -1,8 +1,13 @@
+LIVE PROJECT ACTIVATED — October 17, 2026
+The existing Echos Below backend is installed and login-only access verified.
+No setup action is needed for players. The instructions below are retained
+for a fresh backend installation. Live four-player gameplay remains to be
+checked with separate signed-in game accounts; local four-player tests pass.
+
 ECHOS BELOW — ONE-TIME MULTIPLAYER ACTIVATION
 
-The game UI and co-op backend are included. The live Supabase project still
-needs this migration; publishing website files alone cannot install it.
-No database-owner credential was available to the build agent.
+The game UI and co-op backend are included. For a new Supabase project, run this migration once.
+The existing live project already has it installed.
 
 1. Open your existing project's SQL Editor:
    https://supabase.com/dashboard/project/vnqjhftkaafzrrfytfoy/sql/new
@@ -47,7 +52,7 @@ VALIDATION
 Actual local PostgreSQL migration and permission tests; four independent
 browser sessions plus guest/fifth-player tests; shared combat, revive,
 retry, host transfer, chat, persistent bans and all 206 room transitions.
-Production multiplayer cannot be verified until the owner runs the SQL.
+Production installation and access controls verified; separate live player sessions have not been tested.
 
 NEW ICON
 iPhone Home Screen uses apple-touch-icon.png (180x180). Installed apps use
