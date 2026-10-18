@@ -1,3 +1,9 @@
+# Echos Below v3.5.0 — build 20261018.30
+
+Character art pass across thirty guardians and thirty minibosses: themed mantle silhouettes, feather/crystal/root projections, plating, cuffs, fasteners, belts, orbiting ornaments and chapter-specific elite masks/shields/books/staffs. Six traveler outfit motifs in portraits and world, drawn beneath equipped armor. Brindle apron/pockets and face highlights. Roaming enemies replaced with ten shaded archetypes using chapter skin palettes; hit/collision and attack logic unchanged. Original last guardian rainbow identity retained.
+
+Rendered all sixty guardian/miniboss designs, thirty roaming palettes and six travelers; reviewed two fifteen-chapter contact sheets. Desktop/touch game checks, four-client latency/performance/chat/save test, and full desktop/phone final-fight/ending regression passed. No stats, progression, authentication or backend changes.
+
 # Echos Below v3.4.3 — build 20261018.29
 
 Bounded procedural death shards, ground ripples and smoke added to all named-weapon enemy death styles. Roaming kill effects expire at 1800ms. Player portrait collapses/fades over 1100ms with rainbow fragments and soft persistent lantern motes; portrait canvas size no longer reset each frame. Longer kill-audio tail. Chapter 30 mini/boss defeat-screen key now also rainbow. Final boss unique ascension, rewards and respawn timing unchanged.

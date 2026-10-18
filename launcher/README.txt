@@ -1,6 +1,8 @@
-ECHOS BELOW — v3.4.3 / build 20261018.29
+ECHOS BELOW — v3.5.0 / build 20261018.30
 
 PLAY: https://kippyking17.github.io/Echos-Below/
+
+CHARACTER ART: layered chapter-themed guardian mantles, illuminated armor seams, distinct elite miniboss helmets and props, ten roaming enemy archetypes, six traveler outfit details and a more detailed Brindle apron. Shared across world, portraits, combat and multiplayer.
 
 DEATH EFFECTS: weapon-colored enemy fragments, expanding rings and lingering smoke; player collapse, rainbow disintegration and rising lantern motes. Longer layered kill sound. Final guardian special ascension retained.
 
@@ -18,7 +20,7 @@ SOLO WITH FRIENDS: the original game, now with private parties for up to four lo
 
 Chat works in the lobby and Party panel, supports Enter, keeps typing focus during updates, and preserves unsent messages after connection errors. Names, levels and HP appear with friends. Existing login-only access, four-player limit and one-minute chat bans remain active.
 
-Refresh everyone to v3.4.3 and leave/recreate rooms from older versions. Guests keep their solo saves; party progress is cached separately and restored when rejoining the same code. Host progress uses the normal save. Use the same browser/profile for saves.
+Refresh everyone to v3.5.0 and leave/recreate rooms from older versions. Guests keep their solo saves; party progress is cached separately and restored when rejoining the same code. Host progress uses the normal save. Use the same browser/profile for saves.
 
 WINDOWS: extract the whole ZIP, then open EchosBelow-AutoUpdate.exe. The existing stable launcher opens the latest live game and future versions. Internet/browser required. Creator publishing is optional and off by default; Git for Windows and authorized GitHub sign-in are required.
 
