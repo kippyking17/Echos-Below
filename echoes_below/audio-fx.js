@@ -11,10 +11,17 @@ function plan(name,o={}){
  if(name==='swing')return[note(0,w===3?.2:.13,.045,'noise',.02,0),note(f*.6*pitch,.18,.025,w===4?'sine':'triangle',0,f*.16),...(w>=3?[note(f,.1,.016,'sine',.03,f*1.3)]:[])];
  if(name==='hit')return[note(0,.11,.075,'noise'),note(w===6?65:100+w*15,.17,.07,'triangle',0,35),...chord(w===3?[147,220]:w===4?[988,1482]:w===5?[392,494,587]:w===6?[523,659,784]:[f*2,f*3],.035,.19,.023)];
  if(name==='kill')return[note(0,.32,.07,'noise'),note(70,.35,.065,'sine',0,30),...[1,1.25,1.5,2].map((n,i)=>note(f*n,.3,.027,'triangle',.04+i*.065))];
+ if(name==='footstep'){const surface=(Number(o.chapter)||0)%5;return[note(0,.035+surface*.006,.012,'noise'),note([105,155,210,88,130][surface],.045,.009,'sine',0,65),...(surface===2?[note(880,.045,.004,'sine',.015)]:[])];}
  const sets={
+  arrive:[note(587,.07,.009,'sine'),note(784,.12,.008,'sine',.045)],pathBlocked:[note(196,.055,.014,'triangle'),note(147,.09,.012,'triangle',.05)],
+  chestOpen:[note(0,.18,.025,'noise'),note(147,.17,.018,'triangle',0,294),...chord([587,740,880],.13,.35,.018)],
+  bossPhase:[note(82,.45,.035,'triangle',0,55),note(0,.24,.025,'noise'),...chord([165,196,247],.12,.45,.016)],
+  actProgress:[note(494,.12,.014,'sine'),note(622,.2,.012,'sine',.08),note(740,.25,.009,'sine',.16)],
+  partyMessage:[note(659,.07,.012,'sine'),note(880,.12,.01,'sine',.08)],
+
   echoVoice:[note(92,.7,.012,'sine'),note(138,.8,.01,'triangle',.08),note(184,.7,.007,'sine',.13)],angelRevive:[...chord([262,330,392],0,.8),...[523,659,784,1047].map((f,i)=>note(f,.7,.035,'sine',.15+i*.13)),note(0,.55,.02,'noise')],title:[...chord([262,392],0,.5),...chord([523,659,784],.15,.65)],
   menuOpen:chord([196,294],0,.14),menuBack:[note(330,.09),note(220,.12,.03,'triangle',.055)],menuMove:[note(440,.035,.012,'square')],menuConfirm:[note(523,.06,.02),note(784,.1,.025,'sine',.045)],
-  dodge:[note(0,.16,.025,'noise'),note(300,.15,.02,'sine',0,100)],walkTarget:[note(294,.035,.012,'sine')],act:chord([392,494],0,.15,.018),dialogue:[note(330+(o.chapter||0)*8,.045,.014,'triangle')],footstep:[note(0,.035,.017,'noise'),note(90+(o.chapter||0)%4*19,.045,.012,'sine')],
+  dodge:[note(0,.16,.025,'noise'),note(300,.15,.02,'sine',0,100)],walkTarget:[note(440,.045,.012,'sine',0,659),note(880,.11,.009,'sine',.035)],act:chord([392,494],0,.15,.018),dialogue:[note(330+(o.chapter||0)*8,.045,.014,'triangle')],footstep:[note(0,.035,.017,'noise'),note(90+(o.chapter||0)%4*19,.045,.012,'sine')],
   collectCoin:[note(1175,.07,.035,'sine'),note(1568,.22,.03,'sine',.06)],collectBerry:chord([330,440],0,.13),collectKey:[note(880,.09,.035),note(1320,.2,.03,'sine',.065)],collectLoot:[...chord([392,494],0,.18),...chord([587,784],.1,.24)],
   grace:[...chord(o.angel?[262,330,392]:[330,392],0,.6),...chord(o.angel?[523,659,784]:[494,659],.18,.7)],upgrade:[0,4,7,12,16].map((n,i)=>note(262*Math.pow(2,n/12),.36,.035,'triangle',i*.075)),
   doorOpen:[note(0,.25,.035,'noise'),note(100,.25,.025,'triangle',0,180)],doorLocked:[note(0,.065,.035,'noise'),note(95,.09,.045,'square')],
@@ -31,7 +38,7 @@ function configure(values){for(const k of Object.keys(defaults))if(Object.hasOwn
 function unlock(){try{if(!ctx){const C=globalThis.AudioContext||globalThis.webkitAudioContext;if(!C)return null;ctx=new C();music=ctx.createGain();effects=ctx.createGain();compressor=ctx.createDynamicsCompressor();compressor.threshold.value=-16;compressor.ratio.value=5;music.connect(compressor);effects.connect(compressor);compressor.connect(ctx.destination);noise=ctx.createBuffer(1,Math.ceil(ctx.sampleRate*.8),ctx.sampleRate);const data=noise.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*.65;sync();}if(ctx.state==='suspended')ctx.resume().catch(()=>{});return ctx;}catch{return null;}}
 function play(name,options={}){
  if(!prefs.effectsEnabled||prefs.effectsVolume===0||!ctx||ctx.state!=='running')return false;
- const now=performance.now(),gap=({menuMove:110,dialogue:60,footstep:85,warning:900,doorLocked:220})[name]||0;if(now-(recent.get(name)??-Infinity)<gap)return false;recent.set(name,now);
+ const now=performance.now(),gap=({menuMove:110,dialogue:60,footstep:85,warning:900,doorLocked:220,walkTarget:90,arrive:220,pathBlocked:250,partyMessage:700,actProgress:500,bossPhase:1200})[name]||0;if(now-(recent.get(name)??-Infinity)<gap)return false;recent.set(name,now);
  const notes=plan(name,options);if(!notes.length)return false;history.push({name,weapon:options.weapon||0,time:now});if(history.length>64)history.shift();
  for(const n of notes){if(voices>=64)break;const at=ctx.currentTime+n.t,g=ctx.createGain(),source=n.type==='noise'?ctx.createBufferSource():ctx.createOscillator(),nodes=[g,source];
   if(n.type==='noise'){source.buffer=noise;const filter=ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=name==='footstep'?900:3200;source.connect(filter);filter.connect(g);nodes.push(filter);}else{source.type=n.type;source.frequency.setValueAtTime(Math.max(20,n.f),at);source.frequency.exponentialRampToValueAtTime(Math.max(20,n.to),at+n.d);source.connect(g);}

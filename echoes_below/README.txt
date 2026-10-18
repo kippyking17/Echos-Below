@@ -1,6 +1,8 @@
-ECHOS BELOW — v3.4.0 / build 20261018.26
+ECHOS BELOW — v3.4.1 / build 20261018.27
 
 PLAY: https://kippyking17.github.io/Echos-Below/
+
+ELEMENTAL SWINGS & SOUND: broad fire/ice crescents, storm sparks, energy thrusts and paired strongest-weapon arcs in actual named-weapon world and boss swings. Floating crystal movement marker with pulsing rings, orbiting sparks and sparse route embers. New arrival, blocked path, chest, boss phase, ACT progress and party message effects; chapter-varied footsteps.
 
 ANIMATION & VFX: chapter-colored atmosphere, footsteps and room arrival rings, boss impact/ACT/phase particles, layered sword trails, stronger pickup bursts, animated Grace rings, enemy strike sparks and quick pixel-menu arrivals. Bounded particles, reduced-effects support, unchanged combat timing.
 
@@ -12,7 +14,7 @@ SOLO WITH FRIENDS: the original game, now with private parties for up to four lo
 
 Chat works in the lobby and Party panel, supports Enter, keeps typing focus during updates, and preserves unsent messages after connection errors. Names, levels and HP appear with friends. Existing login-only access, four-player limit and one-minute chat bans remain active.
 
-Refresh everyone to v3.4.0 and leave/recreate rooms from older versions. Guests keep their solo saves; party progress is cached separately and restored when rejoining the same code. Host progress uses the normal save. Use the same browser/profile for saves.
+Refresh everyone to v3.4.1 and leave/recreate rooms from older versions. Guests keep their solo saves; party progress is cached separately and restored when rejoining the same code. Host progress uses the normal save. Use the same browser/profile for saves.
 
 WINDOWS: extract the whole ZIP, then open EchosBelow-AutoUpdate.exe. The existing stable launcher opens the latest live game and future versions. Internet/browser required. Creator publishing is optional and off by default; Git for Windows and authorized GitHub sign-in are required.
 

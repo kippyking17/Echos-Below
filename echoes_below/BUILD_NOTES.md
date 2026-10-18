@@ -1,3 +1,11 @@
+# Echos Below v3.4.1 — build 20261018.27
+
+Reference-inspired elemental crescents, flame/ice particles, energy helix thrusts and paired high-tier arcs connected to the named-weapon renderer actually used in world and boss attacks. Does not create another weapon mesh, projectile or damage source. Bounded geometry, reduced-effect variants, same attack timing/range.
+
+Crystal destination marker replaces rectangle: pulse rings, orbiting sparks and maximum fourteen path embers. Clipped to play area, follows actual path goal and disappears when route ends. New arrival/blocked-path/chest/phase/ACT/chat sounds with cooldowns; layered click chime and chapter-varied footsteps. Existing mute/volume and voice ducking preserved.
+
+Passed desktop mouse and landscape touch movement/arrival checks, all twelve weapon effect renderings, new audio plan checks and four-client simulated-latency gameplay/chat/save/performance regression. No backend changes.
+
 # Echos Below v3.4.0 — build 20261018.26
 
 Animation/effects pass: bounded deterministic ambient pixels and footsteps; room arrival, boss hit, ACT and phase rings; layered weapon echoes, stronger collectible rings, pulsing Grace floors, enemy strike sparks and reduced-motion-aware menu entrance. World effects are clipped away from top/bottom HUD; battle effects stay in the enemy area. No gameplay RNG, damage timing or duplicate weapon rendering introduced. Existing unique weapon swings/finishers remain.
