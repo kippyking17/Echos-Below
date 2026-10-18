@@ -1,6 +1,10 @@
-ECHOS BELOW — v3.6.0 / build 20261018.32
+ECHOS BELOW — v3.7.0 / build 20261018.33
 
 PLAY: https://kippyking17.github.io/Echos-Below/
+
+REAL-TIME ROOM FIGHTS: guardian and miniboss encounters now happen in the room. Click/tap to move, RMB/Attack to swing, Space/Dodge to roll. Stamina, committed attacks, telegraphed sweeps/slams/lunges/projectiles, recovery openings, stagger and on-body damage numbers. ACT in recovery; bottom bar has ACT, ITEM, SKILL and MERCY. Existing equipment, rewards, Grace respawn, Totems, peaceful routes and private parties retained.
+
+CRYSTAL GUARDIANS: every real boss now uses the Last Echo crystal-seraph design, recolored to its chapter and detailed with its own theme. Only the final chapter is rainbow. The Last Echo death now breaks crystal wings apart into expanding light rings and colored shards.
 
 GUARDIAN REGALIA: sharper boss shoulder plating, lit seams, material glints and phase ornaments. The Last Echo is now a floating crystal seraph with pearl armor, rainbow heart, large faceted wings, rotating halos and phase-driven light motes. Finale drop key is rainbow too.
 
@@ -24,7 +28,7 @@ SOLO WITH FRIENDS: the original game, now with private parties for up to four lo
 
 Chat works in the lobby and Party panel, supports Enter, keeps typing focus during updates, and preserves unsent messages after connection errors. Names, levels and HP appear with friends. Existing login-only access, four-player limit and one-minute chat bans remain active.
 
-Refresh everyone to v3.6.0 and leave/recreate rooms from older versions. Guests keep their solo saves; party progress is cached separately and restored when rejoining the same code. Host progress uses the normal save. Use the same browser/profile for saves.
+Refresh everyone to v3.7.0 and leave/recreate rooms from older versions. Guests keep their solo saves; party progress is cached separately and restored when rejoining the same code. Host progress uses the normal save. Use the same browser/profile for saves.
 
 WINDOWS: extract the whole ZIP, then open EchosBelow-AutoUpdate.exe. The existing stable launcher opens the latest live game and future versions. Internet/browser required. Creator publishing is optional and off by default; Git for Windows and authorized GitHub sign-in are required.
 

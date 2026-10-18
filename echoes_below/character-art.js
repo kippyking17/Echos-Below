@@ -31,7 +31,7 @@ function enemy(c,s){
  function halo(col=g){for(let i=0;i<14;i++){const angle=i*Math.PI/7; r(Math.cos(angle)*31-2,Math.sin(angle)*27-26,4,4,col);}}
  // The shadow remains planted while the body breathes or floats.
  c.fillStyle='#02081488';c.fillRect(-26,45,52,5);c.fillRect(-18,42,36,10);
- if(s.boss&&s.chapter===29){globalThis.EchosBossRegalia.last(c,s);c.restore();return;}if(!s.boss&&!mini){boots();robe();arms();face(b);gem(0,-36,a,8);r(-9,-17,5,3,light);r(5,-17,5,3,light);globalThis.EchosCharacterDesign?.finish(c,s,b,g,a);globalThis.EchosBossRegalia?.regalia(c,s,b,g,a,true);if(motion.active)globalThis.EchosEnemyMotion.draw(c,{x:0,y:0,age:s.attackAge,duration:s.attackDuration||1050,kind:s.chapter%3,color:a});c.restore();return;}
+ if(s.boss){globalThis.EchosBossRegalia.last(c,s);if(s.chapter!==29)globalThis.EchosCharacterDesign?.finish(c,s,b,g,a);c.restore();return;}if(!s.boss&&!mini){boots();robe();arms();face(b);gem(0,-36,a,8);r(-9,-17,5,3,light);r(5,-17,5,3,light);globalThis.EchosCharacterDesign?.finish(c,s,b,g,a);globalThis.EchosBossRegalia?.regalia(c,s,b,g,a,true);if(motion.active)globalThis.EchosEnemyMotion.draw(c,{x:0,y:0,age:s.attackAge,duration:s.attackDuration||1050,kind:s.chapter%3,color:a});c.restore();return;}
  if(mini){
   boots();robe();arms();face();
   switch(s.chapter){
