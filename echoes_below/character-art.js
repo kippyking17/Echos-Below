@@ -16,7 +16,7 @@ skins.splice(19,0,...[["matron","The Vigil Matron","#8b6970","#e0c6ac"],["confes
 function enemy(c,s){
  const skin=skins[s.chapter]||skins[0],t=s.time||0,mini=!!s.mini,phase=s.phase||1,bob=Math.round(Math.sin(t*(mini?2.2:1.5))*2),b=skin.body,g=skin.trim,a=s.color||g,dark='#101c2c',ink='#07121e',light='#edf2d9';
  const motion=globalThis.EchosEnemyMotion?.pose(s.attackAge,s.attackDuration||1050)||{active:false,lean:0,lift:0};c.save();c.translate(Math.round(s.x)+motion.lean,Math.round(s.y)+motion.lift);c.scale(s.scale||1,s.scale||1);
- globalThis.EchosCharacterDesign?.back(c,s,b,g,a);
+ globalThis.EchosBossRegalia?.regalia(c,s,b,g,a,false);globalThis.EchosCharacterDesign?.back(c,s,b,g,a);
  function r(x,y,w,h,col=b){c.fillStyle=col;c.fillRect(Math.round(x),Math.round(y+bob),w,h);}
  function line(points,col,width=2){c.strokeStyle=col;c.lineWidth=width;c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y+bob):c.moveTo(x,y+bob));c.stroke();}
  function gem(x,y,col=a,size=7){r(x-2,y-size,4,size*2,col);r(x-5,y-size/2,10,size,col);r(x-1,y-size+2,2,size-2,'#ffffff99');}
@@ -31,7 +31,7 @@ function enemy(c,s){
  function halo(col=g){for(let i=0;i<14;i++){const angle=i*Math.PI/7; r(Math.cos(angle)*31-2,Math.sin(angle)*27-26,4,4,col);}}
  // The shadow remains planted while the body breathes or floats.
  c.fillStyle='#02081488';c.fillRect(-26,45,52,5);c.fillRect(-18,42,36,10);
- if(!s.boss&&!mini){boots();robe();arms();face(b);gem(0,-36,a,8);r(-9,-17,5,3,light);r(5,-17,5,3,light);globalThis.EchosCharacterDesign?.finish(c,s,b,g,a);if(motion.active)globalThis.EchosEnemyMotion.draw(c,{x:0,y:0,age:s.attackAge,duration:s.attackDuration||1050,kind:s.chapter%3,color:a});c.restore();return;}
+ if(s.boss&&s.chapter===29){globalThis.EchosBossRegalia.last(c,s);c.restore();return;}if(!s.boss&&!mini){boots();robe();arms();face(b);gem(0,-36,a,8);r(-9,-17,5,3,light);r(5,-17,5,3,light);globalThis.EchosCharacterDesign?.finish(c,s,b,g,a);globalThis.EchosBossRegalia?.regalia(c,s,b,g,a,true);if(motion.active)globalThis.EchosEnemyMotion.draw(c,{x:0,y:0,age:s.attackAge,duration:s.attackDuration||1050,kind:s.chapter%3,color:a});c.restore();return;}
  if(mini){
   boots();robe();arms();face();
   switch(s.chapter){

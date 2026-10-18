@@ -1,8 +1,10 @@
 # Echos Below
 
-ECHOS BELOW — v3.5.1 / build 20261018.31
+ECHOS BELOW — v3.6.0 / build 20261018.32
 
 PLAY: https://kippyking17.github.io/Echos-Below/
+
+GUARDIAN REGALIA: sharper boss shoulder plating, lit seams, material glints and phase ornaments. The Last Echo is now a floating crystal seraph with pearl armor, rainbow heart, large faceted wings, rotating halos and phase-driven light motes. Finale drop key is rainbow too.
 
 CINEMATIC CREDITS: layered dawn mountains, lantern road, rising colored lights, orbiting crystal shards, companion portraits and a framed final message. All thirty chapter cards still take 4.5 seconds; the secret door still opens ten seconds after credits end.
 
@@ -24,7 +26,7 @@ SOLO WITH FRIENDS: the original game, now with private parties for up to four lo
 
 Chat works in the lobby and Party panel, supports Enter, keeps typing focus during updates, and preserves unsent messages after connection errors. Names, levels and HP appear with friends. Existing login-only access, four-player limit and one-minute chat bans remain active.
 
-Refresh everyone to v3.5.1 and leave/recreate rooms from older versions. Guests keep their solo saves; party progress is cached separately and restored when rejoining the same code. Host progress uses the normal save. Use the same browser/profile for saves.
+Refresh everyone to v3.6.0 and leave/recreate rooms from older versions. Guests keep their solo saves; party progress is cached separately and restored when rejoining the same code. Host progress uses the normal save. Use the same browser/profile for saves.
 
 WINDOWS: extract the whole ZIP, then open EchosBelow-AutoUpdate.exe. The existing stable launcher opens the latest live game and future versions. Internet/browser required. Creator publishing is optional and off by default; Git for Windows and authorized GitHub sign-in are required.
 

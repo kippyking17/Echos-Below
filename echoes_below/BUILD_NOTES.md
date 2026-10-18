@@ -1,3 +1,9 @@
+# Echos Below v3.6.0 — build 20261018.32
+
+All real guardians receive layered shoulder silhouettes, inner material shadows, lit hems, subtle reflected glints and phase crystal ornaments. Last Echo body replaced with authored crystal-seraph geometry: faceted mask/crown, pearl breastplate, rainbow core, suspended feather crystals, two/three rune rings and phase-expanded wings/light motes. Ordinary battle, world, strike and ascension use the shared renderer. Speaking mouth and attack arm retained. Visuals use deterministic clocks and reduced-effect variants; no damage, HP, encounter timings or collision changes. Finale dropped key also uses rainbow material.
+
+Rendered/reviewed sixty guardian/miniboss forms. Desktop/touch and full desktop/phone finale regression run; four-client latency/performance test run.
+
 # Echos Below v3.5.1 — build 20261018.31
 
 Cinematic credits art: three mountain layers, dawn arches, perspective lantern road, bounded rising light motes, orbiting small prisms around the central crystal, colored creator underline, companion portraits/animated Brindle and framed final message. Existing readable text, chapter timings (4.5s), total duration (21.1s), epilogue, saved ending and ten-second secret-door transition retained.
