@@ -1,3 +1,9 @@
+# Echos Below v3.5.1 — build 20261018.31
+
+Cinematic credits art: three mountain layers, dawn arches, perspective lantern road, bounded rising light motes, orbiting small prisms around the central crystal, colored creator underline, companion portraits/animated Brindle and framed final message. Existing readable text, chapter timings (4.5s), total duration (21.1s), epilogue, saved ending and ten-second secret-door transition retained.
+
+Rendered opening/creator/companion/final cards for visual review. Desktop/touch checks and complete desktop/phone final-fight, credits, secret door, note room and save/reload regression passed.
+
 # Echos Below v3.5.0 — build 20261018.30
 
 Character art pass across thirty guardians and thirty minibosses: themed mantle silhouettes, feather/crystal/root projections, plating, cuffs, fasteners, belts, orbiting ornaments and chapter-specific elite masks/shields/books/staffs. Six traveler outfit motifs in portraits and world, drawn beneath equipped armor. Brindle apron/pockets and face highlights. Roaming enemies replaced with ten shaded archetypes using chapter skin palettes; hit/collision and attack logic unchanged. Original last guardian rainbow identity retained.
