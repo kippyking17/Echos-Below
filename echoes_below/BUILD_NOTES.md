@@ -1,3 +1,9 @@
+# Echos Below v3.4.3 — build 20261018.29
+
+Bounded procedural death shards, ground ripples and smoke added to all named-weapon enemy death styles. Roaming kill effects expire at 1800ms. Player portrait collapses/fades over 1100ms with rainbow fragments and soft persistent lantern motes; portrait canvas size no longer reset each frame. Longer kill-audio tail. Chapter 30 mini/boss defeat-screen key now also rainbow. Final boss unique ascension, rewards and respawn timing unchanged.
+
+Desktop and touch rendering checked across twelve weapon styles and six death ages; complete desktop/phone finale regression run.
+
 # Echos Below v3.4.2 — build 20261018.28
 
 Chapter 30 passage and boss-drop keys now use the final chapter rainbow palette across bow, shaft and teeth, plus soft glow/sparks and a Rainbow label. Earlier chapters retain gold keys. Pickup and door logic unchanged.

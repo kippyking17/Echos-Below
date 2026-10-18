@@ -10,7 +10,7 @@ function plan(name,o={}){
  const w=Math.max(0,Math.min(6,Number(o.weapon)||0)),f=signatures[w],pitch=1+(Number(o.combo)||0)*.045;
  if(name==='swing')return[note(0,w===3?.2:.13,.045,'noise',.02,0),note(f*.6*pitch,.18,.025,w===4?'sine':'triangle',0,f*.16),...(w>=3?[note(f,.1,.016,'sine',.03,f*1.3)]:[])];
  if(name==='hit')return[note(0,.11,.075,'noise'),note(w===6?65:100+w*15,.17,.07,'triangle',0,35),...chord(w===3?[147,220]:w===4?[988,1482]:w===5?[392,494,587]:w===6?[523,659,784]:[f*2,f*3],.035,.19,.023)];
- if(name==='kill')return[note(0,.32,.07,'noise'),note(70,.35,.065,'sine',0,30),...[1,1.25,1.5,2].map((n,i)=>note(f*n,.3,.027,'triangle',.04+i*.065))];
+ if(name==='kill')return[note(0,.32,.07,'noise'),note(70,.35,.065,'sine',0,30),note(0,.46,.018,'noise',.13),note(f*2,.5,.012,'sine',.16,f*.75),...[1,1.25,1.5,2].map((n,i)=>note(f*n,.3,.027,'triangle',.04+i*.065))];
  if(name==='footstep'){const surface=(Number(o.chapter)||0)%5;return[note(0,.035+surface*.006,.012,'noise'),note([105,155,210,88,130][surface],.045,.009,'sine',0,65),...(surface===2?[note(880,.045,.004,'sine',.015)]:[])];}
  const sets={
   arrive:[note(587,.07,.009,'sine'),note(784,.12,.008,'sine',.045)],pathBlocked:[note(196,.055,.014,'triangle'),note(147,.09,.012,'triangle',.05)],
