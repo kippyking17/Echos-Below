@@ -4,9 +4,11 @@ const roomsPerChapter=7,legacyRooms=[0,1,2,3,5,9],oldMiniChapters=new Set([1,4,7
 const weaponPower=[0,2,4,7,11,17,24],chestDefense=[0,1,2,4,6,10,14],lightDefense=[0,0,1,2,3,5,7];
 function stats(chapter,kind='boss'){
  const c=Math.max(0,Math.min(29,Math.floor(chapter)||0)),boss=kind==='boss',mini=kind==='mini';
- return {hp:Math.round(boss?54+14*c+.8*c*c+(c*7+4)*8:mini?32+9*c+.4*c*c+c*7*6:18+3*c+.15*c*c),
-  damage:boss?4+2*c+Math.floor(c*c/16)+c*5+3+Math.floor(c*2.2):mini?3+c+Math.floor(c*c/24)+c*5+Math.floor(c*1.4):2+Math.floor(c/3),
-  actRequired:Number((boss?3+c*.4:mini?2+c*.25:2).toFixed(1)),armor:Math.floor(c*(boss?.7:mini?.5:.25))};
+ // Tuned against earned guardian gifts plus ordinary equipment, never admin gear.
+ const roaming=kind==='roaming';
+ return {hp:Math.round(boss?54+19*c+.3*c*c:mini?32+12*c+.18*c*c:roaming?8+8*c+.1*c*c:18+5*c+.1*c*c),
+  damage:Math.round(boss?7+6*c+Math.floor(c*c/80):mini?3+5.5*c+Math.floor(c*c/100):roaming?2+5.2*c+Math.floor(c*c/100):2+4*c+Math.floor(c*c/100)),
+  actRequired:Number((boss?3+c*.25:mini?2+c*.18:2+c*.08).toFixed(1)),armor:Math.floor(c*(boss?.4:mini?.3:.15))};
 }
 function legacyRoom(room){return Number.isInteger(room)&&room>=0&&room<6?legacyRooms[room]:room;}
 function mapRecord(value,kind){

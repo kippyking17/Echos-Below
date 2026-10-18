@@ -1,3 +1,7 @@
+# Echos Below v3.1.2 — build 20261017.20
+
+Enemy balance pass: reduced boss/miniboss/ordinary/roaming HP and damage, reduced encounter armor and ACT requirements. All families still increase health/damage with chapter; guardian phases still increase aggression. Last Echo HP 2789 -> 857; Devil blade defeats it in one hit. Roaming enemies use the same central progression table. Tested all 60 guardians with earned victory gifts and Basic/Strong gear, without optional grace upgrades or relics: 2–4 attacks in the representative chapter samples, all within eight; no peak-phase one-shot against that progressed character. Chapter 30 remains lethal to a fresh 24-HP traveler. Corrected the stale how-to-play boss-room label to room 7. Includes the verified-admin Devil persistence fix from v3.1.1.
+
 # Echos Below v3.1.1 — build 20261017.19
 
 Fixed Devil gear disappearing when switching to player view or refreshing the same verified account session. Equipment access now follows verified authorization independently of dashboard visibility. Same-account refresh preserves authorization while its role is checked and retains player view. Logout, changed accounts, denied roles and failed role checks revoke access; stale checks cannot restore it. Tested grant, player view beyond two seconds, delayed refresh, save/reload, and logout in a real browser with a local authentication fixture. Guest grants remain denied.

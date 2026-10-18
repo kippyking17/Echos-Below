@@ -1,4 +1,6 @@
-ECHOS BELOW — v3.1.1 / build 20261017.19
+Enemy balance update: reduced enemy health/damage and defenses while preserving chapter growth. Final boss 857 HP; normal progression can defeat it and Devil gear one-hits it.
+
+ECHOS BELOW — v3.1.2 / build 20261017.20
 
 PLAY: https://kippyking17.github.io/Echos-Below/
 
