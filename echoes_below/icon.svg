@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><defs><linearGradient id="stone" x2="1" y2="1"><stop stop-color="#173847"/><stop offset="1" stop-color="#071018"/></linearGradient><linearGradient id="gem" x2="1" y2="1"><stop stop-color="#b9edeb"/><stop offset="1" stop-color="#4c9dc4"/></linearGradient></defs><rect width="192" height="192" rx="25" fill="url(#stone)"/><path d="M33 44V33h22M137 33h22v11M33 148v11h22M137 159h22v-11" stroke="#d8c18c" stroke-width="2" fill="none"/><path d="m96 35 28 38-8 53-20 29-20-29-8-53Z" fill="url(#gem)" stroke="#c9eced" stroke-width="2"/><path d="M96 35v120L76 126l-8-53Z" fill="#e2ffff" opacity=".25"/><path d="M68 73h56M96 35v120" stroke="#e2ffff" stroke-width="1" opacity=".7"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Echos Below: the winged lantern crystal">
+ <defs><radialGradient id="night"><stop stop-color="#16384a"/><stop offset="1" stop-color="#07101f"/></radialGradient><linearGradient id="crystal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4fff0"/><stop offset=".4" stop-color="#9afbe2"/><stop offset="1" stop-color="#3994e5"/></linearGradient><linearGradient id="wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c6fbd5"/><stop offset="1" stop-color="#3b9b9c"/></linearGradient></defs>
+ <path fill="url(#night)" d="M0 0h512v512H0z"/>
+ <path fill="#102a39" d="M136 96h240v16h32v32h16v240h-16v32h-32v16H136v-16h-32v-32H88V144h16v-32h32z"/>
+ <path fill="#193f4e" d="M152 112h208v16h32v32h16v208h-16v32h-32v16H152v-16h-32v-32h-16V160h16v-32h32z"/>
+ <path fill="#0c1d30" d="M160 128h192v16h32v32h16v176h-16v32h-32v16H160v-16h-32v-32h-16V176h16v-32h32z"/>
+ <path fill="#61b4c4" d="M136 144h40v8h-32v32h-8zm200 0h40v40h-8v-32h-32zM136 344h8v32h32v8h-40zm232 0h8v40h-40v-8h32z"/>
+ <path fill="url(#wing)" d="M224 304h-24v-24h-24v-24h-24v-24h-16v-32h16v16h24v16h24v24h24zm64 0h24v-24h24v-24h24v-24h16v-32h-16v16h-24v16h-24v24h-24z"/>
+ <path fill="#dfc282" d="M200 312h-24v-24h-24v-24h-16v-16h-16v-16h16v8h24v16h24v24h16zm112 0h24v-24h24v-24h16v-16h16v-16h-16v8h-24v16h-24v24h-16z"/>
+ <path fill="#0a1427" d="M248 96h16v24h16v24h16v32h16v104h-16v40h-16v32h-16v24h-16v-24h-16v-32h-16v-40h-16V176h16v-32h16v-24h16z"/>
+ <path fill="url(#crystal)" d="M248 112h16v24h16v32h16v104h-16v40h-16v40h-16v-40h-16v-40h-16V168h16v-32h16z"/>
+ <path fill="#e9fff1" d="M248 128h8v56h-24v-16h8v-32h8z"/><path fill="#88e9dc" d="M224 192h24v104h-8v-24h-16z"/><path fill="#49a5d2" d="M264 184h24v80h-16v40h-8z"/><path fill="#c3fff2" d="M248 184h16v136h-8v16h-8z"/>
+ <path fill="#f6e7ab" d="M232 368h48v8h16v16h-80v-16h16zm8 32h32v8h-32z"/><path fill="#ffd98c" d="M252 224h8v12h12v8h-12v12h-8v-12h-12v-8h12z"/>
+ <path fill="#b4edf2" d="M162 172h8v8h8v8h-8v8h-8v-8h-8v-8h8z"/><path fill="#c4a1ef" d="M342 320h8v8h8v8h-8v8h-8v-8h-8v-8h8z"/><path fill="#a6d7d6" d="M320 152h8v8h-8zm-160 176h8v8h-8zm152 56h8v8h-8z"/>
+</svg>

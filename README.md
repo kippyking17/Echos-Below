@@ -1,15 +1,21 @@
 # Echos Below
 
-[Play Echos Below](https://kippyking17.github.io/Echos-Below/) — v3.1.2.
+[Play Echos Below](https://kippyking17.github.io/Echos-Below/) — v3.2.0.
 
-Market stability and combat polish update. Markets now appear in room 3 every three chapters (3, 6, 9, 12, 15, 18, 21, 24, 27); none in the finale. Fixed the late-market ability overflow and reduced backdrop/save work. Repeated market purchases and visits verified on desktop and phone.
+ECHOS BELOW — v3.2.0 / build 20261017.21
 
-No repeated spoken lines within a journey; distinctive fist/weapon swings and finishers; no duplicate idle fists while punching; visible ACT progress and gain. Verified admins have an Equip Devil gear button for the highest armor/weapon grade, excluded from normal loot and markets. After ten seconds on the credits' last screen, zoom through the rainbow doorway and fade into the note room.
+PLAY: https://kippyking17.github.io/Echos-Below/
 
-30 chapters: seven rooms in chapters 1–29, with miniboss room 5 and boss room 7; three rooms in chapter 30. 206 main rooms, 18 optional maps and the secret note room. Existing saves, character specialties, story, phases, rarities and finale are preserved. Device voice quality still depends on available voices.
+New colorful credits, quick 1.8-second chapter reveals, and winged-crystal iPhone/bookmark icons. Existing solo saves and the v3.1.2 enemy/Devil gear fixes are preserved.
 
-Extract the whole ZIP, then open EchosBelow-AutoUpdate.exe. The Windows app checks and opens the latest published game; future updates use the same app. Internet/browser required for first load and updates. Use the same browser/profile for existing saves. Creator publishing tools are optional and start off; authorized GitHub sign-in and Git for Windows are required for uploads.
+PRIVATE MULTIPLAYER: up to four logged-in players, private room codes, shared boss fights and individual name/level/HP. Co-op starts separately from solo. Ready up, walk together, fight or ACT, revive fallen friends and retry as a team. Profanity/sexual chat terms cause a server-enforced one-minute multiplayer ban.
 
-The game folder is deployable: serve it or upload its contents as your site root. AutoUpdateLauncher.cs contains the app source. Click/tap walk; RMB attack; E interact/read/collect/confirm; Space dodge roaming enemies; I inventory; M menu. See game/BUILD_NOTES.md for details.
+OWNER STEP REQUIRED: online multiplayer needs the included multiplayer-setup.sql run once in your existing Supabase project's SQL Editor. It is locally tested but has not been applied to production. Follow MULTIPLAYER-SETUP.txt; ordinary players do not need to do this. No database passwords or secret keys belong in the game files.
+
+WINDOWS: extract the whole ZIP, then open EchosBelow-AutoUpdate.exe. The existing stable launcher opens/checks the latest live website, including future updates. Internet/browser required for first load and updates. Use the same browser/profile to keep your saves. Creator uploads are optional and off by default; authorized GitHub sign-in and Git for Windows are required for publishing.
+
+IPHONE / IPAD: open the site in Safari, Share > Add to Home Screen. To replace an old cached icon, remove the shortcut and add it again; do not clear website data.
+
+The game folder is deployable as your site root. AutoUpdateLauncher.cs contains launcher source. Solo controls: click/tap walk, RMB attack, E interact, I inventory, M menu. Co-op has its own visible touch action buttons. See game/BUILD_NOTES.md and game/MULTIPLAYER-SETUP.txt for full details.
 
 [Release notes](echoes_below/BUILD_NOTES.md).

@@ -1,0 +1,57 @@
+ECHOS BELOW — ONE-TIME MULTIPLAYER ACTIVATION
+
+The game UI and co-op backend are included. The live Supabase project still
+needs this migration; publishing website files alone cannot install it.
+No database-owner credential was available to the build agent.
+
+1. Open your existing project's SQL Editor:
+   https://supabase.com/dashboard/project/vnqjhftkaafzrrfytfoy/sql/new
+2. Open multiplayer-setup.sql from this game folder. Copy ALL its text.
+3. Paste into the SQL Editor and click Run. Wait for success.
+4. Reload Echos Below, log in, then choose M > Journey > Multiplayer.
+5. Create a private room. Share the ten-character code with up to three
+   other signed-in players. Everyone clicks Ready; the leader begins.
+
+This adds a private schema and one authenticated RPC. It does not change
+your login configuration, admin authorization, or single-player saves.
+Never paste database passwords, service-role keys, or secret keys into
+cloud-config.json or the game files. Its existing publishable key stays as is.
+
+CO-OP RULES
+- Separate journey, beginning at chapter 1. Solo saves are untouched.
+- Up to four players. No public room listing or anonymous multiplayer.
+- Shared room, boss HP, ACT progress and phase. Individual player HP.
+- Boss HP: solo amount x (1 + 0.55 per additional starting player).
+  Disconnecting does not reset or increase/decrease the current boss HP.
+- Real boss has two phases; Last Echo has three, becoming more aggressive.
+- Click/tap to move, RMB or Attack to swing near an enemy. ACT also works.
+- Bright danger areas warn for 1.4 seconds. Move clear or use Dodge.
+- E or Revive near a downed friend restores 35% health. Dawnkeeper adds 6 HP.
+- If everyone falls, the leader can retry the current fight.
+- Everyone standing reaches the door; the leader uses Next door or E.
+- Cleared guardian rooms have healing Graces. Victories grant permanent
+  HP/attack/defense and levels for the party, once per encounter.
+- The oldest remaining member becomes leader if the leader leaves.
+- Refreshing can resume your current room. Disconnected slots expire
+  after 35 seconds without contact. Join only while the room is a lobby.
+- Room chat is limited to members, 180 characters, one message/1.5 seconds.
+- Common English profanity and sexual terms are filtered on the server,
+  including common leetspeak and spaced-out spellings. Offending messages
+  are never delivered. The account is removed and barred from multiplayer
+  for 60 seconds; refreshing, leaving or a new room cannot bypass it.
+  Unsuitable account names also trigger the same ban. Word boundaries
+  protect common harmless words such as class and hello. This is a word
+  filter, not a guarantee of understanding every language or possible evasion.
+
+VALIDATION
+Actual local PostgreSQL migration and permission tests; four independent
+browser sessions plus guest/fifth-player tests; shared combat, revive,
+retry, host transfer, chat, persistent bans and all 206 room transitions.
+Production multiplayer cannot be verified until the owner runs the SQL.
+
+NEW ICON
+iPhone Home Screen uses apple-touch-icon.png (180x180). Installed apps use
+192/512 PNGs; browser tabs and bookmarks use a simplified tiny crystal icon.
+To replace a cached iPhone Home Screen icon, remove that shortcut and add
+the website again from Safari's Share > Add to Home Screen. Solo saves stay
+in the same browser/profile; do not clear website data to change an icon.

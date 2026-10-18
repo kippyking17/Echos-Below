@@ -15,3 +15,5 @@ v2.7.1: display-aware high-density canvas; clear monospace UI/body text, larger 
 v3.0: ten new district floor styles and guardian/elite silhouettes; clock-driven enemy windup/strike/recovery; health-phase expressions; all-color final ascension; lantern dawn epilogue and credits. Echos Below branding and six traveler traits.
 
 v3.1: named-weapon motion/finishers, single striking limb, ACT meter, Devil armor silhouettes and crystal-door zoom/fade transition. Cached modal backdrop and 20-FPS merchant portrait.
+
+v3.2: shared authored room/boss art in private co-op, smooth party motion and always-visible roster; colorful credit cards/constellations/ribbons and quick chapter reveal; winged crystal app/bookmark assets.

@@ -102,7 +102,7 @@ function draw(c,s){const m=s.meta,t=s.time,accent=m.crystalColor,group=groups[m.
   if(state.locked){box(c,x-11,309,22,83,'#2a3b46');for(let y=312;y<388;y+=14)box(c,x-10,y,20,2,'#49616a');box(c,x-14,345,28,6,color);if(state.kind==='key'){box(c,x-5,335,10,14,'#d9b777');box(c,x-2,339,4,5,'#172830');box(c,x-1,343,2,4,'#172830');}else{gem(c,x,348,color,10);}}
   else{for(let i=0;i<3;i++)box(c,x-8+i*6,315,3,74,'#8ec9bd10');glow(c,x,352,color,27,.11);line(c,back?[[x+3,345],[x-4,352],[x+3,359]]:[[x-3,345],[x+4,352],[x-3,359]],color,2);}
  }
- door(866);if(s.backLabel)door(88,true);player(c,s,t);
+ door(866);if(s.backLabel)door(88,true);if(!s.hidePlayer)player(c,s,t);
 }
 globalThis.EchoesOverworld={drawGrace:checkpoint,draw,clear:()=>cache.clear()};
 })();
