@@ -1,8 +1,12 @@
 # Echos Below
 
-ECHOS BELOW — v3.3.1 / build 20261018.25
+ECHOS BELOW — v3.4.0 / build 20261018.26
 
 PLAY: https://kippyking17.github.io/Echos-Below/
+
+ANIMATION & VFX: chapter-colored atmosphere, footsteps and room arrival rings, boss impact/ACT/phase particles, layered sword trails, stronger pickup bursts, animated Grace rings, enemy strike sparks and quick pixel-menu arrivals. Bounded particles, reduced-effects support, unchanged combat timing.
+
+VOICES: distinct preferred natural English voices for Brindle and the Last Echo, normal pitch and sentence-by-sentence phrasing. Device voices vary; these are browser speech voices, not recorded human actors. No voice service subscriptions or secret keys required.
 
 MULTIPLAYER PERFORMANCE: progress changes only, no full progress capture during rendering, cached roster updates, faster adaptive sync and immediate queued combat updates. Same original game and backend.
 
@@ -10,7 +14,7 @@ SOLO WITH FRIENDS: the original game, now with private parties for up to four lo
 
 Chat works in the lobby and Party panel, supports Enter, keeps typing focus during updates, and preserves unsent messages after connection errors. Names, levels and HP appear with friends. Existing login-only access, four-player limit and one-minute chat bans remain active.
 
-Refresh everyone to v3.3.1 and leave/recreate rooms from older versions. Guests keep their solo saves; party progress is cached separately and restored when rejoining the same code. Host progress uses the normal save. Use the same browser/profile for saves.
+Refresh everyone to v3.4.0 and leave/recreate rooms from older versions. Guests keep their solo saves; party progress is cached separately and restored when rejoining the same code. Host progress uses the normal save. Use the same browser/profile for saves.
 
 WINDOWS: extract the whole ZIP, then open EchosBelow-AutoUpdate.exe. The existing stable launcher opens the latest live game and future versions. Internet/browser required. Creator publishing is optional and off by default; Git for Windows and authorized GitHub sign-in are required.
 

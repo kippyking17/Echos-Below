@@ -1,3 +1,11 @@
+# Echos Below v3.4.0 — build 20261018.26
+
+Animation/effects pass: bounded deterministic ambient pixels and footsteps; room arrival, boss hit, ACT and phase rings; layered weapon echoes, stronger collectible rings, pulsing Grace floors, enemy strike sparks and reduced-motion-aware menu entrance. World effects are clipped away from top/bottom HUD; battle effects stay in the enemy area. No gameplay RNG, damage timing or duplicate weapon rendering introduced. Existing unique weapon swings/finishers remain.
+
+Voice director prefers role-specific natural/neural/enhanced English voices, keeps pitch neutral, uses measured delivery and sentence phrasing; preserves mute, volume, cancellation and no-repeat journey history. Actual naturalness depends on installed browser/device voices. No generated recordings are included, and recorded actor quality is not claimed.
+
+Four-player simulated-latency regression passed with seven network snapshots per second and eleven updates in 2.3 seconds under 180ms artificial delay. Deterministic effects budget/expiry and natural-voice selection/fallback tests passed. Desktop/phone finale regression checks full spoken farewell across sentence chunks.
+
 # Echos Below v3.3.1 — build 20261018.25
 
 Removed progress filtering/equipment cloning from the per-frame peer draw path. Network progress is sent only when changed and acknowledged after successful responses. Roster DOM rebuilds only when displayed fields change. Active polling targets 150ms including response time rather than adding 300ms after every response; hidden/lobby polling targets 750ms. Requests remain serialized, combat events wake the queue immediately, replay acknowledgements and moderation remain unchanged. Peer easing uses elapsed time and snaps across room/screen transitions. No backend migration or solo balance changes.

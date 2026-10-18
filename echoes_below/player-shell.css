@@ -257,3 +257,8 @@ dialog p,dialog .small,dialog label,dialog input,dialog select,dialog button,dia
 
 .market-heading{display:flex;gap:12px;align-items:center;justify-content:space-between;position:sticky;top:-25px;background:#0b1b27;z-index:3;padding:8px 0;border-bottom:2px solid #426272}.market-heading h2{margin:0!important}.market-heading button{flex-shrink:0}#merchantConversations summary{cursor:pointer;color:#d8e6d6;font-size:15px;padding:5px}#shopStock{margin-top:12px}
 @media(orientation:landscape) and (max-height:500px){#shopDialog{padding:12px;max-height:94dvh;width:94vw}.market-heading{top:-12px;padding:5px 0}.market-heading h2{font-size:22px!important}.market-heading button{min-height:36px;font-size:14px;padding:5px 10px}.merchant-header{grid-template-columns:80px minmax(0,1fr);gap:12px}#merchantPortrait{width:80px;height:50px}#shopIntro{font-size:14px;line-height:1.3;padding:7px;margin:7px 0}#merchantVoiceStatus{font-size:12px;margin:4px 0}#shopInventory{font-size:14px;min-height:35px;padding:5px 10px}#shopStock{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#shopStock section{padding:10px}#shopStock h3{font-size:17px}#shopStock p{font-size:14px;line-height:1.4;margin-bottom:9px}}
+
+/* Short, quiet pixel-menu arrivals; keep focus and layout stable. */
+@keyframes echosPanelArrival{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+dialog[open]{animation:echosPanelArrival 160ms ease-out}button{transition:background-color 120ms,border-color 120ms}button:active:not(:disabled){filter:brightness(1.16)}
+@media(prefers-reduced-motion:reduce){dialog[open]{animation:none}button{transition:none}}
