@@ -76,7 +76,7 @@ function player(c,s,time){
  // Separate legs and arms make the six-step walk readable at the game's native scale.
  box(c,x-6,y+3+stride,5,8,'#2c4052');box(c,x+1,y+3-stride,5,8,'#25374b');box(c,x-8,y+9+stride,7,3,'#101e2d');box(c,x+1,y+9-stride,7,3,'#101e2d');
  box(c,x-8,y-9,16,16,'#152637');box(c,x-7,y-8,14,13,colors.coat);box(c,x-6,y+3,12,3,'#9a8868');
- box(c,x-10,y-5-swing,4,10,'#314c59');box(c,x+6,y-5+swing,4,10,'#3b5661');box(c,x-10,y+3-swing,4,4,'#c4ad85');box(c,x+6,y+3+swing,4,4,'#d1b88d');
+ if(!s.attacking){box(c,x-10,y-5-swing,4,10,'#314c59');box(c,x+6,y-5+swing,4,10,'#3b5661');box(c,x-10,y+3-swing,4,4,'#c4ad85');box(c,x+6,y+3+swing,4,4,'#d1b88d');}
  box(c,x-8,y-19,16,12,'#132536');box(c,x-7,y-21,14,10,colors.hood);box(c,x-5,y-22,10,3,mix(colors.hood,'#ffffff',.2));
  if(back){box(c,x-6,y-16,12,8,mix(colors.hood,'#07131f',.2));box(c,x-5,y-6,10,12,'#8b7258');box(c,x-3,y-4,6,3,'#c1a77b');box(c,x-3,y+1,6,1,'#554d43');}
  else{box(c,x-6+(side?sign*2:0),y-15,12-(side?3:0),8,colors.skin);box(c,x-7,y-16,14,3,'#2a4359');const blink=!moving&&time%5.2>4.97;

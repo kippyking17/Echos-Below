@@ -251,3 +251,9 @@ dialog p,dialog .small,dialog label,dialog input,dialog select,dialog button,dia
 }
 
 .character-choices small{display:block;white-space:normal;font-size:14px!important;line-height:1.4!important;color:#d0e2dc!important;padding:5px}#characterDialog{width:min(1000px,94vw);max-width:1000px}.character-choices button{align-content:start}#characterDialog .character-choices{grid-template-columns:repeat(3,minmax(0,1fr))}@media(orientation:landscape) and (max-height:500px){#characterDialog .character-choices{grid-template-columns:repeat(3,minmax(0,1fr))}.character-choices canvas{max-height:80px}.character-choices small{font-size:13px!important}}
+
+/* Static game backdrop avoids GPU blur work while browsing market items. */
+#shopDialog::backdrop{backdrop-filter:none;background:#020911e8}
+
+.market-heading{display:flex;gap:12px;align-items:center;justify-content:space-between;position:sticky;top:-25px;background:#0b1b27;z-index:3;padding:8px 0;border-bottom:2px solid #426272}.market-heading h2{margin:0!important}.market-heading button{flex-shrink:0}#merchantConversations summary{cursor:pointer;color:#d8e6d6;font-size:15px;padding:5px}#shopStock{margin-top:12px}
+@media(orientation:landscape) and (max-height:500px){#shopDialog{padding:12px;max-height:94dvh;width:94vw}.market-heading{top:-12px;padding:5px 0}.market-heading h2{font-size:22px!important}.market-heading button{min-height:36px;font-size:14px;padding:5px 10px}.merchant-header{grid-template-columns:80px minmax(0,1fr);gap:12px}#merchantPortrait{width:80px;height:50px}#shopIntro{font-size:14px;line-height:1.3;padding:7px;margin:7px 0}#merchantVoiceStatus{font-size:12px;margin:4px 0}#shopInventory{font-size:14px;min-height:35px;padding:5px 10px}#shopStock{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#shopStock section{padding:10px}#shopStock h3{font-size:17px}#shopStock p{font-size:14px;line-height:1.4;margin-bottom:9px}}

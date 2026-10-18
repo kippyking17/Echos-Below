@@ -13,3 +13,5 @@ v2.7: original pixel gateway title, floating crystals/runes/lantern stairs; cate
 v2.7.1: display-aware high-density canvas; clear monospace UI/body text, larger dialogue, stronger text contrast and landscape traveler summary. Large pixel titles retained.
 
 v3.0: ten new district floor styles and guardian/elite silhouettes; clock-driven enemy windup/strike/recovery; health-phase expressions; all-color final ascension; lantern dawn epilogue and credits. Echos Below branding and six traveler traits.
+
+v3.1: named-weapon motion/finishers, single striking limb, ACT meter, Devil armor silhouettes and crystal-door zoom/fade transition. Cached modal backdrop and 20-FPS merchant portrait.
