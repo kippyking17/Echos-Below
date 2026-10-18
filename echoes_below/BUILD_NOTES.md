@@ -1,3 +1,7 @@
+# Echos Below v3.3.1 — build 20261018.25
+
+Removed progress filtering/equipment cloning from the per-frame peer draw path. Network progress is sent only when changed and acknowledged after successful responses. Roster DOM rebuilds only when displayed fields change. Active polling targets 150ms including response time rather than adding 300ms after every response; hidden/lobby polling targets 750ms. Requests remain serialized, combat events wake the queue immediately, replay acknowledgements and moderation remain unchanged. Peer easing uses elapsed time and snaps across room/screen transitions. No backend migration or solo balance changes.
+
 # Echos Below v3.3.0 — build 20261017.24
 
 Replaced the separate arcade multiplayer with the original solo engine plus friends. Host current-save invitations, original player/armor rendering, menus, inventory, Brindle markets, Grace, movement, combat and dodge box remain in use. Party presence shows names/levels/HP. Shared replay-safe boss FIGHT, ACT and peaceful-skill progress, puzzles/keys and roaming enemies. Guest solo saves are parked/protected, with separate per-room party checkpoint.
